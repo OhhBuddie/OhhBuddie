@@ -179,17 +179,19 @@
 
     <h3 class="heading">OUR USP</h3>
     <div class="Banner">
-        <img loading="lazy"src="{{ $usp }}" class="couponimg" alt="Shoes">
+        {{-- <img loading="lazy"src="{{ $usp }}" class="couponimg" alt="Shoes"> --}}
+        <video playsinline autoplay muted loop width="100%">
+            <source src="{{ $usp }}" type="video/mp4" class="catimg" style="width:100%;">
+        </video>
     </div>
 
     <br>
-    
+
     <!--Saree-->
     <div class="Banner">
         <!--<img src="{{ $product1 }}" class="couponimg" alt="Shoes">-->
         <video playsinline autoplay muted loop width="100%">
             <source src="{{ $category1 }}" type="video/mp4" class="catimg" style="width:100%;">
-
         </video>
 
     </div>

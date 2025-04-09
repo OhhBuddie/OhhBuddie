@@ -89,7 +89,7 @@ class HomeController extends Controller
         
         // Our USP
         
-        $usp = Storage::disk('s3')->url('Home/USP Banner/usp banner 17.02.25.gif');
+        $usp = Storage::disk('s3')->url('Home/USP Banner/usp banner 17.02.mp4');
         
         // Category Banner
         

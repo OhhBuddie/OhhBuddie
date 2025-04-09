@@ -487,16 +487,16 @@
     <!--<h3 class="heading">Coupons For You</h3>-->
     <div class="coupon-container">
         <div class="coupon-card" style="background-color:transparent; border:none">
-            <img loading="lazy"src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/Promotional+Banners/Banner+1+(1).jpg"
+            <img loading="lazy"src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/Promotional+Banners/Shoe+banner+copy.webp"
                 alt="Coupon 1">
         </div>
-        <div class="coupon-card" style="background-color:transparent; border:none">
+        {{-- <div class="coupon-card" style="background-color:transparent; border:none">
             <img loading="lazy"src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/Promotional+Banners/Shoe+banner+(1).jpg"
                 alt="Coupon 2">
-        </div>
-        <!--<div class="coupon-card" style="background-color:transparent; border:none">-->
+        </div> --}}
+        {{-- <!--<div class="coupon-card" style="background-color:transparent; border:none">-->
         <!--   <img  loading="lazy"src="{{ $coupon1 }}" alt="Coupon 3">-->
-        <!--</div>-->
+        <!--</div>--> --}}
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>

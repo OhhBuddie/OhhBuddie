@@ -68,11 +68,11 @@ class HomeController extends Controller
         $nighty_icon = Storage::disk('s3')->url('Home/Category Icons/night dress.gif');
         
         
-        $slider1 = Storage::disk('s3')->url('Home/Sliders/static slider western.jpg');
-        $slider2 = Storage::disk('s3')->url('Home/Sliders/jeans static slider.jpg');
-        $slider3 = Storage::disk('s3')->url('Home/Sliders/static slider kids.jpg');
-        $slider4 = Storage::disk('s3')->url('Home/Sliders/static slider saree.jpg');
-        $slider5 = Storage::disk('s3')->url('Home/Sliders/try out.jpg');
+        $slider1 = Storage::disk('s3')->url('Home/Sliders/static slider western.webp');
+        $slider2 = Storage::disk('s3')->url('Home/Sliders/jeans static slider (1).webp');
+        $slider3 = Storage::disk('s3')->url('Home/Sliders/static slider kids.webp');
+        $slider4 = Storage::disk('s3')->url('Home/Sliders/static slider saree.webp');
+        $slider5 = Storage::disk('s3')->url('Home/Sliders/try out.webp');
         
                 
         $coupon1 = Storage::disk('s3')->url('Home/Coupon/coupon for mobile 1.png');

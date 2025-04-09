@@ -528,8 +528,8 @@
                 </li>
                 <li>
                     <a href="#orders" class="circle-icon">
-                        <span>69-Min</span>
-                        <span>Delivery</span>
+                        <span class="text-dark ">69-Min</span>
+                        <span class="text-dark ">Delivery</span>
                     </a>
                 </li>
                 <li>

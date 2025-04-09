@@ -94,7 +94,7 @@ class HomeController extends Controller
         // Category Banner
         
         $category1 = Storage::disk('s3')->url('Home/Category Banners/saree mobile banner.mp4');
-        $category2 = Storage::disk('s3')->url('Home/Category Banners/co-ordsetmobile banner.gif');
+        $category2 = Storage::disk('s3')->url('Home/Category Banners/co-ordsetmobile banner.mp4');
         $category3 = Storage::disk('s3')->url('Home/Category Banners/salwar mobile banner.mp4');
         $category4 = Storage::disk('s3')->url('Home/Category Banners/t shirt mobile banner.mp4');
         $category5 = Storage::disk('s3')->url('Home/Category Banners/kids mobile banner (1).mp4');

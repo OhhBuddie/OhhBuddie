@@ -528,9 +528,8 @@
                 </li>
                 <li>
                     <a href="#orders" class="circle-icon">
-                        <i class="fas fa-shirt"></i>
                         <span>69-Min</span>
-                        <span>Delivary</span>
+                        <span>Delivery</span>
                     </a>
                 </li>
                 <li>

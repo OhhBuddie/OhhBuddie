@@ -404,7 +404,6 @@
             <video playsinline autoplay muted loop width="100%">
                 <source src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/Category+Banners/Shoe.mp4"
                     type="video/mp4" class="catimg" style="width:100%;">
-
             </video>
         </div>
 
@@ -484,7 +483,7 @@
 
     </div>
 
-    <!--<h3 class="heading">Coupons For You</h3>-->
+    {{-- <!--<h3 class="heading">Coupons For You</h3>-->
     <div class="coupon-container">
         <div class="coupon-card" style="background-color:transparent; border:none">
             <img loading="lazy"src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/Promotional+Banners/Shoe+banner+copy.webp"
@@ -497,7 +496,13 @@
         {{-- <!--<div class="coupon-card" style="background-color:transparent; border:none">-->
         <!--   <img  loading="lazy"src="{{ $coupon1 }}" alt="Coupon 3">-->
         <!--</div>--> --}}
+    {{-- </div>  --}}
+
+     <div class="Banner">
+       <img loading="lazy" src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/Promotional+Banners/Shoe+banner+copy.webp" class="couponimg" alt="Shoes">
     </div>
+
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 

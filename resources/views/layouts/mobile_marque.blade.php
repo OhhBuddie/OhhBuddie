@@ -529,7 +529,8 @@
                 <li>
                     <a href="#orders" class="circle-icon">
                         <i class="fas fa-shirt"></i>
-                        <span>Tryout</span>
+                        <span>69-Min</span>
+                        <span>Delivary</span>
                     </a>
                 </li>
                 <li>

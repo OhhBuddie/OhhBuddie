@@ -1,0 +1,644 @@
+[31-Dec-2024 06:49:51 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:49:51 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:49:53 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:49:53 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:49:55 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:49:55 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:50:01 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:50:01 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:50:03 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:50:03 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:51:18 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:51:18 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:51:20 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:51:20 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:53:11 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:53:11 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:53:13 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:53:13 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:53:15 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:53:15 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:53:42 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:53:42 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:53:46 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:53:46 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:53:47 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:53:47 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:53:47 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:53:47 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:54:07 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:54:07 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:54:09 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:54:09 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:54:09 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:54:09 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:54:10 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:54:10 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:54:10 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:54:10 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:54:10 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:54:10 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:54:10 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:54:10 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:54:11 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:54:11 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:54:15 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:54:15 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:54:16 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:54:16 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:54:19 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:54:19 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:54:19 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:54:19 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:54:20 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:54:20 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:54:22 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:54:22 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:54:24 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:54:24 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:54:25 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:54:25 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:54:25 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:54:25 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:54:26 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:54:26 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:54:26 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:54:26 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:54:27 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:54:27 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:54:27 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:54:27 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:54:28 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:54:28 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:54:31 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:54:31 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:54:31 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:54:31 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:55:26 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:55:26 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:57:36 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:57:36 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:57:46 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:57:46 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:57:49 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:57:49 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:57:50 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 06:57:50 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 07:06:53 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 07:06:53 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 07:21:39 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 07:21:39 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 07:21:40 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 07:21:40 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 07:21:43 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 07:21:43 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 07:23:15 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 07:23:15 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 07:23:17 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 07:23:17 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 07:27:07 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 07:27:07 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 07:27:08 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 07:27:08 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 07:27:18 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 07:27:18 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 07:29:14 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 07:29:14 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 07:34:10 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 07:34:10 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 07:34:11 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 07:34:11 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 07:34:12 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 07:34:12 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 07:38:24 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 07:38:24 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 07:41:30 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 07:41:30 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 07:47:44 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 07:47:44 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 07:48:08 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 07:48:08 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 07:48:15 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 07:48:15 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 07:48:16 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 07:48:16 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 07:48:16 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 07:48:16 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 07:48:16 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 07:48:16 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 07:48:16 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 07:48:16 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 07:48:17 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 07:48:17 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 07:48:17 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 07:48:17 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 07:48:17 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 07:48:17 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 07:50:38 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 07:50:38 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 07:50:40 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 07:50:40 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 07:51:18 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 07:51:18 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 07:52:47 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 07:52:47 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 07:52:48 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 07:52:48 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 07:56:54 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 07:56:54 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 08:20:51 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 08:20:51 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 08:21:05 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 08:21:05 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 08:25:09 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 08:25:09 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 08:25:10 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 08:25:10 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 08:25:36 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 08:25:36 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 08:27:31 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 08:27:31 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 08:27:33 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 08:27:33 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 08:29:02 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 08:29:02 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 08:34:51 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 08:34:51 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 08:40:03 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 08:40:03 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 09:37:35 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 09:37:35 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 09:48:19 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 09:48:19 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 09:53:53 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 09:53:53 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 09:53:55 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 09:53:55 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 09:53:55 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 09:53:55 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 09:53:55 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 09:53:55 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 09:53:55 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 09:53:55 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 09:53:56 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 09:53:56 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 09:53:56 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 09:53:56 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 09:53:59 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 09:53:59 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 09:54:28 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 09:54:28 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 09:54:30 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 09:54:30 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 09:58:56 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 09:58:56 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 10:10:02 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 10:10:02 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 10:18:16 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 10:18:16 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 10:19:29 UTC] PHP Warning:  require_once(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/vendor./composer/autoload_real.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/vendor/autoload.php on line 23
+[31-Dec-2024 10:19:29 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/vendor./composer/autoload_real.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/vendor/autoload.php:23
+Stack trace:
+#0 /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/artisan(18): require()
+#1 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/vendor/autoload.php on line 23
+[31-Dec-2024 10:19:29 UTC] PHP Warning:  require_once(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/vendor./composer/autoload_real.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/vendor/autoload.php on line 23
+[31-Dec-2024 10:19:29 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/vendor./composer/autoload_real.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/vendor/autoload.php:23
+Stack trace:
+#0 /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/artisan(18): require()
+#1 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/vendor/autoload.php on line 23
+[31-Dec-2024 10:19:29 UTC] PHP Warning:  require_once(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/vendor./composer/autoload_real.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/vendor/autoload.php on line 23
+[31-Dec-2024 10:19:29 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/vendor./composer/autoload_real.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/vendor/autoload.php:23
+Stack trace:
+#0 /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/artisan(18): require()
+#1 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/vendor/autoload.php on line 23
+[31-Dec-2024 10:19:30 UTC] PHP Warning:  require_once(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/vendor./composer/autoload_real.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/vendor/autoload.php on line 23
+[31-Dec-2024 10:19:30 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/vendor./composer/autoload_real.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/vendor/autoload.php:23
+Stack trace:
+#0 /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/artisan(18): require()
+#1 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/vendor/autoload.php on line 23
+[31-Dec-2024 10:19:31 UTC] PHP Warning:  require_once(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/vendor./composer/autoload_real.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/vendor/autoload.php on line 23
+[31-Dec-2024 10:19:31 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/vendor./composer/autoload_real.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/vendor/autoload.php:23
+Stack trace:
+#0 /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/artisan(18): require()
+#1 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/vendor/autoload.php on line 23
+[31-Dec-2024 10:19:31 UTC] PHP Warning:  require_once(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/vendor./composer/autoload_real.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/vendor/autoload.php on line 23
+[31-Dec-2024 10:19:31 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/vendor./composer/autoload_real.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/vendor/autoload.php:23
+Stack trace:
+#0 /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/artisan(18): require()
+#1 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/vendor/autoload.php on line 23
+[31-Dec-2024 10:19:34 UTC] PHP Warning:  require_once(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/vendor./composer/autoload_real.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/vendor/autoload.php on line 23
+[31-Dec-2024 10:19:34 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/vendor./composer/autoload_real.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/vendor/autoload.php:23
+Stack trace:
+#0 /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/artisan(18): require()
+#1 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/vendor/autoload.php on line 23
+[31-Dec-2024 10:20:49 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 10:20:49 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 10:20:51 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 10:20:51 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 10:20:51 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 10:20:51 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 10:20:51 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 10:20:51 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 10:20:51 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 10:20:51 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 10:20:51 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 10:20:51 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 10:20:54 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 10:20:54 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 10:22:22 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 10:22:22 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 10:22:23 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 10:22:23 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 10:22:24 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 10:22:24 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 10:23:30 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 10:23:30 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 10:23:34 UTC] PHP Warning:  require(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 10:23:34 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../vendor/autoload.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 34
+[31-Dec-2024 10:25:54 UTC] PHP Warning:  require_once(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../bootstrap/app.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 47
+[31-Dec-2024 10:25:54 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../bootstrap/app.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:47
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 47
+[31-Dec-2024 10:26:46 UTC] PHP Warning:  require_once(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../bootstrap/app.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 47
+[31-Dec-2024 10:26:46 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../bootstrap/app.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:47
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 47
+[31-Dec-2024 10:26:47 UTC] PHP Warning:  require_once(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../bootstrap/app.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 47
+[31-Dec-2024 10:26:47 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../bootstrap/app.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:47
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 47
+[31-Dec-2024 10:26:48 UTC] PHP Warning:  require_once(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../bootstrap/app.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 47
+[31-Dec-2024 10:26:48 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../bootstrap/app.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:47
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 47
+[31-Dec-2024 10:26:48 UTC] PHP Warning:  require_once(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../bootstrap/app.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 47
+[31-Dec-2024 10:26:48 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../bootstrap/app.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:47
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 47
+[31-Dec-2024 10:26:48 UTC] PHP Warning:  require_once(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../bootstrap/app.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 47
+[31-Dec-2024 10:26:48 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../bootstrap/app.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:47
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 47
+[31-Dec-2024 10:26:48 UTC] PHP Warning:  require_once(/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../bootstrap/app.php): Failed to open stream: No such file or directory in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 47
+[31-Dec-2024 10:26:48 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/../bootstrap/app.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php:47
+Stack trace:
+#0 {main}
+  thrown in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/index.php on line 47
+[13-Feb-2025 10:58:14 UTC] PHP Fatal error:  Cannot use App\Http\Controllers\ProductController as ProductController because the name is already in use in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/routes/web.php on line 15
+[13-Feb-2025 10:59:35 UTC] PHP Fatal error:  Cannot use App\Http\Controllers\ProductController as ProductController because the name is already in use in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/routes/web.php on line 15
+[22-Feb-2025 13:14:14 UTC] PHP Fatal error:  Cannot use [] for reading in /home/xyqytzcy6yc1/public_html/fabhubtechnologies.com/storage/framework/views/57f5a41d2c9f77e00f0504a4f3bff883d125bdc4.php on line 4877
+[06-Mar-2025 14:45:57 UTC] PHP Fatal error:  Cannot use [] for reading in /home/xyqytzcy6yc1/public_html/ohhbuddie.com/app/Http/Controllers/CartController.php on line 38
+[21-Mar-2025 06:27:54 UTC] PHP Fatal error:  Cannot use Illuminate\Support\Facades\Crypt as Crypt because the name is already in use in /home/xyqytzcy6yc1/public_html/ohhbuddie.com/storage/framework/views/a686ada9bc7d4b7d1d9881bef3f830eedf8fcd77.php on line 167
+[28-Mar-2025 07:51:47 UTC] PHP Fatal error:  Cannot redeclare App\Http\Controllers\CheckoutController::store() in /home/xyqytzcy6yc1/public_html/ohhbuddie.com/app/Http/Controllers/CheckoutController.php on line 152
+[28-Mar-2025 07:57:17 UTC] PHP Fatal error:  Cannot redeclare App\Http\Controllers\CheckoutController::store() in /home/xyqytzcy6yc1/public_html/ohhbuddie.com/app/Http/Controllers/CheckoutController.php on line 152
+[28-Mar-2025 08:01:41 UTC] PHP Fatal error:  Cannot redeclare App\Http\Controllers\CheckoutController::store() in /home/xyqytzcy6yc1/public_html/ohhbuddie.com/app/Http/Controllers/CheckoutController.php on line 152
+[28-Mar-2025 08:02:59 UTC] PHP Fatal error:  Cannot redeclare App\Http\Controllers\CheckoutController::store() in /home/xyqytzcy6yc1/public_html/ohhbuddie.com/app/Http/Controllers/CheckoutController.php on line 152
+[04-Apr-2025 16:32:28 Asia/Kolkata] PHP Fatal error:  Cannot redeclare App\Http\Controllers\Category1Controller::showCategory() in /home/xyqytzcy6yc1/public_html/ohhbuddie.com/app/Http/Controllers/Category1Controller.php on line 522
+[04-Apr-2025 16:56:52 Asia/Kolkata] PHP Fatal error:  Cannot redeclare App\Http\Controllers\Category1Controller::showCategory() in /home/xyqytzcy6yc1/public_html/ohhbuddie.com/app/Http/Controllers/Category1Controller.php on line 394
+[04-Apr-2025 16:57:19 Asia/Kolkata] PHP Fatal error:  Trait "App\Http\Controllers\Illuminate\Support\Facades\Crypt" not found in /home/xyqytzcy6yc1/public_html/ohhbuddie.com/app/Http/Controllers/Category1Controller.php on line 10

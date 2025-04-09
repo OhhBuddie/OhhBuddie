@@ -41,7 +41,7 @@
         </a>
     
         <!-- Logo -->
-        <a class="navbar-brand" href="#" style="padding: 15px 11px;">
+        <a class="navbar-brand" href="/" style="padding: 15px 11px;">
             <img src="{{ asset('public/assets/images/logo/logo_showloom.png') }}" class="logoimg" alt="Shoes">
         </a>
     

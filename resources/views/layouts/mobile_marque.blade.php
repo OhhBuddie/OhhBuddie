@@ -408,7 +408,7 @@
             
             <!-- Navbar -->
             <nav class="navbar navbar-expand-lg" style="margin-top: -5px;">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="/">
                     <img src="{{ asset('public/assets/images/logo/logo_showloom.png') }}" class="logoimg" alt="Shoes">
                 </a>
                 

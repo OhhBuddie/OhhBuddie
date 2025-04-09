@@ -49,7 +49,7 @@
  
 <!-- Navbar -->
     <nav class="navbar navbar-expand-lg" style="position:fixed;">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="/">
             <img src="{{ asset('public/assets/images/logo/logo_showloom.png') }}" class="logoimg" alt="Shoes">
         </a>
 

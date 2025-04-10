@@ -224,9 +224,9 @@
                 <li><a href="#women-ethnic" class="active">Men</a></li>
                 <li><a href="#women-western">Women</a></li>
                 <li><a href="#men">Kids</a></li>
-                <li><a href="#kids">Unisex</a></li>
-                <li><a href="#home-kitchen">Plus Size</a></li>
-                <li><a href="#beauty-health">Sale</a></li>
+                <!--<li><a href="#kids">Unisex</a></li>-->
+                <!--<li><a href="#home-kitchen">Plus Size</a></li>-->
+                <!--<li><a href="#beauty-health">Sale</a></li>-->
                 <!--<li><a href="#electronics">What's New</a></li>-->
                 <!--<li><a href="#books">Celeb Fav</a></li>-->
 
@@ -1020,7 +1020,7 @@
                     <!-- Kidswear -->
                     <div class="product-wrapper">
                         <div class="product">
-                            <img src="https://images.bestsellerclothing.in/data/only/21-oct-2024/130543501_g0.jpg"
+                            <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Explore/Kids/Shoe.png"
                                 alt="Kidswear">
                             <h5>Footwear</h5>
                         </div>
@@ -1096,7 +1096,7 @@
                     
                     <div class="product-wrapper">
                         <div class="product">
-                            <img src="https://images.bestsellerclothing.in/data/only/21-oct-2024/130543501_g0.jpg"
+                            <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Explore/Kids/Innerware.png"
                                 alt="Menswear">
                             <h5>Innerwear</h5>
                         </div>
@@ -1121,17 +1121,17 @@
                 </div>
             </section>
 
-            <section id="kids"
-                style="height:unset; background-image: none; background-repeat: none; background-size: none;">
+            <!--<section id="kids"-->
+            <!--    style="height:unset; background-image: none; background-repeat: none; background-size: none;">-->
                 <!--<h5>Kids</h5>-->
-                <div class="products">
+            <!--    <div class="products">-->
                     <!-- Topwear -->
-                    <div class="product-wrapper">
-                        <div class="product ">
-                            <img src="https://images.bestsellerclothing.in/data/only/21-oct-2024/130543501_g0.jpg"
-                                alt="Topwear">
-                            <h5>T-Shirt</h5>
-                        </div>
+            <!--        <div class="product-wrapper">-->
+            <!--            <div class="product ">-->
+            <!--                <img src="https://images.bestsellerclothing.in/data/only/21-oct-2024/130543501_g0.jpg"-->
+            <!--                    alt="Topwear">-->
+            <!--                <h5>T-Shirt</h5>-->
+            <!--            </div>-->
                         <!--<div class="extra-products">-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://www.botnia.in/cdn/shop/files/5_41b6d8fa-fa23-4550-97f2-5161b85abcbd.png?v=1695274048"-->
@@ -1149,15 +1149,15 @@
                         <!--        <h5>Extra 3</h5>-->
                         <!--    </div>-->
                         <!--</div>-->
-                    </div>
+            <!--        </div>-->
 
                     <!-- Bottomwear -->
-                    <div class="product-wrapper">
-                        <div class="product">
-                            <img src="https://images.bestsellerclothing.in/data/only/21-oct-2024/130543501_g0.jpg"
-                                alt="Bottomwear">
-                            <h5>Shirt</h5>
-                        </div>
+            <!--        <div class="product-wrapper">-->
+            <!--            <div class="product">-->
+            <!--                <img src="https://images.bestsellerclothing.in/data/only/21-oct-2024/130543501_g0.jpg"-->
+            <!--                    alt="Bottomwear">-->
+            <!--                <h5>Shirt</h5>-->
+            <!--            </div>-->
                         <!--<div class="extra-products">-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSo6BwptVmQ776VMueRkmI7GhTUDgRq5adaJA&s"-->
@@ -1175,15 +1175,15 @@
                         <!--        <h5>Extra 3</h5>-->
                         <!--    </div>-->
                         <!--</div>-->
-                    </div>
+            <!--        </div>-->
 
                     <!-- Kidswear -->
-                    <div class="product-wrapper">
-                        <div class="product">
-                            <img src="https://images.bestsellerclothing.in/data/only/21-oct-2024/130543501_g0.jpg"
-                                alt="Kidswear">
-                            <h5>Hoodie</h5>
-                        </div>
+            <!--        <div class="product-wrapper">-->
+            <!--            <div class="product">-->
+            <!--                <img src="https://images.bestsellerclothing.in/data/only/21-oct-2024/130543501_g0.jpg"-->
+            <!--                    alt="Kidswear">-->
+            <!--                <h5>Hoodie</h5>-->
+            <!--            </div>-->
                         <!--<div class="extra-products">-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://ramrajcotton.in/cdn/shop/products/1_fc2187ad-922f-4247-9e37-89737632e64c.jpg?v=1677146079"-->
@@ -1201,15 +1201,15 @@
                         <!--        <h5>Extra 3</h5>-->
                         <!--    </div>-->
                         <!--</div>-->
-                    </div>
+            <!--        </div>-->
 
                     <!-- Menswear -->
-                    <div class="product-wrapper">
-                        <div class="product">
-                            <img src="https://images.bestsellerclothing.in/data/only/21-oct-2024/130543501_g0.jpg"
-                                alt="Menswear">
-                            <h5>Sweatshirt</h5>
-                        </div>
+            <!--        <div class="product-wrapper">-->
+            <!--            <div class="product">-->
+            <!--                <img src="https://images.bestsellerclothing.in/data/only/21-oct-2024/130543501_g0.jpg"-->
+            <!--                    alt="Menswear">-->
+            <!--                <h5>Sweatshirt</h5>-->
+            <!--            </div>-->
                         <!--<div class="extra-products">-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://m.media-amazon.com/images/I/718phluzAFL._AC_UY1100_.jpg"-->
@@ -1227,14 +1227,14 @@
                         <!--        <h5>Extra 3</h5>-->
                         <!--    </div>-->
                         <!--</div>-->
-                    </div>
+            <!--        </div>-->
                     
-                    <div class="product-wrapper">
-                        <div class="product">
-                            <img src="https://images.bestsellerclothing.in/data/only/21-oct-2024/130543501_g0.jpg"
-                                alt="Menswear">
-                            <h5>Jeans</h5>
-                        </div>
+            <!--        <div class="product-wrapper">-->
+            <!--            <div class="product">-->
+            <!--                <img src="https://images.bestsellerclothing.in/data/only/21-oct-2024/130543501_g0.jpg"-->
+            <!--                    alt="Menswear">-->
+            <!--                <h5>Jeans</h5>-->
+            <!--            </div>-->
                         <!--<div class="extra-products">-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://m.media-amazon.com/images/I/718phluzAFL._AC_UY1100_.jpg"-->
@@ -1252,13 +1252,13 @@
                         <!--        <h5>Extra 3</h5>-->
                         <!--    </div>-->
                         <!--</div>-->
-                    </div>
-                    <div class="product-wrapper">
-                        <div class="product">
-                            <img src="https://images.bestsellerclothing.in/data/only/21-oct-2024/130543501_g0.jpg"
-                                alt="Menswear">
-                            <h5>Cargo</h5>
-                        </div>
+            <!--        </div>-->
+            <!--        <div class="product-wrapper">-->
+            <!--            <div class="product">-->
+            <!--                <img src="https://images.bestsellerclothing.in/data/only/21-oct-2024/130543501_g0.jpg"-->
+            <!--                    alt="Menswear">-->
+            <!--                <h5>Cargo</h5>-->
+            <!--            </div>-->
                         <!--<div class="extra-products">-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://m.media-amazon.com/images/I/718phluzAFL._AC_UY1100_.jpg"-->
@@ -1276,14 +1276,14 @@
                         <!--        <h5>Extra 3</h5>-->
                         <!--    </div>-->
                         <!--</div>-->
-                    </div>
+            <!--        </div>-->
                     
-                    <div class="product-wrapper">
-                        <div class="product">
-                            <img src="https://images.bestsellerclothing.in/data/only/21-oct-2024/130543501_g0.jpg"
-                                alt="Menswear">
-                            <h5>Trousers</h5>
-                        </div>
+            <!--        <div class="product-wrapper">-->
+            <!--            <div class="product">-->
+            <!--                <img src="https://images.bestsellerclothing.in/data/only/21-oct-2024/130543501_g0.jpg"-->
+            <!--                    alt="Menswear">-->
+            <!--                <h5>Trousers</h5>-->
+            <!--            </div>-->
                         <!--<div class="extra-products">-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://m.media-amazon.com/images/I/718phluzAFL._AC_UY1100_.jpg"-->
@@ -1301,21 +1301,21 @@
                         <!--        <h5>Extra 3</h5>-->
                         <!--    </div>-->
                         <!--</div>-->
-                    </div>
-                </div>
-            </section>
+            <!--        </div>-->
+            <!--    </div>-->
+            <!--</section>-->
 
-            <section id="home-kitchen"
-                style="height:unset; background-image: none; background-repeat: none; background-size: none;">
+            <!--<section id="home-kitchen"-->
+            <!--    style="height:unset; background-image: none; background-repeat: none; background-size: none;">-->
                 <!--<h5>Home Kitchen</h5>-->
-                <div class="products">
+            <!--    <div class="products">-->
                     <!-- Topwear -->
-                    <div class="product-wrapper">
-                        <div class="product ">
-                            <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Explore/Plus+Size+All/Plus+Tees.jpg"
-                                alt="Topwear">
-                            <h5>Men</h5>
-                        </div>
+            <!--        <div class="product-wrapper">-->
+            <!--            <div class="product ">-->
+            <!--                <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Explore/Plus+Size+All/Plus+Tees.jpg"-->
+            <!--                    alt="Topwear">-->
+            <!--                <h5>Men</h5>-->
+            <!--            </div>-->
                         <!--<div class="extra-products">-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://www.botnia.in/cdn/shop/files/5_41b6d8fa-fa23-4550-97f2-5161b85abcbd.png?v=1695274048"-->
@@ -1333,15 +1333,15 @@
                         <!--        <h5>Extra 3</h5>-->
                         <!--    </div>-->
                         <!--</div>-->
-                    </div>
+            <!--        </div>-->
 
                     <!-- Bottomwear -->
-                    <div class="product-wrapper">
-                        <div class="product">
-                            <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Explore/Plus+Size+All/Plus+Cargo.jpg"
-                                alt="Bottomwear">
-                            <h5>Women</h5>
-                        </div>
+            <!--        <div class="product-wrapper">-->
+            <!--            <div class="product">-->
+            <!--                <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Explore/Plus+Size+All/Plus+Cargo.jpg"-->
+            <!--                    alt="Bottomwear">-->
+            <!--                <h5>Women</h5>-->
+            <!--            </div>-->
                         <!--<div class="extra-products">-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSo6BwptVmQ776VMueRkmI7GhTUDgRq5adaJA&s"-->
@@ -1359,23 +1359,23 @@
                         <!--        <h5>Extra 3</h5>-->
                         <!--    </div>-->
                         <!--</div>-->
-                    </div>
+            <!--        </div>-->
 
                     
-                </div>
-            </section>
+            <!--    </div>-->
+            <!--</section>-->
 
-            <section id="beauty-health"
-                style="height:unset; background-image: none; background-repeat: none; background-size: none;">
+            <!--<section id="beauty-health"-->
+            <!--    style="height:unset; background-image: none; background-repeat: none; background-size: none;">-->
                 <!--<h5>Beauty & Health</h5>-->
-                <div class="products">
+            <!--    <div class="products">-->
                     <!-- Topwear -->
-                    <div class="product-wrapper">
-                        <div class="product ">
-                            <img src="https://images.bestsellerclothing.in/data/only/21-oct-2024/130543501_g0.jpg"
-                                alt="Topwear">
-                            <h5>40% Off</h5>
-                        </div>
+            <!--        <div class="product-wrapper">-->
+            <!--            <div class="product ">-->
+            <!--                <img src="https://images.bestsellerclothing.in/data/only/21-oct-2024/130543501_g0.jpg"-->
+            <!--                    alt="Topwear">-->
+            <!--                <h5>40% Off</h5>-->
+            <!--            </div>-->
                         <!--<div class="extra-products">-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://www.botnia.in/cdn/shop/files/5_41b6d8fa-fa23-4550-97f2-5161b85abcbd.png?v=1695274048"-->
@@ -1393,15 +1393,15 @@
                         <!--        <h5>Extra 3</h5>-->
                         <!--    </div>-->
                         <!--</div>-->
-                    </div>
+            <!--        </div>-->
 
                     <!-- Bottomwear -->
-                    <div class="product-wrapper">
-                        <div class="product">
-                            <img src="https://images.bestsellerclothing.in/data/only/21-oct-2024/130543501_g0.jpg"
-                                alt="Bottomwear">
-                            <h5>50% Off</h5>
-                        </div>
+            <!--        <div class="product-wrapper">-->
+            <!--            <div class="product">-->
+            <!--                <img src="https://images.bestsellerclothing.in/data/only/21-oct-2024/130543501_g0.jpg"-->
+            <!--                    alt="Bottomwear">-->
+            <!--                <h5>50% Off</h5>-->
+            <!--            </div>-->
                         <!--<div class="extra-products">-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSo6BwptVmQ776VMueRkmI7GhTUDgRq5adaJA&s"-->
@@ -1419,15 +1419,15 @@
                         <!--        <h5>Extra 3</h5>-->
                         <!--    </div>-->
                         <!--</div>-->
-                    </div>
+            <!--        </div>-->
 
                     <!-- Kidswear -->
-                    <div class="product-wrapper">
-                        <div class="product">
-                            <img src="https://images.bestsellerclothing.in/data/only/21-oct-2024/130543501_g0.jpg"
-                                alt="Kidswear">
-                            <h5>60% Off</h5>
-                        </div>
+            <!--        <div class="product-wrapper">-->
+            <!--            <div class="product">-->
+            <!--                <img src="https://images.bestsellerclothing.in/data/only/21-oct-2024/130543501_g0.jpg"-->
+            <!--                    alt="Kidswear">-->
+            <!--                <h5>60% Off</h5>-->
+            <!--            </div>-->
                         <!--<div class="extra-products">-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://ramrajcotton.in/cdn/shop/products/1_fc2187ad-922f-4247-9e37-89737632e64c.jpg?v=1677146079"-->
@@ -1445,15 +1445,15 @@
                         <!--        <h5>Extra 3</h5>-->
                         <!--    </div>-->
                         <!--</div>-->
-                    </div>
+            <!--        </div>-->
 
                     <!-- Menswear -->
-                    <div class="product-wrapper">
-                        <div class="product">
-                            <img src="https://images.bestsellerclothing.in/data/only/21-oct-2024/130543501_g0.jpg"
-                                alt="Menswear">
-                            <h5>70% Off and more</h5>
-                        </div>
+            <!--        <div class="product-wrapper">-->
+            <!--            <div class="product">-->
+            <!--                <img src="https://images.bestsellerclothing.in/data/only/21-oct-2024/130543501_g0.jpg"-->
+            <!--                    alt="Menswear">-->
+            <!--                <h5>70% Off and more</h5>-->
+            <!--            </div>-->
                         <!--<div class="extra-products">-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://m.media-amazon.com/images/I/718phluzAFL._AC_UY1100_.jpg"-->
@@ -1471,9 +1471,9 @@
                         <!--        <h5>Extra 3</h5>-->
                         <!--    </div>-->
                         <!--</div>-->
-                    </div>
-                </div>
-            </section>
+            <!--        </div>-->
+            <!--    </div>-->
+            <!--</section>-->
 
             <!--<section id="electronics"-->
             <!--    style="height:unset; background-image: none; background-repeat: none; background-size: none;">-->

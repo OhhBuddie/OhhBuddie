@@ -167,6 +167,9 @@
             background: radial-gradient(at right center, #D7CCB7, #EFC475);
             margin-right: -5px;
             overflow: hidden;
+            font-weight:bold;
+            font-family:cursive;
+
         }
         
         /* Keep all your other existing styles */
@@ -527,10 +530,26 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#orders" class="circle-icon">
-                        <span class="text-dark ">69-Min</span>
-                        <span class="text-dark ">Delivery</span>
-                    </a>
+                <a href="#orders" class="circle-icon">
+                    <span class="blink-text text-dark">69-Min</span>
+                    <span class="blink-text text-dark">Delivery</span>
+                </a>
+                
+                <style>
+                    .blink-text {
+                        animation: blinker 1s linear infinite;
+                        font-weight: 700 !important; /* Force bold */
+                        color:black;
+                        font-family:cursive;
+                    }
+                
+                    @keyframes blinker {
+                        50% {
+                            opacity: 0;
+                        }
+                    }
+                </style>
+
                 </li>
                 <li>
                     <a href="/explore">

@@ -165,8 +165,8 @@ class CheckoutController extends Controller
             $txnid = $order_id;
             $amount = $request->total_mrp;
             $productinfo = "Payment for order: " . $order_id;
-            $firstname = Auth::user()->name  ?? '';
-            $email = Auth::user()->email  ?? '';
+            $firstname = Auth::user()->name;
+            $email = Auth::user()->email;
             $phone = Auth::user()->phone ?? '';
             $key = config('payu.key');
             $salt = config('payu.salt');
@@ -199,10 +199,7 @@ class CheckoutController extends Controller
                 ? 'https://secure.payu.in/_payment'
                 : 'https://test.payu.in/_payment';
 
-            return response()->json([
-                'payu_url' => $payuUrl,
-                'payu_data' => $payuData,
-            ]);
+            return view('payment.redirect-to-payu', compact('payuData', 'payuUrl'));
 
     }
 

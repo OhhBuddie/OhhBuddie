@@ -199,7 +199,10 @@ class CheckoutController extends Controller
                 ? 'https://secure.payu.in/_payment'
                 : 'https://test.payu.in/_payment';
 
-            return view('payment.redirect-to-payu', compact('payuData', 'payuUrl'));
+            return response()->json([
+                'payu_url' => $payuUrl,
+                'payu_data' => $payuData,
+            ]);
 
     }
 

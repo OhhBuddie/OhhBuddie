@@ -1029,10 +1029,27 @@
                         total_payable: "{{ $final_price }}",
                     },
                     success: function (response) {
-                        if (response.payment_url) {
-                            window.location.href = response.payment_url; // Redirect to Cashfree payment page
+                        if (response.payu_url && response.payu_data) {
+                            // Create form
+                            let form = $('<form>', {
+                                action: response.payu_url,
+                                method: 'POST'
+                            });
+
+                            // Append PayU params
+                            $.each(response.payu_data, function (key, value) {
+                                form.append($('<input>', {
+                                    type: 'hidden',
+                                    name: key,
+                                    value: value
+                                }));
+                            });
+
+                            // Append to body and submit
+                            $('body').append(form);
+                            form.submit();
                         } else {
-                            alert("Payment link not generated. Please try again.");
+                            alert("Payment form not generated. Please try again.");
                         }
                     },
                     error: function (xhr) {

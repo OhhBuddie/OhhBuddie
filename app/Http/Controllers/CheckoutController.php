@@ -199,18 +199,10 @@ class CheckoutController extends Controller
                 ? 'https://secure.payu.in/_payment'
                 : 'https://test.payu.in/_payment';
 
-                $html = '<html><body>
-                <form id="payuForm" action="'.$payuUrl.'" method="post">';
-            
-            foreach ($payuData as $key => $value) {
-                $html .= '<input type="hidden" name="'.$key.'" value="'.$value.'">';
-            }
-            
-            $html .= '</form>
-                <script>document.getElementById("payuForm").submit();</script>
-                </body></html>';
-            
-            return response($html);
+            return response()->json([
+                'payment_url' => $payuUrl,
+                'payment_data' => $payuData
+            ]);
 
     }
 

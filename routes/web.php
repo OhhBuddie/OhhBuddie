@@ -254,3 +254,14 @@ Route::resource('contacts', ContactController::class);
 
 Route::get('/search', [App\Http\Controllers\SearchController::class, 'search'])->name('search');
 
+// Pay U Payments
+
+
+// Exclude these routes from CSRF protection
+Route::post('/payment/success', [CheckoutController::class, 'paymentSuccess'])
+    ->name('payment.success')
+    ->withoutMiddleware(['web']);
+
+Route::post('/payment/failure', [CheckoutController::class, 'paymentFailure'])
+    ->name('payment.failure')
+    ->withoutMiddleware(['web']);

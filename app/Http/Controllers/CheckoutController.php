@@ -165,8 +165,8 @@ class CheckoutController extends Controller
             $txnid = $order_id;
             $amount = $request->total_mrp;
             $productinfo = "Payment for order: " . $order_id;
-            $firstname = Auth::user()->name;
-            $email = Auth::user()->email;
+            $firstname = Auth::user()->name  ?? '';
+            $email = Auth::user()->email  ?? '';
             $phone = Auth::user()->phone ?? '';
             $key = config('payu.key');
             $salt = config('payu.salt');

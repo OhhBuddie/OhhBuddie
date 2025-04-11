@@ -164,7 +164,7 @@ class CheckoutController extends Controller
             // Prepare PayU payment parameters
             $txnid = $order_id;
             $amount = $request->total_mrp;
-            $productinfo = "Payment for order: " . $orderId;
+            $productinfo = "Payment for order: " . $order_id;
             $firstname = Auth::user()->name;
             $email = Auth::user()->email;
             $phone = Auth::user()->phone ?? '';

@@ -1029,28 +1029,10 @@
                         total_payable: "{{ $final_price }}",
                     },
                     success: function (response) {
-                        if (response.payment_url && response.payment_data) {
-                            // Create a form dynamically
-                            var form = $('<form>', {
-                                'action': response.payment_url,
-                                'method': 'POST',
-                                'style': 'display:none;'
-                            });
-                            
-                            // Add all the PayU parameters as hidden fields
-                            $.each(response.payment_data, function(key, value) {
-                                $('<input>').attr({
-                                    type: 'hidden',
-                                    name: key,
-                                    value: value
-                                }).appendTo(form);
-                            });
-                            
-                            // Append form to body, submit it, and remove it
-                            $('body').append(form);
-                            form.submit();
+                        if (response.payment_url) {
+                            window.location.href = response.payment_url; // Redirect to Cashfree payment page
                         } else {
-                            alert("Payment gateway information not received. Please try again.");
+                            alert("Payment link not generated. Please try again.");
                         }
                     },
                     error: function (xhr) {

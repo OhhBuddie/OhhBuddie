@@ -241,7 +241,7 @@
         .modal.bottom-modal .modal-content {
             border-radius: 0.5rem 0.5rem 0 0;
         }
-        .bg-danger{
+        .bg-danger, .btn-danger, .text-danger{
             color: black !important ;
             background-color: #efc475 !important;
         }
@@ -654,7 +654,7 @@
                         <div class="modal-content shadow-lg border-0 rounded-4">
                             <div class="modal-header bg-danger text-white rounded-top">
                                 <h5 class="modal-title fw-bold" id="removeModalLabel">Confirm Removal</h5>
-                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <button type="button" class="btn-close btn-close-dark" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body text-center py-4">
                                 <i class="fas fa-exclamation-circle text-danger fs-1 mb-3"></i>

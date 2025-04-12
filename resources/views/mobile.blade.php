@@ -44,7 +44,7 @@
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0" defer></script>
 <script src="script.js" defer></script>
 
-{{-- <div class="category-container">
+<div class="category-container">
 @php
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Cache;
@@ -73,7 +73,7 @@ $categories = [
         </a>
     </div>
 @endforeach
-</div> --}}
+</div>
 
 <!-- Optimized Slider -->
 <div id="myCarousel" class="carousel slide" data-ride="carousel">

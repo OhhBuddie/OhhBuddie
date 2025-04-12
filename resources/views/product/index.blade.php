@@ -740,8 +740,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+    
 
     
     <script>
@@ -786,12 +785,7 @@
         function addToCart() {
             let sizeSelected = document.getElementById("selectedSize").textContent;
             if (!sizeSelected && cat != 40) {
-                Swal.fire({
-                    icon: 'warning',
-                    title: 'Oops...',
-                    text: 'Please select a size!',
-                    confirmButtonColor: '#f39c12'
-                });
+                alert("Please select a size");
                 return;
             }
     
@@ -815,12 +809,7 @@
                 quantity: 1,
             },
             success: function (response) {
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Added!',
-                    text: 'Product added to cart successfully!',
-                    confirmButtonColor: '#27ae60'
-                });
+                alert("Product added to cart successfully!");
                 localStorage.setItem("temp_user_id", response.temp_user_id);
                 document.cookie = `temp_user_id=${response.temp_user_id}; path=/;`;
                 onAddToCartSuccess(); // Update cart count in real time
@@ -829,12 +818,7 @@
             },
             error: function (xhr) {
                 console.log(xhr.responseText);
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error!',
-                    text: 'Something went wrong! Please try again.',
-                    confirmButtonColor: '#c0392b'
-                });
+                alert("Something went wrong! Please try again.");
             }
         });
     }

@@ -76,15 +76,15 @@ class GoogleController extends Controller
 
       
 
-                // return redirect()->back();
-                return redirect('/');
+                return redirect()->back();
+                // return redirect('/');
 
        
 
             }else{
                 
                 
-                $mcount = DB::table('users')->where('email',$user->email)->count();
+                $mcount = DB::table('users')->where('email', $user->email)->count();
                 
                 if($mcount > 0)
                 {
@@ -94,8 +94,8 @@ class GoogleController extends Controller
     
           
     
-                    // return redirect()->back();
-                    return redirect('/');
+                    return redirect()->back();
+                    // return redirect('/');
 
                     
                 }
@@ -119,8 +119,8 @@ class GoogleController extends Controller
     
           
     
-                    // return redirect()->back();
-                    return redirect('/');
+                    return redirect()->back();
+                    // return redirect('/');
                 }
 
 

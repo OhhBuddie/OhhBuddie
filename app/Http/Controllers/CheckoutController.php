@@ -171,7 +171,7 @@ class CheckoutController extends Controller
             $email = Auth::user()->email;
             $phone = Auth::user()->phone ?? '';
 
-            $key = env('PAYU_KEY');
+         return   $key = env('PAYU_KEY');
             $salt = env('PAYU_SALT');
             
             // Set URLs dynamically here instead of in config

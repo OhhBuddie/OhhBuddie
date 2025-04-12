@@ -5,6 +5,11 @@
     <title>Product Details</title>
      <link rel="stylesheet" href="{{ asset('public/assets/css/style.css') }}">
      <meta name="csrf-token" content="{{ csrf_token() }}">
+<!-- Bootstrap 5 CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Bootstrap 5 JS (required for dismiss button) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <style>
     
@@ -243,15 +248,17 @@
         $size_data = DB::table('products')->select('id','size_name')->where('product_id',$product_details->product_id)->distinct('size_name')->get();
     @endphp
 
-    {{-- ALERT  --}}
-    <div id="alert-container" class="position-fixed start-50 translate-middle-x" style="z-index: 9999; width: auto; margin-top: 64px;">
-        <!-- Alerts will appear here -->
-    </div>
+
     
 
     <div class="container">
         <div class="row align-items-center mb-3" style="margin-top:63px;">
             
+                {{-- ALERT  --}}
+                <div id="alert-container" class="position-fixed top-0 start-50 translate-middle-x mt-3" style="z-index: 9999; width: auto;">
+                </div>
+
+
         <!-- Product Image -->
         <div class="col-12 col-md-6 text-center mb-md-0 position-relative p-0">
             <!-- Carousel -->
@@ -775,6 +782,7 @@
                 setTimeout(() => alertBox.remove(), 300);
             }, 3000);
         }
+
     </script>
     
     <script>
@@ -854,6 +862,7 @@
                 console.log(xhr.responseText);
                 showBootstrapAlert("Something went wrong! Please try again.", "danger");
             }
+
         });
     }
 

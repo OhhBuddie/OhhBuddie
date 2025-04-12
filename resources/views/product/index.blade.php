@@ -243,6 +243,11 @@
         $size_data = DB::table('products')->select('id','size_name')->where('product_id',$product_details->product_id)->distinct('size_name')->get();
     @endphp
 
+    {{-- ALERT  --}}
+    <div id="alert-container" class="position-fixed top-0 start-50 translate-middle-x mt-3" style="z-index: 9999; width: auto;">
+        <!-- Alerts will appear here -->
+    </div>
+    
 
     <div class="container">
         <div class="row align-items-center mb-3" style="margin-top:63px;">
@@ -746,7 +751,31 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     
+    <script>
 
+        // Bootstrap Alert 
+
+        function showBootstrapAlert(message, type = 'primary') {
+            const alertContainer = document.getElementById('alert-container');
+            
+            const alertBox = document.createElement('div');
+            alertBox.className = `alert alert-${type} alert-dismissible fade show`;
+            alertBox.role = 'alert';
+            alertBox.innerHTML = `
+                ${message}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            `;
+
+            alertContainer.appendChild(alertBox);
+
+            // Auto-remove after 3 seconds
+            setTimeout(() => {
+                alertBox.classList.remove('show');
+                alertBox.classList.add('hide');
+                setTimeout(() => alertBox.remove(), 300);
+            }, 3000);
+        }
+    </script>
     
     <script>
         var userId = "{{ Auth::check() ? Auth::user()->id : null }}"; // Get logged-in user ID
@@ -790,7 +819,7 @@
         function addToCart() {
             let sizeSelected = document.getElementById("selectedSize").textContent;
             if (!sizeSelected && cat != 40) {
-                document.getElementById("error-message1").textContent = "Please select a size";
+                document.getElementById("error-message1").textContent = "Please select a Size";
                 return;
             }
     
@@ -814,7 +843,7 @@
                 quantity: 1,
             },
             success: function (response) {
-                alert("Product added to cart successfully!");
+                showBootstrapAlert("Product added to cart successfully!", "primary");
                 localStorage.setItem("temp_user_id", response.temp_user_id);
                 document.cookie = `temp_user_id=${response.temp_user_id}; path=/;`;
                 onAddToCartSuccess(); // Update cart count in real time
@@ -823,7 +852,7 @@
             },
             error: function (xhr) {
                 console.log(xhr.responseText);
-                alert("Something went wrong! Please try again.");
+                showBootstrapAlert("Something went wrong! Please try again.", "danger");
             }
         });
     }

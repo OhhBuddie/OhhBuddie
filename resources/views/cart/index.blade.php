@@ -241,6 +241,9 @@
         .modal.bottom-modal .modal-content {
             border-radius: 0.5rem 0.5rem 0 0;
         }
+        .bg-danger{
+            color: #efc475;
+        }
     </style>
     
      <style>
@@ -644,7 +647,7 @@
                     Remove
                 </button>
                 
-                                <!-- Modal -->
+                <!-- Modal -->
                 <div class="modal fade" id="removeModal" tabindex="-1" aria-labelledby="removeModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content shadow-lg border-0 rounded-4">

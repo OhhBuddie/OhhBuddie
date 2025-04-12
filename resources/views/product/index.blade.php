@@ -244,7 +244,7 @@
     @endphp
 
     {{-- ALERT  --}}
-    <div id="alert-container" class="position-fixed top-0 start-50 translate-middle-x mt-3" style="z-index: 9999; width: auto;">
+    <div id="alert-container" class="position-fixed start-50 translate-middle-x" style="z-index: 9999; width: auto; margin-top: 64px;">
         <!-- Alerts will appear here -->
     </div>
     

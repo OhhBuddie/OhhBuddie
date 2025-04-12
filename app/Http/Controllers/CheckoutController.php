@@ -106,7 +106,7 @@ class CheckoutController extends Controller
         
         $products = json_decode($request->products, true);
         
-        return $products;
+        // return $products;
 
         $totalQuantity = count($products);
         

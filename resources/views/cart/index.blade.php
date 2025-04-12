@@ -1026,7 +1026,7 @@
                     let productId = $(this).data("cartid");
                     let quantity = $(this).val();
                     products[productId] = quantity;
-                });
+                })
         
                 $.ajax({
                     url: "{{ route('checkout.store') }}",

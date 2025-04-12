@@ -242,7 +242,7 @@
             border-radius: 0.5rem 0.5rem 0 0;
         }
         .bg-danger{
-            color: #efc475;
+            color: #efc475 !important;
         }
     </style>
     

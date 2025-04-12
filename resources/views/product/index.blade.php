@@ -416,8 +416,8 @@
                                 onclick="validatePincode()">Check</button>
                     </div>
                     
-                    <span id="error-message" class="p-2" style="color: red; display: none;">Enter Valid Pincode</span>
-                    <span id="success-message" class="p-2" style="color: green; display: none;">Valid Pincode</span>
+                    <span id="error-message" class="p-2" style="color: red; display: none;">Pincode Is Not Serviceable</span>
+                    <span id="success-message" class="p-2" style="color: green; display: none;">Hurray! Your pincode is valid for 69-Minute delivery</span>
 
             </div>
             <br>

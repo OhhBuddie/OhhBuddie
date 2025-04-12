@@ -1381,11 +1381,11 @@
                 success: function(response) {
                     if (response.valid) {
                         successMessage.style.display = "flex";
-                        successMessage.textContent = "Valid Pincode";
+                        successMessage.textContent = "Hurray! Your pincode is valid for 69-Minute delivery";
                         errorMessage.style.display = "none";
                     } else {
                         errorMessage.style.display = "flex";
-                        errorMessage.textContent = "Pincode Not Valid";
+                        errorMessage.textContent = "Pincode Is Not Serviceable";
                         successMessage.style.display = "none";
                     }
                 },

@@ -165,7 +165,8 @@ class CheckoutController extends Controller
 
             // Prepare PayU payment parameters
             $txnid = $order_id;
-            $amount = $request->total_payable;
+            // $amount = $request->total_payable;
+            $amount = 1;
             $productinfo = "Payment for order: " . $order_id;
             $firstname = Auth::user()->name;
             $email = Auth::user()->email;
@@ -216,7 +217,7 @@ class CheckoutController extends Controller
         $this->logPayUResponse($request, 'Success');
     
         if (!$request->has('txnid')) {
-            return redirect()->route('checkout')->with('error', 'Invalid payment response');
+            return redirect('/addtocart')->with('error', 'Invalid payment response');
         }
 
 
@@ -251,10 +252,11 @@ class CheckoutController extends Controller
             
         } else {
             // Handle case where transaction is not found
-            return redirect()->route('checkout')->with('error', 'Transaction not found');
+            return redirect('/addtocart')->with('error', 'Transaction not found');
         }
 
-        return view('payment.payment-success', compact('transaction'));
+        // return view('payment.payment-success', compact('transaction'));
+        return redirect('/order-confirm');
     }
 
     public function paymentFailure(Request $request)

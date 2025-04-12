@@ -196,12 +196,11 @@ class CheckoutController extends Controller
                 'service_provider' => 'payu_paisa',
             ];
 
+            return $payuData;
             // PayU payment URL (live or test)
-            // $payuUrl = config('payu.mode') === 'live'
-            //     ? 'https://secure.payu.in/_payment'
-            //     : 'https://test.payu.in/_payment';
-
-            $payuUrl = 'https://secure.payu.in/_payment';
+            $payuUrl = config('payu.mode') === 'live'
+                ? 'https://secure.payu.in/_payment'
+                : 'https://test.payu.in/_payment';
 
             return view('payment.redirect-to-payu', compact('payuData', 'payuUrl'));
 

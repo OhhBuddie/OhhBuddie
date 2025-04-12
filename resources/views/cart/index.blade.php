@@ -72,7 +72,7 @@
     .cart-item {
       display: flex;
       border-bottom: 1px solid #ddd;
-      padding: 16px 0;
+      padding: 16px;
     }
 
     .cart-item img {
@@ -943,7 +943,21 @@
     <div class="total">{{$total_qty}}  Items Selected (Rs. {{$total_price}})</div>
     
     <!--<button><a href="/payment" style="color:black; text-decoration:none">Place Order</a></button>-->
-    <button id="placeOrderBtn" style="color:black; text-decoration:none">Place Order</button>
+    {{-- <button id="placeOrderBtn" style="color:black; text-decoration:none">Place Order</button> --}}
+
+    <form id="checkoutForm" action="{{ route('checkout.store') }}" method="POST">
+        @csrf
+    
+        <input type="hidden" name="address_id" id="address_id">
+        <input type="hidden" name="products" id="products">
+        <input type="hidden" name="total_mrp" value="{{ $total_mrp }}">
+        <input type="hidden" name="total_price" value="{{ $total_price }}">
+        <input type="hidden" name="total_discount" value="{{ $total_discount }}">
+        <input type="hidden" name="total_payable" value="{{ $final_price }}">
+    
+        <button type="submit" id="placeOrderBtn" style="color:black; text-decoration:none">Place Order</button>
+    </form>
+    
 
   </div>
    @endif
@@ -997,56 +1011,80 @@
         // });
         
         
-        $(document).ready(function () {
-            $("#placeOrderBtn").on("click", function () {
-                let token = $('meta[name="csrf-token"]').attr("content");
-                let selectedAddress = $("#aid").val();
+        // $(document).ready(function () {
+        //     $("#placeOrderBtn").on("click", function () {
+        //         let token = $('meta[name="csrf-token"]').attr("content");
+        //         let selectedAddress = $("#aid").val();
                 
-                if (!selectedAddress) {
-                    alert("Select Address");
-                }
+        //         if (!selectedAddress) {
+        //             alert("Select Address");
+        //         }
            
-                let products = {};
+        //         let products = {};
         
-                $(".update-quantity").each(function () {
-                    let productId = $(this).data("cartid");
-                    let quantity = $(this).val();
-                    products[productId] = quantity;
-                });
+        //         $(".update-quantity").each(function () {
+        //             let productId = $(this).data("cartid");
+        //             let quantity = $(this).val();
+        //             products[productId] = quantity;
+        //         });
         
-                $.ajax({
-                    url: "{{ route('checkout.store') }}",
-                    type: "POST",
-                    headers: {
-                        "X-CSRF-TOKEN": token
-                    },
-                    data: {
-                        address_id: selectedAddress,
-                        products: JSON.stringify(products),
-                        total_mrp: "{{ $total_mrp }}",
-                        total_price: "{{ $total_price }}",
-                        total_discount: "{{ $total_discount }}",
-                        total_payable: "{{ $final_price }}",
-                    },
-                    success: function (response) {
-                        if (response.payment_url) {
-                            window.location.href = response.payment_url; // Redirect to Cashfree payment page
-                        } else {
-                            alert("Payment link not generated. Please try again.");
-                        }
-                    },
-                    error: function (xhr) {
-                        if (xhr.status === 401) {
-                            // alert("Session expired. Please log in again.");
-                            // window.location.href = "/login";
-                        } else {
-                            console.log(xhr.responseText);
-                            alert("Something went wrong! Please try again.");
-                        }
-                    }
-                });
+        //         $.ajax({
+        //             url: "{{ route('checkout.store') }}",
+        //             type: "POST",
+        //             headers: {
+        //                 "X-CSRF-TOKEN": token
+        //             },
+        //             data: {
+        //                 address_id: selectedAddress,
+        //                 products: JSON.stringify(products),
+        //                 total_mrp: "{{ $total_mrp }}",
+        //                 total_price: "{{ $total_price }}",
+        //                 total_discount: "{{ $total_discount }}",
+        //                 total_payable: "{{ $final_price }}",
+        //             },
+        //             success: function (response) {
+        //                 if (response.payment_url) {
+        //                     window.location.href = response.payment_url; // Redirect to Cashfree payment page
+        //                 } else {
+        //                     alert("Payment link not generated. Please try again.");
+        //                 }
+        //             },
+        //             error: function (xhr) {
+        //                 if (xhr.status === 401) {
+        //                     // alert("Session expired. Please log in again.");
+        //                     // window.location.href = "/login";
+        //                 } else {
+        //                     console.log(xhr.responseText);
+        //                     alert("Something went wrong! Please try again.");
+        //                 }
+        //             }
+        //         });
+        //     });
+        // });
+
+
+        document.getElementById("checkoutForm").addEventListener("submit", function (e) {
+            const selectedAddress = document.getElementById("aid").value;
+
+            if (!selectedAddress) {
+                e.preventDefault();
+                alert("Please select an address.");
+                return;
+            }
+
+            document.getElementById("address_id").value = selectedAddress;
+
+            let products = {};
+            document.querySelectorAll(".update-quantity").forEach(function (input) {
+                let productId = input.getAttribute("data-cartid");
+                let quantity = input.value;
+                products[productId] = quantity;
             });
+
+            document.getElementById("products").value = JSON.stringify(products);
         });
+
+
 
     </script>
 

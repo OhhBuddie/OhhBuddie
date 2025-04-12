@@ -220,6 +220,7 @@ Route::post('/update-cart-quantity', [CartController::class, 'updateQuantity'])-
 Route::post('/wishlist/store', [WishlistController::class, 'store'])->name('wishlist.store');
 
 Route::post('/checkout', [CheckoutController::class, 'checkout'])->name('checkout.store')->middleware('auth');
+
 Route::get('/payment/{order_id}', [PaymentController::class, 'showPaymentPage'])->middleware('auth');
 
 

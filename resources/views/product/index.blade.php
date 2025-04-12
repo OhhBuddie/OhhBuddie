@@ -355,6 +355,11 @@
                             </button>
                         @endforeach
                     </div>
+
+                    <div id="error-message1" class="d-flex text-danger">
+                        <!-- Error message will appear here -->
+                    </div>
+                    
                 @endif
             @endif
                                         
@@ -785,7 +790,7 @@
         function addToCart() {
             let sizeSelected = document.getElementById("selectedSize").textContent;
             if (!sizeSelected && cat != 40) {
-                alert("Please select a size");
+                document.getElementById("error-message1").textContent = "Please select a size";
                 return;
             }
     

@@ -92,7 +92,7 @@ class CheckoutController extends Controller
     
     public function checkout(Request $request)
     {
-        return $request;
+        
             
         if ($request->total_payable >= 200 && $request->total_payable <= 499) {
             $shipping_cost = 49;
@@ -106,6 +106,8 @@ class CheckoutController extends Controller
         
         $products = json_decode($request->products, true);
         
+        return $products;
+
         $totalQuantity = count($products);
         
         // Store order details

@@ -56,7 +56,7 @@
                         </table>
                         
                         <div class="mt-4 text-center">
-                            <a href="{{ route('checkout') }}" class="btn btn-primary">Try Again</a>
+                            <a href="/addtocart" class="btn btn-primary">Try Again</a>
                         </div>
                     </div>
                 </div>

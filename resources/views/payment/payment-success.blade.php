@@ -60,7 +60,7 @@
                         </table>
                         
                         <div class="mt-4 text-center">
-                            <a href="{{ route('checkout') }}" class="btn btn-primary">Back to Home</a>
+                            <a href="/" class="btn btn-primary">Back to Home</a>
                         </div>
                     </div>
                 </div>

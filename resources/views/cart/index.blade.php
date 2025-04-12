@@ -244,6 +244,7 @@
         .bg-danger, .btn-danger, .text-danger{
             color: black !important ;
             background-color: #efc475 !important;
+            --bs-btn-border-color: none;
         }
     </style>
     

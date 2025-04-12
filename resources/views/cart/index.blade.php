@@ -964,6 +964,7 @@
 </div>
     <input type="hidden" id="aid">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         //   $(document).ready(function () {
         //     $("#placeOrderBtn").on("click", function () {
@@ -1068,7 +1069,12 @@
 
             if (!selectedAddress) {
                 e.preventDefault();
-                alert("Please select an address.");
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Hold on!',
+                    text: 'Please select an address.',
+                    confirmButtonColor: '#f39c12'
+                });
                 return;
             }
 
@@ -1277,10 +1283,20 @@
                         _token: "{{ csrf_token() }}" // CSRF token for security
                     },
                     success: function (response) {
-                        alert(response.message);
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Updated!',
+                            text: response.message,
+                            confirmButtonColor: '#27ae60'
+                        });
                     },
                     error: function (xhr) {
-                        alert("Error updating size. Please try again.");
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Error updating size. Please try again.',
+                            confirmButtonColor: '#c0392b'
+                        });                    
                     }
                 });
             });

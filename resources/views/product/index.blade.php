@@ -919,11 +919,11 @@ function getCookie(name) {
                 success: function(response) {
                     if (response.valid) {
                         successMessage.style.display = "flex";
-                        successMessage.textContent = "Valid Pincode";
+                        // successMessage.textContent = "Valid Pincode";
                         errorMessage.style.display = "none";
                     } else {
                         errorMessage.style.display = "flex";
-                        errorMessage.textContent = "Pincode Not Valid";
+                        // errorMessage.textContent = "Pincode Not Valid";
                         successMessage.style.display = "none";
                     }
                 },

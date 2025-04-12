@@ -5,11 +5,6 @@
     <title>Product Details</title>
      <link rel="stylesheet" href="{{ asset('public/assets/css/style.css') }}">
      <meta name="csrf-token" content="{{ csrf_token() }}">
-<!-- Bootstrap 5 CSS -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
-<!-- Bootstrap 5 JS (required for dismiss button) -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <style>
     
@@ -862,7 +857,6 @@
                 console.log(xhr.responseText);
                 showBootstrapAlert("Something went wrong! Please try again.", "danger");
             }
-
         });
     }
 

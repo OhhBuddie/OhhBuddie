@@ -241,7 +241,11 @@
                 height: auto;
             }
           </style>
-  
+        <style>
+            .translate-middle {
+                transform: translate(-58%, -50%) !important;
+            }
+        </style>
         @stack('style')
 
         <script>

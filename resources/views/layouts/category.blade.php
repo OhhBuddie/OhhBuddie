@@ -258,6 +258,11 @@
         }
 
     </style>
+     <style>
+        .translate-middle {
+            transform: translate(-58%, -50%) !important;
+        }
+    </style>
 </head>
 
 <body>

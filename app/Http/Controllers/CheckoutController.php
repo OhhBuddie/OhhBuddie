@@ -171,8 +171,8 @@ class CheckoutController extends Controller
             $email = Auth::user()->email;
             $phone = Auth::user()->phone ?? '';
 
-         return   $key = env('PAYU_KEY');
-            $salt = env('PAYU_SALT');
+            $key = '1maOcq';
+            $salt = 'I9Pp40tbHr5qlKgzU7Lt2U1QgGTcprGp';
             
             // Set URLs dynamically here instead of in config
             $surl = route('payment.success');

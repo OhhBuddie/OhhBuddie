@@ -50,7 +50,10 @@
                                 </tr>
                                 <tr>
                                     <th>Date & Time</th>
-                                    <td>{{ $transaction->updated_at->format('d M, Y h:i A') }}</td>
+                                    {{-- <td>{{ $transaction->updated_at->format('d M, Y h:i A') }}</td> --}}
+                                    <td>{{ \Carbon\Carbon::parse($transaction->updated_at)->format('d M, Y h:i A') }}</td>
+
+
                                 </tr>
                             </tbody>
                         </table>

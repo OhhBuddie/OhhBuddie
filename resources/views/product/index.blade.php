@@ -250,7 +250,7 @@
         <div class="row align-items-center mb-3" style="margin-top:63px;">
             
                 {{-- ALERT  --}}
-                <div id="alert-container" class="position-fixed top-0 start-50 translate-middle-x mt-3" style="z-index: 9999; width: auto;">
+                <div id="alert-container" class="position-fixed start-50 translate-middle-x mt-3" style="z-index: 9999; width: auto; top: 66px;"> 
                 </div>
 
 

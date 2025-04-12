@@ -230,6 +230,25 @@ class CheckoutController extends Controller
                 'payment_method' => $request->mode ?? 'online',
                 'payment_details' => json_encode($request->all())
             ]);
+            
+            // Update orders table
+            $order = DB::table('orders')->where('order_id', $request->txnid)->first();
+
+            if ($order) {
+                DB::table('orders')
+                    ->where('order_id', $request->txnid)
+                    ->update([
+                        'payment_status' => 'completed',
+                    ]);
+
+                // Update orderdetails table using the ID of the orders table
+                DB::table('orderdetails')
+                    ->where('order_id', $order->id)
+                    ->update([
+                        'payment_status' => 'completed',
+                    ]);
+            }
+            
         } else {
             // Handle case where transaction is not found
             return redirect()->route('checkout')->with('error', 'Transaction not found');
@@ -246,15 +265,37 @@ class CheckoutController extends Controller
             return redirect('/addtocart')->with('error', 'Invalid payment response');
         }
         // Find the transaction by order ID (txnid)
-        $transaction = Transaction::where('order_id', $request->txnid)->first();
-        
+        $transaction = DB::table('transactions')->where('order_id', $request->txnid)->first();
+
         if ($transaction) {
-            $transaction->update([
-                'txn_id' => $request->mihpayid ?? null,
-                'status' => 'failed',
-                'payment_details' => json_encode($request->all())
-            ]);
-        } else {
+            // Update transactions table
+            DB::table('transactions')
+                ->where('order_id', $request->txnid)
+                ->update([
+                    'txn_id' => $request->mihpayid ?? null,
+                    'status' => 'failed',
+                    'payment_details' => json_encode($request->all()),
+                ]);
+
+            // Update orders table
+            $order = DB::table('orders')->where('order_id', $request->txnid)->first();
+
+            if ($order) {
+                DB::table('orders')
+                    ->where('order_id', $request->txnid)
+                    ->update([
+                        'payment_status' => 'failed',
+                    ]);
+
+                // Update orderdetails table using the ID of the orders table
+                DB::table('orderdetails')
+                    ->where('order_id', $order->id)
+                    ->update([
+                        'payment_status' => 'failed',
+                    ]);
+            }
+        } 
+        else {
             // Handle case where transaction is not found
             return redirect('/addtocart')->with('error', 'Transaction not found');
         }

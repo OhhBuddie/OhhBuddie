@@ -857,86 +857,46 @@
 
 
         function addToCart() {
-            let tempUserId = localStorage.getItem("temp_user_id") || getCookie("temp_user_id");
-            let userId = "{{ Auth::check() ? Auth::user()->id : 0 }}";
-    
-
-            if (cat != 40) {
-                let sizeSelected = document.getElementById("selectedSize").textContent;
-                if (!sizeSelected) {
-                    document.getElementById("error-message1").textContent = "Please select a Size";
-                    return;
-                }
-
-                let token = "{{ csrf_token() }}";
-                    $.ajax({
-                        url: "{{ route('cart.store') }}",
-                        type: "POST",
-                        data: {
-                            _token: token,
-                            user_id: userId > 0 ? userId : 0,
-                            temp_user_id: tempUserId,
-                            product_id: "{{ $product_details->product_id }}",
-                            price: "{{ $product_details->portal_updated_price }}",
-                            gst_rate: "{{ $product_details->gst_rate }}",
-                            size_name: sizeSelected,
-                            color_name: "{{ $product_details->color_name }}",
-                            mrp: "{{ $product_details->maximum_retail_price }}",
-                            quantity: 1,
-                        },
-                        success: function (response) {
-                            showToast("Product added to cart successfully!", "success");
-                            localStorage.setItem("temp_user_id", response.temp_user_id);
-                            document.cookie = `temp_user_id=${response.temp_user_id}; path=/;`;
-                            onAddToCartSuccess(); // Update cart count in real time
-                            document.getElementById("addToBagBtn").style.display = "none";
-                            document.getElementById("goToBagBtn").style.display = "block";
-                        },
-                        error: function (xhr) {
-                            console.log(xhr.responseText);
-                            showToast("Something went wrong! Please try again.", "danger");
-                        }
-
-                    });
-
-
+            let sizeSelected = document.getElementById("selectedSize").textContent;
+            
+            if (!sizeSelected && cat != 38) {
+                document.getElementById("error-message1").textContent = "Please select a Size";
+                return;
             }
-            else
-            {
-                let token = "{{ csrf_token() }}";
-                    $.ajax({
-                        url: "{{ route('cart.store') }}",
-                        type: "POST",
-                        data: {
-                            _token: token,
-                            user_id: userId > 0 ? userId : 0,
-                            temp_user_id: tempUserId,
-                            product_id: "{{ $product_details->product_id }}",
-                            price: "{{ $product_details->portal_updated_price }}",
-                            gst_rate: "{{ $product_details->gst_rate }}",
-                            color_name: "{{ $product_details->color_name }}",
-                            mrp: "{{ $product_details->maximum_retail_price }}",
-                            quantity: 1,
-                        },
-                        success: function (response) {
-                            showToast("Product added to cart successfully!", "success");
-                            localStorage.setItem("temp_user_id", response.temp_user_id);
-                            document.cookie = `temp_user_id=${response.temp_user_id}; path=/;`;
-                            onAddToCartSuccess(); // Update cart count in real time
-                            document.getElementById("addToBagBtn").style.display = "none";
-                            document.getElementById("goToBagBtn").style.display = "block";
-                        },
-                        error: function (xhr) {
-                            console.log(xhr.responseText);
-                            showToast("Something went wrong! Please try again.", "danger");
-                        }
-
-                    });
+    
+        let tempUserId = localStorage.getItem("temp_user_id") || getCookie("temp_user_id");
+        let userId = "{{ Auth::check() ? Auth::user()->id : 0 }}";
+    
+        let token = "{{ csrf_token() }}";
+        $.ajax({
+            url: "{{ route('cart.store') }}",
+            type: "POST",
+            data: {
+                _token: token,
+                user_id: userId > 0 ? userId : 0,
+                temp_user_id: tempUserId,
+                product_id: "{{ $product_details->product_id }}",
+                price: "{{ $product_details->portal_updated_price }}",
+                gst_rate: "{{ $product_details->gst_rate }}",
+                size_name: sizeSelected,
+                color_name: "{{ $product_details->color_name }}",
+                mrp: "{{ $product_details->maximum_retail_price }}",
+                quantity: 1,
+            },
+            success: function (response) {
+                showToast("Product added to cart successfully!", "success");
+                localStorage.setItem("temp_user_id", response.temp_user_id);
+                document.cookie = `temp_user_id=${response.temp_user_id}; path=/;`;
+                onAddToCartSuccess(); // Update cart count in real time
+                document.getElementById("addToBagBtn").style.display = "none";
+                document.getElementById("goToBagBtn").style.display = "block";
+            },
+            error: function (xhr) {
+                console.log(xhr.responseText);
+                showToast("Something went wrong! Please try again.", "danger");
             }
 
-    
-
-
+        });
     }
 
         // Function to get cookie value

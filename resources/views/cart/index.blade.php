@@ -694,7 +694,7 @@
               @endphp
                 <div class="d-flex">
 
-                @if($pdtall->category_id != 40)
+                @if($pdtall->category_id != 38)
      
                    <p style="border: 1px solid white; padding-left: 5px;  border-radius: 13px; margin-right: 10px;">Size: 
                     <select class="update-size" data-cartid="{{$dat['id']}}">

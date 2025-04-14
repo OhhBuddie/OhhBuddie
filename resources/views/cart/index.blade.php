@@ -645,12 +645,12 @@
                 
                 
                 <!-- Remove Button (Triggers Modal) -->
-                <button type="button" data-bs-toggle="modal" data-bs-target="#removeModal" style="background-color:transparent; border:none; color:white; text-decoration:underline; margin-bottom:5px;">
+                <button type="button" data-bs-toggle="modal" data-bs-target="#removeModal{{$dat['id']}}" style="background-color:transparent; border:none; color:white; text-decoration:underline; margin-bottom:5px;">
                     Remove
                 </button>
                 
                 <!-- Modal -->
-                <div class="modal fade" id="removeModal" tabindex="-1" aria-labelledby="removeModalLabel" aria-hidden="true">
+                <div class="modal fade" id="removeModal{{$dat['id']}}" tabindex="-1" aria-labelledby="removeModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content shadow-lg border-0 rounded-4">
                             <div class="modal-header bg-danger text-white rounded-top">

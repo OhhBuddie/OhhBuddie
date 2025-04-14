@@ -249,9 +249,10 @@
     <div class="container">
         <div class="row align-items-center mb-3" style="margin-top:63px;">
             
-                {{-- ALERT  --}}
-                <div id="alert-container" class="position-fixed start-50 translate-middle-x mt-3" style="z-index: 9999; width: auto; top: 66px;"> 
+              <!-- Toast Container -->
+                <div id="toast-container" class="position-fixed top-0 end-0 p-3" style="z-index: 9999;">
                 </div>
+
 
 
         <!-- Product Image -->
@@ -749,36 +750,53 @@
    
 
 
-
+        <!-- Bootstrap JS Bundle (includes Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     
     <script>
-
-        // Bootstrap Alert 
-
-        function showBootstrapAlert(message, type = 'primary') {
-            const alertContainer = document.getElementById('alert-container');
-            
-            const alertBox = document.createElement('div');
-            alertBox.className = `alert alert-${type} alert-dismissible fade show`;
-            alertBox.role = 'alert';
-            alertBox.innerHTML = `
-                ${message}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        function showToast(message, type = 'primary') {
+            const toastContainer = document.getElementById('toast-container');
+    
+            const toast = document.createElement('div');
+            toast.className = `toast align-items-center text-white bg-${type} border-0 show`;
+            toast.setAttribute('role', 'alert');
+            toast.setAttribute('aria-live', 'assertive');
+            toast.setAttribute('aria-atomic', 'true');
+    
+            toast.innerHTML = `
+                <div class="d-flex">
+                    <div class="toast-body">
+                        ${message}
+                    </div>
+                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
             `;
-
-            alertContainer.appendChild(alertBox);
-
-            // Auto-remove after 3 seconds
+    
+            toastContainer.appendChild(toast);
+    
+            // Auto-hide toast after 3 seconds
             setTimeout(() => {
-                alertBox.classList.remove('show');
-                alertBox.classList.add('hide');
-                setTimeout(() => alertBox.remove(), 300);
+                const bsToast = bootstrap.Toast.getOrCreateInstance(toast);
+                bsToast.hide();
             }, 3000);
+    
+            // Remove from DOM after hidden
+            toast.addEventListener('hidden.bs.toast', () => {
+                toast.remove();
+            });
+    
+            // Show it using Bootstrap's Toast API
+            const bsToast = new bootstrap.Toast(toast);
+            bsToast.show();
         }
-
     </script>
+
     
     <script>
         var userId = "{{ Auth::check() ? Auth::user()->id : null }}"; // Get logged-in user ID
@@ -837,16 +855,16 @@
                 _token: token,
                 user_id: userId > 0 ? userId : 0,
                 temp_user_id: tempUserId,
-                product_id: "{{ $product_details->id }}",
+                product_id: "{{ $product_details->product_id }}",
                 price: "{{ $product_details->portal_updated_price }}",
                 gst_rate: "{{ $product_details->gst_rate }}",
-                size_name: "{{ $product_details->size_name }}",
+                size_name: sizeSelected,
                 color_name: "{{ $product_details->color_name }}",
                 mrp: "{{ $product_details->maximum_retail_price }}",
                 quantity: 1,
             },
             success: function (response) {
-                showBootstrapAlert("Product added to cart successfully!", "primary");
+                showToast("Product added to cart successfully!", "success");
                 localStorage.setItem("temp_user_id", response.temp_user_id);
                 document.cookie = `temp_user_id=${response.temp_user_id}; path=/;`;
                 onAddToCartSuccess(); // Update cart count in real time
@@ -855,18 +873,19 @@
             },
             error: function (xhr) {
                 console.log(xhr.responseText);
-                showBootstrapAlert("Something went wrong! Please try again.", "danger");
+                showToast("Something went wrong! Please try again.", "danger");
             }
+
         });
     }
 
-// Function to get cookie value
-function getCookie(name) {
-    let matches = document.cookie.match(new RegExp(
-        "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
-    ));
-    return matches ? decodeURIComponent(matches[1]) : undefined;
-}
+        // Function to get cookie value
+        function getCookie(name) {
+            let matches = document.cookie.match(new RegExp(
+                "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+            ));
+            return matches ? decodeURIComponent(matches[1]) : undefined;
+        }
     </script>
     <script>
 

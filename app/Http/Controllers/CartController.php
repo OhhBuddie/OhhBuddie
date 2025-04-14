@@ -146,6 +146,7 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
+        // return $request;
         // Retrieve temp_user_id from request or generate a new one
         $tempUserId = $request->temp_user_id ?? uniqid('temp_', true);
         // return $tempUserId;
@@ -180,26 +181,36 @@ class CartController extends Controller
         $shipping = 0;
     
         // Tax Calculation
-        $p1 = ($request->price / (100 + $request->gst_rate)) * 100;
-        $tax = $request->price - $p1;
+
+    
+        // Discount Calculation
+    
+        // Cart total value
+        
+        // return $request->product_id;
+        
+        $pdetail = DB::table('products')->where('product_id',$request->product_id)->where('size_name',$request->size_name)->latest()->first();
+        
+        $p1 = ($pdetail->portal_updated_price / (100 + $request->gst_rate)) * 100;
+        $tax = $pdetail->portal_updated_price - $p1;
     
         // Get color name from the database
         $color = DB::table('colors')->where('hex_code', $request->color_name)->first();
         $color_name = $color ? $color->color_name : null;
-    
-        // Discount Calculation
-        $discount = $request->mrp - $request->price;
-    
-        // Cart total value
-        $cart_value = $request->price + $shipping;
-    
+        
+        
+        
+        $cart_value = $pdetail->portal_updated_price + $shipping;
+        
+        $discount = $pdetail->maximum_retail_price - $pdetail->portal_updated_price;
+
         // Store Cart Data
         Cart::create([
             'user_id' => Auth::check() ? Auth::id() : null, // Use Auth if user is logged in
             'temp_user_id' => $tempUserId,
             'color_name' => $color_name,
             'size_name' => $request->size_name,
-            'product_id' => $request->product_id,
+            'product_id' => $pdetail->id,
             'variation' => "NA",
             'price' => $request->price,
             'cart_value' => $cart_value,
@@ -216,9 +227,9 @@ class CartController extends Controller
             'segment' => "Buy",
             'mrp' => $request->mrp,
             
-            'updated_mrp' => $request->mrp,
+            'updated_mrp' => $pdetail->maximum_retail_price,
             'updated_discount' => $discount,
-            'updated_price' => $request->price,
+            'updated_price' => $pdetail->portal_updated_price,
             
         ]);
     

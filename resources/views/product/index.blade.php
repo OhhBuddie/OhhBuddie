@@ -334,9 +334,9 @@
             <div class="col-12 col-md-6 text-light p-4 ">
                 <p class="font-weight-bold" style="color:white; margin: 10px 0px 0px;">
                     @if($brnd_cnt != 0)
-                        <span style="text-transform: uppercase;">{{ $may->brand_name }}</span> -
+                        <span style="text-transform: uppercase;">{{ $brnd_name->brand_name }}</span> -
                     @endif
-                    {{ $may->product_name }}
+                    {{ $product_details->product_name }}
                 </p>
 
                 <!--<h6 class="fw-bold" style="margin-top: 3px;">{{$product_details->product_name}}</h6>-->

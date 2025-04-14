@@ -843,6 +843,7 @@
             $final_price = 0;
         @endphp
     @else
+    @if(!empty($may_like))
            <div class="suggested-section">
             <h3>You May Also Like:</h3>
             
@@ -885,7 +886,7 @@
             </div>
           </div>
       
-       
+       @endif
   
       <a class="coupon" href="/coupon">
       

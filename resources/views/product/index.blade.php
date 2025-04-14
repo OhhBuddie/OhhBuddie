@@ -1060,7 +1060,7 @@
 
 
       <script>
-        // Simple function to open the modal
+        // Simple function to open the modal portion
         function openModal() {
           document.getElementById('modal-container').style.display = 'flex';
           document.body.style.overflow = 'hidden';

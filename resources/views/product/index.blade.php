@@ -233,6 +233,22 @@
       display: block;
     }
   </style>
+    <style>
+        #toast-container .toast {
+            animation: slideDownFade 0.5s ease-out;
+        }
+    
+        @keyframes slideDownFade {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
     
     @php
         $mrp = $product_details->maximum_retail_price;
@@ -249,10 +265,10 @@
     <div class="container">
         <div class="row align-items-center mb-3" style="margin-top:63px;">
             
-              <!-- Toast Container -->
-                <div id="toast-container" class="position-fixed end-0 p-3" style="z-index: 9999;top: 66px;">
-                </div>
+              <!-- Full-width Toast Container -->
+            <div id="toast-container" class="position-fixed start-0 w-100" style="z-index: 9999;top: 66px;"></div>
 
+                
 
 
         <!-- Product Image -->
@@ -786,38 +802,42 @@
             const toastContainer = document.getElementById('toast-container');
     
             const toast = document.createElement('div');
-            toast.className = `toast align-items-center text-white bg-${type} border-0 show`;
+            toast.className = `toast text-white bg-${type} border-0 show w-100`;
             toast.setAttribute('role', 'alert');
             toast.setAttribute('aria-live', 'assertive');
             toast.setAttribute('aria-atomic', 'true');
+            toast.style.padding = "1rem 2rem";
+            toast.style.fontSize = "1.1rem";
+            toast.style.borderRadius = "0";
+            toast.style.boxShadow = "0 4px 8px rgba(0,0,0,0.1)";
+            toast.style.display = "flex";
+            toast.style.justifyContent = "space-between";
+            toast.style.alignItems = "center";
     
             toast.innerHTML = `
-                <div class="d-flex">
-                    <div class="toast-body">
-                        ${message}
-                    </div>
-                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                <div class="toast-body">
+                    ${message}
                 </div>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
             `;
     
             toastContainer.appendChild(toast);
     
-            // Auto-hide toast after 3 seconds
+            // Auto-hide after 3 seconds
             setTimeout(() => {
                 const bsToast = bootstrap.Toast.getOrCreateInstance(toast);
                 bsToast.hide();
-            }, 100000);
+            }, 3000);
     
-            // Remove from DOM after hidden
             toast.addEventListener('hidden.bs.toast', () => {
                 toast.remove();
             });
     
-            // Show it using Bootstrap's Toast API
             const bsToast = new bootstrap.Toast(toast);
             bsToast.show();
         }
     </script>
+    
 
     
     <script>

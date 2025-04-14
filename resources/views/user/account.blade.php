@@ -191,10 +191,10 @@
 
 <div class="profile-container">
     <ul class="list-group">
-        <li href="/order" class="list-group-item">
+        <li class="list-group-item">
             <!--<i class="bi bi-basket"></i>-->
             <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/SVG+Icons/bag.png">
-            <a href="#" class="flex-grow-1">My Orders</a>
+            <a href="/order" class="flex-grow-1">My Orders</a>
              <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/SVG+Icons/ARROW.png">
 
         </li>

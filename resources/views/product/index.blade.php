@@ -827,7 +827,7 @@
             setTimeout(() => {
                 const bsToast = bootstrap.Toast.getOrCreateInstance(toast);
                 bsToast.hide();
-            }, 3000);
+            }, 300000);
     
             toast.addEventListener('hidden.bs.toast', () => {
                 toast.remove();

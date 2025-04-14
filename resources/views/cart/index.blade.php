@@ -472,7 +472,7 @@
      <style>
         .custom-toast {
             width: 100%;
-            padding: 1rem 2rem;
+            padding: 0.5rem 2rem;
             font-size: 1.1rem;
             border-radius: 0;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);

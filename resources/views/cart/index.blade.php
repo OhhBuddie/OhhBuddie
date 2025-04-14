@@ -849,6 +849,16 @@
             <div class="suggested-products">
                 
             @foreach($may_like as $may)
+            
+                @php
+                    $brnd_cnt = DB::table('brands')->where('id',$may->brand_id)->count();
+                    if($brnd_cnt > 0)
+                    {
+                        $brnd_name = DB::table('brands')->where('id',$may->brand_id)->latest()->first();
+                    }
+                    
+                    
+               @endphp
             <a  href="/product/{{ Crypt::encryptString($may->id) }}" style="text-decoration:none;">
                   <div class="product-card">
                         @php
@@ -856,8 +866,15 @@
                         @endphp
                       <a  href="/product/{{ Crypt::encryptString($may->id) }}" style="text-decoration:none;"><img src="{{ $images[0] }}" alt="Image"></a>
         
-                    <p class="text-uppercase font-weight-bold" style="color:white; margin: 10px 0px 0px;">BRAND NAME  {{$may->product_name}}</p>
-    
+                        <p class="font-weight-bold" style="color:white; margin: 10px 0px 0px;">
+                            <span style="text-transform: uppercase;">
+                                @if($brnd_cnt == 0)
+                                @else
+                               {{ $brnd_name->brand_name }}
+                                @endif
+                                </span> {{ $may->product_name }}
+                        </p>
+                            
                     
                     <!--<p class="text-uppercase font-weight-bold" style="color:white">{{$may->maximum_retail_price}}</p>-->
                     <!--<span class="price">Rs. 499</span><br>-->

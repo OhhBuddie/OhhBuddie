@@ -105,20 +105,33 @@ class CartController extends Controller
         }
         
         
-        
-        $may_like = [];
-        
-
-        foreach($cart_data as $cdat)
-        {
-
-            $pdt = DB::table('products')->where('id', $cdat->product_id)->latest()->first();
-          
-            $subsubcat_id = $pdt->sub_subcategory_id;
+            $subSubCatIds = [];
             
-            $may_like[] = $pdt;
-        }
+            foreach ($cart_data as $cdat) {
+                $cat_id = DB::table('products')
+                    ->select('sub_subcategory_id')
+                    ->where('id', $cdat->product_id)
+                    ->first();
+            
+                if ($cat_id && $cat_id->sub_subcategory_id) {
+                    $subSubCatIds[] = $cat_id->sub_subcategory_id;
+                }
+            }
+            
+            // Remove duplicates from sub-subcategory IDs
+            $uniqueSubSubCatIds = array_unique($subSubCatIds);
+            
+            // Fetch all related products in a single query, excluding those already in the cart
+            $cartProductIds = collect($cart_data)->pluck('product_id')->toArray();
+            
+            $may_like = DB::table('products')
+                ->whereIn('sub_subcategory_id', $uniqueSubSubCatIds)
+                ->whereNotIn('id', $cartProductIds)
+                ->latest()
+                ->get();
     
+        // return $may_like;
+        // return $may_like;
         return view('cart.index', compact(
             'address', 'ad_cnt', 'cart_data', 'cart_details','total_price', 'total_qty', 'total_mrp', 'total_discount','total_shipping', 'total_tax','may_like'
         ));

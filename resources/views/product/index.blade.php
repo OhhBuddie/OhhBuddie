@@ -234,6 +234,11 @@
     }
   </style>
     <style>
+        .bg-danger, .btn-danger, .text-danger{
+            color: black !important ;
+            background-color: #efc475 !important;
+            --bs-btn-border-color: none;
+        }
         .custom-toast {
             width: 100%;
             padding: 1rem 2rem;

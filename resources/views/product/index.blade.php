@@ -362,13 +362,24 @@
                         <h4 class="mb-0 size-chart-button" onclick="openModal()">Size Chart</h4>
                     </div>
                 
+                    
                     <div class="d-flex mb-4 flex-wrap" style="gap: 0.5rem;">
                         @foreach($size_data as $sdata)
-                            <button type="button" class="btn btn-outline-secondary newbtn border-light fs-2 m-1"
-                                style="font-weight: bold; height: 61px; border-radius: 16px; width: 61px;"
-                                onclick="selectSize(this, '{{$sdata->size_name}}')">
-                                {{$sdata->size_name}}
-                            </button>
+                            @if($product_details->category_id == 88)
+
+                                <button type="button" class="btn btn-outline-secondary newbtn border-light fs-2 m-1"
+                                    style="font-weight: bold; height: 41px; border-radius: 16px; width: 81px;"
+                                    onclick="selectSize(this, '{{$sdata->size_name}}')">
+                                    {{$sdata->size_name}}
+                                </button>
+
+                            @else
+                                <button type="button" class="btn btn-outline-secondary newbtn border-light fs-2 m-1"
+                                    style="font-weight: bold; height: 61px; border-radius: 16px; width: 61px;"
+                                    onclick="selectSize(this, '{{$sdata->size_name}}')">
+                                    {{$sdata->size_name}}
+                                </button>
+                            @endif  
                         @endforeach
                     </div>
 

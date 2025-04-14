@@ -863,7 +863,7 @@
                 // Force sizeSelected to null if cat is 38
                 if (cat == 38) {
                     sizeSelected = null;
-                }
+                } 
                 if (!sizeSelected && cat != 38) {
                     document.getElementById("error-message1").textContent = "Please select a Size";
                     return;

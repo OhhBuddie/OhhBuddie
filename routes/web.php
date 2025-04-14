@@ -266,3 +266,5 @@ Route::post('/payment/success', [CheckoutController::class, 'paymentSuccess'])
 Route::post('/payment/failure', [CheckoutController::class, 'paymentFailure'])
     ->name('payment.failure')
     ->withoutMiddleware(['web']);
+
+Route::get('/get-cities', [AddressController::class, 'getCities'])->name('getCities');

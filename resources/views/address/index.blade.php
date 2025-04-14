@@ -338,22 +338,18 @@
                 <div class="row">
                     <div class="col-6 mb-3">
                         <!--<input type="text" class="form-control" id="district" placeholder="City" >-->
-                    
-                        <select class="form-control dropdown-custom" name="city">
-                            <option value="" selected disabled>--Select City--</option>
-                            @foreach($city as $ct)
-                                <option value="{{$ct->id}}">{{$ct->name}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="col-6 mb-3">
-                        <!--<input type="text" class="form-control" id="district" placeholder="City" >-->
-                        
-                        <select class="form-control dropdown-custom" name="state">
+                        <select class="form-control dropdown-custom" name="state" id="registered_state">
                             <option value="" selected disabled>--Select State--</option>
                             @foreach($state as $st)
                                 <option value="{{$st->id}}">{{$st->name}}</option>
                             @endforeach
+                        </select>
+                    </div>
+
+                    <div class="col-6 mb-3">
+                        <!--<input type="text" class="form-control" id="district" placeholder="City" >-->
+                        <select id="registered_city" class="form-control dropdown-custom" name="city">
+                            <option selected>--Select City--</option>
                         </select>
                     </div>
                 </div>
@@ -405,6 +401,36 @@
         <button class="btn btn-primary w-100" id="addAddressBtn">Add Address</button>
     </div>
   </form>
+
+  <!-- Add jQuery to handle AJAX -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#registered_state').on('change', function() {
+                var state_id = $(this).val();
+
+                if (state_id) {
+                    $.ajax({
+                        url: "{{ route('getCities') }}",
+                        type: "GET",
+                        data: { state_id: state_id },
+                        success: function(data) {
+                            $('#registered_city').empty();
+                            $('#registered_city').append('<option selected>--Select City--</option>');
+                            $.each(data, function(key, city) {
+                                $('#registered_city').append('<option value="'+ city.id +'">'+ city.name +'</option>');
+                            });
+                        }
+                    });
+                } else {
+                    $('#registered_city').empty();
+                    $('#registered_city').append('<option selected>--Select City--</option>');
+                }
+            });
+        });
+    </script>
+
+
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     

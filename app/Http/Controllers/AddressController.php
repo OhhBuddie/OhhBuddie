@@ -23,6 +23,14 @@ class AddressController extends Controller
         return view('address.index',compact('city','state'));
     }
 
+    public function getCities(Request $request)
+    {
+        // $cities = DB::table('cities')->where('state_id', $request->state_id)->get();
+        $cities = DB::table('cities')->where('state_id', $request->state_id)->orderBy('name', 'asc')->get();
+
+        return response()->json($cities);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

@@ -234,7 +234,7 @@
     }
   </style>
     <style>
-        .bg-danger, .bg-success{
+        .bg-dangerr, .bg-success{
             color: black !important ;
             background-color: #efc475 !important;
             --bs-btn-border-color: none;
@@ -921,7 +921,7 @@
                 },
                 error: function (xhr) {
                     console.log(xhr.responseText);
-                    showToast("Something went wrong! Please try again.", "danger");
+                    showToast("Something went wrong! Please try again.", "dangerr");
                 }
 
             });
@@ -963,7 +963,7 @@
                     },
                     error: function (xhr) {
                         console.log(xhr.responseText);
-                        showToast("Something went wrong! Please try again.", "danger");
+                        showToast("Something went wrong! Please try again.", "dangerr");
                     }
 
                 });

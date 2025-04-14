@@ -274,7 +274,7 @@
     <div class="container">
 
         <!-- Full-width Toast Container -->
-        <div id="toast-container" class="position-fixed start-0 w-100" style="z-index: 9999;top: 66px;"></div>
+        <div id="toast-container" class="position-fixed w-100" style="z-index: 9999;top: 66px;"></div>
 
 
         <div class="row align-items-center mb-3" style="margin-top:63px;">

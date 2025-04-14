@@ -234,7 +234,15 @@
     }
   </style>
     <style>
-        #toast-container .toast {
+        .custom-toast {
+            width: 100%;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            border-radius: 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             animation: slideDownFade 0.5s ease-out;
         }
     
@@ -249,6 +257,7 @@
             }
         }
     </style>
+    
     
     @php
         $mrp = $product_details->maximum_retail_price;
@@ -802,41 +811,35 @@
             const toastContainer = document.getElementById('toast-container');
     
             const toast = document.createElement('div');
-            toast.className = `toast text-white bg-${type} border-0 show w-100`;
+            toast.className = `toast custom-toast bg-${type} text-white border-0`;
             toast.setAttribute('role', 'alert');
             toast.setAttribute('aria-live', 'assertive');
             toast.setAttribute('aria-atomic', 'true');
-            toast.style.padding = "1rem 2rem";
-            toast.style.fontSize = "1.1rem";
-            toast.style.borderRadius = "0";
-            toast.style.boxShadow = "0 4px 8px rgba(0,0,0,0.1)";
-            toast.style.display = "flex";
-            toast.style.justifyContent = "space-between";
-            toast.style.alignItems = "center";
     
             toast.innerHTML = `
-                <div class="toast-body">
+                <div class="toast-body w-100 d-flex justify-content-between align-items-center">
                     ${message}
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
                 </div>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
             `;
     
             toastContainer.appendChild(toast);
     
-            // Auto-hide after 3 seconds
-            setTimeout(() => {
-                const bsToast = bootstrap.Toast.getOrCreateInstance(toast);
-                bsToast.hide();
-            }, 300000);
+            // Initialize Toast
+            const bsToast = new bootstrap.Toast(toast, {
+                delay: 3000,   // Show for 3 seconds
+                autohide: true
+            });
     
+            bsToast.show();
+    
+            // Remove from DOM after hidden
             toast.addEventListener('hidden.bs.toast', () => {
                 toast.remove();
             });
-    
-            const bsToast = new bootstrap.Toast(toast);
-            bsToast.show();
         }
     </script>
+    
     
 
     

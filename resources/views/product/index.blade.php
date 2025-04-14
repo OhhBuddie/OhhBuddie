@@ -322,16 +322,24 @@
         </div>
 
            @php
-           
-                $brnd_name = DB::table('brands')->where('id',$product_details->brand_id)->latest()->first();
+                $brnd_cnt = DB::table('brands')->where('id',$product_details->brand_id)->count();
+                if($brnd_cnt > 0)
+                {
+                    $brnd_name = DB::table('brands')->where('id',$product_details->brand_id)->latest()->first();
+                }
+                
+                
            @endphp
             <!-- Product Details -->
             <div class="col-12 col-md-6 text-light p-4 ">
+                @if($brnd_cnt == 0)
+                @else
                 <h9 class="text-uppercase font-weight-bold">{{$brnd_name->brand_name}} {{$product_details->product_name}}</h9>
+                @endif
                 <!--<h6 class="fw-bold" style="margin-top: 3px;">{{$product_details->product_name}}</h6>-->
                 
                 <div >
-                  MRP  Rs. <span class="text-muted text-decoration-line-through"> {{$mrp}}</span>
+                  MRP  Rs. <span class="text-muted text-decoration-line-through"> {{$mrp}} {{$product_details->id}}</span>
                     <span class=" fw-bold"> Rs. {{$sellingPrice}}</span>
                     <!--<span class="text-danger fw-bold">({{$discount}}% OFF)</span><br>-->
                     <span class="discount">{{$discount}}% OFF</span><br>

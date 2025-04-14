@@ -339,7 +339,7 @@
                 <!--<h6 class="fw-bold" style="margin-top: 3px;">{{$product_details->product_name}}</h6>-->
                 
                 <div >
-                  MRP  Rs. <span class="text-muted text-decoration-line-through"> {{$mrp}} {{$product_details->id}}</span>
+                  MRP  Rs. <span class="text-muted text-decoration-line-through"> {{$mrp}}</span>
                     <span class=" fw-bold"> Rs. {{$sellingPrice}}</span>
                     <!--<span class="text-danger fw-bold">({{$discount}}% OFF)</span><br>-->
                     <span class="discount">{{$discount}}% OFF</span><br>
@@ -861,10 +861,10 @@
             let sizeSelected = document.getElementById("selectedSize").textContent;
             
                 // Force sizeSelected to null if cat is 38
-                if (cat == 38) {
+                if (cat == 40) {
                     sizeSelected = null;
                 } 
-                if (!sizeSelected && cat != 38) {
+                if (!sizeSelected && cat != 40) {
                     document.getElementById("error-message1").textContent = "Please select a Size";
                     return;
                 }

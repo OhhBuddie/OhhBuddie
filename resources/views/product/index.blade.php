@@ -250,7 +250,7 @@
         <div class="row align-items-center mb-3" style="margin-top:63px;">
             
               <!-- Toast Container -->
-                <div id="toast-container" class="position-fixed top-0 end-0 p-3" style="z-index: 9999;">
+                <div id="toast-container" class="position-fixed end-0 p-3" style="z-index: 9999;top: 66px;">
                 </div>
 
 

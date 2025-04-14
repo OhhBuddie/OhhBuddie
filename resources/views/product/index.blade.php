@@ -823,7 +823,7 @@
             toast.innerHTML = `
                 <div class="toast-body w-100 d-flex justify-content-between align-items-center">
                     ${message}
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
+                    <button type="button" class="btn-close btn-close-dark" data-bs-dismiss="toast" aria-label="Close"></button>
                 </div>
             `;
     

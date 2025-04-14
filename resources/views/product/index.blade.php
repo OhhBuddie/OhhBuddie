@@ -859,7 +859,7 @@
         function addToCart() {
 
                 // Force sizeSelected to null if cat is 38
-                if (cat == 40 && !sizeSelected) {
+                if (cat == 40) {
                     sizeSelected = null;
                 } 
                 else{

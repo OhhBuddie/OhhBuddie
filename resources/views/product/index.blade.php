@@ -806,7 +806,7 @@
             setTimeout(() => {
                 const bsToast = bootstrap.Toast.getOrCreateInstance(toast);
                 bsToast.hide();
-            }, 10000);
+            }, 100000);
     
             // Remove from DOM after hidden
             toast.addEventListener('hidden.bs.toast', () => {
@@ -927,19 +927,19 @@
                     quantity: 1,
                 },
                 success: function (response) {
-                    showToast("Product added to cart successfully!", "success");
-                    localStorage.setItem("temp_user_id", response.temp_user_id);
-                    document.cookie = `temp_user_id=${response.temp_user_id}; path=/;`;
-                    onAddToCartSuccess(); // Update cart count in real time
-                    document.getElementById("addToBagBtn").style.display = "none";
-                    document.getElementById("goToBagBtn").style.display = "block";
-                },
-                error: function (xhr) {
-                    console.log(xhr.responseText);
-                    showToast("Something went wrong! Please try again.", "danger");
-                }
+                        showToast("Product added to cart successfully!", "success");
+                        localStorage.setItem("temp_user_id", response.temp_user_id);
+                        document.cookie = `temp_user_id=${response.temp_user_id}; path=/;`;
+                        onAddToCartSuccess(); // Update cart count in real time
+                        document.getElementById("addToBagBtn").style.display = "none";
+                        document.getElementById("goToBagBtn").style.display = "block";
+                    },
+                    error: function (xhr) {
+                        console.log(xhr.responseText);
+                        showToast("Something went wrong! Please try again.", "danger");
+                    }
 
-            });
+                });
 
                 }
 

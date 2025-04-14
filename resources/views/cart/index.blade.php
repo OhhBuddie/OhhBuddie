@@ -688,10 +688,14 @@
            </div>
               <!--<p>Size: Onesize | Qty: 1</p>-->
               @php
+                  $pdtall = DB::table('products')->select('category_id')->where('id', $dat['pid'])->latest()->first();
                   $pdtqty = DB::table('products')->select('stock_quantity')->where('id', $dat['pid'])->get();
                   $pdtsize = DB::table('products')->select('size_name')->where('product_id', $dat['idp'])->distinct()->get();
               @endphp
                 <div class="d-flex">
+
+                @if($pdtall->category_id != 40)
+     
                    <p style="border: 1px solid white; padding-left: 5px;  border-radius: 13px; margin-right: 10px;">Size: 
                     <select class="update-size" data-cartid="{{$dat['id']}}">
                         <option value="{{$dat['size']}}" style="font-size:10px;">{{$dat['size']}}</option>
@@ -701,7 +705,7 @@
                     </select>
 
                     </p>
-                    
+                @endif
               <p style="border: 1px solid white; padding-left: 5px; border-radius: 13px; margin-right: 10px;">
                 Qty:
                 <select class="update-quantity" data-cartid="{{$dat['id']}}" data-price="{{$dat['cart_value']}}">

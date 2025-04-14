@@ -456,7 +456,6 @@
   }
 </style>
 
-
     <!--Size and Qty Dropdown -->
      <style>
          select {
@@ -468,6 +467,30 @@
             outline: none;
             cursor: pointer;
             border-radius: 50%;
+        }
+    </style>
+     <style>
+        .custom-toast {
+            width: 100%;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            border-radius: 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            animation: slideDownFade 0.5s ease-out;
+        }
+    
+        @keyframes slideDownFade {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
     </style>
 </head>
@@ -489,7 +512,8 @@
             <div>Step 1/3</div>
     
     </div>
-    
+    <div id="toast-container" class="position-fixed w-100" style="z-index: 9999;top: 66px;"></div>
+
     
     <div class="tabs">
         <div class="tab active d-flex align-items-center justify-content-center py-2" onclick="switchTab('buy-it-now')">
@@ -991,7 +1015,41 @@
 </div>
     <input type="hidden" id="aid">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function showToast(message, type = 'primary') {
+            const toastContainer = document.getElementById('toast-container');
     
+            const toast = document.createElement('div');
+            toast.className = `toast custom-toast bg-${type} text-white border-0`;
+            toast.setAttribute('role', 'alert');
+            toast.setAttribute('aria-live', 'assertive');
+            toast.setAttribute('aria-atomic', 'true');
+    
+            toast.innerHTML = `
+                <div class="toast-body w-100 d-flex justify-content-between align-items-center">
+                    ${message}
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+            `;
+    
+            toastContainer.appendChild(toast);
+    
+            // Initialize Toast
+            const bsToast = new bootstrap.Toast(toast, {
+                delay: 3000,   // Show for 3 seconds
+                autohide: true
+            });
+    
+            bsToast.show();
+    
+            // Remove from DOM after hidden
+            toast.addEventListener('hidden.bs.toast', () => {
+                toast.remove();
+            });
+        }
+    </script>
     <script>
         //   $(document).ready(function () {
         //     $("#placeOrderBtn").on("click", function () {
@@ -1096,7 +1154,8 @@
 
             if (!selectedAddress) {
                 e.preventDefault();
-                alert("Please select an address.");
+                // alert("Please select an address.");
+                showToast("Please select an address.", "danger");
                 return;
             }
 
@@ -1305,10 +1364,12 @@
                         _token: "{{ csrf_token() }}" // CSRF token for security
                     },
                     success: function (response) {
-                        alert(response.message);
+                        // alert(response.message);
+                        showToast(response.message, "danger");
                     },
                     error: function (xhr) {
-                        alert("Error updating size. Please try again.");
+                        // alert("Error updating size. Please try again.");
+                        showToast("Error updating size. Please try again.", "danger");
                     }
                 });
             });
@@ -1345,7 +1406,8 @@
                         
                     },
                     error: function () {
-                        alert("Error updating quantity. Please try again.");
+                        // alert("Error updating quantity. Please try again.");
+                        showToast("Error updating quantity. Please try again.", "danger");
                     }
                 });
             });

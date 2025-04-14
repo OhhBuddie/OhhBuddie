@@ -234,7 +234,7 @@
     }
   </style>
     <style>
-        .bg-danger, .btn-danger, .text-danger{
+        .bg-danger, .bg-success{
             color: black !important ;
             background-color: #efc475 !important;
             --bs-btn-border-color: none;

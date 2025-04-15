@@ -101,6 +101,7 @@ class CheckoutController extends Controller
         } else {
             $shipping_cost =  0;
         }
+        
 
         $order_id = 'OBD-ODR-' . now()->year . '-' . now()->format('YdmHis');
         
@@ -140,7 +141,6 @@ class CheckoutController extends Controller
                 'quantity' => $quantity,
                 'price' => $request->total_price / count($products),
                 'tax' => $request->total_tax / count($products),
-                'shipping_cost' => $request->total_shippingg === 'Free' ? 0 : $request->total_shippingg,
                 'payment_status' => 'Pending',
                 'delivery_status' => 'Order Confirmed',
                 'shipping_cost' => $shipping_cost,

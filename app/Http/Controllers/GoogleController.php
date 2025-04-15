@@ -8,6 +8,7 @@ use Exception;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use DB;
+use Illuminate\Support\Str;
 
 class GoogleController extends Controller
 {
@@ -56,7 +57,7 @@ class GoogleController extends Controller
                         'name' => $user->name,
                         'email' => $user->email,
                         'google_id' => $user->id,
-                        'password' => bcrypt(str_random(16)), // Ensure to hash the password
+                        'password' => bcrypt(Str::random(16)), // Ensure to hash the password
                     ]);
 
                     Auth::login($newUser);

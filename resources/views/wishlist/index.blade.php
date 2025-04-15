@@ -201,10 +201,10 @@
             
     @if(!$wish_list)
         <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Blank+Pages/Whishlish+is+Empty.jpg" 
-             style="width: 100%; max-width: 400px; height: calc( 100vh - 60px); display: block; margin: auto;">
+             style="width: 100%; height: calc( 100vh - 60px); display: block; margin: 0px;">
     @endif
 
-                
+        
         <div class="row g-3 m-0" style="gap:6px;" >
             <!-- Product Card 1 -->
 

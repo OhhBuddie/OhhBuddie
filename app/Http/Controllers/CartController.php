@@ -36,13 +36,22 @@ class CartController extends Controller
     
         // Fetch cart data for either user_id or temp_user_id
         $cartQuery = DB::table('carts');
-    
+        
+        // Apply user condition
         if ($userId > 0) {
             $cartQuery->where('user_id', $userId);
         } elseif ($tempUserId) {
             $cartQuery->where('temp_user_id', $tempUserId);
         }
-    
+        
+        // Exclude carts that are already in completed orderdetails
+        $cartQuery->whereNotIn('id', function ($query) {
+            $query->select('cart_id')
+                  ->from('orderdetails')
+                  ->where('payment_status', 'completed');
+        });
+        
+        // Get the result
         $cart_data = $cartQuery->latest()->get();
     
         // Initialize cart details

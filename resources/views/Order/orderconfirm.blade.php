@@ -318,6 +318,10 @@
             ->latest()
             ->get();
             
+        $orderdetailss = DB::table('orderdetails')
+        ->where('order_id', $order->id)
+        ->latest()
+        ->first();  
         
          $price = DB::table('orderdetails')
             ->where('order_id', $order->id)
@@ -391,7 +395,7 @@
                     </div>
                     <div class="summary-row">
                         <div class="summary-label">Shipping</div>
-                        <div class="summary-value">Rs. {{$orderdetails->shipping_cost ?? 0.00}} </div>
+                        <div class="summary-value">Rs. {{ $orderdetailss->shipping_cost ?? 0.00}} </div>
                     </div>
                     {{-- <div class="summary-row">
                         <div class="summary-label">Tax</div>

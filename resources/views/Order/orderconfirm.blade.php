@@ -391,7 +391,7 @@
                     </div>
                     <div class="summary-row">
                         <div class="summary-label">Shipping</div>
-                        <div class="summary-value">Rs. {{$orderdetails->shipping_cost}} </div>
+                        <div class="summary-value">Rs. {{$orderdetails->shipping_cost ?? 0.00}} </div>
                     </div>
                     {{-- <div class="summary-row">
                         <div class="summary-label">Tax</div>

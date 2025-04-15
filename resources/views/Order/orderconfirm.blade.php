@@ -391,12 +391,12 @@
                     </div>
                     <div class="summary-row">
                         <div class="summary-label">Shipping</div>
-                        <div class="summary-value">Rs. 0.00</div>
+                        <div class="summary-value">Rs. {{$orderdetails->shipping_cost}} </div>
                     </div>
-                    <div class="summary-row">
+                    {{-- <div class="summary-row">
                         <div class="summary-label">Tax</div>
                         <div class="summary-value">Rs. 0.00</div>
-                    </div>
+                    </div> --}}
                     <div class="total-row">
                         <div class="total-label">Total</div>
                         <div class="total-value">Rs. {{ number_format($priceValue, 2) }}</div>

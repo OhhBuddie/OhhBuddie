@@ -201,7 +201,7 @@
         <li class="list-group-item">
             <!--<i class="bi bi-box-seam"></i>-->
             <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/SVG+Icons/hanger.png">
-            <a href="#" class="flex-grow-1">My Tryout Orders</a>
+            <a href="/Mytryout" class="flex-grow-1">My Tryout Orders</a>
 
             <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/SVG+Icons/ARROW.png">
 
@@ -209,25 +209,25 @@
         <li class="list-group-item">
             <!--<i class="bi bi-heart"></i>-->
             <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/SVG+Icons/card.png">
-            <a href="#" class="flex-grow-1">My Payment</a>
+            <a href="/Mypayment" class="flex-grow-1">My Payment</a>
               <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/SVG+Icons/ARROW.png">
         </li>
         <li class="list-group-item">
             <!--<i class="bi bi-geo-alt"></i>-->
             <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/SVG+Icons/wallet+card.png">
-            <a href="/address" class="flex-grow-1">My Wallet</a>
+            <a href="/Mywallet" class="flex-grow-1">My Wallet</a>
              <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/SVG+Icons/ARROW.png">
         </li>
         <li class="list-group-item">
             <!--<i class="bi bi-wallet"></i>-->
             <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/SVG+Icons/location.png">
-            <a href="#" class="flex-grow-1">My Addresses</a>
+            <a href="/Myaddress" class="flex-grow-1">My Addresses</a>
               <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/SVG+Icons/ARROW.png">
         </li>
         <li class="list-group-item">
             <!--<i class="bi bi-ticket"></i>-->
             <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/SVG+Icons/cart.png">
-            <a href="#" class="flex-grow-1">My Wishlist</a>
+            <a href="/wishlist" class="flex-grow-1">My Wishlist</a>
               <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/SVG+Icons/ARROW.png">
         </li>
         <li class="list-group-item">

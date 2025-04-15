@@ -113,4 +113,19 @@ class AddressController extends Controller
     {
         //
     }
+
+    public function tryout(){
+        return view('user.tryout');
+    }
+    public function payment(){
+        return view('user.payment');
+    }
+    public function wallet(){
+        return view('user.wallet');
+    }
+    public function address(){
+        return view('user.address');
+    }
+
+
 }

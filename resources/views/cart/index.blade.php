@@ -886,26 +886,34 @@
                @endphp
             <a  href="/product/{{ Crypt::encryptString($may->id) }}" style="text-decoration:none;">
                   <div class="product-card">
-                        @php
-                            $images = json_decode($may->images, true);
-                        @endphp
-                      <a  href="/product/{{ Crypt::encryptString($may->id) }}" style="text-decoration:none;"><img src="{{ $images[0] }}" alt="Image"></a>
-        
-                        <p class="font-weight-bold" style="color:white; margin: 10px 0px 0px;">
-                            <span style="text-transform: uppercase;">
-                                @if($brnd_cnt == 0)
-                                @else
-                               {{ $brnd_name->brand_name }}
-                                @endif
-                                </span> {{ $may->product_name }}
-                        </p>
-                            
+                    @php
+                        $images = json_decode($may->images, true);
+                    @endphp
                     
-                    <!--<p class="text-uppercase font-weight-bold" style="color:white">{{$may->maximum_retail_price}}</p>-->
-                    <!--<span class="price">Rs. 499</span><br>-->
-                    <!--<span class="discount"><strike style="color:grey;">Rs. 999</strike> 50% OFF</span>-->
-                  </div>
-              </a>
+                    <a href="/product/{{ Crypt::encryptString($may->id) }}" style="text-decoration:none;">
+                        @if(is_array($images) && isset($images[0]))
+                            <img src="{{ $images[0] }}" alt="Image">
+                        @else
+                            <img src="/default-image.jpg" alt="No Image Available">
+                        @endif
+                    
+
+        
+                            <p class="font-weight-bold" style="color:white; margin: 10px 0px 0px;">
+                                <span style="text-transform: uppercase;">
+                                    @if($brnd_cnt == 0)
+                                    @else
+                                   {{ $brnd_name->brand_name }}
+                                    @endif
+                                    </span> {{ $may->product_name }}
+                            </p>
+                                
+                        
+                        <!--<p class="text-uppercase font-weight-bold" style="color:white">{{$may->maximum_retail_price}}</p>-->
+                        <!--<span class="price">Rs. 499</span><br>-->
+                        <!--<span class="discount"><strike style="color:grey;">Rs. 999</strike> 50% OFF</span>-->
+                      </div>
+                  </a>
              @endforeach
             </div>
           </div>

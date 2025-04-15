@@ -113,6 +113,11 @@ Route::controller(App\Http\Controllers\UserController::class)->group(function(){
 Route::controller(AddressController::class)->middleware('auth')->group(function () {
     Route::post('/address/store', 'store')->name('address.store');
     Route::get('/address', 'index')->name('address.index');
+
+    Route::get('/Mytryout', 'tryout');
+    Route::get('/Mypayment', 'payment');
+    Route::get('/Mywallet', 'wallet');
+    Route::get('/Myaddress', 'address');
 });
 
 

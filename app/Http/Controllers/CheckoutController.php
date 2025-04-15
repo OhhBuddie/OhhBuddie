@@ -239,6 +239,7 @@ class CheckoutController extends Controller
                     ->where('order_id', $request->txnid)
                     ->update([
                         'payment_status' => 'completed',
+                        'payment_type' => $request->mode ?? null
                     ]);
 
                 // Update orderdetails table using the ID of the orders table

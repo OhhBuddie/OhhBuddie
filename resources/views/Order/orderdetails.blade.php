@@ -87,7 +87,7 @@
       
     <div class=" p-3" style="margin-top:60px;">
             @php
-                $orderdetails = DB::table('orderdetails')->where('order_id',$myorders->id)->latest()->first();
+                $orderdetails = DB::table('orderdetails')->where('order_id', $myorders->id)->latest()->first();
                 $product_data = DB::table('products')->where('id',$orderdetails->product_id)->latest()->first();
                 
                 
@@ -103,7 +103,7 @@
                     $brand_data = DB::table('brands')->where('id',$product_data->brand_id)->latest()->first();
                 }
                             
-                $orders_data =  DB::table('orders')->where('id',$orderdetails->order_id)->latest()->first();           
+                $orders_data =  DB::table('orders')->where('id', $orderdetails->order_id)->latest()->first();           
                             
                 $color_data = DB::table('colors')->where('hex_code',$product_data->color_name)->latest()->first();
                 $address_data = DB::table('addresses')->where('id',$orders_data->shipping_address)->latest()->first();
@@ -188,7 +188,7 @@
       
     </div>
     
-     
+      
      
     <div class="card p-3" style="border-radius: unset; margin: 14px 0px;">
       <div class="saved-amount mb-3">
@@ -212,7 +212,7 @@
       </div>
       <div class="d-flex align-items-center mb-3 p-1">
         <img src="https://img.icons8.com/color/48/google-pay-india.png" alt="UPI Icon" width="32" class="me-2">
-        <span class="">Paid by UPI</span>
+        <span class="">Paid by {{ $orders_data->payment_type }}</span>
       </div>
       <button class="get-invoice-btn" style="border: 1px solid #ddd; background-color: black; width: 100%;">Get Invoice</button>
     </div>

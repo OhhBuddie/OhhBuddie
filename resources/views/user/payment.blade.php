@@ -6,7 +6,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 80vh;
+        height: 100vh;
         background-color: #000;
         color: #efc475;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;

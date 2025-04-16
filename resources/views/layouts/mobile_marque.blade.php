@@ -713,31 +713,24 @@
         // Accordian 
         
         document.addEventListener("DOMContentLoaded", () => {
-  const accordionHeaders = document.querySelectorAll(".accordion-header");
-
-  accordionHeaders.forEach(header => {
-    header.addEventListener("click", () => {
-      // Get the content element (the next sibling after the header)
-      const content = header.nextElementSibling;
-      // Try to get the icon
-      const icon = header.querySelector("i");
-      
-      // Make sure content exists
-      if (content) {
-        // Toggle visibility
-        if (content.style.display === "block") {
-          content.style.display = "none";
-          // Only modify icon if it exists
-          if (icon) icon.classList.remove("rotate");
-        } else {
-          content.style.display = "block";
-          // Only modify icon if it exists
-          if (icon) icon.classList.add("rotate");
-        }
-      }
-    });
-  });
-});
+          const accordionHeaders = document.querySelectorAll(".accordion-header");
+        
+          accordionHeaders.forEach(header => {
+            header.addEventListener("click", () => {
+              const content = header.nextElementSibling;
+              const icon = header.querySelector("i");
+        
+              content.style.display = "none";
+              
+              // Toggle content visibility
+              const isVisible = content.style.display === "block";
+              content.style.display = isVisible ? "none" : "block";
+        
+              // Toggle icon rotation
+              icon.classList.toggle("rotate", !isVisible);
+            });
+          });
+        });
         
         
     </script>

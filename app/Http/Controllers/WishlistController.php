@@ -75,7 +75,11 @@ class WishlistController extends Controller
     
         DB::table('carts')->where('id', $request->ppid)->delete();
     
-        return response()->json(['success' => true, 'redirect' => url('/addtocart')]);
+        // return response()->json(['success' => true, 'redirect' => url('/addtocart')]);
+        return redirect('/addtocart')->with([
+            'toast_message' => 'Product Added to cart Successfully.',
+            'toast_type' => 'danger' // optional: success / danger / info
+        ]);
     }
         /**
      * Display the specified resource.

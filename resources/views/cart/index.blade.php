@@ -512,6 +512,7 @@
             <div>Step 1/3</div>
     
     </div>
+
     <div id="toast-container" class="position-fixed w-100" style="z-index: 9999;top: 66px;"></div>
 
     
@@ -1058,6 +1059,13 @@
             });
         }
     </script>
+            @if(session('toast_message'))
+            <script>
+                window.addEventListener('DOMContentLoaded', function () {
+                    showToast(@json(session('toast_message')), @json(session('toast_type') ?? 'success'));
+                });
+            </script>
+            @endif
     <script>
         //   $(document).ready(function () {
         //     $("#placeOrderBtn").on("click", function () {

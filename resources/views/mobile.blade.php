@@ -74,7 +74,11 @@ $categories = [
     </div>
 @endforeach
 </div>
-
+@php
+    $encryptedSaree = Crypt::encryptString('Saree');
+    $encryptedJeans = Crypt::encryptString('Jeans');
+    $encryptedkids = Crypt::encryptString('Kids');
+@endphp
 <!-- Optimized Slider -->
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
@@ -85,7 +89,9 @@ $categories = [
             <img loading="lazy" src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/Sliders/try+out.webp" alt="Slider Image 5">
         </div>
         <div class="item-active item">
-            <img loading="lazy" src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/Sliders/jeans+static+slider+(1).webp" alt="Slider Image 2">
+            <a href="/category/{{ $encryptedJeans }}" style="text-decoration:none;">
+             <img loading="lazy" src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/Sliders/jeans+static+slider+(1).webp" alt="Slider Image 2">
+            </a>
         </div>
         <div class="item-active item">
             <img loading="lazy" src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/Sliders/static+slider+kids.webp" alt="Slider Image 3">

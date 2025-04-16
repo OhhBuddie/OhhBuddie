@@ -533,7 +533,7 @@
             <!--    @endforeach-->
             <!--</ul>-->
             <div class="terms">
-                By placing the order, you agree to ShowLoom's <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a>.
+                By placing the order, you agree to Ohhbuddie's <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a>.
             </div>
         </div>
     

@@ -175,7 +175,7 @@
     <!--    </div>-->
     <!--    </div>-->
     <!--  </div>-->
-    <!--      <small class="">Rate & Review to <strong>Earn ShowLoom Credit</strong></small>-->
+    <!--      <small class="">Rate & Review to <strong>Earn Ohhbuddie Credit</strong></small>-->
     <!--</div>-->
     
      

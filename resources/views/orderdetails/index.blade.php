@@ -145,7 +145,7 @@
         </div>
         </div>
       </div>
-          <small class="">Rate & Review to <strong>Earn ShowLoom Credit</strong></small>
+          <small class="">Rate & Review to <strong>Earn Ohhbuddie Credit</strong></small>
     </div>
     
      
@@ -223,7 +223,7 @@
         <i class="fa-solid fa-phone"></i> 7044663186
       </p>
       <p class="mb-3">
-        <i class="fa-solid fa-envelope"></i> santanu@showloom.com
+        <i class="fa-solid fa-envelope"></i> santanu@Ohhbuddie.com
       </p>
     </div>  
     

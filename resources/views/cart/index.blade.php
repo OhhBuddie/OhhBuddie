@@ -992,7 +992,7 @@
 
             
             <div class="terms" style="text-align: center;">
-                By placing the order, you agree to ShowLoom's <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a>.
+                By placing the order, you agree to Ohbuddie's <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a>.
             </div>
     </div>
 

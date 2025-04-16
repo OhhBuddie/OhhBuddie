@@ -278,9 +278,9 @@
 
 <body>
 
-    <div id="preloader">
+    {{-- <div id="preloader">
         <img src="https://media.showloom.com/uploads/all/for-web-2-unscreen.gif" alt="Loading...">
-    </div>
+    </div> --}}
   
     <nav class="navbar navbar-expand-lg" style="position:fixed;">
 

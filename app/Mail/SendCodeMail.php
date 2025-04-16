@@ -62,7 +62,7 @@ class SendCodeMail extends Mailable
 
     {
 
-        return $this->subject('Mail from no-reply@showloom.com')
+        return $this->subject('Mail from no-reply@ohhbuddie.com')
 
                     ->view('emails.code');
 

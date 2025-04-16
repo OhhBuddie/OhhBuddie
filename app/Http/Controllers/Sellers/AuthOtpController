@@ -142,7 +142,7 @@ class AuthOtpController extends Controller
             $token = '885ff72dceb4b3702a153d3ea7816423';
             $twilio = new Client($sid, $token);
 
-            $messageBody = "Welcome to ShowLoom: Use One Time Password (OTP) {$otp} to log in to your account. DO NOT SHARE this code with anyone. This code will expire in 5 minutes.";
+            $messageBody = "Welcome to Ohhbuddie: Use One Time Password (OTP) {$otp} to log in to your account. DO NOT SHARE this code with anyone. This code will expire in 5 minutes.";
 
             $twilio->messages->create($phone, [
                 'from' => +19092817841,
@@ -238,7 +238,7 @@ class AuthOtpController extends Controller
             }
             else
             {
-                return redirect('/showloom.com');
+                return redirect('/ohhbuddie.com');
             }
             
 

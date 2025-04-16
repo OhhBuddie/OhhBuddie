@@ -192,7 +192,7 @@
               <!--  <i class="fas fa-star" onclick="selectRating(3)"></i>-->
               <!--  <i class="fas fa-star" onclick="selectRating(4)"></i>-->
               <!--  <i class="fas fa-star" onclick="selectRating(5)"></i>-->
-              <!--  <div class="rating-text">Rate & Review to <b>earn ShowLoom Credit</b></div>-->
+              <!--  <div class="rating-text">Rate & Review to <b>earn Ohhbuddie Credit</b></div>-->
               <!--</div>-->
             </div>
     </a>

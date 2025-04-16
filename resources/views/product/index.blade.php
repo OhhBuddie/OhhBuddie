@@ -795,7 +795,7 @@
                     <div class="card-body product-item-card-body text-left">
                         <h8 class="card-title" title="{{ $same_p->product_name }}">
                             @if($brnd_cnt != 0)
-                                <span style="text-transform: uppercase;">{{ $brnd_name->brand_name }}</span> -
+                                <span style="text-transform: uppercase;"><b>{{ $brnd_name->brand_name }}</b></span> -
                             @endif
                             {{ strlen($same_p->product_name) <= 16 ? $same_p->product_name : substr($same_p->product_name, 0, 16) . '...' }}
                         </h8>

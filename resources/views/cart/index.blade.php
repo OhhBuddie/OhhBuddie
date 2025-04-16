@@ -712,7 +712,7 @@
            </div>
               <!--<p>Size: Onesize | Qty: 1</p>-->
               @php
-                  $pdtall = DB::table('products')->select('category_id')->where('id', $dat['pid'])->latest()->first();
+                  $pdtall = DB::table('products')->select('category_id', 'sub_subcategory_id')->where('id', $dat['pid'])->latest()->first();
                   $pdtqty = DB::table('products')->select('stock_quantity')->where('id', $dat['pid'])->get();
                   $pdtsize = DB::table('products')->select('size_name')->where('product_id', $dat['idp'])->distinct()->get();
               @endphp

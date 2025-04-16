@@ -448,7 +448,7 @@
             @if($colorcnt == 0)
             
             @else
-                <h4>Colors </h4>
+                <h5>Colors </h5>
                  <div class="d-flex mb-2" style="gap: 1.5rem; overflow: scroll; scrollbar-width: none;">
                      @foreach($similar as $sim)
                         @php
@@ -470,9 +470,9 @@
    
         
         
-        <div class="row text-light">
+        <div class="px-4 row text-light">
             <div class="mb-4">
-                <h5 style="font-size: 17px;">Check Delivery & Services :</h5>
+                <h5 >Check Delivery & Services :</h5>
                     <div class="input-group d-flex">
                         <input type="number" id="pincode" class="form-control mr-2" placeholder="Enter Your Pin Code"
                                style="width:60%;" oninput="enforceLength(this)" required>
@@ -576,7 +576,7 @@
 
         
         
-        <h4 class="text-light mt-4 mb-0 row p-3">Product Information</h4>
+        <h5 class="px-4 text-light mt-4 mb-0 row p-3">Product Information</h5>
         <div class="row mb-2">
             
           <div class="accordion" style="padding:0px; border: none;">

@@ -717,19 +717,23 @@
 
   accordionHeaders.forEach(header => {
     header.addEventListener("click", () => {
+      // Get the content element (the next sibling after the header)
       const content = header.nextElementSibling;
+      // Try to get the icon
       const icon = header.querySelector("i");
       
-      // Toggle the open class on content
-      content.classList.toggle("open");
-      
-      // Update display based on class
-      if (content.classList.contains("open")) {
-        content.style.display = "block";
-        icon.classList.add("rotate");
-      } else {
-        content.style.display = "none";
-        icon.classList.remove("rotate");
+      // Make sure content exists
+      if (content) {
+        // Toggle visibility
+        if (content.style.display === "block") {
+          content.style.display = "none";
+          // Only modify icon if it exists
+          if (icon) icon.classList.remove("rotate");
+        } else {
+          content.style.display = "block";
+          // Only modify icon if it exists
+          if (icon) icon.classList.add("rotate");
+        }
       }
     });
   });

@@ -250,176 +250,161 @@
         }
     </style>
     <style>
-        .search-container {
-            display: flex;
-            align-items: center;
-            position: relative;
-            justify-content: flex-end;
-            width: fit-content;
-            margin-left: auto;
-            /* Helps position on right side */
-        }
-
-        .search-input {
-            position: absolute;
-            right: 50px;
-            /* Ensures space for the icon */
-            width: 0;
-            height: 36px;
-            border: none;
-            background-color: #333;
-            color: white;
-            padding: 0;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
-        }
-
-        .search-input.active {
-            width: 200px;
-            padding: 0 10px;
-            opacity: 1;
-            visibility: visible;
-            pointer-events: auto;
-        }
-
-        .search-icon {
-            cursor: pointer;
-            z-index: 2;
-            position: relative;
-        }
-
-        /* Mobile-specific styles */
-        @media screen and (max-width: 768px) {
-            .search-input.active {
-                width: calc(100vw - 80px);
-                /* Adjust width for mobile */
-                right: 50px;
-                position: absolute;
-            }
-        }
-    </style>
-    
-    
-    <style>
         :root {
-            --icon-height: 3rem;
-            --transition-speed: .45s;
-            --timing-function: cubic-bezier(.66, 1.51, .77, 1.13);
-            --icon-color: white;
+          --icon-height: 3rem;
+          --transition-speed: .45s;
+          --timing-function: cubic-bezier(.66, 1.51, .77, 1.13);
+          --icon-color: white;
         }
-
+    
         * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
+          box-sizing: border-box;
+          margin: 0;
+          padding: 0;
         }
-
+    
         body {
-            background: black;
+          background: black;
         }
-
+    
         .search-icon {
-            box-sizing: border-box;
-            width: var(--icon-height);
-            height: var(--icon-height);
-            transition: all var(--transition-speed) linear, border-color 0s linear var(--transition-speed);
-            border: solid 1px;
-            border-color: rgba(255, 255, 255, 0);
-            border-radius: 100px;
-            padding: .25em;
-            z-index: 1001;
-            display: flex;
-            align-items: center;
-            position: relative;
-            margin-right: 10px;
+          box-sizing: border-box;
+          width: var(--icon-height);
+          height: var(--icon-height);
+          transition: all var(--transition-speed) linear, border-color 0s linear var(--transition-speed);
+          border: solid 1px;
+          border-color: rgba(255, 255, 255, 0);
+          border-radius: 100px;
+          padding: .25em;
+          z-index: 1001;
+          display: flex;
+          align-items: center;
+          position: relative;
+          margin-right: 10px;
         }
-
-        .search-icon__wrapper {
-            width: var(--icon-height);
-            height: var(--icon-height);
-            position: absolute;
-            border-radius: 100px;
-            top: -4px;
-            right: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 1002;
+    
+         .search-icon__wrapper {
+          width: var(--icon-height);
+          height: var(--icon-height);
+          position: absolute;
+          border-radius: 100px;
+          top: -4px;
+          right: 4px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          z-index: 1002;
         }
-
+    
         .search-icon__input {
-            background: none;
-            text-align: center;
-            outline: none;
-            display: block;
-            border: none;
-            background: rgba(255, 255, 255, 0);
-            width: calc(100% - (var(--icon-height)));
-            height: 100%;
-            border-radius: 100px;
-            transition: all var(--transition-speed) linear;
-            font-size: 1em;
-            padding: 0.5em 0px 0.5em 0.5em;
-            color: white;
+          background: none;
+          text-align: center;
+          outline: none;
+          display: block;
+          border: none;
+          background: rgba(255, 255, 255, 0);
+          width: calc(100% - (var(--icon-height)));
+          height: 100%;
+          border-radius: 100px;
+          transition: all var(--transition-speed) linear;
+          font-size: 1em;
+          padding: 0.5em 0px 0.5em 0.5em;
+          color: white;
         }
-
+    
         .search-icon__input::placeholder {
-            color: rgba(255, 255, 255, .75);
+          color: rgba(255, 255, 255, .75);
         }
-
+    
         .search-icon__svg {
-            display: block;
-            width: calc(var(--icon-height) * 0.7);
-            height: calc(var(--icon-height) * 0.7);
-            transition: all var(--transition-speed) var(--timing-function);
+          display: block;
+          width: calc(var(--icon-height) * 0.7);
+          height: calc(var(--icon-height) * 0.7);
+          transition: all var(--transition-speed) var(--timing-function);
         }
-
+    
         .search-icon.open {
-            width: 38vw;
-            border-color: var(--icon-color);
-            transition-delay: var(--transition-speed);
+          width: 18vw;
+          border-color: var(--icon-color);
+          transition-delay: var(--transition-speed);
         }
-
+    
         .search-icon.open .search-icon__input {
-            transition-delay: var(--transition-speed);
-            text-align: left;
+          transition-delay: var(--transition-speed);
+          text-align: left;
         }
-
+    
         .search-icon__svg-search {
-            display: block;
+          display: block;
             position: absolute;
             transition: opacity var(--transition-speed) var(--timing-function);
             top: 0px;
         }
-
+    
         .search-icon__svg-close {
-            display: block;
-            opacity: 0;
-            position: absolute;
-            top: 2px;
-            right: -6px;
-
-            transition: opacity var(--transition-speed) var(--timing-function);
+          display: block;
+        opacity: 0;
+        position: absolute;
+        top: 2px;
+        right: -6px;
+    
+        transition: opacity var(--transition-speed) var(--timing-function);
         }
-
+    
         .search-icon.open .search-icon__svg-search {
-            opacity: 0;
+          opacity: 0;
         }
-
+    
         .search-icon.open .search-icon__svg-close {
-            opacity: 1;
+          opacity: 1;
         }
-
+    
         /* Responsive adjustments */
         @media (max-width: 480px) {
-            .search-icon.open {
-                width: 38vw;
-            }
+          .search-icon.open {
+            width: 1vw;
+          }
         }
+      </style>
+      
+              
+
+    <style>
+    /* !important styles to override any conflicts */
+    .search-results-dropdown {
+      position: absolute !important;
+      background-color: white !important;
+      border: 1px solid #ddd !important;
+      border-radius: 4px !important;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
+      z-index: 10000 !important;
+      max-height: 300px !important;
+      overflow-y: auto !important;
+    }
+    
+    .search-section {
+      padding: 10px 0 !important;
+    }
+    
+    .search-section-title {
+      color: #666 !important;
+      font-size: 10px !important;
+      text-transform: uppercase !important;
+      padding: 5px 15px !important;
+      margin: 0 !important;
+      background-color: #f5f5f5 !important;
+    }
+    
+    .search-item {
+      padding: 8px 15px !important;
+      cursor: pointer !important;
+      transition: background-color 0.2s !important;
+    }
+    
+    .search-item:hover {
+      background-color: #f0f0f0 !important;
+    }
     </style>
     <!-- Keep all your existing styles -->
 </head>
@@ -450,47 +435,31 @@
                 <!-- Icons -->
                 <div class="d-flex ml-auto align-items-center">
 
-                    <!-- Search Icon -->
-                    <!--<div class="position-relative d-inline-block" onclick="toggleSearchBar()">-->
-                    <!--    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50" fill="none" style="cursor: pointer;">-->
-                    <!--        <circle cx="20" cy="20" r="9" stroke="white" stroke-width="2"/>-->
-                    <!--        <line x1="26" y1="26" x2="34" y2="34" stroke="white" stroke-width="2" stroke-linecap="round"/>-->
-                    <!--    </svg>-->
-                    <!--</div>-->
-
-                    <!--<div class="search-container">-->
-                    <!--    <input type="text" class="search-input" placeholder="Search...">-->
-                    <!--    <div class="search-icon" onclick="toggleSearchBar()">-->
-                    <!--        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50" fill="none">-->
-                    <!--            <circle cx="20" cy="20" r="9" stroke="white" stroke-width="2"/>-->
-                    <!--            <line x1="26" y1="26" x2="34" y2="34" stroke="white" stroke-width="2" stroke-linecap="round"/>-->
-                    <!--        </svg>-->
-                    <!--    </div>-->
-                    <!--</div>-->
                     <div class="search-icon">
-                        <input class="search-icon__input" placeholder="search ..." />
-
+              
+                        <div class="search-container">
+                            <input type="text" id="search-input" class="search-icon__input" placeholder="search ..." />
+                            <div id="search-results" class="search-results-dropdown" style="display: none;"></div>
+                        </div>            
+            
+            
+                    
                         <div class="search-icon__wrapper">
-                            <div class="search-icon__svg">
-                                <!-- Search icon SVG -->
-                                <svg class="search-icon__svg-search" xmlns="http://www.w3.org/2000/svg" width="36"
-                                    height="36" viewBox="0 0 50 50" fill="none">
-                                    <circle cx="20" cy="20" r="9" stroke="white" stroke-width="2" />
-                                    <line x1="26" y1="26" x2="34" y2="34" stroke="white"
-                                        stroke-width="2" stroke-linecap="round" />
-                                </svg>
-
-                                <!-- Close (X) icon SVG -->
-                                <svg class="search-icon__svg-close" xmlns="http://www.w3.org/2000/svg" width="30"
-                                    height="30" viewBox="0 0 50 50" fill="none">
-                                    <line x1="15" y1="15" x2="35" y2="35"
-                                        stroke="white" stroke-width="2" stroke-linecap="round" />
-                                    <line x1="35" y1="15" x2="15" y2="35"
-                                        stroke="white" stroke-width="2" stroke-linecap="round" />
-                                </svg>
-                            </div>
+                          <div class="search-icon__svg">
+                            <!-- Search icon SVG -->
+                            <svg class="search-icon__svg-search" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 50 50" fill="none">
+                              <circle cx="20" cy="20" r="9" stroke="white" stroke-width="2"/>
+                              <line x1="26" y1="26" x2="34" y2="34" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                            
+                            <!-- Close (X) icon SVG -->
+                            <svg class="search-icon__svg-close" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 50 50" fill="none">
+                              <line x1="15" y1="15" x2="35" y2="35" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                              <line x1="35" y1="15" x2="15" y2="35" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                          </div>
                         </div>
-                    </div>
+                      </div>
 
 
 
@@ -716,10 +685,7 @@
 
                                     <h5 class="mt-2" style="font-weight:bold;">POPULAR SEARCHES </h5>
                                     <div class="social-links d-flex flex-column">
-                                        <span style="color: white;"> Dresses For Girls | T-Shirts | Sandals | Babydolls
-                                            | Blazers For Men
-                                            | Sport Shoes | Boxers | Tops | Kurtis | Designer Blouse |
-                                            Gowns </span>
+                                        <span style="color: white;"> Dresses For Girls | T-Shirts | Sandals | Babydolls| Sport Shoes | Boxers | Tops | Kurtis | Designer Blouse |Gowns </span>
                                     </div>
 
                                 </div>
@@ -801,12 +767,199 @@
         </div>
     </div>
 
-    <script>
-        const searchIcon = document.querySelector(".search-icon__wrapper");
-        searchIcon.addEventListener("click", e => {
-            searchIcon.parentElement.classList.toggle("open");
+       <script>
+    const searchIcon = document.querySelector(".search-icon__wrapper");
+    searchIcon.addEventListener("click", e => {
+      searchIcon.parentElement.classList.toggle("open");
+    });
+  </script>
+    
+<!-- Add jQuery if you don't already have it -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<script>
+$(document).ready(function() {
+    console.log("jQuery search script loaded");
+    
+    // Direct reference to your search elements
+    const $searchInput = $("#search-input");
+    let $searchResults = $("#search-results");
+    
+    // Check if elements exist
+    if ($searchInput.length === 0) {
+        console.error("Search input not found");
+        return;
+    }
+    
+    if ($searchResults.length === 0) {
+        console.log("Search results container not found, creating one");
+        // Create the results container if it doesn't exist
+        $searchInput.after('<div id="search-results" class="search-results-dropdown"></div>');
+        $searchResults = $("#search-results");
+    }
+    
+    let typingTimer;
+    const doneTypingInterval = 300;
+    
+    // Handle input events
+    $searchInput.on("input", function() {
+        const searchValue = $(this).val().trim();
+        console.log("Search input: " + searchValue);
+        
+        clearTimeout(typingTimer);
+        
+        if (searchValue.length > 0) {
+            typingTimer = setTimeout(function() {
+                performSearch(searchValue);
+            }, doneTypingInterval);
+        } else {
+            $searchResults.empty().hide();
+        }
+    });
+    
+    // Close dropdown when clicking outside
+    $(document).on("click", function(event) {
+        if (!$(event.target).closest(".search-container, #search-results").length) {
+            $searchResults.hide();
+        }
+    });
+    
+    function performSearch(query) {
+        console.log("Performing search for: " + query);
+        
+        // For immediate testing
+        if (query === "test") {
+            showTestResults();
+            return;
+        }
+        
+        // AJAX search
+        $.ajax({
+            url: "/search",
+            data: { q: query },
+            type: "GET",
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function(data) {
+                console.log("Search successful", data);
+                displayResults(data);
+            },
+            error: function(error) {
+                console.error("Search error:", error);
+                $searchResults.html('<div class="search-item">An error occurred while searching</div>').show();
+                positionDropdown();
+            }
         });
-    </script>
+    }
+    
+    function showTestResults() {
+        // Show test data for debugging
+        const testData = {
+            categories: [
+                { id: 1, name: "Kids" },
+                { id: 2, name: "Kids Accessories" }
+            ],
+            products: [
+                { id: 1, product_name: "Terry Kids Bathrobe 7-8 Years Blue Ferozi" },
+                { id: 2, product_name: "Terry Bathrobe For Kids 7-8 Years Red Navy" }
+            ]
+        };
+        displayResults(testData);
+    }
+    
+    function displayResults(data) {
+        // Clear previous results
+        $searchResults.empty();
+        
+        // Check if we have results
+        const hasCategories = data.categories && data.categories.length > 0;
+        const hasProducts = data.products && data.products.length > 0;
+        
+        if (!hasCategories && !hasProducts) {
+            $searchResults.html('<div class="search-item">No results found</div>');
+            positionDropdown();
+            return;
+        }
+        
+        // Categories section
+        if (hasCategories) {
+            const $categorySection = $('<div class="search-section"></div>');
+            $categorySection.append('<div class="search-section-title">CATEGORY SUGGESTIONS</div>');
+            
+            $.each(data.categories, function(i, category) {
+                const $item = $('<div class="search-item"></div>').text(category.name);
+                $item.on("click", function() {
+                    // Using the encrypted ID directly
+                    window.location.href = "/category/" + encodeURIComponent(category.id);
+                });
+                $categorySection.append($item);
+            });
+            
+            $searchResults.append($categorySection);
+        }
+        
+        // Products section
+        if (hasProducts) {
+            const $productsSection = $('<div class="search-section"></div>');
+            $productsSection.append('<div class="search-section-title">PRODUCTS</div>');
+            
+            $.each(data.products, function(i, product) {
+                const $item = $('<div class="search-item"></div>').text(product.product_name);
+                $item.on("click", function() {
+                    // Using the encrypted ID directly
+                    window.location.href = "/product/" + encodeURIComponent(product.id);
+                });
+                $productsSection.append($item);
+            });
+            
+            $searchResults.append($productsSection);
+        }
+        
+        // Position and show the dropdown
+        positionDropdown();
+    }
+    
+    function positionDropdown() {
+        // Position the dropdown directly below the search input
+        const inputPos = $searchInput.position(); // Use position instead of offset
+        const inputHeight = $searchInput.outerHeight();
+        const inputWidth = $searchInput.outerWidth();
+        
+        // Get the parent container's position (to handle relative positioning)
+        const parentOffset = $searchInput.parent().offset();
+        const searchInputOffset = $searchInput.offset();
+        
+        // Set the dropdown position
+        $searchResults.css({
+            position: 'absolute',
+            top: (inputPos.top + inputHeight) + 'px',
+            left: inputPos.left + 'px',
+            width: inputWidth + 'px',
+            zIndex: 10000
+        }).show();
+    }
+    
+    // Apply dropdown styling
+    $searchResults.css({
+        backgroundColor: 'white',
+        border: '1px solid #ddd',
+        borderRadius: '4px',
+        boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
+        maxHeight: '300px',
+        overflowY: 'auto'
+    });
+    
+    // For manual testing - trigger the test dropdown
+    window.showSearchTestResults = showTestResults;
+    console.log("Search ready. Type 'test' to test or call window.showSearchTestResults()");
+});
+</script>
+    
+    
+    
+    
+    
     <script>
         // Accordian 
 

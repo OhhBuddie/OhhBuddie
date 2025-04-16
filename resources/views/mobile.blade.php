@@ -81,6 +81,7 @@ $categories = [
     $encryptedDresses = Crypt::encryptString('Dresses');
     $encryptedShoes = Crypt::encryptString('Shoes');
     $encryptedTShirt = Crypt::encryptString('T-Shirt');
+    $encryptedKurti = Crypt::encryptString('Kurti');
 
 @endphp
 <!-- Optimized Slider -->
@@ -326,10 +327,13 @@ $categories = [
     </div>
 </div>
 
- <div class="Banner">
-    <video playsinline muted loop autoplay width="100%">
-        <source src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/Category+Banners/salwar+mobile+banner.mp4" type="video/mp4">
-    </video>
+{{-- Kurti Banner  --}}
+ <div class="Banner"> 
+    <a href="/category/{{ $encryptedKurti }}" style="text-decoration:none;">
+        <video playsinline muted loop autoplay width="100%">
+            <source src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/Category+Banners/salwar+mobile+banner.mp4" type="video/mp4">
+        </video>
+    </a>    
  </div>
 
 <div class="container" style="padding-right: 0px; padding-left: 0px;">
@@ -377,9 +381,11 @@ $categories = [
 
 <!-- Footwear -->
 <div class="Banner">
-    <video playsinline muted loop autoplay width="100%">
-        <source src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/Category+Banners/Shoe.mp4" type="video/mp4">
-    </video>
+    <a href="/category/{{ $encryptedShoes }}" style="text-decoration:none;">
+        <video playsinline muted loop autoplay width="100%">
+            <source src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/Category+Banners/Shoe.mp4" type="video/mp4">
+        </video>
+    </a>    
 </div>
 
 <div class="container" style="padding-right: 0px; padding-left: 0px;">
@@ -448,7 +454,9 @@ $categories = [
 </div>
 
 <div class="Banner">
-    <img loading="lazy" src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/Promotional+Banners/Shoe+banner+copy.webp" class="couponimg" alt="Shoes">
+    <a href="/category/{{ $encryptedShoes }}" style="text-decoration:none;">
+     <img loading="lazy" src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/Promotional+Banners/Shoe+banner+copy.webp" class="couponimg" alt="Shoes">
+    </a>
 </div>
 
 @if ($logincount == 0)

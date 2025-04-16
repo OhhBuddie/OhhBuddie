@@ -470,7 +470,7 @@
    
         
         
-        <div class="px-4 row text-light">
+        <div class="row text-light">
             <div class="mb-4">
                 <h5 >Check Delivery & Services :</h5>
                     <div class="input-group d-flex">

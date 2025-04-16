@@ -783,7 +783,9 @@
                     @endif
 
                     <div class="card-body product-item-card-body text-left">
-                        <h8 class="card-title">{{$same_p->product_name}}</h8>
+                        <h8 class="card-title" title="{{ $same_p->product_name }}">
+                            {{ strlen($same_p->product_name) <= 16 ? $same_p->product_name : substr($same_p->product_name, 0, 16) . '...' }}
+                        </h8>
                         <div class="d-flex">
                             <p class="card-text me-2" style="text-decoration: line-through; color:red">Rs. {{$same_p->maximum_retail_price}}</p>
                             <p class="card-text ml-2">Rs. {{$same_p->portal_updated_price}}</p>

@@ -23,7 +23,11 @@ class ProductController extends Controller
         $decryptedId = Crypt::decryptString(urldecode($id));
         
         // Extract only numeric characters
-        $decryptedId = preg_replace('/\D/', '', $decryptedId);    
+        // $decryptedId = preg_replace('/\D/', '', $decryptedId);    
+
+        if (preg_match('/[a-zA-Z]/', $decryptedId) && preg_match('/\d/', $decryptedId)) {
+            $decryptedId = preg_replace('/\D/', '', $decryptedId);
+        }
        
         $product_details = DB::table('products')->where('id',$decryptedId)->whereNotNull('product_name')->distinct()->first();
        

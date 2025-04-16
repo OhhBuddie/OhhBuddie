@@ -75,11 +75,12 @@ class WishlistController extends Controller
     
         DB::table('carts')->where('id', $request->ppid)->delete();
     
+        return redirect()->url('/addtocart')->with(['toast_message' => 'Product Added to cart Successfully.']);
         // return response()->json(['success' => true, 'redirect' => url('/addtocart')]);
-        return redirect('/addtocart')->with([
-            'toast_message' => 'Product Added to cart Successfully.',
-            'toast_type' => 'danger' // optional: success / danger / info
-        ]);
+        // return redirect('/addtocart')->with([
+        //     'toast_message' => 'Product Added to cart Successfully.',
+        //     'toast_type' => 'danger' // optional: success / danger / info
+        // ]);
         
     }
         /**

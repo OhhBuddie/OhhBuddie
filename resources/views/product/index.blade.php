@@ -262,7 +262,133 @@
             }
         }
     </style>
+    <style>
+  .carousel-container {
+    width: 100%;
+    max-width: 600px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    margin: 0 auto;
+  }
+
+  .carousel {
+    position: relative;
+    width: 100%;
+  }
+
+  .carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .carousel-slide.active-slide {
+    opacity: 1;
+    z-index: 1;
+    position: relative;
+  }
+
+  /* Preload all images to prevent blinking */
+  .carousel-slide img {
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+    object-fit: contain;
+    display: block;
+  }
+
+  .product-image {
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+    object-fit: contain;
+    display: block;
+  }
+
+  .carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.7);
+    border: none;
+    font-size: 24px;
+    width: 40px;
+    height: 40px;
+    line-height: 36px;
+    text-align: center;
+    padding: 0;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+    z-index: 10;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  }
+
+  .carousel-btn:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+  }
+
+  #prevBtn {
+    left: 10px;
+  }
+
+  #nextBtn {
+    right: 10px;
+  }
+
+  .carousel-dots {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 5px 10px;
+    border-radius: 15px;
+  }
+
+  .dot {
+    width: 20px;
+    height: 2px;
+    /*border-radius: 50%;*/
+    background-color: #ddd;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .dot.active {
+    background-color: #EFC475;
+    transform: scale(1.2);
+  }
+
+  @media (max-width: 768px) {
+    .carousel-container {
+      width: 100%;
+    }
     
+    .carousel-btn {
+      width: 30px;
+      height: 30px;
+      line-height: 26px;
+      font-size: 18px;
+    }
+  }
+</style>
+
     
     @php
         $mrp = $product_details->maximum_retail_price;
@@ -290,45 +416,45 @@
             
             
             
-            <div id="imageCarousel" class="carousel slide" data-bs-ride="carousel">
-                
-                
+        <div class="carousel-container">
+          <div class="carousel">
             @if(empty($product_details->images))
-            <img src="https://assets.ajio.com/medias/sys_master/root/20230728/GBrh/64c3db50a9b42d15c979555c/-473Wx593H-466398360-green-MODEL.jpg" class="d-block w-100 product-image" alt="Product Image">
-
-            @else    
-            <div class="carousel-inner">
-                @php $images = json_decode($product_details->images); @endphp
-            
-                @foreach($images as $index => $pimages)
-                    @php
-                        // Check if the image URL contains the S3 path
-                        $isS3Image = Str::startsWith($pimages, 'https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/products/');
-                        
-                        // If it's not an S3 image, prepend the seller's image path
-                        $imageSrc = $isS3Image ? $pimages : "https://seller.ohhbuddie.com/public/uploads/products/" . basename($pimages);
-                    @endphp
-            
-                    <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
-                        <img src="{{ $imageSrc }}" class="d-block w-100 product-image" alt="Product Image {{ $index + 1 }}" style="background-color:transparent">
-                    </div>
-                @endforeach
-            </div>
-        
-                <!-- Carousel Indicators (Dots) -->
-                @if(count($images) > 1)
-                    <div class="carousel-indicators">
-                        @foreach($images as $index => $pimages)
-                            <button type="button" data-bs-target="#imageCarousel" data-bs-slide-to="{{ $index }}" class="{{ $loop->first ? 'active' : '' }}" aria-label="Slide {{ $index + 1 }}"></button>
-                        @endforeach
-                    </div>
-                @endif
+              <div class="carousel-slide active-slide">
+                <img src="https://assets.ajio.com/medias/sys_master/root/20230728/GBrh/64c3db50a9b42d15c979555c/-473Wx593H-466398360-green-MODEL.jpg" class="product-image" alt="Product Image">
+              </div>
+            @else
+              @php $images = json_decode($product_details->images); @endphp
+              
+              @foreach($images as $index => $pimages)
+                @php
+                  // Check if the image URL contains the S3 path
+                  $isS3Image = Str::startsWith($pimages, 'https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/products/');
+                  
+                  // If it's not an S3 image, prepend the seller's image path
+                  $imageSrc = $isS3Image ? $pimages : "https://seller.ohhbuddie.com/public/uploads/products/" . basename($pimages);
+                @endphp
                 
-                
+                <div class="carousel-slide {{ $index === 0 ? 'active-slide' : '' }}">
+                  <img src="{{ $imageSrc }}" class="product-image" alt="Product Image {{ $index + 1 }}">
+                </div>
+              @endforeach
             @endif
-                
-                
+          </div>
+          
+          @if(!empty($product_details->images) && count(json_decode($product_details->images)) > 1)
+            <!--<button class="carousel-btn" id="prevBtn">❮</button>-->
+            <!--<button class="carousel-btn" id="nextBtn">❯</button>-->
+            
+            <div class="carousel-dots">
+              @foreach(json_decode($product_details->images) as $index => $pimages)
+                <div class="dot {{ $index === 0 ? 'active' : '' }}" data-index="{{ $index }}"></div>
+              @endforeach
             </div>
+          @endif
+        </div>
+
+
+
         
             <!-- Rating Badge -->
             <!--<span class="badge bg-success me-2 position-absolute" -->
@@ -337,7 +463,7 @@
             <!--</span>-->
             
             <span class="badge bg-success me-2 position-absolute" 
-                  style="bottom: 18px; right: 10px; background-color:#04AA6D; color: white; padding: 8px 15px; border-radius: 12px; font-size: 10px;">
+                  style="bottom: 18px; right: 10px; background-color:#04AA6D; color: white; padding: 8px 15px; border-radius: 12px; font-size: 10px; z-index:9999;">
                No Reviews Yet
             </span>
            
@@ -1128,6 +1254,184 @@
           }
         });
       </script>
-                    
+     <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    initializeCarousel();
+  });
+  
+  function initializeCarousel() {
+    const slides = document.querySelectorAll('.carousel-slide');
+    if (slides.length <= 1) return; // Don't initialize carousel if there's only one slide
+    
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const dots = document.querySelectorAll('.dot');
+    
+    let currentIndex = 0;
+    const totalSlides = slides.length;
+    
+    // Preload all images to prevent blinking
+    const images = document.querySelectorAll('.carousel-slide img');
+    let loadedImages = 0;
+    
+    images.forEach(img => {
+      if (img.complete) {
+        loadedImages++;
+        if (loadedImages === images.length) {
+          setupCarousel();
+        }
+      } else {
+        img.addEventListener('load', () => {
+          loadedImages++;
+          if (loadedImages === images.length) {
+            setupCarousel();
+          }
+        });
+        
+        img.addEventListener('error', () => {
+          loadedImages++;
+          if (loadedImages === images.length) {
+            setupCarousel();
+          }
+        });
+      }
+    });
+    
+    // Set fixed height for carousel based on first slide
+    function setupCarousel() {
+      const firstSlide = slides[0];
+      const carouselElement = document.querySelector('.carousel');
+      carouselElement.style.height = `${firstSlide.offsetHeight}px`;
+      
+      // Make all slides initially hidden except the first
+      slides.forEach((slide, index) => {
+        if (index !== 0) {
+          slide.style.visibility = 'hidden';
+        } else {
+          slide.style.visibility = 'visible';
+        }
+      });
+    }
+    
+    // If all images are cached and already loaded
+    if (loadedImages === images.length) {
+      setupCarousel();
+    }
+    
+    // Function to update the carousel display
+    function updateCarousel() {
+      // First make all slides visible but opacity 0
+      slides.forEach((slide) => {
+        slide.style.visibility = 'visible';
+        slide.classList.remove('active-slide');
+      });
+      
+      // Then show current slide
+      slides[currentIndex].classList.add('active-slide');
+      
+      // Hide non-active slides after transition
+      setTimeout(() => {
+        slides.forEach((slide, index) => {
+          if (index !== currentIndex) {
+            slide.style.visibility = 'hidden';
+          }
+        });
+      }, 300); // Match this with the CSS transition time
+      
+      // Update dots
+      if (dots.length > 0) {
+        dots.forEach((dot, index) => {
+          dot.classList.toggle('active', index === currentIndex);
+        });
+      }
+    }
+    
+    // Initialize dot click events
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        currentIndex = index;
+        updateCarousel();
+        resetInterval();
+      });
+    });
+    
+    // Previous button click
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+        updateCarousel();
+        resetInterval();
+      });
+    }
+    
+    // Next button click
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % totalSlides;
+        updateCarousel();
+        resetInterval();
+      });
+    }
+    
+    // Automatic slide change
+    let interval = setInterval(autoSlide, 5000);
+    
+    function autoSlide() {
+      currentIndex = (currentIndex + 1) % totalSlides;
+      updateCarousel();
+    }
+    
+    function resetInterval() {
+      clearInterval(interval);
+      interval = setInterval(autoSlide, 5000);
+    }
+    
+    // Pause on hover
+    const carouselContainer = document.querySelector('.carousel-container');
+    if (carouselContainer) {
+      carouselContainer.addEventListener('mouseenter', () => {
+        clearInterval(interval);
+      });
+      
+      carouselContainer.addEventListener('mouseleave', () => {
+        interval = setInterval(autoSlide, 5000);
+      });
+    }
+    
+    // Handle touch events for mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    carouselContainer.addEventListener('touchstart', (e) => {
+      touchStartX = e.touches[0].clientX;
+      clearInterval(interval);
+    });
+    
+    carouselContainer.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].clientX;
+      handleSwipe();
+      interval = setInterval(autoSlide, 5000);
+    });
+    
+    function handleSwipe() {
+      const difference = touchStartX - touchEndX;
+      
+      // If swipe is significant (more than 50px)
+      if (Math.abs(difference) > 50) {
+        if (difference > 0) {
+          // Swipe left - next slide
+          currentIndex = (currentIndex + 1) % totalSlides;
+        } else {
+          // Swipe right - previous slide
+          currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+        }
+        updateCarousel();
+      }
+    }
+    
+    // Initialize with first slide active
+    updateCarousel();
+  }
+</script>               
             
 @endsection

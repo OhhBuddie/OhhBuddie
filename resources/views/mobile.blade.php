@@ -78,6 +78,10 @@ $categories = [
     $encryptedSaree = Crypt::encryptString('Saree');
     $encryptedJeans = Crypt::encryptString('Jeans');
     $encryptedkids = Crypt::encryptString('Kids');
+    $encryptedDresses = Crypt::encryptString('Dresses');
+    $encryptedShoes = Crypt::encryptString('Shoes');
+    $encryptedTShirt = Crypt::encryptString('T-Shirt');
+
 @endphp
 <!-- Optimized Slider -->
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -94,10 +98,14 @@ $categories = [
             </a>
         </div>
         <div class="item-active item">
-            <img loading="lazy" src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/Sliders/static+slider+kids.webp" alt="Slider Image 3">
+            <a href="/category/{{ $encryptedkids }}" style="text-decoration:none;">
+             <img loading="lazy" src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/Sliders/static+slider+kids.webp" alt="Slider Image 3">
+            </a>
         </div>
         <div class="item-active item">
-            <img loading="lazy" src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/Sliders/static+slider+saree.webp" alt="Slider Image 4">
+            <a href="/category/{{ $encryptedSaree }}" style="text-decoration:none;">
+             <img loading="lazy" src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/Sliders/static+slider+saree.webp" alt="Slider Image 4">
+            </a>
         </div>
     </div>
     <a class="left carousel-control" href="#myCarousel" data-slide="prev">
@@ -115,29 +123,39 @@ $categories = [
     <!-- Optimized Video Loading -->
     <div class="tranding">
     <div class="tranding-card" style="height:100%; background-color: unset; border: none;">
-        <video width="320" height="240" playsinline muted loop autoplay style="border-radius: 10px;">
-            <source src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/Trending+Cards/dress.mp4" type="video/mp4">
-        </video>
+        <a href="/category/{{ $encryptedDresses }}" style="text-decoration:none;">
+            <video width="320" height="240" playsinline muted loop autoplay style="border-radius: 10px;">
+                <source src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/Trending+Cards/dress.mp4" type="video/mp4">
+            </video>
+        </a>    
     </div>
     <div class="tranding-card" style="height:100%; background-color: unset; border: none;">
-        <video width="320" height="240" playsinline muted loop autoplay style="border-radius: 10px;">
-            <source src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/Trending+Cards/jeans.mp4" type="video/mp4">
-        </video>
+        <a href="/category/{{ $encryptedJeans }}" style="text-decoration:none;">
+            <video width="320" height="240" playsinline muted loop autoplay style="border-radius: 10px;">
+                <source src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/Trending+Cards/jeans.mp4" type="video/mp4">
+            </video>
+        </a>    
     </div>
     <div class="tranding-card" style="height:100%; background-color: unset; border: none;">
-        <video width="320" height="240" playsinline muted loop autoplay style="border-radius: 10px;">
-            <source src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/Trending+Cards/saree.mp4" type="video/mp4">
-        </video>
+        <a href="/category/{{ $encryptedSaree }}" style="text-decoration:none;">
+            <video width="320" height="240" playsinline muted loop autoplay style="border-radius: 10px;">
+                <source src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/Trending+Cards/saree.mp4" type="video/mp4">
+            </video>
+        </a>    
     </div>
     <div class="tranding-card" style="height:100%; background-color: unset; border: none;">
-        <video width="320" height="240" playsinline muted loop autoplay style="border-radius: 10px;">
-            <source src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/Trending+Cards/shoe.mp4" type="video/mp4">
-        </video>
+        <a href="/category/{{ $encryptedShoes }}" style="text-decoration:none;">
+            <video width="320" height="240" playsinline muted loop autoplay style="border-radius: 10px;">
+                <source src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/Trending+Cards/shoe.mp4" type="video/mp4">
+            </video>
+        </a>    
     </div>
     <div class="tranding-card" style="height:100%; background-color: unset; border: none;">
-        <video width="320" height="240" playsinline muted loop autoplay style="border-radius: 10px;">
-            <source src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/Trending+Cards/t+shirt.mp4" type="video/mp4">
-        </video>
+        <a href="/category/{{ $encryptedTShirt }}" style="text-decoration:none;">
+            <video width="320" height="240" playsinline muted loop autoplay style="border-radius: 10px;">
+                <source src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/Trending+Cards/t+shirt.mp4" type="video/mp4">
+            </video>
+        </a>    
     </div>
 </div>
 

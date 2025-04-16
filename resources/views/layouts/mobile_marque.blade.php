@@ -713,24 +713,29 @@
         // Accordian 
         
         document.addEventListener("DOMContentLoaded", () => {
-            const accordionHeaders = document.querySelectorAll(".accordion-header");
+  const accordionHeaders = document.querySelectorAll(".accordion-header");
 
-            accordionHeaders.forEach(header => {
-                header.addEventListener("click", () => {
-                const content = header.nextElementSibling;
-                const icon = header.querySelector("i");
+  accordionHeaders.forEach(header => {
+    // Get the content element
+    const content = header.nextElementSibling;
+    
+    // Initialize content to be hidden
+    content.style.display = "none";
+    
+    header.addEventListener("click", () => {
+      const icon = header.querySelector("i");
 
-                // Check the current state (visible or hidden)
-                const isVisible = content.style.display === "block";
-                
-                // Toggle content visibility based on current state
-                content.style.display = isVisible ? "none" : "block";
+      // Check the current state
+      const isVisible = content.style.display === "block";
+      
+      // Toggle content visibility
+      content.style.display = isVisible ? "none" : "block";
 
-                // Toggle icon rotation
-                icon.classList.toggle("rotate", !isVisible);
-                });
-            });
-        });
+      // Toggle icon rotation
+      icon.classList.toggle("rotate", !isVisible);
+    });
+  });
+});
         
         
     </script>

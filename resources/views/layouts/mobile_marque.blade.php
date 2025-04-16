@@ -716,23 +716,21 @@
   const accordionHeaders = document.querySelectorAll(".accordion-header");
 
   accordionHeaders.forEach(header => {
-    // Get the content element
-    const content = header.nextElementSibling;
-    
-    // Initialize content to be hidden
-    content.style.display = "none";
-    
     header.addEventListener("click", () => {
+      const content = header.nextElementSibling;
       const icon = header.querySelector("i");
-
-      // Check the current state
-      const isVisible = content.style.display === "block";
       
-      // Toggle content visibility
-      content.style.display = isVisible ? "none" : "block";
-
-      // Toggle icon rotation
-      icon.classList.toggle("rotate", !isVisible);
+      // Toggle the open class on content
+      content.classList.toggle("open");
+      
+      // Update display based on class
+      if (content.classList.contains("open")) {
+        content.style.display = "block";
+        icon.classList.add("rotate");
+      } else {
+        content.style.display = "none";
+        icon.classList.remove("rotate");
+      }
     });
   });
 });

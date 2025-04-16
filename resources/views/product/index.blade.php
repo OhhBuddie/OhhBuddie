@@ -766,7 +766,7 @@
     <div class="container pr-0" style="background-color: #1f1f1f;">
     
         <!--Product -->
-         <h4 class=" text-light">Similar Products</h4>
+         <h5 class=" text-light">Similar Products</h5>
           <div id="contentDiv"></div>
          <div style="padding-right: 0px; padding-left: 0px;">
             <div class="product-category-container">

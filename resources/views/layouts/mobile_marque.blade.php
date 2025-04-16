@@ -232,14 +232,7 @@
             transform: rotate(90deg);
             /* Rotate to simulate arrow down */
         }
-        .rotate {
-          transition: transform 0.3s ease;
-          display: inline-block; /* important for transform to work */
-        }
-        
-        .rotate-active {
-          transform: rotate(90deg);
-        }
+    
 
 
     </style>
@@ -626,7 +619,7 @@
             <div class="accordion-item">
                 <div class="accordion-header d-flex justify-content-between" style="margin-left-20px">
                     Know More About Ohh! Buddie
-                    <i class="fa-solid fa-angles-right fs-1 rotate"></i>
+                    <i class="fa-solid fa-angles-right fs-1 rotatee"></i>
                 </div>
                 
      
@@ -820,7 +813,7 @@
       document.querySelectorAll(".accordion-header").forEach(header => {
   header.addEventListener("click", () => {
     const content = header.nextElementSibling;
-    const icon = header.querySelector(".rotate");
+    const icon = header.querySelector(".rotatee");
 
     const isOpen = content.style.display === "block";
 

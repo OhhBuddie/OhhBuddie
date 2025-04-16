@@ -487,7 +487,7 @@
             <br>
             <!--<img class="d-block w-100 mb-3" src="{{ $product }}" alt="First slide" style="height:90px;">-->
             
-             <video class="d-block w-100 mb-3 p-0" playsinline autoplay muted loop style="border-radius: 10px; ">
+             <video class="d-block w-100 mb-3 p-0" playsinline autoplay muted loop >
                 <source src="{{ $product }}" type="video/mp4" >
     
             </video>

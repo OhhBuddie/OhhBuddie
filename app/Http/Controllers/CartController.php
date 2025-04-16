@@ -136,6 +136,7 @@ class CartController extends Controller
             $may_like = DB::table('products')
                 ->whereIn('sub_subcategory_id', $uniqueSubSubCatIds)
                 ->whereNotIn('id', $cartProductIds)
+                ->whereNotNull('images')
                 ->latest()
                 ->get();
     

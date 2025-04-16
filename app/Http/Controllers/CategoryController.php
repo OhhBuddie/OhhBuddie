@@ -16,18 +16,22 @@ class CategoryController extends Controller
      */
     public function index($id)
     {
-        // return $id;
+        
         $category = Crypt::decryptString(urldecode($id));
         
-        // Extract only numeric characters
-         $category = preg_replace('/\D/', '', $category);    
-         
+        // If it contains both digits and letters, extract digits
+        if (preg_match('/[a-zA-Z]/', $category) && preg_match('/\d/', $category)) {
+            $category = preg_replace('/\D/', '', $category);
+        }
+
+        //  return $category;
          
          $sort = request('sort', 'latest'); // Default sorting is 'latest'
          
          $colorFilter = request('color');
                 
         if (is_numeric($category)) {
+
             
             if($category == 88 || $category == 1 || $category == 38)
             {
@@ -77,45 +81,45 @@ class CategoryController extends Controller
             {
                 $subcat = [40];  
             }
-            if($category == 'Dresses')
+            elseif($category == 'Dresses')
             {
                 $subcat =[50];
             }
-            if($category == 'Jeans')
+            elseif($category == 'Jeans')
             {
                 $subcat =[18,60];
             }
-            if($category == 'Kurti')
+            elseif($category == 'Kurti')
             {
                 $subcat = [42];
             }
-            if($category == 'Housecoat')
+            elseif($category == 'Housecoat')
             {
                 $psubcat=[82];
             }
-            if($category == 'Trousers')
+            elseif($category == 'Trousers')
             {
                 $subcat = [19,61];
             }
-            if($category == 'T-Shirt')
+            elseif($category == 'T-Shirt')
             {
                 $subcat = [3,48];
             }
-            if($category == 'Shoes')
+            elseif($category == 'Shoes')
             {
                 $subcat = [25, 26,27,28,71,72,73];
             }
-            if($category == 'Nighty')
+            elseif($category == 'Nighty')
             {
                 $subcat =[84];
-    
             }
             else
             {
+                return 'hello';
                 $subcat =[$category];
             }
             
-            return $subcat;
+            // return $subcat;
               $query = DB::table('products')
                             ->whereIn('sub_subcategory_id', $subcat)
                             ->whereNotNull('product_name');

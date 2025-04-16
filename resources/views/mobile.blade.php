@@ -67,7 +67,7 @@ $categories = [
     $encryptedCategory = Crypt::encryptString($category['name']);
     @endphp
     <div class="category-card">
-        <a href="/category/{{$encryptedCategory}}" style="text-decoration:none;">
+        <a href="/category/{{ $encryptedCategory }}" style="text-decoration:none;">
             <img loading="lazy" src="{{ $category['icon'] }}" class="catimg" alt="{{ $category['name'] }}">
             <p class="cat-text">{{ $category['name'] }}</p>
         </a>

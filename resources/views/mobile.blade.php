@@ -170,9 +170,11 @@ $categories = [
 
 <!-- Saree -->
 <div class="Banner">
-    <video playsinline muted loop autoplay width="100%">
-        <source src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/Category+Banners/saree+mobile+banner.mp4" type="video/mp4">
-    </video>
+    <a href="/category/{{ $encryptedSaree }}" style="text-decoration:none;">
+        <video playsinline muted loop autoplay width="100%">
+            <source src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/Category+Banners/saree+mobile+banner.mp4" type="video/mp4">
+        </video>
+    </a>
 </div>
 
 
@@ -221,13 +223,15 @@ $categories = [
     </div>
 </div>
 
+{{-- Kids Banner  --}}
  <div class="Banner">
-      
-            <video  playsinline autoplay muted loop width="100%">
+    <a href="/category/{{ $encryptedkids }}" style="text-decoration:none;">
+        <video  playsinline autoplay muted loop width="100%">
               <source src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/Category+Banners/kids+mobile+banner+(1).mp4" type="video/mp4" class="catimg" style="width:100%;">
     
         </video>
-    </div>
+    </a>    
+</div>
 
 
     <div class="container" style="padding-right: 0px; padding-left: 0px;">

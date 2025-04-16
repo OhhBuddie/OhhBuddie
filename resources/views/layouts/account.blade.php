@@ -298,7 +298,7 @@
               <line x1="26" y1="26" x2="34" y2="34" stroke="white" stroke-width="2" stroke-linecap="round"/>
             </svg>
           </a>
-          <a href="#" class="text-light position-relative" style="font-size: 24px; font-weight: normal; margin-right: 20px;">
+          <a href="/wishlist" class="text-light position-relative" style="font-size: 24px; font-weight: normal; margin-right: 20px;">
                 <i class="far fa-heart"></i>
                 
             </a>

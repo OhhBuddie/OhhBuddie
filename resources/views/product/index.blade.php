@@ -388,10 +388,10 @@
             @if(empty($size_data->size_name) || $size_data->size_name == '')
                 @if($subsubcat_id ==40)
                 @else
-                    <div class="d-flex justify-content-between align-items-center mb-3" style="gap: 1rem;">
-                        <h4 class="mb-0">Selected Size: <span id="selectedSize"></span></h4>
+                    <div class="px-4 d-flex justify-content-between align-items-center mb-3" style="gap: 1rem;">
+                        <h5 class="mb-0">Selected Size: <span id="selectedSize"></span></h5>
                         
-                        <h4 class="mb-0 size-chart-button" onclick="openModal()">Size Chart</h4>
+                        <h5 class="mb-0 size-chart-button" onclick="openModal()">Size Chart</h5>
                     </div>
                 
                     

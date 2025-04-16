@@ -283,7 +283,7 @@
             <a href="#" class="text-light" style="font-size: 24px; font-weight: normal; margin-right: 20px;">
                 <i class="fas fa-search"></i>
             </a>
-            <a href="#" class="text-light position-relative" style="font-size: 24px; font-weight: normal; margin-right: 20px;">
+            <a href="/wishlist" class="text-light position-relative" style="font-size: 24px; font-weight: normal; margin-right: 20px;">
                 <i class="far fa-heart"></i>
               
             </a>

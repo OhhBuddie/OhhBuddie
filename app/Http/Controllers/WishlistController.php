@@ -75,7 +75,7 @@ class WishlistController extends Controller
     
         DB::table('carts')->where('id', $request->ppid)->delete();
     
-        return response()->json(['success' => true, 'redirect' => url('/wishlist')]);
+        return response()->json(['success' => true]);
     }
         /**
      * Display the specified resource.

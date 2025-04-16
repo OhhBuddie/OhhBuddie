@@ -1059,13 +1059,7 @@
             });
         }
     </script>
-            @if(session('toast_message'))
-            <script>
-                window.addEventListener('DOMContentLoaded', function () {
-                    showToast(@json(session('toast_message')), @json(session('toast_type') ?? 'success'));
-                });
-            </script>
-            @endif
+       
     <script>
         //   $(document).ready(function () {
         //     $("#placeOrderBtn").on("click", function () {
@@ -1503,5 +1497,15 @@
             });
         }
     </script>
+    @if(session('toast_message'))
+    <script>
+        window.addEventListener('DOMContentLoaded', function () {
+            showToast(
+                @json(session('toast_message')),
+                @json(session('toast_type') ?? 'success')
+            );
+        });
+    </script>
+@endif
 </body>
 </html>

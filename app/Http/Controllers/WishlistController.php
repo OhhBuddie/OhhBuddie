@@ -80,6 +80,7 @@ class WishlistController extends Controller
             'toast_message' => 'Product Added to cart Successfully.',
             'toast_type' => 'danger' // optional: success / danger / info
         ]);
+        
     }
         /**
      * Display the specified resource.

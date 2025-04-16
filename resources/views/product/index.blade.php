@@ -772,6 +772,16 @@
             <div class="product-category-container">
                 <!-- Category Product 1 -->
                 @foreach($same_products as $same_p)
+                @php
+                    $brnd_cnt = DB::table('brands')->where('id',$same_p->brand_id)->count();
+                    if($brnd_cnt > 0)
+                    {
+                        $brnd_name = DB::table('brands')->where('id',$same_p->brand_id)->latest()->first();
+                    }
+                    
+                @endphp
+
+
                 <a  href="/product/{{ Crypt::encryptString($same_p->id) }}" style="text-decoration:none;">
                 <div class="product-item-card">
                     @php
@@ -784,6 +794,9 @@
 
                     <div class="card-body product-item-card-body text-left">
                         <h8 class="card-title" title="{{ $same_p->product_name }}">
+                            @if($brnd_cnt != 0)
+                                <span style="text-transform: uppercase;">{{ $brnd_name->brand_name }}</span> -
+                            @endif
                             {{ strlen($same_p->product_name) <= 16 ? $same_p->product_name : substr($same_p->product_name, 0, 16) . '...' }}
                         </h8>
                         <div class="d-flex">

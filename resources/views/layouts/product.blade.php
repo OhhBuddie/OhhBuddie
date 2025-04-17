@@ -432,7 +432,7 @@
             <div class="search-icon">
               
                 <div class="search-container">
-                    <input type="text" id="search-input" class="search-icon__input" placeholder="search ..." />
+                    <input type="text" id="search-input" class="search-icon__input" placeholder="search ..." autocomplete="off"/>
                     <div id="search-results" class="search-results-dropdown" style="display: none;"></div>
                 </div>            
     

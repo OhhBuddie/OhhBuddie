@@ -438,7 +438,7 @@
                     <div class="search-icon">
               
                         <div class="search-container">
-                            <input type="text" id="search-input" class="search-icon__input" placeholder="search ..." />
+                            <input type="text" id="search-input" class="search-icon__input" placeholder="search ..." autocomplete="off" />
                             <div id="search-results" class="search-results-dropdown" style="display: none;"></div>
                         </div>            
             
@@ -543,7 +543,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#search">
+                    <a href="/allproduct">
                         <i class="fa fa-shopping-cart"></i>
                         Shop
                     </a>

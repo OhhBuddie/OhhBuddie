@@ -68,6 +68,7 @@ Route::get('/product-listing', [App\Http\Controllers\ProductController::class,'f
 Route::get('/get-subcategories/{id}', [ProductController::class, 'getSubcategories']);
 Route::get('/get-sub-subcategories/{id}', [ProductController::class, 'getSubSubcategories']);
 
+Route::get('/allproduct', [App\Http\Controllers\ProductController::class,'allproducts']);
 
 Route::get('/category/{id}', [App\Http\Controllers\CategoryController::class, 'index']);
 

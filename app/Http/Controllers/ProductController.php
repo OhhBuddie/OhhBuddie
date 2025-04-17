@@ -599,4 +599,51 @@ class ProductController extends Controller
     {
         //
     }
+    
+     public function allproducts(Product $product)
+    {
+        $sort = request('sort', 'latest');
+        
+        $query = DB::table('products')
+                    ->whereNotNull('product_name');
+                    
+        if ($sort == 'latest') {
+            $query->orderByDesc('created_at');
+        } elseif ($sort == 'price_high_low') {
+            $query->orderByDesc('portal_updated_price');
+        } elseif ($sort == 'price_low_high') {
+            $query->orderBy('portal_updated_price');
+        } else {
+            $query->orderByDesc('id'); // Default sorting
+        }
+        
+        $products = $query->get()
+            ->groupBy('parent_id')
+            ->map(function ($group) {
+                return $group->groupBy('color_name')->map(function ($colorGroup) {
+                    // If all sizes are the same or different but parent_id & color_name are same, pick only one
+                    if ($colorGroup->count() > 1) {
+                        return $colorGroup->first(); 
+                    }
+                    return $colorGroup;
+                })->values();
+            })->flatten(); 
+                    
+        $product_cat = DB::table('products')
+            ->select('category_id')
+            ->whereNotNull('product_name')
+            ->distinct('category_id')
+            ->get();
+         
+       $product_size = DB::table('products')
+            ->select('size_name')
+            ->whereIn('sub_subcategory_id', [25, 26, 27, 28, 71, 72, 73])
+            ->whereNotNull('product_name')
+            ->distinct()
+            ->orderByRaw('CAST(size_name AS UNSIGNED) ASC') // Convert to number before sorting
+            ->get();
+                            
+        return view('product.allproduct', compact('products','sort','product_size','product_cat'));
+
+    }
 }

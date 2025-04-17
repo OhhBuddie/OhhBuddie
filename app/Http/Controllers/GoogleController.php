@@ -40,6 +40,20 @@ class GoogleController extends Controller
             $finduser = User::where('google_id', $user->id)->first();
 
             if ($finduser) {
+
+                if (!session()->has('temp_user_id')) {
+                    session()->put('temp_user_id', 'temp_' . time()); // Example unique ID
+                }
+                
+                $tempUserId = session()->get('temp_user_id');
+                
+                 DB::table('carts')->where('temp_user_id',$tempUserId)->update([
+        
+                        'user_id' => $finduser->user_id
+        
+                    ]);
+    
+
                 Auth::login($finduser);
                 // Redirect to the intended 'next' URL or fallback to the home page
                 return redirect()->intended('/');
@@ -49,6 +63,19 @@ class GoogleController extends Controller
 
                 if ($mcount > 0) {
                     $finduser11 = User::where('email', $user->email)->first();
+                    if (!session()->has('temp_user_id')) {
+                        session()->put('temp_user_id', 'temp_' . time()); // Example unique ID
+                    }
+                    
+                    $tempUserId = session()->get('temp_user_id');
+                    
+                     DB::table('carts')->where('temp_user_id',$tempUserId)->update([
+            
+                            'user_id' => $finduser11->user_id
+            
+                        ]);
+        
+
                     Auth::login($finduser11);
                     return redirect()->intended('/'); // Redirect to the 'next' URL or home page
                 } else {
@@ -59,6 +86,19 @@ class GoogleController extends Controller
                         'google_id' => $user->id,
                         'password' => bcrypt(Str::random(16)), // Ensure to hash the password
                     ]);
+
+                    if (!session()->has('temp_user_id')) {
+                        session()->put('temp_user_id', 'temp_' . time()); // Example unique ID
+                    }
+                    
+                    $tempUserId = session()->get('temp_user_id');
+                    
+                     DB::table('carts')->where('temp_user_id',$tempUserId)->update([
+            
+                            'user_id' => $newUser->user_id
+            
+                        ]);
+        
 
                     Auth::login($newUser);
                     return redirect()->intended('/'); // Redirect to the 'next' URL or home page

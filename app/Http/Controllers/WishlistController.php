@@ -35,7 +35,7 @@ class WishlistController extends Controller
         foreach($wishlist as $wish)
         {
             $product = DB::table('products')->where('id',$wish->product_id)->latest()->first();
-            
+            $pp['wid'] = $wish->id;
             $pp['id'] = $product->id;
             $pp['images'] = $product->images;
             $pp['name'] = $product->product_name;
@@ -123,15 +123,10 @@ class WishlistController extends Controller
      * @param  \App\Models\Wishlist  $wishlist
      * @return \Illuminate\Http\Response
      */
-public function destroy(Request $request)
+public function destroy(Request $request, Wishlist $wishlist)
 {
-    $deleted = DB::table('wishlists')->where('id', $request->id)->delete();
-
-    if ($deleted) {
-        return back()->with('success', 'Removed from wishlist successfully.');
-    }
-
-    return back()->with('error', 'Wishlist item not found.');
+   $wishlist->delete();
+   return back()->with('success','Product deleted successfully');
 }
     public function cart(Request $request)
     {

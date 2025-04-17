@@ -70,7 +70,7 @@
         }
         
         .rating{
-            bottom: 175px; right: 10px; background-color:#04AA6D; color: white; padding: 2px 8px; border-radius: 12px; font-size: 14px;
+            bottom: 215px; right: 10px; background-color:#04AA6D; color: white; padding: 2px 8px; border-radius: 12px; font-size: 14px;
         }
         
         .move{
@@ -223,11 +223,11 @@
                     @endphp
         
                     @if(!empty($images) && isset($images[0]))
-                        <img src="{{ $images[0] }}" class="card-img-top product-img" alt="Image">
+                        <img src="{{ $images[0] }}" class="card-img-top product-img" alt="Image" style="height:300px">
                     @endif
                     
-                    <div class="rating-label position-absolute rating">
-                        3.5 ★
+                    <div class="rating-label position-absolute rating" style="font-size:10px; margin-top:200px;">
+                       No reviews Yet
                     </div>
                     
                     <div class="card-body">
@@ -260,14 +260,13 @@
                            More to Cart
                         </a>
                         
-                        <!-- <form action="{{ route('wishlist.destroy', $wslt['id']) }}" method="POST">-->
-                        <!--    @csrf-->
-                        <!--    @method('POST')-->
-                        <!--    <button type="submit" class="dropdown-item delete btn mt-2"-->
-                        <!--        style="flex: 0 0 57%; background-color: red; color: white; border-radius: 5px; text-align: center;">-->
-                        <!--        <b>REMOVE</b>-->
-                        <!--    </button>-->
-                        <!--</form>-->
+                                                   
+
+                         <form action="{{ route('wishlists.destroy', $wslt['wid']) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="dropdown-item delete mt-2" style="background-color:red; color:white; text-align:center; border-radius:5px;" >REMOVE</button>
+                                </form>
                     </div>
                 </div>
             </div>

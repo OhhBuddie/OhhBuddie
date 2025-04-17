@@ -509,7 +509,7 @@
                 </a>    
                 <div class="header">SHOPPING BAG</div>
             </div>
-            <div>Step 1/3</div>
+            {{-- <div>Step 1/3</div> --}}
     
     </div>
 

@@ -17,7 +17,7 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: url('{{ asset('public/assets/images/banners/you are almost there.jpg') }}') no-repeat center center;
+            background: url('https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/login+page_new.png') no-repeat center center;
             background-size: cover;
         }
         .container {

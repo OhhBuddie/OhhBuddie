@@ -299,7 +299,7 @@
                 </a>    
                 <div class="header">PAYMENT</div>
             </div>
-            <div>Step 1/3</div>
+            {{-- <div>Step 1/3</div> --}}
     
     </div>
     <div class="d-flex justify-content-around align-items-center"

@@ -310,7 +310,7 @@
                     <img src="https://upload.wikimedia.org/wikipedia/en/4/41/Flag_of_India.svg" alt="India Flag" class="flag-icon">
                     +91
                 </span>
-                <input type="tel" id="mobile" class="form-control" placeholder="Enter Mobile Number" name="phone" style=" padding: 9px;">
+                <input type="number" id="mobile" maxlength="10" class="form-control" placeholder="Enter Mobile Number" name="phone" style=" padding: 9px;">
             </div>
                 <span id="error-message" style="color: red; display: none;">Please enter a valid 10-digit mobile number starting with 6, 7, 8, or 9.</span>
                 
@@ -333,7 +333,7 @@
                     <input type="text" class="form-control" id="locality" name="locality" placeholder="Enter Your Locality" required>
                 </div>
                 <div class="mb-3">
-                    <input type="text" class="form-control" id="pincode" maxlength="6" name="pincode" placeholder="Enter Your Pincode" required>
+                    <input type="number" class="form-control" id="pincode" maxlength="6" name="pincode" placeholder="Enter Your Pincode" required>
                 </div>
                 <div class="row">
                     <div class="col-6 mb-3">

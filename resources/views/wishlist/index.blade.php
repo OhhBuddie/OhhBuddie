@@ -232,7 +232,12 @@
                     
                     <div class="card-body">
                         <div class="price-wishlist">
-                            <h6 style="text-align:left;">{{ $wslt['name'] }}</h6>
+                            
+                        <h6 class="card-title" title="{{ $wslt['name'] }}">
+                            {{ strlen($wslt['name']) <= 16 ? $wslt['name'] : substr($wslt['name'], 0, 16) . '...' }}
+                        </h6>
+                        
+                        
                         </div>
                         
                         <p class="card-text m-0">
@@ -254,6 +259,15 @@
                            onclick="addToCart({{ json_encode($wslt) }})">
                            More to Cart
                         </a>
+                        
+                        <!-- <form action="{{ route('wishlist.destroy', $wslt['id']) }}" method="POST">-->
+                        <!--    @csrf-->
+                        <!--    @method('POST')-->
+                        <!--    <button type="submit" class="dropdown-item delete btn mt-2"-->
+                        <!--        style="flex: 0 0 57%; background-color: red; color: white; border-radius: 5px; text-align: center;">-->
+                        <!--        <b>REMOVE</b>-->
+                        <!--    </button>-->
+                        <!--</form>-->
                     </div>
                 </div>
             </div>

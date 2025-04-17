@@ -454,7 +454,7 @@
                             
                             <a href="#" class="text-light search-icon__svg-search" style="font-size: 24px; font-weight: normal; margin-right: 20px;">
                                 <i class="fas fa-search"></i>
-                            </a
+                            </a>
                             
                             <!-- Close (X) icon SVG -->
                             <svg class="search-icon__svg-close" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 50 50" fill="none">

@@ -132,13 +132,21 @@ class CartController extends Controller
             
             // Fetch all related products in a single query, excluding those already in the cart
             $cartProductIds = collect($cart_data)->pluck('product_id')->toArray();
-            
+
+                
             $may_like = DB::table('products')
-                ->whereIn('sub_subcategory_id', $uniqueSubSubCatIds)
-                ->whereNotIn('id', $cartProductIds)
-                ->whereNotNull('images')
-                ->latest()
-                ->get();
+                                ->whereNotNull('parent_id')
+                                ->whereIn('sub_subcategory_id', $uniqueSubSubCatIds)
+                                ->whereNotIn('id', $cartProductIds)
+                                ->whereNotNull('images')                                
+                                ->select('products.*') // Select all columns
+                                ->orderByDesc('id') // Latest first
+                                ->get()
+                                ->groupBy('parent_id')
+                                ->map(function ($group) {
+                                    return $group->unique('color_name'); // Keep only one product per color
+                                })
+                                ->flatten();  
     
         // return $may_like;
         // return $may_like;

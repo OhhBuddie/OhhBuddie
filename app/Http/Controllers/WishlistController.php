@@ -123,12 +123,16 @@ class WishlistController extends Controller
      * @param  \App\Models\Wishlist  $wishlist
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Wishlist $wishlist)
-    {
-        //
+public function destroy(Request $request)
+{
+    $deleted = DB::table('wishlists')->where('id', $request->id)->delete();
+
+    if ($deleted) {
+        return back()->with('success', 'Removed from wishlist successfully.');
     }
-    
-    
+
+    return back()->with('error', 'Wishlist item not found.');
+}
     public function cart(Request $request)
     {
         // Retrieve temp_user_id from request or generate a new one

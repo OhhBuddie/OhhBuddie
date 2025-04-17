@@ -196,6 +196,11 @@ Route::resource('carts', CartController::class);
 
 Route::resource('addresses', AddressController::class);
 
+Route::resource('wishlists', WishlistController::class);
+
+Route::post('/wishlist/destroy', [WishlistController::class, 'destroy'])->name('wishlist.destroy');
+
+
 
 Route::get('/check-pincode', [ProductController::class, 'checkPincode'])->name('check.pincode');
 

@@ -49,7 +49,7 @@ class GoogleController extends Controller
                 
                  DB::table('carts')->where('temp_user_id',$tempUserId)->update([
         
-                        'user_id' => $finduser->user_id
+                        'user_id' => $finduser->id
         
                     ]);
     
@@ -71,7 +71,7 @@ class GoogleController extends Controller
                     
                      DB::table('carts')->where('temp_user_id',$tempUserId)->update([
             
-                            'user_id' => $finduser11->user_id
+                            'user_id' => $finduser11->id
             
                         ]);
         
@@ -95,7 +95,7 @@ class GoogleController extends Controller
                     
                      DB::table('carts')->where('temp_user_id',$tempUserId)->update([
             
-                            'user_id' => $newUser->user_id
+                            'user_id' => $newUser->id
             
                         ]);
         

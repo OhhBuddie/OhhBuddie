@@ -990,32 +990,32 @@ $(document).ready(function() {
 
 
     <script>
-        function toggleSearchBar() {
-            const searchInput = document.querySelector('.search-input');
-            searchInput.classList.toggle('active');
+        // function toggleSearchBar() {
+        //     const searchInput = document.querySelector('.search-input');
+        //     searchInput.classList.toggle('active');
 
-            if (searchInput.classList.contains('active')) {
-                // Small delay to ensure transition works properly on mobile
-                setTimeout(() => {
-                    searchInput.focus();
-                }, 50);
-            }
-        }
+        //     if (searchInput.classList.contains('active')) {
+        //         // Small delay to ensure transition works properly on mobile
+        //         setTimeout(() => {
+        //             searchInput.focus();
+        //         }, 50);
+        //     }
+        // }
 
-        // Close search when clicking outside (optional but helpful on mobile)
-        document.addEventListener('click', function(event) {
-            const searchContainer = document.querySelector('.search-container');
-            const searchInput = document.querySelector('.search-input');
+        // // Close search when clicking outside (optional but helpful on mobile)
+        // document.addEventListener('click', function(event) {
+        //     const searchContainer = document.querySelector('.search-container');
+        //     const searchInput = document.querySelector('.search-input');
 
-            if (!searchContainer.contains(event.target) && searchInput.classList.contains('active')) {
-                searchInput.classList.remove('active');
-            }
-        });
+        //     if (!searchContainer.contains(event.target) && searchInput.classList.contains('active')) {
+        //         searchInput.classList.remove('active');
+        //     }
+        // });
 
-        // Prevent the search container click from closing the search
-        document.querySelector('.search-container').addEventListener('click', function(event) {
-            event.stopPropagation();
-        });
+        // // Prevent the search container click from closing the search
+        // document.querySelector('.search-container').addEventListener('click', function(event) {
+        //     event.stopPropagation();
+        // });
     </script>
 
     <!-------Body  Section------>

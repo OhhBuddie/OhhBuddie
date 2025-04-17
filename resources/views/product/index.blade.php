@@ -541,9 +541,9 @@
                         @endforeach
                     </div>
 
-                    <div id="error-message1" class="d-flex text-danger">
+                    <!--<div id="error-message1" class="d-flex text-danger">-->
                         <!-- Error message will appear here -->
-                    </div>
+                    <!--</div>-->
                     
                 @endif
             @endif
@@ -1071,7 +1071,8 @@
                     let sizeSelected = document.getElementById("selectedSize").textContent;
                     if (!sizeSelected)
                     {
-                        document.getElementById("error-message1").textContent = "Please select a Size";
+                        // document.getElementById("error-message1").textContent = "Please select a Size";
+                        showToast("Please select a Size!", "success");
                         return;
                     }
                     

@@ -88,7 +88,11 @@ class AddressController extends Controller
      */
     public function edit(Address $address)
     {
-        //
+        $city = DB::table('cities')->latest()->distinct()->get();
+        $state = DB::table('states')->latest()->distinct()->get();
+
+       
+       return view('address.edit',compact('address','city','state'));
     }
 
     /**
@@ -98,11 +102,19 @@ class AddressController extends Controller
      * @param  \App\Models\Address  $address
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Address $address)
-    {
-        //
-    }
-
+  public function update(Request $request, Address $address)
+  {
+        $address->update([
+            'name' => $request->name,
+            'phone' => $request->phone,
+            'pincode' => $request->pincode,
+            'state' => $request->registered_state,
+            'city' => $request->registered_city,
+            'address' => $request->address,
+        ]);
+    
+        return redirect()->back()->with('success', 'Address updated successfully.');
+  }
     /**
      * Remove the specified resource from storage.
      *

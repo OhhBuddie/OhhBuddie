@@ -626,8 +626,15 @@
                 <div class="dropdown-container">
                     <button type="button" class="dropdown-toggle" onclick="toggleDropdown(event, this)">⋮</button>
                     <div class="dropdown-menu" style="display: none;">
-                        <button class="dropdown-item edit">Edit</button>
-                        <button class="dropdown-item delete">Delete</button>
+                    <a href="{{ route('addresses.edit', $addr->id) }}" class="dropdown-item edit">EDIT</a>
+                        <!--<button class="dropdown-item edit">Edit</button>-->
+                        <!--<button class="dropdown-item delete">-->
+                                <form action="{{ route('addresses.destroy', $addr->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="dropdown-item delete">DELETE</button>
+                                </form>
+                            <!--Delete</button>-->
                         <button class="dropdown-item default" onclick="makeDefault('address{{$index}}')">Make Default</button>
                     </div>
                 </div>

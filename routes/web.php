@@ -194,6 +194,8 @@ Route::resource('products', ProductController::class);
 
 Route::resource('carts', CartController::class);
 
+Route::resource('addresses', AddressController::class);
+
 
 Route::get('/check-pincode', [ProductController::class, 'checkPincode'])->name('check.pincode');
 

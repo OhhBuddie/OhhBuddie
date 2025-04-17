@@ -333,7 +333,7 @@
                     <input type="text" class="form-control" id="locality" name="locality" placeholder="Enter Your Locality" required>
                 </div>
                 <div class="mb-3">
-                    <input type="number" class="form-control" id="pincode" maxlength="6" name="pincode" placeholder="Enter Your Pincode" required>
+                    <input type="number" class="form-control" id="pincode" minlength="6" maxlength="6" name="pincode" placeholder="Enter Your Pincode" required>
                 </div>
                 <div class="row">
                     <div class="col-6 mb-3">

@@ -665,7 +665,9 @@
             <div class="item-details">
                 
             <div class="d-flex justify-content-between align-items-center">
-              <h4>{{$dat['product_name']}}</h4>
+              <h4>{{ strlen($dat['product_name']) <= 16 ? $dat['product_name'] : substr($dat['product_name'], 0, 16) . '...' }}</h4>
+              
+              
 
                 
                 

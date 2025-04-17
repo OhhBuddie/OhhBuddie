@@ -364,7 +364,7 @@
             <div class="d-flex justify-content-around mt-3">
         
                     <div class="form-check" style="padding-left:0px;">
-                        <input class="form-check-input styled-radio" type="radio" name="type" id="home" value="home">
+                        <input class="form-check-input styled-radio" type="radio" name="type" id="home" value="home" checked>
                         <label class="form-check-label styled-label" for="home">
                             <i class="fas fa-home"></i> Home
                         </label>

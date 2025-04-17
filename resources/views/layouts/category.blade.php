@@ -377,7 +377,7 @@
     /* Responsive adjustments */
     @media (max-width: 480px) {
       .search-icon.open {
-        width: 1vw;
+        width: 38vw;
       }
     }
 

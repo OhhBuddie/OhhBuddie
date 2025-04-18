@@ -302,7 +302,8 @@ class CheckoutController extends Controller
             return redirect('/addtocart')->with('error', 'Transaction not found');
         }
 
-        return view('payment.payment-failure', compact('transaction'));
+        // return view('payment.payment-failure', compact('transaction'));
+        return redirect('/addtocart')->with('error', 'Transaction not found');
     }
 
     private function logPayUResponse(Request $request, $status)

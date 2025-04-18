@@ -246,12 +246,14 @@
                         </p>
                         
                         <!-- Size Dropdown (if required) -->
-                        <select class="form-control size-selector" id="size_{{ $wslt['id'] }}" style="margin: 7px 0px 0px;">
-                            <option value="">Select Size</option>
-                            @foreach($size_data as $size)
-                                <option value="{{ $size->id }}">{{ $size->size_name }}</option>
-                            @endforeach
-                        </select>
+                        @if($wslt['sid'] != 40)
+                            <select class="form-control size-selector" id="size_{{ $wslt['id'] }}" style="margin: 7px 0px 0px;">
+                                <option value="">Select Size</option>
+                                @foreach($size_data as $size)
+                                    <option value="{{ $size->size_name }}">{{ $size->size_name }}</option>
+                                @endforeach
+                            </select>
+                        @endif
         
                         <!-- Add to Cart Button -->
                         <a class="btn mt-2 move move addtobag" 
@@ -306,9 +308,9 @@
             
             function addToCart(product) {
                 let sizeDropdown = document.getElementById("size_" + product.id);
+                
                 let selectedSize = sizeDropdown ? sizeDropdown.value : null;
-            
-                if (!selectedSize) {
+                if (!selectedSize && product.sid != 40) {
                     alert("Please select a size");
                     return;
                 }
@@ -324,13 +326,14 @@
                         _token: token,
                         user_id: userId > 0 ? userId : 0,
                         temp_user_id: tempUserId,
-                        product_id: product.id,
+                        product_id: product.pid,
                         price: product.price,
                         gst_rate: product.gst_rate,
                         size_name: selectedSize,
                         color_name: product.color_name,
                         mrp: product.mrp,
                         quantity: 1,
+                        newid:product.id,
                     },
                     success: function (response) {
                         alert("Product added to cart successfully!");

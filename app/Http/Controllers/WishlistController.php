@@ -37,6 +37,8 @@ class WishlistController extends Controller
             $product = DB::table('products')->where('id',$wish->product_id)->latest()->first();
             $pp['wid'] = $wish->id;
             $pp['id'] = $product->id;
+            $pp['pid'] = $product->product_id;
+            $pp['sid'] = $product->sub_subcategory_id;
             $pp['images'] = $product->images;
             $pp['name'] = $product->product_name;
             $pp['mrp'] = $product->maximum_retail_price;
@@ -67,20 +69,20 @@ class WishlistController extends Controller
      */
     public function store(Request $request)
     {
+        $pdata = DB::table('products')->where('id',$request->product_id)->latest()->first();
         $wishlist = new Wishlist();
         $wishlist->temp_user_id = $request->temp_user_id;
         $wishlist->user_id = $request->user_id;
         $wishlist->product_id = $request->product_id;
+        $wishlist->product_uid = $pdata->product_id;
+        $wishlist->size_name = $pdata->size_name;
+
         $wishlist->save();
     
         DB::table('carts')->where('id', $request->ppid)->delete();
     
         return redirect()->url('/addtocart')->with(['toast_message' => 'Product Added to cart Successfully.']);
-        // return response()->json(['success' => true, 'redirect' => url('/addtocart')]);
-        // return redirect('/addtocart')->with([
-        //     'toast_message' => 'Product Added to cart Successfully.',
-        //     'toast_type' => 'danger' // optional: success / danger / info
-        // ]);
+
         
     }
         /**

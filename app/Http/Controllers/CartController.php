@@ -177,11 +177,10 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        // return $request;
         // Retrieve temp_user_id from request or generate a new one
         $tempUserId = $request->temp_user_id ?? uniqid('temp_', true);
         // return $tempUserId;
-        // Store temp_user_id in session (for guest users)
+
         session(['temp_user_id' => $tempUserId]);
     
         // If user is logged in, update cart with user_id
@@ -193,7 +192,6 @@ class CartController extends Controller
         }
         else
         {
-            // return 'b';
              $wishcnt = DB::table('wishlists')->where('temp_user_id',$tempUserId)->count();
         }
          
@@ -202,23 +200,18 @@ class CartController extends Controller
              DB::table('wishlists')
                 ->where(function ($query) use ($tempUserId) {
                     $query->where('temp_user_id', $tempUserId)
-                          ->orWhere('user_id', Auth::id());
+                          ->Where('user_id', Auth::id());
                 })
-                ->where('product_id', $request->product_id)
+                ->where('product_uid', $request->product_id)
+                // ->where('size_name', $request->size_name)
                 ->delete();
+                
+            
         }
         
         // Set shipping cost (Fixed to 0 for now)
         $shipping = 0;
-    
-        // Tax Calculation
 
-    
-        // Discount Calculation
-    
-        // Cart total value
-        
-        // return $request->product_id;
         
         $pdetail = DB::table('products')->where('product_id',$request->product_id)->where('size_name',$request->size_name)->latest()->first();
         
@@ -242,6 +235,7 @@ class CartController extends Controller
             'color_name' => $color_name,
             'size_name' => $request->size_name,
             'product_id' => $pdetail->id,
+            'product_uid' => $pdetail->product_id,
             'variation' => "NA",
             'price' => $request->price,
             'cart_value' => $cart_value,

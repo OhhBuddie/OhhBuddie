@@ -312,7 +312,7 @@
                     
                 @else
                     @foreach($products as $pdts)
-                    <div class="col-6"  data-created-at="{{ $pdts->created_at }}" data-price="{{ $pdts->portal_updated_price }}"  data-color="{{ $pdts->color_name }}"  data-size="{{ $pdts->size_name }}">
+                    <div class="col-6"  data-created-at="{{ $pdts->created_at }}" data-price="{{ $pdts->portal_updated_price }}"  data-color="{{ $pdts->color_name }}"  data-category="{{ $pdts->category_id }}">
                         <div class="card position-relative" style="border-radius: unset; background-color: white; color: black; border-radius: 10px;">
                             <!-- Product Image -->
                             <a  href="/product/{{ Crypt::encryptString($pdts->id) }}" style="text-decoration:none;">
@@ -433,12 +433,12 @@
                     <!--    </div>-->
                     <!--@endif-->
 
-                    <!--@if($products->first()->sub_subcategory_id != 40)-->
-                    <!--    <div class="filter-category" onclick="openSizeOptions()">-->
-                    <!--        <div>Category</div>-->
-                    <!--        <div class="chevron">›</div>-->
-                    <!--    </div>-->
-                    <!--@endif-->
+                    @if($products->first()->sub_subcategory_id != 40)
+                        <div class="filter-category" onclick="openSizeOptions()">
+                            <div>Category</div>
+                            <div class="chevron">›</div>
+                        </div>
+                    @endif
                     <div class="filter-category" onclick="openPriceOptions()">
                         <div>Price</div>
                         <div class="chevron">›</div>
@@ -465,6 +465,23 @@
                 <!--    </div>-->
                 <!--@endif-->
                 
+                @if($products->first()->sub_subcategory_id != 40)
+                <div id="sizeOptionsPanel" class="options-panel">
+                    <div class="size-options">
+                        @foreach($product_cat as $category)
+                            @php
+                                $cat_data = DB::table('categories')->where('id',$category->category_id)->latest()->first()
+                            @endphp
+                            <div class="category-option d-flex align-items-center gap-2 mb-2"
+                                 data-category="{{ $category->category_id }}"
+                                 style="cursor: pointer; padding: 5px; border-radius: 5px;">
+                                <input type="checkbox" name="category[]" id="category_{{ $category->category_id }}" value="{{ $category->category_id }}" style="display: none;">
+                                <span>{{ $cat_data->category }}</span>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+                 @endif
              
 
                 <!-- Price Options Panel -->
@@ -836,75 +853,75 @@
     <!--For Size Filter -->
     
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-                // Get all size filter options
-                const sizeOptions = document.querySelectorAll('.size-option');
-                
-                // Get the product cards
-                const productCards = document.querySelectorAll('.col-6');
-                
-                // Track active size filters
-                let activeSizeFilters = [];
-                
-                // Add event listeners to size options
-                sizeOptions.forEach(option => {
-                    option.addEventListener('click', function() {
-                        const size = this.dataset.size;
-                        const checkboxInput = this.querySelector('input[type="checkbox"]');
-                        
-                        // Toggle the checkbox state
-                        checkboxInput.checked = !checkboxInput.checked;
-                        
-                        // Toggle the active class
-                        this.classList.toggle('active');
-                        
-                        // Update active filters array
-                        if (checkboxInput.checked) {
-                            // Add size to active filters if not already present
-                            if (!activeSizeFilters.includes(size)) {
-                                activeSizeFilters.push(size);
-                            }
-                        } else {
-                            // Remove size from active filters
-                            activeSizeFilters = activeSizeFilters.filter(s => s !== size);
-                        }
-                        
-                        // Apply size filters
-                        if (activeSizeFilters.length > 0) {
-                            filterByMultipleSizes(activeSizeFilters);
-                        } else {
-                            // Show all products if no filters are active
-                            productCards.forEach(card => {
-                                card.style.display = 'block';
-                            });
-                        }
-                    });
-                });
-                
-                // Function to filter products by multiple sizes
-                function filterByMultipleSizes(sizes) {
-                    productCards.forEach(card => {
-                        const productSize = card.dataset.size;
-                        
-                        if (sizes.includes(productSize)) {
-                            card.style.display = 'block';
-                        } else {
-                            card.style.display = 'none';
-                        }
-                    });
+document.addEventListener('DOMContentLoaded', function() {
+    // Get all category filter options
+    const categoryOptions = document.querySelectorAll('.category-option');
+    
+    // Get the product cards
+    const productCards = document.querySelectorAll('.col-6');
+    
+    // Track active category filters
+    let activeCategoryFilters = [];
+    
+    // Add event listeners to category options
+    categoryOptions.forEach(option => {
+        option.addEventListener('click', function() {
+            const category = this.dataset.category;
+            const checkboxInput = this.querySelector('input[type="checkbox"]');
+            
+            // Toggle the checkbox state
+            checkboxInput.checked = !checkboxInput.checked;
+            
+            // Toggle the active class
+            this.classList.toggle('active');
+            
+            // Update active filters array
+            if (checkboxInput.checked) {
+                // Add category to active filters if not already present
+                if (!activeCategoryFilters.includes(category)) {
+                    activeCategoryFilters.push(category);
                 }
-                
-                // Add CSS for active state
-                const style = document.createElement('style');
-                style.textContent = `
-                    .size-option.active {
-                        background-color: #f0f0f0;
-                        font-weight: bold;
-                    }
-                `;
-                document.head.appendChild(style);
-            });
-    </script>
+            } else {
+                // Remove category from active filters
+                activeCategoryFilters = activeCategoryFilters.filter(c => c !== category);
+            }
+            
+            // Apply category filters
+            if (activeCategoryFilters.length > 0) {
+                filterByMultipleCategories(activeCategoryFilters);
+            } else {
+                // Show all products if no filters are active
+                productCards.forEach(card => {
+                    card.style.display = 'block';
+                });
+            }
+        });
+    });
+    
+    // Function to filter products by multiple categories
+    function filterByMultipleCategories(categories) {
+        productCards.forEach(card => {
+            const productCategory = card.dataset.category;
+            
+            if (categories.includes(productCategory)) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+    
+    // Add CSS for active state
+    const style = document.createElement('style');
+    style.textContent = `
+        .category-option.active {
+            background-color: #f0f0f0;
+            font-weight: bold;
+        }
+    `;
+    document.head.appendChild(style);
+});
+</script>
     
     
     <script>

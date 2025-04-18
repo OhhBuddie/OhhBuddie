@@ -603,10 +603,16 @@ class ProductController extends Controller
      public function allproducts(Product $product)
     {
         $sort = request('sort', 'latest');
+        $categoryFilter = request('category');
         
         $query = DB::table('products')
                     ->whereNotNull('product_name');
                     
+        if ($categoryFilter) {
+        $query->whereIn('category_id', $categoryFilter);
+    }
+    
+    
         if ($sort == 'latest') {
             $query->orderByDesc('created_at');
         } elseif ($sort == 'price_high_low') {
@@ -616,6 +622,8 @@ class ProductController extends Controller
         } else {
             $query->orderByDesc('id'); // Default sorting
         }
+        
+        
         
         $products = $query->get()
             ->groupBy('parent_id')

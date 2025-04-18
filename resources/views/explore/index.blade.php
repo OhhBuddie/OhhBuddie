@@ -221,7 +221,7 @@
         <!-- Left Sidebar -->
         <div class="sidebar">
             <ul>
-                <li><a href="#women-ethnic" class="active">Men</a></li>
+                <li class="active"><a href="#women-ethnic" class="active">Men</a></li>
                 <li><a href="#women-western">Women</a></li>
                 <li><a href="#men">Kids</a></li>
                 <!--<li><a href="#kids">Unisex</a></li>-->
@@ -514,11 +514,14 @@
                         </div>
                     </div>
                     <div class="product-wrapper">
-                        <div class="product">
-                            <img src="{{ $men6 }}"
-                                alt="Menswear">
-                            <h5>Plus Size</h5>
-                        </div>
+                        
+                        <a href="/plushsize?cat=1" style="text-decoration:none;">
+                            <div class="product">
+                                <img src="{{ $men6 }}"
+                                    alt="Menswear">
+                                <h5>Plus Size</h5>
+                            </div>
+                        </a>
                         <!--<div class="extra-products">-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://m.media-amazon.com/images/I/718phluzAFL._AC_UY1100_.jpg"-->
@@ -910,6 +913,7 @@
                         </div>
                     </div>
                     <div class="product-wrapper">
+                        
                         <div class="product">
                             <img src="{{ $Women6 }}"
                                 alt="Menswear">
@@ -935,11 +939,14 @@
                     </div>
                     
                     <div class="product-wrapper">
-                        <div class="product">
-                            <img src="{{ $Women7 }}"
-                                alt="Menswear">
-                            <h5>PlusSize</h5>
-                        </div>
+                        
+                        <a href="/plushsize?cat=38" style="text-decoration:none;">
+                            <div class="product">
+                                <img src="{{ $Women7 }}"
+                                    alt="Menswear">
+                                <h5>Plus Size</h5>
+                            </div>
+                        </a>
                         <!--<div class="extra-products">-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://m.media-amazon.com/images/I/718phluzAFL._AC_UY1100_.jpg"-->
@@ -967,11 +974,14 @@
                 <div class="products">
                     <!-- Topwear -->
                     <div class="product-wrapper">
+                        
+                        <a href="/category/{{ urlencode(Crypt::encryptString('89')) }}" style="text-decoration:none;">
                         <div class="product ">
                             <img src="{{ $kids1 }}"
                                 alt="Topwear">
                             <h5>Boy's Clothing</h5>
                         </div>
+                        </a>
                         <!--<div class="extra-products">-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://www.botnia.in/cdn/shop/files/5_41b6d8fa-fa23-4550-97f2-5161b85abcbd.png?v=1695274048"-->
@@ -993,11 +1003,14 @@
 
                     <!-- Bottomwear -->
                     <div class="product-wrapper">
+                        
+                        <a href="/category/{{ urlencode(Crypt::encryptString('90')) }}" style="text-decoration:none;">
                         <div class="product">
                             <img src="{{ $kids2 }}"
                                 alt="Bottomwear">
                             <h5>Girl's Clothing</h5>
                         </div>
+                        </a>
                         <!--<div class="extra-products">-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSo6BwptVmQ776VMueRkmI7GhTUDgRq5adaJA&s"-->
@@ -1019,11 +1032,13 @@
 
                     <!-- Kidswear -->
                     <div class="product-wrapper">
-                        <div class="product">
-                            <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Explore/Kids/Shoe.png"
-                                alt="Kidswear">
-                            <h5>Footwear</h5>
-                        </div>
+                        <a href="/category/{{ urlencode(Crypt::encryptString('91')) }}" style="text-decoration:none;">
+                            <div class="product">
+                                <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Explore/Kids/Shoe.png"
+                                    alt="Kidswear">
+                                <h5>Footwear</h5>
+                            </div>
+                        </a>    
                         <!--<div class="extra-products">-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://ramrajcotton.in/cdn/shop/products/1_fc2187ad-922f-4247-9e37-89737632e64c.jpg?v=1677146079"-->
@@ -1045,11 +1060,13 @@
 
                     <!-- Menswear -->
                     <div class="product-wrapper">
-                        <div class="product">
-                            <img src="{{ $kids3 }}"
-                                alt="Menswear">
-                            <h5>Infants</h5>
-                        </div>
+                        <a href="/category/{{ urlencode(Crypt::encryptString('92')) }}" style="text-decoration:none;">
+                            <div class="product">
+                                <img src="{{ $kids3 }}"
+                                    alt="Menswear">
+                                <h5>Infants</h5>
+                            </div>
+                        </a>
                         <!--<div class="extra-products">-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://m.media-amazon.com/images/I/718phluzAFL._AC_UY1100_.jpg"-->
@@ -1070,11 +1087,13 @@
                     </div>
                     
                     <div class="product-wrapper">
-                        <div class="product">
-                            <img src="{{ $kids4 }}"
-                                alt="Menswear">
-                            <h5>Kids Accessories</h5>
-                        </div>
+                        <a href="/category/{{ urlencode(Crypt::encryptString('93')) }}" style="text-decoration:none;">
+                            <div class="product">
+                                <img src="{{ $kids4 }}"
+                                    alt="Menswear">
+                                <h5>Kids Accessories</h5>
+                            </div>
+                        </a>
                         <!--<div class="extra-products">-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://m.media-amazon.com/images/I/718phluzAFL._AC_UY1100_.jpg"-->
@@ -1095,11 +1114,13 @@
                     </div>
                     
                     <div class="product-wrapper">
-                        <div class="product">
-                            <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Explore/Kids/Innerware.png"
-                                alt="Menswear">
-                            <h5>Innerwear</h5>
-                        </div>
+                        <a href="/category/{{ urlencode(Crypt::encryptString('94')) }}" style="text-decoration:none;">
+                            <div class="product">
+                                <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Explore/Kids/Innerware.png"
+                                    alt="Menswear">
+                                <h5>Innerwear</h5>
+                            </div>
+                        </a>
                         <!--<div class="extra-products">-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://m.media-amazon.com/images/I/718phluzAFL._AC_UY1100_.jpg"-->
@@ -1753,7 +1774,7 @@
 
                 document.querySelectorAll(".product.active").forEach(prod => {
                     prod.classList.remove("active");
-                    prod.style.transform = "scale(1)"; 
+                    // prod.style.transform = "scale(1)"; 
                 });
 
                 targetContainer.innerHTML = extraProductsContent;

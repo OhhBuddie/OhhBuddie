@@ -43,29 +43,7 @@
     </script>
     <!-- End Google Tag Manager -->
 
-   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-KCL2HTR9');</script>
-    <!-- End Google Tag Manager -->
-    
-    <!-- Meta Pixel Code -->
-    <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '2681722928691492');
-    fbq('track', 'PageView');
-    </script>
-   
-   
-   
+
     <style>
         /* Desktop specific styles */
         @media (min-width: 992px) {
@@ -347,7 +325,7 @@
         }
     
         .search-icon.open {
-          width: 18vw;
+          width: 38vw;
           border-color: var(--icon-color);
           transition-delay: var(--transition-speed);
         }
@@ -460,7 +438,7 @@
                     <div class="search-icon">
               
                         <div class="search-container">
-                            <input type="text" id="search-input" class="search-icon__input" placeholder="search ..." autocomplete="off" />
+                            <input type="text" id="search-input" class="search-icon__input" placeholder="search ..." />
                             <div id="search-results" class="search-results-dropdown" style="display: none;"></div>
                         </div>            
             
@@ -469,14 +447,10 @@
                         <div class="search-icon__wrapper">
                           <div class="search-icon__svg">
                             <!-- Search icon SVG -->
-                            <!--<svg class="search-icon__svg-search" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 50 50" fill="none">-->
-                            <!--  <circle cx="20" cy="20" r="9" stroke="white" stroke-width="2"/>-->
-                            <!--  <line x1="26" y1="26" x2="34" y2="34" stroke="white" stroke-width="2" stroke-linecap="round"/>-->
-                            <!--</svg>-->
-                            
-                            <a href="#" class="text-light search-icon__svg-search" style="font-size: 24px; font-weight: normal; margin-right: 20px;">
-                                <i class="fas fa-search"></i>
-                            </a>
+                            <svg class="search-icon__svg-search" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 50 50" fill="none">
+                              <circle cx="20" cy="20" r="9" stroke="white" stroke-width="2"/>
+                              <line x1="26" y1="26" x2="34" y2="34" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
                             
                             <!-- Close (X) icon SVG -->
                             <svg class="search-icon__svg-close" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 50 50" fill="none">
@@ -565,7 +539,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/allproduct">
+                    <a href="#search">
                         <i class="fa fa-shopping-cart"></i>
                         Shop
                     </a>
@@ -1012,40 +986,39 @@ $(document).ready(function() {
 
 
     <script>
-        // function toggleSearchBar() {
-        //     const searchInput = document.querySelector('.search-input');
-        //     searchInput.classList.toggle('active');
+        function toggleSearchBar() {
+            const searchInput = document.querySelector('.search-input');
+            searchInput.classList.toggle('active');
 
-        //     if (searchInput.classList.contains('active')) {
-        //         // Small delay to ensure transition works properly on mobile
-        //         setTimeout(() => {
-        //             searchInput.focus();
-        //         }, 50);
-        //     }
-        // }
+            if (searchInput.classList.contains('active')) {
+                // Small delay to ensure transition works properly on mobile
+                setTimeout(() => {
+                    searchInput.focus();
+                }, 50);
+            }
+        }
 
-        // // Close search when clicking outside (optional but helpful on mobile)
-        // document.addEventListener('click', function(event) {
-        //     const searchContainer = document.querySelector('.search-container');
-        //     const searchInput = document.querySelector('.search-input');
+        // Close search when clicking outside (optional but helpful on mobile)
+        document.addEventListener('click', function(event) {
+            const searchContainer = document.querySelector('.search-container');
+            const searchInput = document.querySelector('.search-input');
 
-        //     if (!searchContainer.contains(event.target) && searchInput.classList.contains('active')) {
-        //         searchInput.classList.remove('active');
-        //     }
-        // });
+            if (!searchContainer.contains(event.target) && searchInput.classList.contains('active')) {
+                searchInput.classList.remove('active');
+            }
+        });
 
-        // // Prevent the search container click from closing the search
-        // document.querySelector('.search-container').addEventListener('click', function(event) {
-        //     event.stopPropagation();
-        // });
+        // Prevent the search container click from closing the search
+        document.querySelector('.search-container').addEventListener('click', function(event) {
+            event.stopPropagation();
+        });
     </script>
 
     <!-------Body  Section------>
-        <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCL2HTR9" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-    
-    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2681722928691492&ev=PageView&noscript=1"/></noscript>
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCL2HTR9" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
 
 </body>
 

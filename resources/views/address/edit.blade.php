@@ -64,10 +64,10 @@
 
         .form-control:focus {
             outline: none;
-            border: 2px solid var(--primary-color);
+            /*border: 2px solid var(--primary-color);*/
             box-shadow: none;
-            background-color: black;
-            color: white;
+            /*background-color: black;*/
+            /*color: white;*/
         }
 
         .form-check-label {

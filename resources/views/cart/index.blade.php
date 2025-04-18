@@ -9,6 +9,19 @@
   <link rel="icon" type="image/x-icon" href="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Ohbuddielogo.png">
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '2681722928691492');
+    fbq('track', 'PageView');
+    </script>
 
   <style>
     * {
@@ -245,6 +258,14 @@
             color: black !important ;
             background-color: #efc475 !important;
             --bs-btn-border-color: none;
+        }
+        .bg-dangerr {
+            /* --bs-bg-opacity: 1; */
+             background-color: #efc475 !important; 
+        }
+        .text-dangerr{
+            /*background-color: #efc475 !important; */
+            color: black !important ;
         }
     </style>
     
@@ -493,6 +514,110 @@
             }
         }
     </style>
+        <link rel="icon" type="image/x-icon" href="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Ohbuddielogo.png">
+    <link rel="stylesheet" href="{{ asset('public/assets/css/style.css') }}"> 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
+     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    
+    <style>
+         .navbar-fixed-top {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1030;
+            background: black;
+            /*border-bottom: 1px solid #ddd;*/
+        }
+        .header {
+            padding: 16px;
+            font-size: 16px;
+            font-weight: bold;
+            color:white;
+        }
+
+        .card{
+             border-radius: 8px;
+             background: white; 
+             color: black;
+            
+        }
+        
+        .card img{
+            border-radius: unset;
+            height: 25vh;
+        }
+        
+        .card-text{
+            font-size: 13px;
+        }
+        
+        .card-body{
+   
+            display: flex;
+            padding: 5px 10px 10px 10px;
+            flex-direction: column;
+        }
+        .price-wishlist {
+            display: flex;
+           
+            justify-content: space-between;
+        }
+
+        .wishlist-icon {
+            font-size: 1.2rem;
+            color: gray;
+            cursor: pointer;
+        }
+
+        .wishlist-icon.selected {
+            color: #dc3545;
+        }
+        
+        .rating{
+            bottom: 215px; right: 10px; background-color:#04AA6D; color: white; padding: 2px 8px; border-radius: 12px; font-size: 14px;
+        }
+        
+        .move{
+             background-color: black; 
+             color: var(--primary-color); 
+             border:1px solid #333; 
+             width: 100%;
+        }
+        
+        .col-6{
+            width: 49%;
+        }
+        
+        .form-control{
+            border: var(--bs-border-width) solid black;
+        }
+        
+        .size-selector {
+            appearance: none; /* Hides the default arrow */
+            -webkit-appearance: none; /* Safari fix */
+            -moz-appearance: none; /* Firefox fix */
+            background: url('https://cdn-icons-png.flaticon.com/16/32/32195.png') no-repeat right 10px center;
+            background-size: 16px;
+            padding-right: 30px; /* Ensures text doesn't overlap arrow */
+            cursor: pointer;
+        }
+
+
+    </style>
+            <style>
+        .translate-middle {
+            transform: translate(-50%, -42%) !important;
+        }
+        
+        .badge {
+        --bs-badge-padding-x: 0.45em;
+        --bs-badge-padding-y: 0.25em;
+        --bs-badge-font-size: 0.65em;
+        
+        }
+    </style>
 </head>
 <body>
     
@@ -662,22 +787,37 @@
     <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Blank+Pages/Empty.jpg" style="object-fit:fill; width:100%; height:88vh;">
     @else
         @foreach($cart_details as $dat)
+        
+            @php
+                $brnd_cnt = DB::table('brands')->where('id',$dat['brand_id'])->count();
+                if($brnd_cnt > 0)
+                {
+                    $brnd_name = DB::table('brands')->where('id',$dat['brand_id'])->latest()->first();
+                }
+                
+                
+           @endphp
           <div class="cart-item">
             <div class="cart-item-img">
               <img src="{{$dat['image']}}" alt="Product Image">
-              <input class="form-check-input" type="checkbox" id="defaultAddress" style="position: absolute; left: 0;">
-              
+              <!--<input class="form-check-input" type="checkbox" id="defaultAddress" style="position: absolute; left: 0;">-->
+              <input class="form-check-input product-checkbox" type="checkbox" data-cartid="{{ $dat['id'] }}" style="position: absolute; left: 0;">
+
               
             </div>
             <div class="item-details">
                 
             <div class="d-flex justify-content-between align-items-center">
-              <h4>{{ strlen($dat['product_name']) <= 20 ? $dat['product_name'] : substr($dat['product_name'], 0, 20) . '...' }}</h4>
-              
-              
-
+            
+       
+             <h4>
+                @if($brnd_cnt != 0)
+                    <span style="text-transform: uppercase;">{{ $brnd_name->brand_name }}</span> -
+                @endif
                 
-                
+                {{ strlen($dat['product_name']) <= 20 ? $dat['product_name'] : substr($dat['product_name'], 0, 20) . '...' }}
+            </h4>
+              
                 <!-- Remove Button (Triggers Modal) -->
                 <button type="button" data-bs-toggle="modal" data-bs-target="#removeModal{{$dat['id']}}" style="background-color:transparent; border:none; color:white; text-decoration:underline; margin-bottom:5px;">
                     Remove
@@ -687,12 +827,12 @@
                 <div class="modal fade" id="removeModal{{$dat['id']}}" tabindex="-1" aria-labelledby="removeModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content shadow-lg border-0 rounded-4">
-                            <div class="modal-header bg-danger text-white rounded-top">
+                            <div class="modal-header bg-dangerr text-white rounded-top">
                                 <h5 class="modal-title fw-bold" id="removeModalLabel">Confirm Removal</h5>
                                 <button type="button" class="btn-close btn-close-dark" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body text-center py-4">
-                                <i class="fas fa-exclamation-circle text-danger fs-1 mb-3"></i>
+                                <i class="fas fa-exclamation-circle text-dangerr fs-1 mb-3"></i>
                                 <p class="fs-5 text-muted">Are you sure you want to remove this product?</p>
                             </div>
                             <div class="modal-footer d-flex justify-content-center border-0 pb-4">
@@ -744,6 +884,7 @@
                 Qty:
                 <select class="update-quantity" data-cartid="{{$dat['id']}}" data-price="{{$dat['cart_value']}}">
                     @foreach($pdtqty as $pdqt)
+                     <option value="{{$dat['quantity']}}" style="font-size:10px;">{{$dat['quantity']}}</option>
                         @for($i = 1; $i <= $pdqt->stock_quantity; $i++)
                             <option value="{{ $i }}" style="font-size:10px;" {{ $i == $dat['quantity'] ? 'selected' : '' }}>
                                 {{ $i }}
@@ -754,7 +895,7 @@
             </p>
                 </div>
 
-                
+              <
               <p class="price"><strike style="color:grey;">Rs. {{$dat['mrp']}}</strike> <span class="discount">Rs. {{$dat['price']}}</span></p>
               <p>Discount: Rs. {{$dat['discount']}}</p>
               <p class="d-flex">Total: Rs.<span class="price-value">{{$dat['cart_value']}}</span> </p>
@@ -883,48 +1024,111 @@
             
             <div class="suggested-products">
                 
-            @foreach($may_like as $may)
-            
-                @php
-                    $brnd_cnt = DB::table('brands')->where('id',$may->brand_id)->count();
-                    if($brnd_cnt > 0)
-                    {
-                        $brnd_name = DB::table('brands')->where('id',$may->brand_id)->latest()->first();
-                    }
-                    
-                    
-               @endphp
-            <a  href="/product/{{ Crypt::encryptString($may->id) }}" style="text-decoration:none;">
-                  <div class="product-card">
-                    @php
-                        $images = json_decode($may->images, true);
-                    @endphp
-                    
-                    <a href="/product/{{ Crypt::encryptString($may->id) }}" style="text-decoration:none;">
-                        @if(is_array($images) && isset($images[0]))
-                            <img src="{{ $images[0] }}" alt="Image">
-                        @else
-                            <img src="/default-image.jpg" alt="No Image Available">
-                        @endif
-                    
+                
+    <!----Started here-->
+                
+    <div class="container" style="padding: 10px; margin-top: 0px;">
+    
+    @if(!$wish_list)
+        <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Blank+Pages/Whishlish+is+Empty.jpg" 
+             style="width: 100%; height: calc( 100vh - 60px); display: block; margin: 0px; border-radius: 8px;">
+    @endif
 
+    @if($wish_list)
+    <div class="d-flex overflow-auto flex-nowrap" style="gap: 10px; padding: 10px;">
+        @foreach($wish_list as $wslt)
+            @php
+                $mrp = $wslt['mrp'];
+                $sellingPrice = $wslt['price'];
+                $discount = $mrp > 0 ? round((($mrp - $sellingPrice) / $mrp) * 100) : 0;
+                $images = json_decode($wslt['images'], true);
+                $size_data = DB::table('products')->select('id','size_name')->where('product_id',$wslt['pid'])->latest()->get();
+            @endphp
+            
         
-                            <p class="font-weight-bold" style="color:white; margin: 10px 0px 0px;">
-                                <span style="text-transform: uppercase;">
-                                    @if($brnd_cnt == 0)
-                                    @else
-                                   {{ $brnd_name->brand_name }}
-                                    @endif
-                                    </span> {{ $may->product_name }}
-                            </p>
-                                
+            @php
+                $brnd_cnt = DB::table('brands')->where('id',$wslt['brand_id'])->count();
+                if($brnd_cnt > 0)
+                {
+                    $brnd_name = DB::table('brands')->where('id',$wslt['brand_id'])->latest()->first();
+                }
+                
+                
+           @endphp
+
+            <div style="min-width: 165px;">
+                <div class="card position-relative" style="border: none; background-color: #000; color: #fff; border: 1px solid white; border-radius: 8px;">
+
+                    @if(!empty($images) && isset($images[0]))
+                        <img src="{{ $images[0] }}" class="card-img-top product-img" alt="Image" style="height: 200px; object-fit: cover; border-radius: 8px; object-fit:fill">
+                    @endif
+                  
+
+                    <div class="card-body p-2">
+                        <h6 class="card-title m-0" title="{{ $wslt['name'] }}">
+                            @if($brnd_cnt != 0)
+                                <span style="text-transform: uppercase;"><b>{{ $brnd_name->brand_name }}</b></span> 
+                            @endif
+                            <br>
+                            {{ strlen($wslt['name']) <= 16 ? $wslt['name'] : substr($wslt['name'], 0, 16) . '...' }}
+                        </h6>
+                        <p class="card-text m-0" style="font-size: 13px;">
+                            MRP Rs. <span class="text-decoration-line-through">{{ $mrp }}</span>
+                            Rs. {{ $sellingPrice }}<br>
+                            <!--<span class="discount">{{ $discount }}% OFF</span>-->
+                        </p>
+
+                        @if($wslt['sid'] != 40)
+                            <select class="form-control size-selector mt-1" id="size_{{ $wslt['id'] }}" style="font-size: 12px; background-color:white; color: black;">
+                                <option value="">Select Size</option>
+                                @foreach($size_data as $size)
+                                    <option value="{{ $size->size_name }}">{{ $size->size_name }}</option>
+                                @endforeach
+                            </select>
+                        @else
+ 
+                        @endif
                         
-                        <!--<p class="text-uppercase font-weight-bold" style="color:white">{{$may->maximum_retail_price}}</p>-->
-                        <!--<span class="price">Rs. 499</span><br>-->
-                        <!--<span class="discount"><strike style="color:grey;">Rs. 999</strike> 50% OFF</span>-->
-                      </div>
-                  </a>
-             @endforeach
+                        @if($wslt['sid'] != 40)
+                        <a class="btn btn-sm mt-2 move move addtobag w-100" 
+                           style="background-color: #efc475; color: black;" 
+                           onclick="addToCart({{ json_encode($wslt) }})">
+                           Move to Cart
+                        </a>
+                        @else
+                         <a class="btn btn-sm move move addtobag w-100" 
+                           style="background-color: #efc475; color: black; margin-top:44px; " 
+                           onclick="addToCart({{ json_encode($wslt) }})">
+                           Move to Cart
+                        </a>
+                        @endif
+
+
+
+                        </div>
+                </div>
+            </div>
+        @endforeach
+    </div>
+    @endif
+</div>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+
             </div>
           </div>
       
@@ -1002,7 +1206,7 @@
 
             
             <div class="terms" style="text-align: center;">
-                By placing the order, you agree to Ohbuddie's <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a>.
+                By placing the order, you agree to Ohbuddie's <a href="/terms-and-condition">Terms of Use</a> and <a href="/privacy-policy">Privacy Policy</a>.
             </div>
     </div>
 
@@ -1032,6 +1236,144 @@
    @endif
 </div>
     <input type="hidden" id="aid">
+    
+    
+    
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <script>
+        // Toggle wishlist icon color
+        function toggleWishlist(icon) {
+            icon.classList.toggle('selected');
+        }
+    </script>
+    
+        <script>
+            function goBackAndRefresh() {
+                window.location.href = '/addtocart';
+                setTimeout(function () {
+                    location.reload();
+                }, 500); // Reloads after going back
+            }
+        </script>
+
+
+       <script>
+                
+            document.addEventListener("DOMContentLoaded", function () {
+                let tempUserId = localStorage.getItem("temp_user_id") || getCookie("temp_user_id");
+            
+                if (!tempUserId) {
+                    tempUserId = "temp_" + new Date().getTime();
+                    localStorage.setItem("temp_user_id", tempUserId);
+                    document.cookie = `temp_user_id=${tempUserId}; path=/;`;
+                }
+            });
+            
+            function addToCart(product) {
+                let sizeDropdown = document.getElementById("size_" + product.id);
+                
+                let selectedSize = sizeDropdown ? sizeDropdown.value : null;
+                if (!selectedSize && product.sid != 40) {
+                    alert("Please select a size");
+                    return;
+                }
+            
+                let tempUserId = localStorage.getItem("temp_user_id") || getCookie("temp_user_id");
+                let userId = "{{ Auth::check() ? Auth::user()->id : 0 }}";
+                let token = "{{ csrf_token() }}";
+            
+                $.ajax({
+                    url: "{{ route('cart.store') }}",
+                    type: "POST",
+                    data: {
+                        _token: token,
+                        user_id: userId > 0 ? userId : 0,
+                        temp_user_id: tempUserId,
+                        product_id: product.pid,
+                        price: product.price,
+                        gst_rate: product.gst_rate,
+                        size_name: selectedSize,
+                        color_name: product.color_name,
+                        mrp: product.mrp,
+                        quantity: 1,
+                        newid:product.id,
+                    },
+                    success: function (response) {
+                        alert("Product added to cart successfully!");
+                        window.location.reload();
+                        localStorage.setItem("temp_user_id", response.temp_user_id);
+                        document.cookie = `temp_user_id=${response.temp_user_id}; path=/;`;
+                        onAddToCartSuccess();
+                        
+                    },
+                    error: function (xhr) {
+                        console.log(xhr.responseText);
+                        alert("Something went wrong! Please try again.");
+                    }
+                });
+            }
+            
+            // Function to get cookie value
+            function getCookie(name) {
+                let matches = document.cookie.match(new RegExp(
+                    "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+                ));
+                return matches ? decodeURIComponent(matches[1]) : undefined;
+            }
+    </script>
+    
+     <script>
+        document.addEventListener("DOMContentLoaded", function () {
+        let tempUserId = localStorage.getItem("temp_user_id") || getCookie("temp_user_id");
+    
+        if (!tempUserId) {
+            tempUserId = "temp_" + new Date().getTime();
+            localStorage.setItem("temp_user_id", tempUserId);
+            document.cookie = `temp_user_id=${tempUserId}; path=/;`;
+        }
+    
+        updateCartCount(tempUserId);
+    
+        // Poll server every 5 seconds for real-time updates
+        setInterval(() => {
+            updateCartCount(tempUserId);
+        }, 5000);
+    });
+    
+    // Function to fetch cart count
+    function updateCartCount(tempUserId) {
+        fetch(`/cart/count?temp_user_id=${tempUserId}`)
+            .then(response => response.json())
+            .then(data => {
+                let cartCountElement = document.querySelector(".bag-count");
+                if (cartCountElement) {
+                    cartCountElement.textContent = data.count;
+                }
+            });
+    }
+    
+    // Function to get cookie value
+    function getCookie(name) {
+        let matches = document.cookie.match(new RegExp(
+            "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+        ));
+        return matches ? decodeURIComponent(matches[1]) : undefined;
+    }
+    
+    // Function to call after adding to cart
+    function onAddToCartSuccess() {
+        let tempUserId = localStorage.getItem("temp_user_id") || getCookie("temp_user_id");
+        updateCartCount(tempUserId); // Update immediately after adding an item
+    }
+
+    </script>
+    
+    
+    
+    
+    
+    
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
@@ -1516,5 +1858,13 @@
         });
     </script>
 @endif
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCL2HTR9"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=2681722928691492&ev=PageView&noscript=1"
+    /></noscript>
 </body>
 </html>

@@ -88,6 +88,7 @@ class CartController extends Controller
                 'cart_value' => $cdats->cart_value,
                 'id' => $cdats->id,
                 'pid' => $product->id,
+                'brand_id' => $product->brand_id,
                 'idp' => $product->product_id,
                 'cart_value' => $cdats->cart_value,
                 'user_id' => $cdats->user_id,
@@ -148,10 +149,29 @@ class CartController extends Controller
                                 })
                                 ->flatten();  
     
-        // return $may_like;
+    
+    
+    
+        $wish_list = [];
+        foreach($may_like as $wish)
+        {
+            $product = DB::table('products')->where('id',$wish->id)->latest()->first();
+            $pp['wid'] = $wish->id;
+            $pp['id'] = $product->id;
+            $pp['pid'] = $product->product_id;
+            $pp['sid'] = $product->sub_subcategory_id;
+            $pp['images'] = $product->images;
+            $pp['name'] = $product->product_name;
+            $pp['mrp'] = $product->maximum_retail_price;
+            $pp['price'] = $product->portal_updated_price;
+            $pp['pid'] = $product->product_id;
+            $pp['brand_id'] = $product->brand_id;
+            $wish_list[] = $pp;
+        }
+    
         // return $may_like;
         return view('cart.index', compact(
-            'address', 'ad_cnt', 'cart_data', 'cart_details','total_price', 'total_qty', 'total_mrp', 'total_discount','total_shipping', 'total_tax','may_like'
+            'address', 'ad_cnt', 'cart_data', 'cart_details','total_price', 'total_qty', 'total_mrp', 'total_discount','total_shipping', 'total_tax','may_like','wish_list'
         ));
     }
 

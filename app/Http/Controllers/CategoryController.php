@@ -32,11 +32,16 @@ class CategoryController extends Controller
                 
         if (is_numeric($category)) {
 
-            
-            if($category == 88 || $category == 1 || $category == 38)
+             if($category == 88 || $category == 1)
             {
               $query = DB::table('products')
                 ->where('category_id', $category)
+                ->whereNotNull('product_name');
+            }
+            elseif( $category == 89 || $category == 90 || $category == 91 || $category == 92 || $category == 93 || $category == 94 )
+            {
+              $query = DB::table('products')
+                ->where('subcategory_id', $category)
                 ->whereNotNull('product_name');
             }
             else

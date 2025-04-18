@@ -600,7 +600,7 @@ class ProductController extends Controller
         //
     }
     
-     public function allproducts(Product $product)
+    public function allproducts(Product $product)
     {
         $sort = request('sort', 'latest');
         $categoryFilter = request('category');
@@ -652,6 +652,65 @@ class ProductController extends Controller
             ->get();
                             
         return view('product.allproduct', compact('products','sort','product_size','product_cat'));
+
+    }
+    
+    public function plussizeproducts(Product $product, Request $request)
+    {
+        $sort = request('sort', 'latest');
+        
+    //   return $request->cat;
+        
+        $query = DB::table('products')
+                    ->whereNotNull('product_name');
+                    
+       
+    
+    
+        if ($sort == 'latest') {
+            $query->orderByDesc('created_at');
+        } elseif ($sort == 'price_high_low') {
+            $query->orderByDesc('portal_updated_price');
+        } elseif ($sort == 'price_low_high') {
+            $query->orderBy('portal_updated_price');
+        } else {
+            $query->orderByDesc('id'); // Default sorting
+        }
+        
+        
+        
+        $products = $query->get()
+                    ->filter(function ($item) use ($request) {
+                        return in_array($item->size_name, ['4XL', '5XL', '6XL', '7XL', "48", "50", "52", "54", "56"]) &&
+                               $item->category_id == $request->cat;
+                    })
+                    ->groupBy('parent_id')
+                    ->map(function ($group) {
+                        return $group->groupBy('color_name')->map(function ($colorGroup) {
+                            // Pick only one item if multiple sizes exist for same parent_id and color_name
+                            if ($colorGroup->count() > 1) {
+                                return $colorGroup->first(); 
+                            }
+                            return $colorGroup;
+                        })->values();
+                    })->flatten();
+
+                    
+        $product_cat = DB::table('products')
+            ->select('category_id')
+            ->whereNotNull('product_name')
+            ->distinct('category_id')
+            ->get();
+         
+       $product_size = DB::table('products')
+            ->select('size_name')
+            ->whereIn('sub_subcategory_id', [25, 26, 27, 28, 71, 72, 73])
+            ->whereNotNull('product_name')
+            ->distinct()
+            ->orderByRaw('CAST(size_name AS UNSIGNED) ASC') // Convert to number before sorting
+            ->get();
+                            
+        return view('product.plussize', compact('products','sort','product_size','product_cat'));
 
     }
 }

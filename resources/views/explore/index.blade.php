@@ -913,12 +913,13 @@
                         </div>
                     </div>
                     <div class="product-wrapper">
-                        
-                        <div class="product">
-                            <img src="{{ $Women6 }}"
-                                alt="Menswear">
-                            <h5>Maternity Wear</h5>
-                        </div>
+                        <a href="/category/{{ urlencode(Crypt::encryptString('95')) }}" style="text-decoration:none;">
+                            <div class="product">
+                                <img src="{{ $Women6 }}"
+                                    alt="Menswear">
+                                <h5>Maternity Wear</h5>
+                            </div>
+                        </a>    
                         <!--<div class="extra-products">-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://m.media-amazon.com/images/I/718phluzAFL._AC_UY1100_.jpg"-->

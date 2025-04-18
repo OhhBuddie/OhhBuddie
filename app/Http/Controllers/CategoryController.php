@@ -38,7 +38,7 @@ class CategoryController extends Controller
                 ->where('category_id', $category)
                 ->whereNotNull('product_name');
             }
-            elseif( $category == 89 || $category == 90 || $category == 91 || $category == 92 || $category == 93 || $category == 94 )
+            elseif( $category == 89 || $category == 90 || $category == 91 || $category == 92 || $category == 93 || $category == 94 || $category == 95)
             {
               $query = DB::table('products')
                 ->where('subcategory_id', $category)

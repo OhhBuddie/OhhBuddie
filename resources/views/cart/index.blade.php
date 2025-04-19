@@ -617,6 +617,11 @@
         --bs-badge-font-size: 0.65em;
         
         }
+        
+        .form-check-input:checked {
+            background-color: #08ADc5;
+             border-color: #08ADc5; 
+            }
     </style>
 </head>
 <body>
@@ -801,7 +806,7 @@
             <div class="cart-item-img">
               <img src="{{$dat['image']}}" alt="Product Image">
               <!--<input class="form-check-input" type="checkbox" id="defaultAddress" style="position: absolute; left: 0;">-->
-              <input class="form-check-input product-checkbox" type="checkbox" data-cartid="{{ $dat['id'] }}" style="position: absolute; left: 0;">
+              <input class="form-check-input product-checkbox" type="checkbox" data-cartid="{{ $dat['id'] }}" style="position: absolute; left: 4px;" checked>
 
               
             </div>
@@ -894,8 +899,6 @@
                 </select>
             </p>
                 </div>
-
-              <
               <p class="price"><strike style="color:grey;">Rs. {{$dat['mrp']}}</strike> <span class="discount">Rs. {{$dat['price']}}</span></p>
               <p>Discount: Rs. {{$dat['discount']}}</p>
               <p class="d-flex">Total: Rs.<span class="price-value">{{$dat['cart_value']}}</span> </p>
@@ -1112,18 +1115,6 @@
     </div>
     @endif
 </div>
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
                 
                 
                 
@@ -1858,6 +1849,79 @@
         });
     </script>
 @endif
+
+<!--CheckBOX -->
+
+<script>
+    function updateCheckoutData() {
+        let selectedProducts = [];
+        let totalPrice = 0;
+        let totalMrp = 0;
+        let totalDiscount = 0;
+        let totalQty = 0;
+
+        $('.product-checkbox:checked').each(function () {
+            let cartId = $(this).data('cartid');
+            let productElement = $(this).closest('.cart-item');
+            
+            let quantity = parseInt(productElement.find('.update-quantity').val());
+            let price = parseFloat(productElement.find('.update-quantity').data('price'));
+            let mrp = parseFloat(productElement.find('strike').text().replace('Rs.', '').trim());
+            let discount = parseFloat(productElement.find('.discount').text().replace('Rs.', '').trim());
+
+            totalQty += quantity;
+            totalPrice += (price * quantity);
+            totalMrp += (mrp * quantity);
+            totalDiscount += (discount * quantity);
+
+            selectedProducts.push({
+                cart_id: cartId,
+                quantity: quantity
+            });
+        });
+
+        // Handle shipping and final price
+        let shippingFee = 0;
+        if (totalPrice >= 200 && totalPrice <= 499) {
+            shippingFee = 49;
+        } else if (totalPrice >= 500 && totalPrice <= 749) {
+            shippingFee = 29;
+        }
+
+        let finalPayable = totalPrice + shippingFee;
+
+        // Update form hidden inputs
+        $('#products').val(JSON.stringify(selectedProducts));
+        $('input[name="total_mrp"]').val(totalMrp);
+        $('input[name="total_price"]').val(totalPrice);
+        $('input[name="total_discount"]').val(totalDiscount);
+        $('input[name="total_payable"]').val(finalPayable);
+
+        // Update UI display if needed
+        $('.total').text(`${totalQty} Items Selected (Rs. ${totalPrice})`);
+    }
+
+    // Trigger on checkbox, quantity, or size change
+    $(document).on('change', '.product-checkbox, .update-quantity, .update-size', function () {
+        updateCheckoutData();
+    });
+
+    // Trigger once on page load too
+    $(document).ready(function () {
+        updateCheckoutData();
+    });
+    
+    
+    
+    $('#placeOrderBtn').on('click', function(e) {
+    if ($('.product-checkbox:checked').length === 0) {
+        alert('Please select at least one product to proceed.');
+        e.preventDefault();
+    }
+});
+
+</script>
+
 
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCL2HTR9"

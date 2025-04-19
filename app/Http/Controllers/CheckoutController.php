@@ -105,7 +105,33 @@ class CheckoutController extends Controller
 
         $order_id = 'OBD-ODR-' . now()->year . '-' . now()->format('YdmHis');
         
+        // $products = json_decode($request->products, true);
+        
         $products = json_decode($request->products, true);
+
+foreach ($products as $item) {
+    $cart_id = $item['cart_id'];
+    $quantity = $item['quantity'];
+
+    $cartItem = DB::table('carts')->where('id', $cart_id)->latest()->first();
+    $product = DB::table('products')->where('id', $cartItem->product_id)->latest()->first();
+
+    OrderDetail::create([
+        'order_id' => $order->id,
+        'product_id' => $cartItem->product_id,
+        'seller_id' => $product->seller_id,
+        'cart_id' => $cart_id,
+        'quantity' => $quantity,
+        'price' => $request->total_price / count($products),
+        'tax' => $request->total_tax / count($products),
+        'payment_status' => 'Pending',
+        'delivery_status' => 'Order Confirmed',
+        'shipping_cost' => $shipping_cost,
+        'created_at' => now(),
+        'updated_at' => now(),
+    ]);
+}
+
         
         // return $products;
 
@@ -130,24 +156,24 @@ class CheckoutController extends Controller
         ]);
 
 
-        foreach ($products as $product_id => $quantity) {
-            $pid = DB::table('carts')->where('id', $product_id)->latest()->first();
-            $seller_id = DB::table('products')->where('id', $pid->product_id)->latest()->first();
-            OrderDetail::create([
-                'order_id' => $order->id,
-                'product_id' => $pid->product_id,
-                'seller_id' => $seller_id->seller_id,
-                'cart_id' => $product_id,
-                'quantity' => $quantity,
-                'price' => $request->total_price / count($products),
-                'tax' => $request->total_tax / count($products),
-                'payment_status' => 'Pending',
-                'delivery_status' => 'Order Confirmed',
-                'shipping_cost' => $shipping_cost,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ]);
-        }
+        // foreach ($products as $product_id => $quantity) {
+        //     $pid = DB::table('carts')->where('id', $product_id)->latest()->first();
+        //     $seller_id = DB::table('products')->where('id', $pid->product_id)->latest()->first();
+        //     OrderDetail::create([
+        //         'order_id' => $order->id,
+        //         'product_id' => $pid->product_id,
+        //         'seller_id' => $seller_id->seller_id,
+        //         'cart_id' => $product_id,
+        //         'quantity' => $quantity,
+        //         'price' => $request->total_price / count($products),
+        //         'tax' => $request->total_tax / count($products),
+        //         'payment_status' => 'Pending',
+        //         'delivery_status' => 'Order Confirmed',
+        //         'shipping_cost' => $shipping_cost,
+        //         'created_at' => now(),
+        //         'updated_at' => now(),
+        //     ]);
+        // }
 
         // Pay U Payments
 

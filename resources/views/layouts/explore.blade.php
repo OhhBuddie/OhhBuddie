@@ -518,7 +518,7 @@
         <ul>
             &nbsp;
             <li>
-                <a href="/welcome">
+                <a href="/">
                     <i class="fas fa-home"></i>
                     Home
                 </a>

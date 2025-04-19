@@ -142,20 +142,45 @@ class UserController extends Controller
         ]);
     
         // Handle profile photo upload
+        // if ($request->hasFile('profile_photo')) {
+        //     $file = $request->file('profile_photo');
+        //     $filename = time() . '_' . $file->getClientOriginalName();
+        //     $filepath = 'uploads/profile_photos/';
+    
+        //     // Store the file in public/storage/uploads/profile_photos
+        //     $filePath = $file->storeAs($filepath, $filename, 'public');
+    
+        //     // Set new file path in DB
+        //     $profile_photo = 'public/storage/' . $filePath;
+        // } else {
+        //     // Keep the old profile photo if no new file is uploaded
+        //     $profile_photo = $user->profile_photo;
+        // }
+        
         if ($request->hasFile('profile_photo')) {
             $file = $request->file('profile_photo');
+        
+            // Define the S3 folder path, e.g., using user ID or a generic folder
+            $folderPath = 'profile_photos/' . $user->id;
+        
+            // Ensure the folder exists (not needed for S3, but for clarity)
+            if (!Storage::disk('s3')->exists($folderPath)) {
+                Storage::disk('s3')->makeDirectory($folderPath);
+            }
+                    
+            // Generate a unique filename
             $filename = time() . '_' . $file->getClientOriginalName();
-            $filepath = 'uploads/profile_photos/';
-    
-            // Store the file in public/storage/uploads/profile_photos
-            $filePath = $file->storeAs($filepath, $filename, 'public');
-    
-            // Set new file path in DB
-            $profile_photo = 'public/storage/' . $filePath;
+        
+            // Upload to S3
+            $filePath = $file->storeAs($folderPath, $filename, 's3');
+        
+            // Get the public URL
+            $profile_photo = Storage::disk('s3')->url($filePath);
         } else {
             // Keep the old profile photo if no new file is uploaded
             $profile_photo = $user->profile_photo;
         }
+
     
         // Update user record
         DB::table('users')->where('id', $id)->update([

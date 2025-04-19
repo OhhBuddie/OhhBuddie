@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
     <title>OhhBuddie | Product</title>
     
      <link rel="icon" type="image/x-icon" href="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Ohbuddielogo.png">
@@ -383,7 +385,7 @@
             /* Responsive adjustments */
             @media (max-width: 480px) {
               .search-icon.open {
-                width: 38vw;
+                width: 34vw;
               }
             }
         
@@ -796,13 +798,7 @@
         
         function performSearch(query) {
             console.log("Performing search for: " + query);
-            
-            // For immediate testing
-            if (query === "test") {
-                showTestResults();
-                return;
-            }
-            
+      
             // AJAX search
             $.ajax({
                 url: "/search",
@@ -821,21 +817,6 @@
                     positionDropdown();
                 }
             });
-        }
-        
-        function showTestResults() {
-            // Show test data for debugging
-            const testData = {
-                categories: [
-                    { id: 1, name: "Kids" },
-                    { id: 2, name: "Kids Accessories" }
-                ],
-                products: [
-                    { id: 1, product_name: "Terry Kids Bathrobe 7-8 Years Blue Ferozi" },
-                    { id: 2, product_name: "Terry Bathrobe For Kids 7-8 Years Red Navy" }
-                ]
-            };
-            displayResults(testData);
         }
         
         function displayResults(data) {
@@ -904,8 +885,8 @@
             $searchResults.css({
                 position: 'absolute',
                 top: (inputPos.top + inputHeight) + 'px',
-                left: inputPos.left + 'px',
-                width: inputWidth + 'px',
+                left: ( inputPos.left - 10 ) + 'px',
+                width: (inputWidth + 50) + 'px',
                 zIndex: 10000
             }).show();
         }
@@ -920,9 +901,6 @@
             overflowY: 'auto'
         });
         
-        // For manual testing - trigger the test dropdown
-        window.showSearchTestResults = showTestResults;
-        console.log("Search ready. Type 'test' to test or call window.showSearchTestResults()");
     });
     </script>
         

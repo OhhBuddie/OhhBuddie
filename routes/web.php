@@ -120,6 +120,7 @@ Route::controller(AddressController::class)->middleware('auth')->group(function 
     Route::get('/Mypayment', 'payment');
     Route::get('/Mywallet', 'wallet');
     Route::get('/Myaddress', 'address');
+    Route::get('/Mysupport', 'address');
 });
 
 

@@ -1,29 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
     <title>OhhBuddie | Profile Edit</title>
-    <link rel="icon" type="image/x-icon" href="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Ohbuddielogo.png">
+    <link rel="icon" type="image/x-icon"
+        href="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Ohbuddielogo.png">
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    
+
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    
+
     <!-- Select2 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet">
 
     <!-- Custom Styles -->
-    <link rel="stylesheet" href="{{ asset('public/assets/css/style.css') }}"> 
-    
+    <link rel="stylesheet" href="{{ asset('public/assets/css/style.css') }}">
+
     <style>
         body {
             font-family: 'Arial', sans-serif;
             background-color: black;
             color: white;
-            padding-top: 60px; /* For navbar height */
-            padding-bottom: 80px; /* For button height */
+            padding-top: 60px;
+            /* For navbar height */
+            padding-bottom: 80px;
+            /* For button height */
             margin: 0;
         }
 
@@ -113,44 +119,52 @@
                 padding: 14px;
             }
         }
+
         /* Uniform height for all input fields and select box */
-        .form-control, .select2-container .select2-selection--single {
-            height: 50px !important;  /* Set same height */
-            font-size: 16px; /* Adjust text size */
-            color: black !important; /* Change text color to black */
-            background-color: white !important; /* Ensure background is white */
+        .form-control,
+        .select2-container .select2-selection--single {
+            height: 50px !important;
+            /* Set same height */
+            font-size: 16px;
+            /* Adjust text size */
+            color: black !important;
+            /* Change text color to black */
+            background-color: white !important;
+            /* Ensure background is white */
             border-radius: 8px;
             padding: 10px 15px;
             border: 1px solid #ccc;
         }
-        
+
         /* Select2 specific styling */
         .select2-container .select2-selection--single {
             display: flex !important;
             align-items: center !important;
         }
-        
+
         /* Ensure dropdown text is black */
         .select2-dropdown {
             font-size: 16px !important;
             color: black !important;
         }
-        
+
         /* Placeholder text color */
         ::placeholder {
             color: black !important;
             opacity: 1;
         }
-        
+
         /* Change icon color in the Select2 dropdown */
         .select2-container--default .select2-selection--single .select2-selection__rendered {
             color: black !important;
         }
+
         .select2-selection__clear {
-    display: none !important;
-}
+            display: none !important;
+        }
     </style>
 </head>
+
 <body>
 
     <!-- Top Navbar -->
@@ -168,15 +182,18 @@
             @csrf
             <div class="mb-3">
                 <label class="section-title">Enter Your Name</label>
-                <input type="text" class="form-control" placeholder="Enter Your Name" name="name" value="{{ Auth::user()->name }}">
+                <input type="text" class="form-control" placeholder="Enter Your Name" name="name"
+                    value="{{ Auth::user()->name }}">
             </div>
             <div class="mb-3">
                 <label class="section-title">Enter Your Email</label>
-                <input type="email" class="form-control" placeholder="Enter Your Email Address" name="email" value="{{ Auth::user()->email }}">
+                <input type="email" class="form-control" placeholder="Enter Your Email Address" name="email"
+                    value="{{ Auth::user()->email }}">
             </div>
             <div class="mb-3">
                 <label class="section-title">Enter Your Date Of Birth</label>
-                <input type="date" class="form-control" placeholder="Enter Your Date Of Birth" value="{{ Auth::user()->dob }}" name="dob">
+                <input type="date" class="form-control" placeholder="Enter Your Date Of Birth"
+                    value="{{ Auth::user()->dob }}" name="dob">
             </div>
             <div class="mb-3">
                 <label class="section-title">Enter Your Gender</label>
@@ -189,18 +206,24 @@
             </div>
             <div class="mb-3">
                 <label class="section-title">Upload Profile Picture</label>
-                <input type="file" class="form-control" name="profile_photo" id="profile_photo_input" accept="image/*">
-                <img id="profile_preview" src="#" alt="Profile Preview" style="display: none; margin-top: 10px; width: 150px; height: 150px; object-fit: cover; border-radius: 10px;">
+                <input type="file" class="form-control" name="profile_photo" id="profile_photo_input"
+                    accept="image/*">
+
+                <!--<img id="profile_preview" src="#" alt="Profile Preview" style="display: none; margin-top: 10px; width: 150px; height: 150px; object-fit: cover; border-radius: 10px;">-->
+                <img id="profile_preview" src="{{ Auth::user()->profile_photo ?? '#' }}" alt="Profile Preview"
+                    style="display: {{ Auth::user()->profile_photo ? 'block' : 'none' }}; margin-top: 10px; width: 150px; height: 150px; object-fit: cover; border-radius: 10px;">
+
+
             </div>
-            
-    
+
+
 
             <!-- Submit Button -->
             <div class="btn-fixed-bottom">
                 <button type="submit" class=" btn-primaryy w-100">Save Profile</button>
-                
+
             </div>
-            
+
         </form>
 
     </div>
@@ -219,10 +242,10 @@
         $(document).ready(function() {
             $('.select2').select2({
                 placeholder: "Select an option",
-                allowClear: false,  // Disable the clear (X) button
+                allowClear: false, // Disable the clear (X) button
                 minimumResultsForSearch: Infinity // Hide search box
             });
-    
+
             // Ensure Select2 box takes full width
             $('.select2').next('.select2-container').css('width', '100%');
         });
@@ -230,17 +253,19 @@
 
     <!-- JavaScript for Image Preview -->
     <script>
-    document.getElementById('profile_photo_input').addEventListener('change', function(event) {
-        let reader = new FileReader();
-        reader.onload = function() {
-            let preview = document.getElementById('profile_preview');
-            preview.src = reader.result;
-            preview.style.display = 'block';
-        }
-        if (event.target.files.length > 0) {
-            reader.readAsDataURL(event.target.files[0]);
-        }
-    });
+        document.getElementById('profile_photo_input').addEventListener('change', function(event) {
+            let reader = new FileReader();
+            reader.onload = function() {
+                let preview = document.getElementById('profile_preview');
+                preview.src = reader.result;
+                preview.style.display = 'block';
+            }
+            if (event.target.files.length > 0) {
+                reader.readAsDataURL(event.target.files[0]);
+            }
+        });
     </script>
+
 </body>
+
 </html>

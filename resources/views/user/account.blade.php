@@ -173,7 +173,8 @@
         @if(Auth::user()->profile_photo == null)
             <img src="https://cdn-icons-png.flaticon.com/128/3177/3177440.png" class="profile-img">
         @else
-            <img src="{{ asset(Auth::user()->profile_photo) }}" class="profile-img">
+            <img src="{{ Auth::user()->profile_photo }}" class="profile-img">
+
         @endif
     
         <!-- Edit Icon -->
@@ -233,7 +234,7 @@
         <li class="list-group-item">
             <!--<i class="bi bi-chat-dots"></i>-->
             <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/SVG+Icons/support.png">
-            <a href="#" class="flex-grow-1">My Support Ticket</a>
+            <a href="/Mysupport" class="flex-grow-1">My Support Ticket</a>
               <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/SVG+Icons/ARROW.png">
         </li>
         

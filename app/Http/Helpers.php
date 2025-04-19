@@ -17,7 +17,7 @@ if (!function_exists('uploaded_asset')) {
     function uploaded_asset($fileName, $type = false)
     {
         // Define the base URL of the external server
-        $env_URL = 'https://www.showloom.com/'; // Replace this with the base URL of the external site
+        $env_URL = 'https://www.ohhbuddie.com/'; // Replace this with the base URL of the external site
 
         // Define the default file path for uploads
         $filePath = 'uploads/all';
@@ -39,10 +39,10 @@ if (!function_exists('uploaded_asset')) {
             if ($headers && strpos($headers[0], '200')) {
                 return $path;
             } else {
-                return static_asset('https://www.showloom.com/assets/img/placeholder.jpg'); // Placeholder image
+                return static_asset('https://www.ohhbuddie.com/assets/img/placeholder.jpg'); // Placeholder image
             }
         } catch (Exception $e) {
-            return static_asset('https://www.showloom.com/assets/img/placeholder.jpg'); // Return placeholder in case of an error
+            return static_asset('https://www.ohhbuddie.com/assets/img/placeholder.jpg'); // Return placeholder in case of an error
         }
     }
 }

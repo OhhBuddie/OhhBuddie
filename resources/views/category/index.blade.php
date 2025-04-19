@@ -12,8 +12,9 @@
     
     .full-page-image {
     width: 100vw;
-    height: 100vh;
-    object-fit: cover;
+    height: calc(100vh - 50px);
+    
+    object-fit: fill;
     margin: 0;
     padding: 0;
 }
@@ -298,6 +299,28 @@
              margin-bottom: 0px; 
             font-weight: 700;
         }
+        .bottom-button {
+      position: absolute;
+      bottom: 48px;
+      max-width: 228px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #efc475;
+      color: white;
+      padding: 15px 30px;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 19px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+      transition: 0.3s;
+      text-align: center;
+    }
+    .bottom-button:hover {
+      opacity: 0.9;
+      text-decoration: none;
+      color: white;
+    }
     </style>
     
     <div class="container" style="padding: 0; margin: 0; width: 100vw; max-width: 100%; margin-top: 60px;">
@@ -310,6 +333,7 @@
                 @if($products->isEmpty())
                     <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Blank+Pages/Exciting+Collection+Loading+Soon+(1).jpg"  class="full-page-image" >
                     
+                    <a href="/explore" class="bottom-button">Explore More</a>
                 @else
                     @foreach($products as $pdts)
                     <div class="col-6"  data-created-at="{{ $pdts->created_at }}" data-price="{{ $pdts->portal_updated_price }}"  data-color="{{ $pdts->color_name }}"  data-size="{{ $pdts->size_name }}">
@@ -534,7 +558,7 @@
                              data-color="{{ $color }}" 
                              style="cursor: pointer; padding: 5px; border-radius: 5px;">
                             <!-- Changed to checkbox for multiple selection -->
-                            <input type="checkbox" name="color[]" id="color_{{ $color }}" value="{{ $color }}" style="display: none;">
+                            <input type="checkbox" name="color[]" id="color_{{ $color }}" value="{{ $color }}" style="display: block; background-color: #08ADc5; border-color: #08ADc5;">
                             <!-- Color Box -->
                             <span class="color-box" style="width: 20px; height: 20px; background-color: {{ $color }}; border-radius: 50%; display: inline-block; border: 1px solid #ccc;"></span>
                             <!-- Color Name -->
@@ -669,6 +693,7 @@
     function clearAllFilters() {
         // Implementation for clearing all filters
         console.log('All filters cleared');
+         location.reload();
     }
     
     function applyFilters() {
@@ -681,40 +706,40 @@
     
     <script>
         
-    document.addEventListener('DOMContentLoaded', function() {
-        const minSlider = document.getElementById('min-price-slider');
-        const maxSlider = document.getElementById('max-price-slider');
-        const minDisplay = document.getElementById('min-price-display');
-        const maxDisplay = document.getElementById('max-price-display');
-        const minInput = document.getElementById('min-price-input');
-        const maxInput = document.getElementById('max-price-input');
+    // document.addEventListener('DOMContentLoaded', function() {
+    //     const minSlider = document.getElementById('min-price-slider');
+    //     const maxSlider = document.getElementById('max-price-slider');
+    //     const minDisplay = document.getElementById('min-price-display');
+    //     const maxDisplay = document.getElementById('max-price-display');
+    //     const minInput = document.getElementById('min-price-input');
+    //     const maxInput = document.getElementById('max-price-input');
         
-        minSlider.addEventListener('input', function() {
-            const minVal = parseInt(minSlider.value);
-            const maxVal = parseInt(maxSlider.value);
+    //     minSlider.addEventListener('input', function() {
+    //         const minVal = parseInt(minSlider.value);
+    //         const maxVal = parseInt(maxSlider.value);
             
-            if (minVal > maxVal) {
-                minSlider.value = maxVal;
-                return;
-            }
+    //         if (minVal > maxVal) {
+    //             minSlider.value = maxVal;
+    //             return;
+    //         }
             
-            minDisplay.textContent = '₹' + minVal.toLocaleString();
-            minInput.value = minVal;
-        });
+    //         minDisplay.textContent = '₹' + minVal.toLocaleString();
+    //         minInput.value = minVal;
+    //     });
         
-        maxSlider.addEventListener('input', function() {
-            const minVal = parseInt(minSlider.value);
-            const maxVal = parseInt(maxSlider.value);
+    //     maxSlider.addEventListener('input', function() {
+    //         const minVal = parseInt(minSlider.value);
+    //         const maxVal = parseInt(maxSlider.value);
             
-            if (maxVal < minVal) {
-                maxSlider.value = minVal;
-                return;
-            }
+    //         if (maxVal < minVal) {
+    //             maxSlider.value = minVal;
+    //             return;
+    //         }
             
-            maxDisplay.textContent = '₹' + maxVal.toLocaleString();
-            maxInput.value = maxVal;
-        });
-    });
+    //         maxDisplay.textContent = '₹' + maxVal.toLocaleString();
+    //         maxInput.value = maxVal;
+    //     });
+    // });
     </script>
     
      <!--For Sorting -->
@@ -845,8 +870,8 @@
             const style = document.createElement('style');
             style.textContent = `
                 .color-option.active {
-                    background-color: #f0f0f0;
                     font-weight: bold;
+                    color: white;
                 }
             `;
             document.head.appendChild(style);

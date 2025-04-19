@@ -1,7 +1,8 @@
 @extends('layouts.product')
 @section('content')
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Product Details</title>
      <link rel="stylesheet" href="{{ asset('public/assets/css/style.css') }}">
      <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -606,8 +607,8 @@
                                 onclick="validatePincode()">Check</button>
                     </div>
                     
-                    <span id="error-message" class="p-2" style="color: red; display: none;">Pincode Is Not Serviceable</span>
-                    <span id="success-message" class="p-2" style="color: green; display: none;">Hurray! Your pincode is valid for 69-Minute delivery</span>
+                    <span id="error-message" class="p-2" style="color: #efc475; display: none;">Pincode Is Not Serviceable</span>
+                    <span id="success-message" class="p-2" style="color: #efc475; display: none;">Hurray! Your pincode is valid for 69-Minute delivery</span>
 
             </div>
             <br>
@@ -843,7 +844,7 @@
               <div class="accordion-content px-4 text-light">
                   <p><b>Seller Name:</b> {{$slr_detail->company_name}}</p>
                   <p><b>Country of origin:</b> India</p>
-                  <p><b>Manufacturer details:</b> {{$slr_detail->owner_name}}</p>
+                  <p><b>Manufacturer details:</b> {{$slr_detail->company_name}}</p>
                   <p><b>Sold by:</b> {{$slr_detail->company_name}}</p>
 
               </div>

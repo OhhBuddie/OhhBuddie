@@ -188,34 +188,7 @@
             margin-right: 0px;
         }
     </style>
-           <style>
-            body {
-                visibility: hidden; /* Initially hide body content */
-            }
-            
-            #content {
-                display: none; /* Initially hide main content */
-            }
-            
-            /* Preloader styles */
-            #preloader {
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background-color: rgba(255, 255, 255, 0.7);
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                z-index: 9999; /* Ensure it stays on top */
-            }
-            
-            #preloader img {
-                width: 150px; /* Adjust size as needed */
-                height: auto;
-            }
-          </style>
+           
   
         @stack('style')
 
@@ -414,9 +387,6 @@
 <body>
 
 
-    {{-- <div id="preloader">
-        <img src="https://media.showloom.com/uploads/all/for-web-2-unscreen.gif" alt="Loading...">
-    </div> --}}
   
     <nav class="navbar navbar-expand-lg navbar-light" style="position:fixed;">
 
@@ -635,16 +605,7 @@
     }
 
     </script>
-      <script>
-        window.addEventListener('load', function () {
-            // Hide the preloader after page load
-            document.getElementById('preloader').style.display = 'none';
-            
-            // Show the main content after page load
-            document.body.style.visibility = 'visible'; // Show body content
-            document.getElementById('content').style.display = 'block'; // Show main content
-        });
-      </script>
+
   
 
     <script>

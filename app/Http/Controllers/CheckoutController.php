@@ -108,29 +108,38 @@ class CheckoutController extends Controller
         // $products = json_decode($request->products, true);
         
         $products = json_decode($request->products, true);
+        if (is_string($products)) {
+            $products = json_decode($products, true);
+        }
 
-foreach ($products as $item) {
-    $cart_id = $item['cart_id'];
-    $quantity = $item['quantity'];
-
-    $cartItem = DB::table('carts')->where('id', $cart_id)->latest()->first();
-    $product = DB::table('products')->where('id', $cartItem->product_id)->latest()->first();
-
-    OrderDetail::create([
-        'order_id' => $order->id,
-        'product_id' => $cartItem->product_id,
-        'seller_id' => $product->seller_id,
-        'cart_id' => $cart_id,
-        'quantity' => $quantity,
-        'price' => $request->total_price / count($products),
-        'tax' => $request->total_tax / count($products),
-        'payment_status' => 'Pending',
-        'delivery_status' => 'Order Confirmed',
-        'shipping_cost' => $shipping_cost,
-        'created_at' => now(),
-        'updated_at' => now(),
-    ]);
-}
+        foreach ($products as $item) {
+            
+            if (!is_array($item) || !isset($item['cart_id']) || !isset($item['quantity'])) {
+                // Skip invalid items or handle error
+                continue;
+            }
+            
+            $cart_id = $item['cart_id'];
+            $quantity = $item['quantity'];
+        
+            $cartItem = DB::table('carts')->where('id', $cart_id)->latest()->first();
+            $product = DB::table('products')->where('id', $cartItem->product_id)->latest()->first();
+        
+            OrderDetail::create([
+                'order_id' => $order->id,
+                'product_id' => $cartItem->product_id,
+                'seller_id' => $product->seller_id,
+                'cart_id' => $cart_id,
+                'quantity' => $quantity,
+                'price' => $request->total_price / count($products),
+                'tax' => $request->total_tax / count($products),
+                'payment_status' => 'Pending',
+                'delivery_status' => 'Order Confirmed',
+                'shipping_cost' => $shipping_cost,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+        }
 
         
         // return $products;

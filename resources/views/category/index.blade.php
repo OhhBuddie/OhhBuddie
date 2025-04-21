@@ -56,8 +56,6 @@
             padding: 12px 15px;
             display: flex;
             align-items: center;
-           
-            border-bottom: 1px solid #eee;
         }
         
         .sort-option:last-child {
@@ -81,6 +79,9 @@
              margin: 0px 6px 0 0; 
              margin-top: 0px ;
              line-height: normal; 
+        }
+        input[type="radio"] {
+            accent-color: #efc475; 
         }
     </style>
     
@@ -808,74 +809,82 @@
     
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Get all color filter divs
-            const colorOptions = document.querySelectorAll('.color-option');
+    // Get all color filter divs
+    const colorOptions = document.querySelectorAll('.color-option');
+    
+    // Get the container where products are displayed
+    const productCards = document.querySelectorAll('.col-6');
+    
+    // Track active color filters
+    let activeColorFilters = [];
+    
+    // Add event listeners to the color option divs
+    colorOptions.forEach(option => {
+        const checkboxInput = option.querySelector('input[type="checkbox"]');
+        
+        // Handle checkbox click separately to prevent event conflicts
+        checkboxInput.addEventListener('click', function(e) {
+            e.stopPropagation(); // Prevent the div click event from firing
             
-            // Get the container where products are displayed
-            const productsContainer = document.querySelector('.row'); // Adjust this selector to match your actual container
-            const productCards = document.querySelectorAll('.col-6');
+            const color = option.dataset.color;
             
-            // Track active color filters (using an array for multiple selections)
-            let activeColorFilters = [];
-            
-            // Add event listeners to the color option divs
-            colorOptions.forEach(option => {
-                option.addEventListener('click', function() {
-                    const color = this.dataset.color;
-                    const checkboxInput = this.querySelector('input[type="checkbox"]');
-                    
-                    // Toggle the checkbox state
-                    checkboxInput.checked = !checkboxInput.checked;
-                    
-                    // Toggle the active class
-                    this.classList.toggle('active');
-                    
-                    // Update active filters array
-                    if (checkboxInput.checked) {
-                        // Add color to active filters if not already present
-                        if (!activeColorFilters.includes(color)) {
-                            activeColorFilters.push(color);
-                        }
-                    } else {
-                        // Remove color from active filters
-                        activeColorFilters = activeColorFilters.filter(c => c !== color);
-                    }
-                    
-                    // Apply filters
-                    if (activeColorFilters.length > 0) {
-                        filterByMultipleColors(activeColorFilters);
-                    } else {
-                        // Show all products if no filters are active
-                        productCards.forEach(card => {
-                            card.style.display = 'block';
-                        });
-                    }
-                });
-            });
-            
-            // Function to filter products by multiple colors
-            function filterByMultipleColors(colors) {
-                productCards.forEach(card => {
-                    const productColor = card.dataset.color;
-                    
-                    if (colors.includes(productColor)) {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
+            // Update active filters array based on checkbox state
+            if (this.checked) {
+                if (!activeColorFilters.includes(color)) {
+                    activeColorFilters.push(color);
+                }
+                option.classList.add('active');
+            } else {
+                activeColorFilters = activeColorFilters.filter(c => c !== color);
+                option.classList.remove('active');
             }
             
-            // Add CSS for active state
-            const style = document.createElement('style');
-            style.textContent = `
-                .color-option.active {
-                    font-weight: bold;
-                    color: white;
-                }
-            `;
-            document.head.appendChild(style);
+            // Apply filters
+            applyFilters();
         });
+        
+        // Also handle div click to toggle checkbox
+        option.addEventListener('click', function(e) {
+            // Don't trigger if the click was directly on the checkbox (already handled)
+            if (e.target !== checkboxInput) {
+                checkboxInput.checked = !checkboxInput.checked;
+                
+                // Trigger the checkbox's click event programmatically
+                const event = new Event('click');
+                checkboxInput.dispatchEvent(event);
+            }
+        });
+    });
+    
+    function applyFilters() {
+        if (activeColorFilters.length > 0) {
+            productCards.forEach(card => {
+                const productColor = card.dataset.color;
+                
+                if (activeColorFilters.includes(productColor)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        } else {
+            // Show all products if no filters are active
+            productCards.forEach(card => {
+                card.style.display = 'block';
+            });
+        }
+    }
+    
+    // Add improved CSS for active state
+    const style = document.createElement('style');
+    style.textContent = `
+        .color-option.active {
+            font-weight: bold;
+            color: white;
+        
+    `;
+    document.head.appendChild(style);
+});
     </script>
     
     <!--For Size Filter -->
@@ -954,200 +963,381 @@
     
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-        // Price slider elements
-        const range = document.getElementById('price-range');
-        const minThumb = document.getElementById('min-thumb');
-        const maxThumb = document.getElementById('max-thumb');
-        const track = document.querySelector('.track');
-        const minPriceInput = document.getElementById('min-price-input');
-        const maxPriceInput = document.getElementById('max-price-input');
-        const minPriceDisplay = document.getElementById('min-price-display');
-        const maxPriceDisplay = document.getElementById('max-price-display');
+    // Price slider elements
+    const range = document.getElementById('price-range');
+    const minThumb = document.getElementById('min-thumb');
+    const maxThumb = document.getElementById('max-thumb');
+    const track = document.querySelector('.track');
+    const minPriceInput = document.getElementById('min-price-input');
+    const maxPriceInput = document.getElementById('max-price-input');
+    const minPriceDisplay = document.getElementById('min-price-display');
+    const maxPriceDisplay = document.getElementById('max-price-display');
+    
+    // Initial values
+    const minPrice = parseFloat(minPriceInput.value);
+    const maxPrice = parseFloat(maxPriceInput.value);
+    const priceGap = (maxPrice - minPrice) * 0.05; // 5% of total range as minimum gap
+    
+    // For tracking active thumb
+    let activeThumb = null;
+    let isDragging = false;
+    
+    // Set initial positions
+    let leftPercent = 0;
+    let rightPercent = 100;
+    
+    // Set initial range position
+    updateRangeStyle();
+    
+    // Function to start dragging - can be called from any mouse/touch down event
+    function startDragging(e, clientX) {
+        if (isDragging) return;
         
-        // Initial values
-        const minPrice = parseFloat(minPriceInput.value);
-        const maxPrice = parseFloat(maxPriceInput.value);
-        const priceGap = (maxPrice - minPrice) * 0.05; // 5% of total range as minimum gap
+        const trackRect = track.getBoundingClientRect();
+        const trackWidth = trackRect.width;
+        const trackLeft = trackRect.left;
         
-        // For tracking active thumb
-        let activeThumb = null;
+        // Calculate click position as percentage
+        let clickPercent = (clientX - trackLeft) / trackWidth * 100;
+        clickPercent = Math.max(0, Math.min(clickPercent, 100));
         
-        // Set initial positions
-        let leftPercent = 0;
-        let rightPercent = 100;
+        // Determine which thumb to move based on click position
+        const leftThumbPos = leftPercent;
+        const rightThumbPos = rightPercent;
         
-        // Set initial range position
+        // Calculate distance to each thumb
+        const distToLeftThumb = Math.abs(clickPercent - leftThumbPos);
+        const distToRightThumb = Math.abs(clickPercent - rightThumbPos);
+        
+        // Set the active thumb to the closest one
+        if (distToLeftThumb <= distToRightThumb) {
+            activeThumb = 'min';
+            minThumb.classList.add('active');
+            
+            // Move left thumb to click position
+            leftPercent = clickPercent;
+            const newMinPrice = Math.round(minPrice + (clickPercent / 100) * (maxPrice - minPrice));
+            minPriceInput.value = newMinPrice;
+            minPriceDisplay.textContent = '₹' + numberWithCommas(newMinPrice);
+            
+            // Ensure min thumb doesn't go beyond max thumb - priceGap
+            const minGapPercent = (priceGap / (maxPrice - minPrice)) * 100;
+            if (leftPercent > rightPercent - minGapPercent) {
+                leftPercent = rightPercent - minGapPercent;
+                const adjustedMinPrice = Math.round(minPrice + (leftPercent / 100) * (maxPrice - minPrice));
+                minPriceInput.value = adjustedMinPrice;
+                minPriceDisplay.textContent = '₹' + numberWithCommas(adjustedMinPrice);
+            }
+        } else {
+            activeThumb = 'max';
+            maxThumb.classList.add('active');
+            
+            // Move right thumb to click position
+            rightPercent = clickPercent;
+            const newMaxPrice = Math.round(minPrice + (clickPercent / 100) * (maxPrice - minPrice));
+            maxPriceInput.value = newMaxPrice;
+            maxPriceDisplay.textContent = '₹' + numberWithCommas(newMaxPrice);
+            
+            // Ensure max thumb doesn't go below min thumb + priceGap
+            const minGapPercent = (priceGap / (maxPrice - minPrice)) * 100;
+            if (rightPercent < leftPercent + minGapPercent) {
+                rightPercent = leftPercent + minGapPercent;
+                const adjustedMaxPrice = Math.round(minPrice + (rightPercent / 100) * (maxPrice - minPrice));
+                maxPriceInput.value = adjustedMaxPrice;
+                maxPriceDisplay.textContent = '₹' + numberWithCommas(adjustedMaxPrice);
+            }
+        }
+        
         updateRangeStyle();
+        filterProductsByPrice();
         
-        // Events for min thumb
-        minThumb.addEventListener('mousedown', function(e) {
-            e.preventDefault();
-            activeThumb = 'min';
-            minThumb.classList.add('active');
-            document.addEventListener('mousemove', moveThumb);
-            document.addEventListener('mouseup', stopMoving);
-        });
-        
-        // Events for max thumb
-        maxThumb.addEventListener('mousedown', function(e) {
-            e.preventDefault();
-            activeThumb = 'max';
-            maxThumb.classList.add('active');
-            document.addEventListener('mousemove', moveThumb);
-            document.addEventListener('mouseup', stopMoving);
-        });
-        
-        // Move thumb function
-        function moveThumb(e) {
-            if (!activeThumb) return;
-            
-            const trackRect = track.getBoundingClientRect();
-            const trackWidth = trackRect.width;
-            const trackLeft = trackRect.left;
-            
-            let position = (e.clientX - trackLeft) / trackWidth * 100;
-            position = Math.max(0, Math.min(position, 100));
-            
-            if (activeThumb === 'min') {
-                // Ensure min thumb doesn't go beyond max thumb - priceGap
-                const rightPos = rightPercent;
-                const minGapPercent = (priceGap / (maxPrice - minPrice)) * 100;
-                
-                if (position > rightPos - minGapPercent) {
-                    position = rightPos - minGapPercent;
-                }
-                
-                leftPercent = position;
-                const newMinPrice = Math.round(minPrice + (position / 100) * (maxPrice - minPrice));
-                minPriceInput.value = newMinPrice;
-                minPriceDisplay.textContent = '₹' + numberWithCommas(newMinPrice);
-            } else {
-                // Ensure max thumb doesn't go below min thumb + priceGap
-                const leftPos = leftPercent;
-                const minGapPercent = (priceGap / (maxPrice - minPrice)) * 100;
-                
-                if (position < leftPos + minGapPercent) {
-                    position = leftPos + minGapPercent;
-                }
-                
-                rightPercent = position;
-                const newMaxPrice = Math.round(minPrice + (position / 100) * (maxPrice - minPrice));
-                maxPriceInput.value = newMaxPrice;
-                maxPriceDisplay.textContent = '₹' + numberWithCommas(newMaxPrice);
-            }
-            
-            updateRangeStyle();
-            filterProductsByPrice();
-        }
-        
-        // Stop moving function
-        function stopMoving() {
-            if (activeThumb) {
-                document.querySelector('.thumb.active').classList.remove('active');
-                activeThumb = null;
-                document.removeEventListener('mousemove', moveThumb);
-                document.removeEventListener('mouseup', stopMoving);
-            }
-        }
-        
-        // Update the range style
-        function updateRangeStyle() {
-            range.style.left = leftPercent + '%';
-            range.style.width = (rightPercent - leftPercent) + '%';
-            minThumb.style.left = leftPercent + '%';
-            maxThumb.style.left = rightPercent + '%';
-        }
-        
-        // Filter products by price range
-        function filterProductsByPrice() {
-            const currentMinPrice = parseInt(minPriceInput.value);
-            const currentMaxPrice = parseInt(maxPriceInput.value);
-            
-            // Get all product cards
-            const productCards = document.querySelectorAll('.col-6');
-            
-            productCards.forEach(card => {
-                const productPrice = parseInt(card.dataset.price);
-                
-                if (productPrice >= currentMinPrice && productPrice <= currentMaxPrice) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        }
-        
-        // Helper function to format numbers with commas
-        function numberWithCommas(x) {
-            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-        }
-        
-        // Touch events for mobile support
-        minThumb.addEventListener('touchstart', function(e) {
-            e.preventDefault();
-            activeThumb = 'min';
-            minThumb.classList.add('active');
-            document.addEventListener('touchmove', touchMoveThumb);
-            document.addEventListener('touchend', stopTouchMoving);
-        });
-        
-        maxThumb.addEventListener('touchstart', function(e) {
-            e.preventDefault();
-            activeThumb = 'max';
-            maxThumb.classList.add('active');
-            document.addEventListener('touchmove', touchMoveThumb);
-            document.addEventListener('touchend', stopTouchMoving);
-        });
-        
-        function touchMoveThumb(e) {
-            if (!activeThumb) return;
-            
-            const touch = e.touches[0];
-            const trackRect = track.getBoundingClientRect();
-            const trackWidth = trackRect.width;
-            const trackLeft = trackRect.left;
-            
-            let position = (touch.clientX - trackLeft) / trackWidth * 100;
-            position = Math.max(0, Math.min(position, 100));
-            
-            if (activeThumb === 'min') {
-                const rightPos = rightPercent;
-                const minGapPercent = (priceGap / (maxPrice - minPrice)) * 100;
-                
-                if (position > rightPos - minGapPercent) {
-                    position = rightPos - minGapPercent;
-                }
-                
-                leftPercent = position;
-                const newMinPrice = Math.round(minPrice + (position / 100) * (maxPrice - minPrice));
-                minPriceInput.value = newMinPrice;
-                minPriceDisplay.textContent = '₹' + numberWithCommas(newMinPrice);
-            } else {
-                const leftPos = leftPercent;
-                const minGapPercent = (priceGap / (maxPrice - minPrice)) * 100;
-                
-                if (position < leftPos + minGapPercent) {
-                    position = leftPos + minGapPercent;
-                }
-                
-                rightPercent = position;
-                const newMaxPrice = Math.round(minPrice + (position / 100) * (maxPrice - minPrice));
-                maxPriceInput.value = newMaxPrice;
-                maxPriceDisplay.textContent = '₹' + numberWithCommas(newMaxPrice);
-            }
-            
-            updateRangeStyle();
-            filterProductsByPrice();
-        }
-        
-        function stopTouchMoving() {
-            if (activeThumb) {
-                document.querySelector('.thumb.active').classList.remove('active');
-                activeThumb = null;
-                document.removeEventListener('touchmove', touchMoveThumb);
-                document.removeEventListener('touchend', stopTouchMoving);
-            }
-        }
+        isDragging = true;
+    }
+    
+    // Add mousedown event to the entire slider container to capture all clicks
+    const sliderContainer = track.parentElement;
+    sliderContainer.addEventListener('mousedown', function(e) {
+        e.preventDefault();
+        startDragging(e, e.clientX);
+        document.addEventListener('mousemove', moveThumb);
+        document.addEventListener('mouseup', stopMoving);
     });
+    
+    // Also add click handler to range element since it overlays the track
+    range.addEventListener('mousedown', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        startDragging(e, e.clientX);
+        document.addEventListener('mousemove', moveThumb);
+        document.addEventListener('mouseup', stopMoving);
+    });
+    
+    // Events for min thumb - preserve these for users who directly click on thumb
+    minThumb.addEventListener('mousedown', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        activeThumb = 'min';
+        minThumb.classList.add('active');
+        isDragging = true;
+        document.addEventListener('mousemove', moveThumb);
+        document.addEventListener('mouseup', stopMoving);
+    });
+    
+    // Events for max thumb
+    maxThumb.addEventListener('mousedown', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        activeThumb = 'max';
+        maxThumb.classList.add('active');
+        isDragging = true;
+        document.addEventListener('mousemove', moveThumb);
+        document.addEventListener('mouseup', stopMoving);
+    });
+    
+    // Move thumb function
+    function moveThumb(e) {
+        if (!activeThumb || !isDragging) return;
+        
+        const trackRect = track.getBoundingClientRect();
+        const trackWidth = trackRect.width;
+        const trackLeft = trackRect.left;
+        
+        let position = (e.clientX - trackLeft) / trackWidth * 100;
+        position = Math.max(0, Math.min(position, 100));
+        
+        if (activeThumb === 'min') {
+            // Ensure min thumb doesn't go beyond max thumb - priceGap
+            const rightPos = rightPercent;
+            const minGapPercent = (priceGap / (maxPrice - minPrice)) * 100;
+            
+            if (position > rightPos - minGapPercent) {
+                position = rightPos - minGapPercent;
+            }
+            
+            leftPercent = position;
+            const newMinPrice = Math.round(minPrice + (position / 100) * (maxPrice - minPrice));
+            minPriceInput.value = newMinPrice;
+            minPriceDisplay.textContent = '₹' + numberWithCommas(newMinPrice);
+        } else {
+            // Ensure max thumb doesn't go below min thumb + priceGap
+            const leftPos = leftPercent;
+            const minGapPercent = (priceGap / (maxPrice - minPrice)) * 100;
+            
+            if (position < leftPos + minGapPercent) {
+                position = leftPos + minGapPercent;
+            }
+            
+            rightPercent = position;
+            const newMaxPrice = Math.round(minPrice + (position / 100) * (maxPrice - minPrice));
+            maxPriceInput.value = newMaxPrice;
+            maxPriceDisplay.textContent = '₹' + numberWithCommas(newMaxPrice);
+        }
+        
+        updateRangeStyle();
+        filterProductsByPrice();
+    }
+    
+    // Stop moving function
+    function stopMoving() {
+        if (activeThumb) {
+            const activeElement = document.querySelector('.thumb.active');
+            if (activeElement) {
+                activeElement.classList.remove('active');
+            }
+            activeThumb = null;
+            isDragging = false;
+            document.removeEventListener('mousemove', moveThumb);
+            document.removeEventListener('mouseup', stopMoving);
+        }
+    }
+    
+    // Update the range style
+    function updateRangeStyle() {
+        range.style.left = leftPercent + '%';
+        range.style.width = (rightPercent - leftPercent) + '%';
+        minThumb.style.left = leftPercent + '%';
+        maxThumb.style.left = rightPercent + '%';
+    }
+    
+    // Filter products by price range
+    function filterProductsByPrice() {
+        const currentMinPrice = parseInt(minPriceInput.value);
+        const currentMaxPrice = parseInt(maxPriceInput.value);
+        
+        // Get all product cards
+        const productCards = document.querySelectorAll('.col-6');
+        
+        productCards.forEach(card => {
+            const productPrice = parseInt(card.dataset.price);
+            
+            if (productPrice >= currentMinPrice && productPrice <= currentMaxPrice) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+    
+    // Helper function to format numbers with commas
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+    
+    // Touch support equivalent to mouse functions
+    function startTouchDragging(e, clientX) {
+        if (isDragging) return;
+        
+        const trackRect = track.getBoundingClientRect();
+        const trackWidth = trackRect.width;
+        const trackLeft = trackRect.left;
+        
+        // Calculate touch position as percentage
+        let touchPercent = (clientX - trackLeft) / trackWidth * 100;
+        touchPercent = Math.max(0, Math.min(touchPercent, 100));
+        
+        // Determine which thumb to move based on touch position
+        const leftThumbPos = leftPercent;
+        const rightThumbPos = rightPercent;
+        
+        // Calculate distance to each thumb
+        const distToLeftThumb = Math.abs(touchPercent - leftThumbPos);
+        const distToRightThumb = Math.abs(touchPercent - rightThumbPos);
+        
+        // Set the active thumb to the closest one
+        if (distToLeftThumb <= distToRightThumb) {
+            activeThumb = 'min';
+            minThumb.classList.add('active');
+            
+            // Move left thumb to touch position
+            leftPercent = touchPercent;
+            const newMinPrice = Math.round(minPrice + (touchPercent / 100) * (maxPrice - minPrice));
+            minPriceInput.value = newMinPrice;
+            minPriceDisplay.textContent = '₹' + numberWithCommas(newMinPrice);
+            
+            // Ensure min thumb doesn't go beyond max thumb - priceGap
+            const minGapPercent = (priceGap / (maxPrice - minPrice)) * 100;
+            if (leftPercent > rightPercent - minGapPercent) {
+                leftPercent = rightPercent - minGapPercent;
+                const adjustedMinPrice = Math.round(minPrice + (leftPercent / 100) * (maxPrice - minPrice));
+                minPriceInput.value = adjustedMinPrice;
+                minPriceDisplay.textContent = '₹' + numberWithCommas(adjustedMinPrice);
+            }
+        } else {
+            activeThumb = 'max';
+            maxThumb.classList.add('active');
+            
+            // Move right thumb to touch position
+            rightPercent = touchPercent;
+            const newMaxPrice = Math.round(minPrice + (touchPercent / 100) * (maxPrice - minPrice));
+            maxPriceInput.value = newMaxPrice;
+            maxPriceDisplay.textContent = '₹' + numberWithCommas(newMaxPrice);
+            
+            // Ensure max thumb doesn't go below min thumb + priceGap
+            const minGapPercent = (priceGap / (maxPrice - minPrice)) * 100;
+            if (rightPercent < leftPercent + minGapPercent) {
+                rightPercent = leftPercent + minGapPercent;
+                const adjustedMaxPrice = Math.round(minPrice + (rightPercent / 100) * (maxPrice - minPrice));
+                maxPriceInput.value = adjustedMaxPrice;
+                maxPriceDisplay.textContent = '₹' + numberWithCommas(adjustedMaxPrice);
+            }
+        }
+        
+        updateRangeStyle();
+        filterProductsByPrice();
+        
+        isDragging = true;
+    }
+    
+    // Touch events for slider container
+    sliderContainer.addEventListener('touchstart', function(e) {
+        const touch = e.touches[0];
+        startTouchDragging(e, touch.clientX);
+        document.addEventListener('touchmove', touchMoveThumb);
+        document.addEventListener('touchend', stopTouchMoving);
+    });
+    
+    // Touch events for range element
+    range.addEventListener('touchstart', function(e) {
+        e.stopPropagation();
+        const touch = e.touches[0];
+        startTouchDragging(e, touch.clientX);
+        document.addEventListener('touchmove', touchMoveThumb);
+        document.addEventListener('touchend', stopTouchMoving);
+    });
+    
+    // Touch events for min thumb
+    minThumb.addEventListener('touchstart', function(e) {
+        e.stopPropagation();
+        activeThumb = 'min';
+        minThumb.classList.add('active');
+        isDragging = true;
+        document.addEventListener('touchmove', touchMoveThumb);
+        document.addEventListener('touchend', stopTouchMoving);
+    });
+    
+    // Touch events for max thumb
+    maxThumb.addEventListener('touchstart', function(e) {
+        e.stopPropagation();
+        activeThumb = 'max';
+        maxThumb.classList.add('active');
+        isDragging = true;
+        document.addEventListener('touchmove', touchMoveThumb);
+        document.addEventListener('touchend', stopTouchMoving);
+    });
+    
+    function touchMoveThumb(e) {
+        if (!activeThumb || !isDragging) return;
+        
+        const touch = e.touches[0];
+        const trackRect = track.getBoundingClientRect();
+        const trackWidth = trackRect.width;
+        const trackLeft = trackRect.left;
+        
+        let position = (touch.clientX - trackLeft) / trackWidth * 100;
+        position = Math.max(0, Math.min(position, 100));
+        
+        if (activeThumb === 'min') {
+            const rightPos = rightPercent;
+            const minGapPercent = (priceGap / (maxPrice - minPrice)) * 100;
+            
+            if (position > rightPos - minGapPercent) {
+                position = rightPos - minGapPercent;
+            }
+            
+            leftPercent = position;
+            const newMinPrice = Math.round(minPrice + (position / 100) * (maxPrice - minPrice));
+            minPriceInput.value = newMinPrice;
+            minPriceDisplay.textContent = '₹' + numberWithCommas(newMinPrice);
+        } else {
+            const leftPos = leftPercent;
+            const minGapPercent = (priceGap / (maxPrice - minPrice)) * 100;
+            
+            if (position < leftPos + minGapPercent) {
+                position = leftPos + minGapPercent;
+            }
+            
+            rightPercent = position;
+            const newMaxPrice = Math.round(minPrice + (position / 100) * (maxPrice - minPrice));
+            maxPriceInput.value = newMaxPrice;
+            maxPriceDisplay.textContent = '₹' + numberWithCommas(newMaxPrice);
+        }
+        
+        updateRangeStyle();
+        filterProductsByPrice();
+    }
+    
+    function stopTouchMoving() {
+        if (activeThumb) {
+            const activeElement = document.querySelector('.thumb.active');
+            if (activeElement) {
+                activeElement.classList.remove('active');
+            }
+            activeThumb = null;
+            isDragging = false;
+            document.removeEventListener('touchmove', touchMoveThumb);
+            document.removeEventListener('touchend', stopTouchMoving);
+        }
+    }
+});
     </script>
 @endsection

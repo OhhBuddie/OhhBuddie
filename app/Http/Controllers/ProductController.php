@@ -35,6 +35,7 @@ class ProductController extends Controller
         
         $subsubcat_id = $product_details->sub_subcategory_id;
 
+        
         $similar = DB::table('products')
                     ->where('category_id', $product_details->category_id)
                     ->whereNotNull('parent_id')
@@ -50,9 +51,8 @@ class ProductController extends Controller
                     })
                     ->flatten();     
        
-       
-    
-               $same_products = DB::table('products')
+       if($product_details->category_id == 88){
+           $same_products = DB::table('products')
                     ->where('subcategory_id', $product_details->subcategory_id)
                     ->whereNotNull('parent_id')
                     ->whereNotNull('product_name')
@@ -66,6 +66,25 @@ class ProductController extends Controller
                         return $group->unique('color_name'); // Keep only one product per color
                     })
                     ->flatten(); 
+       }
+       else{
+           $same_products = DB::table('products')
+                    ->where('sub_subcategory_id', $product_details->sub_subcategory_id)
+                    ->whereNotNull('parent_id')
+                    ->whereNotNull('product_name')
+                    ->where('color_name', '!=', $product_details->color_name)
+                    ->where('id', '!=', $decryptedId)
+                    ->select('products.*') // Select all columns
+                    ->orderByDesc('id') // Latest first
+                    ->get()
+                    ->groupBy('parent_id')
+                    ->map(function ($group) {
+                        return $group->unique('color_name'); // Keep only one product per color
+                    })
+                    ->flatten(); 
+       }
+    
+               
                     
                     
         $colorcnt = DB::table('products')

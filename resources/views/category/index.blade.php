@@ -341,10 +341,49 @@
                     <a href="/explore" class="bottom-button">Explore More</a>
                 @else
                     @foreach($products as $pdts)
+                    
+                    
+                
+                    @php
+                        if($pdts->category_id ==88)
+                        {
+                           $cat_id = DB::table('categories')->where('id',$pdts->subcategory_id)->latest()->first();
+                           $seller_id = DB::table('sellers')->where('seller_id',$pdts->seller_id)->latest()->first();
+                           $sub = $cat_id->subcategory;
+                        }
+                        else
+                        {
+                           $cat_id = DB::table('categories')->where('id',$pdts->sub_subcategory_id)->latest()->first();
+                           $seller_id = DB::table('sellers')->where('seller_id',$pdts->seller_id)->latest()->first();
+                           $sub = $cat_id->sub_subcategory;
+                        }
+                    @endphp
+                    @php
+                        $brnd_cnt = DB::table('brands')->where('id',$pdts->brand_id)->count();
+                        if($brnd_cnt > 0)
+                        {
+                            $brnd_name = DB::table('brands')->where('id',$pdts->brand_id)->latest()->first();
+                            $brnd_name11 = $brnd_name->brand_name;
+                        }
+                        else
+                        {
+                            $brnd_name11 = $seller_id->company_name;
+                        }
+                        
+                    @endphp
+                    @php
+                    
+                     $bname = DB::table('brands')->where('id',$pdts->brand_id)->latest()->first();
+                     $bcnt = DB::table('brands')->where('id',$pdts->brand_id)->count();
+                    @endphp
+                    
                     <div class="col-6"  data-created-at="{{ $pdts->created_at }}" data-price="{{ $pdts->portal_updated_price }}"  data-color="{{ $pdts->color_name }}"  data-size="{{ $pdts->size_name }}">
                         <div class="card position-relative" style="border-radius: unset; background-color: white; color: black; border-radius: 10px;">
                             <!-- Product Image -->
-                            <a  href="/product/{{ Crypt::encryptString($pdts->id) }}" style="text-decoration:none;">
+                            <!--<a  href="/product/{{ Crypt::encryptString($pdts->id) }}" style="text-decoration:none;">-->
+                            <a href="/product/{{ \Illuminate\Support\Str::slug($cat_id->subcategory) }}/{{ \Illuminate\Support\Str::slug($brnd_name11) }}/{{ \Illuminate\Support\Str::slug($pdts->product_name) }}/{{$pdts->id}}/buy" style="text-decoration:none;">
+   
+                                
                                 @php
                                     $images = json_decode($pdts->images, true);
                                 @endphp
@@ -359,11 +398,7 @@
                                 <div class="rating-label position-absolute" style="bottom: 80px; right: 10px; background-color:#04AA6D; color: white; padding: 2px 8px; border-radius: 12px; font-size: 10px;">
                                     No Reviews Yet
                                 </div>
-                                @php
-                                
-                                 $bname = DB::table('brands')->where('id',$pdts->brand_id)->latest()->first();
-                                 $bcnt = DB::table('brands')->where('id',$pdts->brand_id)->count();
-                                @endphp
+
                                 <div class="card-body product-item-card-body text-left">
                                     
                                     <h8 class="card-title">

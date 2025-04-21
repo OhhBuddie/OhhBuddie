@@ -53,8 +53,13 @@
 
     <!-- End Meta Pixel Code -->
         
-    
-    
+    <!--Log Rocket -->
+
+    <script src="https://cdn.lgrckt-in.com/LogRocket.min.js" crossorigin="anonymous"></script>
+    <script>window.LogRocket && window.LogRocket.init('a4hegy/ohh-buddie');</script>
+
+    <!-- End Log Rocket -->
+        
     
     
   

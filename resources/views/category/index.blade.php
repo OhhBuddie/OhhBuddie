@@ -323,8 +323,12 @@
       color: white;
     }
     </style>
-    
     <div class="container" style="padding: 0; margin: 0; width: 100vw; max-width: 100%; margin-top: 60px;">
+        @if($cat_id->parent_id ==88)
+            <h6 style="color:white; margin-left:5px;"><a href="/" style="color:white;">Home /</a><a href="/allproduct" style="color:white;"> Clothing / </a> {{$cat_id->category}} / {{$cat_id->subcategory}}</h6>
+        @else
+            <h6 style="color:white; margin-left:5px;"><a href="/" style="color:white;">Home /</a><a href="/allproduct" style="color:white;">Clothing / </a>{{$cat_id->category}} / {{$cat_id->subcategory}} /{{$cat_id->sub_subcategory}}</h6>
+        @endif
         <div class="row m-0 product" style="min-height: 81vh;">
             <!-- Product Card 1 -->
                 @php

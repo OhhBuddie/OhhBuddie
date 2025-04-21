@@ -70,6 +70,30 @@
     <!-- End Log Rocket -->
     <!-- End Meta Pixel Code -->
     <style>
+        @media (min-width: 778px) {
+            body{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+            }
+            .navbar{
+                margin: 0px;
+                width: 40%;
+            }
+            .container {
+                width: 40%;
+            }
+            .fixed-bottom-navbar{
+                width: 40%;
+                left: 428px !important ;
+            }
+        }
+    
+        
+        
+    </style>
+    <style>
         .product-img {
             height: 280px;
             object-fit: fill;

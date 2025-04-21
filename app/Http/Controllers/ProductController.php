@@ -17,13 +17,99 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index1($id)
     {
-
         $decryptedId = Crypt::decryptString(urldecode($id));
         
         // Extract only numeric characters
         // $decryptedId = preg_replace('/\D/', '', $decryptedId);    
+
+        if (preg_match('/[a-zA-Z]/', $decryptedId) && preg_match('/\d/', $decryptedId)) {
+            $decryptedId = preg_replace('/\D/', '', $decryptedId);
+        }
+       
+        $product_details = DB::table('products')->where('id',$decryptedId)->whereNotNull('product_name')->distinct()->first();
+       
+        $subcat_id = $product_details->subcategory_id;
+        
+        $subsubcat_id = $product_details->sub_subcategory_id;
+
+        
+        $similar = DB::table('products')
+                    ->where('category_id', $product_details->category_id)
+                    ->whereNotNull('parent_id')
+                    ->where('id', '!=', $decryptedId)
+                    ->where('color_name', '!=', $product_details->color_name)
+                    ->where('parent_id', $product_details->parent_id)
+                    ->select('products.*') // Select all columns
+                    ->orderByDesc('id') // Latest first
+                    ->get()
+                    ->groupBy('parent_id')
+                    ->map(function ($group) {
+                        return $group->unique('color_name'); // Keep only one product per color
+                    })
+                    ->flatten();     
+       
+       if($product_details->category_id == 88){
+           $same_products = DB::table('products')
+                    ->where('subcategory_id', $product_details->subcategory_id)
+                    ->whereNotNull('parent_id')
+                    ->whereNotNull('product_name')
+                    ->where('color_name', '!=', $product_details->color_name)
+                    ->where('id', '!=', $decryptedId)
+                    ->select('products.*') // Select all columns
+                    ->orderByDesc('id') // Latest first
+                    ->get()
+                    ->groupBy('parent_id')
+                    ->map(function ($group) {
+                        return $group->unique('color_name'); // Keep only one product per color
+                    })
+                    ->flatten(); 
+       }
+       else{
+           $same_products = DB::table('products')
+                    ->where('sub_subcategory_id', $product_details->sub_subcategory_id)
+                    ->whereNotNull('parent_id')
+                    ->whereNotNull('product_name')
+                    ->where('color_name', '!=', $product_details->color_name)
+                    ->where('id', '!=', $decryptedId)
+                    ->select('products.*') // Select all columns
+                    ->orderByDesc('id') // Latest first
+                    ->get()
+                    ->groupBy('parent_id')
+                    ->map(function ($group) {
+                        return $group->unique('color_name'); // Keep only one product per color
+                    })
+                    ->flatten(); 
+       }
+    
+               
+                    
+                    
+        $colorcnt = DB::table('products')
+                    ->where('category_id', $product_details->category_id)
+                    ->whereNotNull('parent_id')
+                    ->where('id', '!=', $decryptedId)
+                    ->where('color_name', '!=', $product_details->color_name)
+                    ->where('parent_id', $product_details->parent_id)
+                    ->count();  
+       
+        $product = Storage::disk('s3')->url('Product/Easy Return.mp4');
+       
+       
+        return view('product.index', compact('product','product_details','similar','same_products','subcat_id','subsubcat_id','colorcnt'));
+
+    }
+    
+    
+    
+    
+    
+    public function index($id,$id1,$id2,$id3,$id4)
+    {
+
+        $decryptedId = $id3;
+  
 
         if (preg_match('/[a-zA-Z]/', $decryptedId) && preg_match('/\d/', $decryptedId)) {
             $decryptedId = preg_replace('/\D/', '', $decryptedId);

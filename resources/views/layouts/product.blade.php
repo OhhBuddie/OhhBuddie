@@ -53,6 +53,79 @@
     <script>window.LogRocket && window.LogRocket.init('a4hegy/ohh-buddie');</script>
 
     <!-- End Log Rocket -->
+    
+    
+    <style>
+        
+         @media (min-width: 778px) {
+             
+             .row{
+                 display: flex;
+                flex-direction: column;
+             }
+             .navbar{
+                margin: 0px;
+                width: 40%;
+            }
+            body{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+            }
+            .accordion{
+                width: 40%;
+            }
+            .container {
+                width: 63%;
+            }
+            .badgee {
+                bottom: 34px !important;
+                right: 2px !important;
+                
+            }
+            .badge{
+                z-index: 1000 !important;
+            }
+            .col-md-6 {
+                width: 58%;
+                max-width: 58%;
+            }
+            .accordionn{
+                width: 100%   !important;
+            }
+            .product-category-container {
+                 display: flex  !important; 
+                grid-template-columns: repeat(3, 1fr);
+                gap: 16px;
+            }
+             
+             .fixed-bottom-navbar.unfixed{
+                width: 66%;
+                margin-left: 17%;
+             }
+             .fixed-bottom-navbar {
+                width: 40%;
+                margin-left: 30%;
+            }
+    
+         }
+         
+         
+         @media (min-width: 1200px) {
+             
+             .container {
+                width: 63%;
+            }
+            .col-md-6 {
+                width: 58%;
+                max-width: 58%;
+            }
+         }    
+         
+         
+         
+    </style>
     <style>
     
         body{

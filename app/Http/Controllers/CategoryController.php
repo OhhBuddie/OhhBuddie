@@ -31,6 +31,9 @@ class CategoryController extends Controller
          $colorFilter = request('color');
                 
         if (is_numeric($category)) {
+            
+            $cat_id = DB::table('categories')->where('id', $category)->latest()->first();
+
 
              if($category == 88 || $category == 1)
             {
@@ -124,7 +127,7 @@ class CategoryController extends Controller
                 $subcat =[$category];
             }
             
-            // return $subcat;
+              $cat_id = DB::table('categories')->whereIn('id', $subcat)->latest()->first();            // return $subcat;
               $query = DB::table('products')
                             ->whereIn('sub_subcategory_id', $subcat)
                             ->whereNotNull('product_name');
@@ -160,8 +163,8 @@ class CategoryController extends Controller
         
             
                     
-
-
+        
+        
         $product_size = DB::table('products')
             ->select('size_name')
             ->whereIn('sub_subcategory_id', [25, 26, 27, 28, 71, 72, 73])
@@ -172,7 +175,7 @@ class CategoryController extends Controller
 
 
         // return $products;
-        return view('category.index',compact('category','products','product_size', 'sort'));
+        return view('category.index',compact('category','products','product_size', 'sort','cat_id'));
     }
 
 

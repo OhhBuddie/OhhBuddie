@@ -61,7 +61,10 @@ Route::get('/Shipping-and-Delivery-Policy', [App\Http\Controllers\HomeController
 Route::post('/Newlogin', [NewLoginController::class, 'login'])->name('login.submit');
 
 
-Route::get('/product/{id}', [App\Http\Controllers\ProductController::class, 'index']);
+Route::get('/product1/{id}', [App\Http\Controllers\ProductController::class, 'index1']);
+
+Route::get('/product/{id}/{id1}/{id2}/{id3}/{id4}', [App\Http\Controllers\ProductController::class, 'index']);
+
 Route::get('/listing', [App\Http\Controllers\ProductController::class,'listing']);
 Route::get('/listing1', [App\Http\Controllers\ProductController::class,'listing1']);
 Route::get('/product-listing', [App\Http\Controllers\ProductController::class,'form']);

@@ -191,16 +191,33 @@ $categories = [
             foreach ($brands as $brand) {
                 $brandCache[$brand->id] = $brand->brand_name;
             }
+            
+
         }
+        
         @endphp
         
         @foreach ($saree as $sar)
+        @php
+           $cat_id = DB::table('categories')->where('id',$sar->sub_subcategory_id)->latest()->first();
+           $seller_id = DB::table('sellers')->where('seller_id',$sar->seller_id)->latest()->first();
+        @endphp
+
             <div class="product-item-card">
-                <a href="/product/{{ Crypt::encryptString($sar->id) }}" style="text-decoration:none;">
+                
                     @php
-                    $images = json_decode($sar->images, true);
-                    $brandName = isset($brandCache[$sar->brand_id]) ? $brandCache[$sar->brand_id] : '';
+                        $images = json_decode($sar->images, true);
+                        $brandName = isset($brandCache[$sar->brand_id]) ? $brandCache[$sar->brand_id] : '';
+                        $brandName1 = isset($brandCache[$sar->brand_id]) ? $brandCache[$sar->brand_id] : '';
+                        
+                        if (empty($brandName1)) {
+                            $brandName1 = $seller_id->company_name;
+                        }
                     @endphp
+                <!--<a href="/product/{{ Crypt::encryptString($sar->id) }}" style="text-decoration:none;">-->
+                    <a href="/product/{{$cat_id->sub_subcategory}}/{{ \Illuminate\Support\Str::slug($brandName1) }}/{{ \Illuminate\Support\Str::slug($sar->product_name) }}/{{$sar->id}}/buy" style="text-decoration:none;">
+
+            
                     
                     @if (empty($images))
                         <img loading="lazy" src="https://assets.ajio.com/medias/sys_master/root/20230728/GBrh/64c3db50a9b42d15c979555c/-473Wx593H-466398360-green-MODEL.jpg" alt="Image">
@@ -239,28 +256,37 @@ $categories = [
         <div class="product-category-container" style="margin-left: 5px;">
             <!-- Category Product 1 -->
                @foreach ($kids as $kds)
+                @php
+                   $cat_id = DB::table('categories')->where('id',$kds->subcategory_id)->latest()->first();
+                   $seller_id = DB::table('sellers')->where('seller_id',$kds->seller_id)->latest()->first();
+                @endphp
+                @php
+                    $images = json_decode($kds->images, true);
+                    
+                    $bncnt = DB::table('brands')->where('id',$kds->brand_id)->count();
+                    if($bncnt == 0)
+                    {
+                        $brand_name = 'NA';
+                        $brand_name2 = $seller_id->company_name;
+                    }
+                    else
+                    {
+                        $brand_name = DB::table('brands')->where('id',$kds->brand_id)->latest()->first();
+                        $brand_name2 = $brand_name->brand_name;
+                    }
+                    
+                @endphp
                 <div class="product-item-card">
-                    <a  href="/product/{{ Crypt::encryptString($kds->id) }}" style="text-decoration:none;">
-    
-                            @php
-                                $images = json_decode($kds->images, true);
-                                
-                                $bncnt = DB::table('brands')->where('id',$kds->brand_id)->count();
-                                if($bncnt == 0)
-                                {
-                                    $brand_name = 'NA';
-                                }
-                                else
-                                {
-                                    $brand_name = DB::table('brands')->where('id',$kds->brand_id)->latest()->first();
-                                }
-                                
-                            @endphp
+                    <!--<a  href="/product/{{ Crypt::encryptString($kds->id) }}" style="text-decoration:none;">-->
+                    <a href="/product/{{ \Illuminate\Support\Str::slug($cat_id->subcategory) }}/{{ \Illuminate\Support\Str::slug($brand_name2) }}/{{ \Illuminate\Support\Str::slug($kds->product_name) }}/{{$kds->id}}/buy" style="text-decoration:none;">
+
+                           
                             
                             @if(!empty($images) && isset($images[0]))
                                 <img src="{{ $images[0] }}" alt="Image">
                             @endif
     
+
                         <div class="card-body product-item-card-body text-left">
                             <h8 class="card-title"><b>
                                 @if($brand_name == 'NA')
@@ -300,12 +326,24 @@ $categories = [
         @endphp
         
         @foreach ($western as $wstrn)
+            @php
+               $cat_id = DB::table('categories')->where('id',$wstrn->sub_subcategory_id)->latest()->first();
+               $seller_id = DB::table('sellers')->where('seller_id',$wstrn->seller_id)->latest()->first();
+            @endphp
+            @php
+                $images = json_decode($wstrn->images, true);
+                $brandName = isset($westernBrandCache[$wstrn->brand_id]) ? $westernBrandCache[$wstrn->brand_id] : '';
+                $brandName3 = isset($westernBrandCache[$wstrn->brand_id]) ? $westernBrandCache[$wstrn->brand_id] : '';
+                
+                if (empty($brandName3)) {
+                    $brandName3 = $seller_id->company_name;
+                }
+            @endphp
+    
             <div class="product-item-card">
-                <a href="/product/{{ Crypt::encryptString($wstrn->id) }}" style="text-decoration:none;">
-                    @php
-                    $images = json_decode($wstrn->images, true);
-                    $brandName = isset($westernBrandCache[$wstrn->brand_id]) ? $westernBrandCache[$wstrn->brand_id] : '';
-                    @endphp
+                <!--<a href="/product/{{ Crypt::encryptString($wstrn->id) }}" style="text-decoration:none;">-->
+                <a href="/product/{{ \Illuminate\Support\Str::slug($cat_id->sub_subcategory) }}/{{ \Illuminate\Support\Str::slug($brandName3) }}/{{ \Illuminate\Support\Str::slug($wstrn->product_name) }}/{{$wstrn->id}}/buy" style="text-decoration:none;">
+
                     
                     @if (!empty($images) && isset($images[0]))
                         <img loading="lazy" src="{{ $images[0] }}" alt="Image">
@@ -352,12 +390,24 @@ $categories = [
         @endphp
         
         @foreach ($kurti as $krti)
+            @php
+               $cat_id = DB::table('categories')->where('id',$krti->sub_subcategory_id)->latest()->first();
+               $seller_id = DB::table('sellers')->where('seller_id',$krti->seller_id)->latest()->first();
+            @endphp
+            @php
+                $images = json_decode($krti->images, true);
+                $brandName = isset($kurtiBrandCache[$krti->brand_id]) ? $kurtiBrandCache[$krti->brand_id] : '';
+                
+                $brandName4 = isset($kurtiBrandCache[$krti->brand_id]) ? $kurtiBrandCache[$krti->brand_id] : '';
+                
+                if (empty($brandName4)) {
+                    $brandName4 = $seller_id->company_name;
+                }
+            @endphp
             <div class="product-item-card">
-                <a href="/product/{{ Crypt::encryptString($krti->id) }}" style="text-decoration:none;">
-                    @php
-                    $images = json_decode($krti->images, true);
-                    $brandName = isset($kurtiBrandCache[$krti->brand_id]) ? $kurtiBrandCache[$krti->brand_id] : '';
-                    @endphp
+                <!--<a href="/product/{{ Crypt::encryptString($krti->id) }}" style="text-decoration:none;">-->
+                <a href="/product/{{ \Illuminate\Support\Str::slug($cat_id->sub_subcategory) }}/{{ \Illuminate\Support\Str::slug($brandName4) }}/{{ \Illuminate\Support\Str::slug($krti->product_name) }}/{{$krti->id}}/buy" style="text-decoration:none;">
+
                     
                     @if (!empty($images) && isset($images[0]))
                         <img loading="lazy" src="{{ $images[0] }}" alt="Image">
@@ -404,12 +454,28 @@ $categories = [
         @endphp
         
         @foreach ($shoes as $shs)
+            @php
+               $cat_id = DB::table('categories')->where('id',$shs->sub_subcategory_id)->latest()->first();
+               $seller_id = DB::table('sellers')->where('seller_id',$shs->seller_id)->latest()->first();
+            @endphp
+            @php
+                $images = json_decode($shs->images, true);
+                $brandName = isset($shoesBrandCache[$shs->brand_id]) ? $shoesBrandCache[$shs->brand_id] : '';
+                $brandName5 = isset($shoesBrandCache[$shs->brand_id]) ? $shoesBrandCache[$shs->brand_id] : '';
+                
+                if (empty($brandName1)) {
+                    $brandName5 = $seller_id->company_name;
+                }
+                else
+                {
+                    $brandName5 = $brandName;
+                }
+                
+            @endphp
             <div class="product-item-card">
-                <a href="/product/{{ Crypt::encryptString($shs->id) }}" style="text-decoration:none;">
-                    @php
-                    $images = json_decode($shs->images, true);
-                    $brandName = isset($shoesBrandCache[$shs->brand_id]) ? $shoesBrandCache[$shs->brand_id] : '';
-                    @endphp
+                <!--<a href="/product/{{ Crypt::encryptString($shs->id) }}" style="text-decoration:none;">-->
+                <a href="/product/{{ \Illuminate\Support\Str::slug($cat_id->sub_subcategory) }}/{{ \Illuminate\Support\Str::slug($brandName5) }}/{{ \Illuminate\Support\Str::slug($shs->product_name) }}/{{$shs->id}}/buy" style="text-decoration:none;">
+
                     
                     @if (!empty($images) && isset($images[0]))
                         <img loading="lazy" src="{{ $images[0] }}" alt="Image">

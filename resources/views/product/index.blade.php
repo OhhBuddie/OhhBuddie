@@ -463,7 +463,7 @@
             <!--  <i class="fa fa-star checked" style="color:white"></i>  4.1 <i class="bi bi-star-fill" style="font-size: 11px;"></i> | 5-->
             <!--</span>-->
             
-            <span class="badge bg-success me-2 position-absolute" 
+            <span class="badge badgee bg-success me-2 position-absolute" 
                   style="bottom: 18px; right: 10px; background-color:#04AA6D; color: white; padding: 8px 15px; border-radius: 12px; font-size: 10px; z-index:9999;">
                No Reviews Yet
             </span>
@@ -578,12 +578,43 @@
                 <h5>Colors </h5>
                  <div class="d-flex mb-2" style="gap: 1.5rem; overflow: scroll; scrollbar-width: none;">
                      @foreach($similar as $sim)
+                     
+                        @php
+                        if($sim->category_id ==88)
+                        {
+                           $cat_id = DB::table('categories')->where('id',$sim->subcategory_id)->latest()->first();
+                           $seller_id = DB::table('sellers')->where('seller_id',$sim->seller_id)->latest()->first();
+                           $sub = $cat_id->subcategory;
+                        }
+                        else
+                        {
+                           $cat_id = DB::table('categories')->where('id',$sim->sub_subcategory_id)->latest()->first();
+                           $seller_id = DB::table('sellers')->where('seller_id',$sim->seller_id)->latest()->first();
+                           $sub = $cat_id->sub_subcategory;
+                        }
+                        @endphp
+                        
                         @php
                             $images = json_decode($sim->images, true);
+                            
+                            $bncnt = DB::table('brands')->where('id',$sim->brand_id)->count();
+                            if($bncnt == 0)
+                            {
+                                $brand_name = 'NA';
+                                $brand_name2 = $seller_id->company_name;
+                            }
+                            else
+                            {
+                                $brand_name = DB::table('brands')->where('id',$sim->brand_id)->latest()->first();
+                                $brand_name2 = $brand_name->brand_name;
+                            }
+                    
                         @endphp
                         
                         @if(!empty($images) && isset($images[0]))
-                        <a  href="/product/{{ Crypt::encryptString($sim->id) }}" style="text-decoration:none;">
+                        <a href="/product/{{ \Illuminate\Support\Str::slug($sub) }}/{{ \Illuminate\Support\Str::slug($brand_name2) }}/{{ \Illuminate\Support\Str::slug($sim->product_name) }}/{{$sim->id}}/buy" style="text-decoration:none;">
+
+                        <!--<a  href="/product/{{ Crypt::encryptString($sim->id) }}" style="text-decoration:none;">-->
                             <img src="{{ $images[0] }}" alt="Image" style="height:80px; width:60px;border-radius: 10px;">
                         </a>
                         @endif
@@ -706,7 +737,7 @@
         <h5 class="px-4 text-light mt-4 mb-0 row p-3">Product Information</h5>
         <div class="row mb-2">
             
-          <div class="accordion" style="padding:0px; border: none;">
+          <div class="accordion accordionn" style="padding:0px; border: none;">
               
             <div class="accordion-item" style="background-color: #1f1f1f; border:none;">
                 
@@ -899,17 +930,39 @@
             <div class="product-category-container">
                 <!-- Category Product 1 -->
                 @foreach($same_products as $same_p)
-                @php
-                    $brnd_cnt = DB::table('brands')->where('id',$same_p->brand_id)->count();
-                    if($brnd_cnt > 0)
-                    {
-                        $brnd_name = DB::table('brands')->where('id',$same_p->brand_id)->latest()->first();
-                    }
-                    
-                @endphp
+                
+                    @php
+                        if($same_p->category_id ==88)
+                        {
+                           $cat_id = DB::table('categories')->where('id',$same_p->subcategory_id)->latest()->first();
+                           $seller_id = DB::table('sellers')->where('seller_id',$same_p->seller_id)->latest()->first();
+                           $sub = $cat_id->subcategory;
+                        }
+                        else
+                        {
+                           $cat_id = DB::table('categories')->where('id',$same_p->sub_subcategory_id)->latest()->first();
+                           $seller_id = DB::table('sellers')->where('seller_id',$same_p->seller_id)->latest()->first();
+                           $sub = $cat_id->sub_subcategory;
+                        }
+                    @endphp
+                    @php
+                        $brnd_cnt = DB::table('brands')->where('id',$same_p->brand_id)->count();
+                        if($brnd_cnt > 0)
+                        {
+                            $brnd_name = DB::table('brands')->where('id',$same_p->brand_id)->latest()->first();
+                            $brnd_name11 = $brnd_name->brand_name;
+                        }
+                        else
+                        {
+                            $brnd_name11 = $seller_id->company_name;
+                        }
+                        
+                    @endphp
 
 
-                <a  href="/product/{{ Crypt::encryptString($same_p->id) }}" style="text-decoration:none;">
+                <!--<a  href="/product/{{ Crypt::encryptString($same_p->id) }}" style="text-decoration:none;">-->
+                <a href="/product/{{ \Illuminate\Support\Str::slug($sub) }}/{{ \Illuminate\Support\Str::slug($brnd_name11) }}/{{ \Illuminate\Support\Str::slug($same_p->product_name) }}/{{$same_p->id}}/buy" style="text-decoration:none;">
+
                 <div class="product-item-card">
                     @php
                         $images = json_decode($same_p->images, true);

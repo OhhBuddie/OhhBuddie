@@ -17,6 +17,25 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     
     <style>
+        @media (min-width: 778px) {
+            
+            .navbar-fixed-top{
+                left: 29% !important;
+                right: 29% !important;
+            }
+            .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+                max-width: 40% !important;
+            }
+            .badge {
+                --bs-badge-padding-x: 0.35em !important;
+                --bs-badge-padding-y: 0.15em !important;
+                --bs-badge-font-size: 0.5em !important;
+            }
+        }    
+    </style>
+    
+    
+    <style>
          .navbar-fixed-top {
             position: fixed;
             top: 0;

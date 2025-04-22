@@ -55,6 +55,29 @@
 
     <!-- End Log Rocket -->
   
+  
+    <style>
+        @media  (min-width: 768px) {
+            body{
+                display: flex !important;
+                justify-content: center !important;
+                align-items: center !important;
+            }
+            .navbar{
+                width: 40% !important;
+            }
+            .containerr{
+                width: 40% !important;
+                margin-left: 30% !important;
+            }
+            .bottom-navbar{
+                left: 30% !important;
+                width: 40% !important;
+            }
+        }
+        
+        
+    </style>
     <style>
         .product-img {
             height: 150px;
@@ -82,9 +105,9 @@
 
         /* Styles for the Bottom Navbar */
         .bottom-navbar {
-            display: none;
+            display: block;
             position: fixed;
-            bottom: 20;
+            bottom: 20px;
             left: 0;
             width: 100%;
             background-color: black;
@@ -116,83 +139,26 @@
             display: block;
         }
 
-        /* Show navbar on small screens */
-        @media (max-width: 768px) {
-            .bottom-navbar {
-                display: block;
-            }
-        }
-
+  
         .circle-icon {
             display: inline-flex;
             flex-direction: column;
-            /* Stack the icon and text vertically */
             align-items: center;
-            /* Center both the icon and text */
             justify-content: center;
-            /* Center the content inside the circle */
             text-align: center;
             position: relative;
             width: 60px;
-            /* Adjust the size of the circle */
             height: 60px;
-            /* Adjust the size of the circle */
             border-radius: 50%;
-            /* Make it a circle */
-            /*background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(150, 19, 17, 1) 35%, rgba(150, 19, 17, 1) 100%);*/
             background: radial-gradient(at right center, #D7CCB7, #EFC475);
-
             margin-right: -5px;
             overflow: hidden;
+            font-weight: bold;
+            font-family: cursive;
+
         }
 
-        .circle-icon i {
-            font-size: 30px;
-            /* Icon size */
-            color: black;
-            /* Icon color */
-            animation: blink 1s infinite;
-            /* Blinking animation */
-        }
 
-        .circle-icon span {
-            font-size: 12px;
-            /* Adjust text size */
-            color: black;
-            /* Text color */
-        }
-
-        /* Blinking animation */
-        @keyframes blink {
-            0% {
-                opacity: 1;
-            }
-
-            50% {
-                opacity: 0;
-            }
-
-            100% {
-                opacity: 1;
-            }
-        }
-
-        .circle-icon:hover {
-            background: linear-gradient(45deg, #ffcc00, #ff6f61, #66ff66, #66ccff);
-            /* Hover effect */
-        }
-
-        .slideimg {
-            height: 600px;
-        }
-
-        .rating {
-            color: #ffc107;
-        }
-
-        .rating .fa-star {
-            margin-right: 0px;
-        }
     </style>
            
   
@@ -348,7 +314,21 @@
         }
       </style>
       
-              
+      <style>
+        .blink-text {
+            animation: blinker 1s linear infinite;
+            font-weight: 700 !important;
+            /* Force bold */
+            color: black;
+            font-family: cursive !important;
+        }
+
+        @keyframes blinker {
+            50% {
+                opacity: 0;
+            }
+        }
+    </style>
 
     <style>
     /* !important styles to override any conflicts */
@@ -536,10 +516,10 @@
                 </a>
             </li>
             <li>
-                <a href="/order" class="circle-icon">
-                    <i class="fas fa-shirt"></i>
-                    <span>Tryout</span>
-                </a>
+                <div class="circle-icon">
+                    <span class="blink-text text-dark">69-Min</span>
+                    <span class="blink-text text-dark">Delivery</span>
+                </div>
             </li>
             <li>
                 <a href="/explore">

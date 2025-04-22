@@ -64,6 +64,19 @@
     
   
     <style>
+         @media screen and (min-width: 778px){
+            body{
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                background: black !important;
+            }
+            .navbar, .main-body{
+                width: 40% !important;
+                border-radius: unset !important;
+            }
+        }
+    
     
         .main-body{
             background-color: black;

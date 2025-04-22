@@ -55,6 +55,20 @@
     <script src="https://cdn.lgrckt-in.com/LogRocket.min.js" crossorigin="anonymous"></script>
     <script>window.LogRocket && window.LogRocket.init('a4hegy/ohh-buddie');</script>
 
+    <style>
+        @media screen and (min-width: 778px){
+            body{
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+            }
+            .main-body, .navbar{
+                width: 40% !important;
+            }
+        }
+        
+        
+    </style>
     <!-- End Log Rocket -->
     <style>
         .main-body{

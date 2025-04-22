@@ -579,10 +579,10 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#orders" class="circle-icon">
+                    <div class="circle-icon">
                         <span class="blink-text text-dark">69-Min</span>
                         <span class="blink-text text-dark">Delivery</span>
-                    </a>
+                    </div>
 
                     <style>
                         .blink-text {
@@ -590,7 +590,7 @@
                             font-weight: 700 !important;
                             /* Force bold */
                             color: black;
-                            font-family: cursive;
+                            font-family: cursive !important;
                         }
 
                         @keyframes blinker {
@@ -974,19 +974,19 @@ $(document).ready(function() {
         // Accordian 
 
       document.querySelectorAll(".accordion-header").forEach(header => {
-  header.addEventListener("click", () => {
-    const content = header.nextElementSibling;
-    const icon = header.querySelector(".rotatee");
+        header.addEventListener("click", () => {
+            const content = header.nextElementSibling;
+            const icon = header.querySelector(".rotatee");
 
-    const isOpen = content.style.display === "block";
+            const isOpen = content.style.display === "block";
 
-    // Toggle content visibility
-    content.style.display = isOpen ? "none" : "block";
+            // Toggle content visibility
+            content.style.display = isOpen ? "none" : "block";
 
-    // Toggle rotation class
-    icon.classList.toggle("rotate", !isOpen);
-  });
-});
+            // Toggle rotation class
+            icon.classList.toggle("rotate", !isOpen);
+        });
+        });
 
 
 

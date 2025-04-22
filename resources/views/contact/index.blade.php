@@ -8,6 +8,30 @@
     <title>Contact Form</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+    <style>
+    
+        @media screen and (min-width: 778px){
+            body{
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                background: black !important;
+            }
+            form{
+                display: flex !important;
+                justify-content: center !important;
+                align-items: center !important;
+                width: 40% !important;
+            }
+            .py-16{
+                padding-top: 2rem !important;
+                padding-bottom: 2rem !important;
+            }
+        }
+        
+        
+    </style>
 </head>
 <body class="bg-gray-100">
 

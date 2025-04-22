@@ -163,71 +163,21 @@
         .circle-icon {
             display: inline-flex;
             flex-direction: column;
-            /* Stack the icon and text vertically */
             align-items: center;
-            /* Center both the icon and text */
             justify-content: center;
-            /* Center the content inside the circle */
             text-align: center;
             position: relative;
             width: 60px;
-            /* Adjust the size of the circle */
             height: 60px;
-            /* Adjust the size of the circle */
             border-radius: 50%;
-            /* Make it a circle */
-            background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(150, 19, 17, 1) 35%, rgba(150, 19, 17, 1) 100%);
+            background: radial-gradient(at right center, #D7CCB7, #EFC475);
             margin-right: -5px;
             overflow: hidden;
+            font-weight: bold;
+            font-family: cursive;
+
         }
 
-        .circle-icon i {
-            font-size: 30px;
-            /* Icon size */
-            color: white;
-            /* Icon color */
-            animation: blink 1s infinite;
-            /* Blinking animation */
-        }
-
-        .circle-icon span {
-            font-size: 12px;
-            /* Adjust text size */
-            color: white;
-            /* Text color */
-        }
-
-        /* Blinking animation */
-        @keyframes blink {
-            0% {
-                opacity: 1;
-            }
-
-            50% {
-                opacity: 0;
-            }
-
-            100% {
-                opacity: 1;
-            }
-        }
-
-        .circle-icon:hover {
-            background: linear-gradient(45deg, #ffcc00, #ff6f61, #66ff66, #66ccff);
-            /* Hover effect */
-        }
-
-        .slideimg {
-            height: 600px;
-        }
-
-        .rating {
-            color: #ffc107;
-        }
-
-        .rating .fa-star {
-            margin-right: 0px;
-        }
     </style>
            
   
@@ -608,10 +558,10 @@
                 </a>
             </li>
             <li>
-                <a href="/order" class="circle-icon">
+                <div class="circle-icon">
                     <i class="fas fa-shirt"></i>
                     <span>Tryout</span>
-                </a>
+                </div>
             </li>
             <li>
                 <a href="/explore">

@@ -2,14 +2,18 @@
 @section('content')
 
     <style>
-         body{
-        background-color: #e2e2e2;
+   
+   @media screen and (min-width: 778px){
+         .help{
+             right:31% !important;
          }
+     }
+     
          
-         .card{
-             background-color: #1f1f1f;
-             color:white;
-         }
+      .card{
+          background-color: #1f1f1f;
+          color:white;
+      }
     .product-image {
       max-width: 105px;
     }

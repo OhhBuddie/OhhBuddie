@@ -20,6 +20,7 @@ use App\Http\Controllers\Sellers\SellerController;
 use App\Http\Controllers\ContactController; 
 
 use App\Http\Controllers\Category1Controller;
+use App\Http\Controllers\WhatsAppController;
 
 /*
 |--------------------------------------------------------------------------
@@ -286,3 +287,5 @@ Route::post('/payment/failure', [CheckoutController::class, 'paymentFailure'])
     ->withoutMiddleware(['web']);
 
 Route::get('/get-cities', [AddressController::class, 'getCities'])->name('getCities');
+
+Route::view('/whatsapp', 'whatsapp-form');

@@ -7,6 +7,13 @@
     .desktop-alert {
         display: block; /* Show alert only on larger screens */
     }
+    .product-category-container{
+        
+        display: flex !important;
+    }
+    .product-item-card {
+        flex: 0 0 33% !important;
+    }
 }
 @media (max-width: 767px) {
     .desktop-alert {
@@ -309,7 +316,14 @@ $categories = [
         </div>
     </div>
 
-
+ <div class="Banner">
+    <a href="/category/{{ $encryptedkids }}" style="text-decoration:none;">
+        <video  playsinline autoplay muted loop width="100%">
+              <source src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/Category+Banners/co-ordsetmobile+banner.mp4" type="video/mp4" class="catimg" style="width:100%;">
+    
+        </video>
+    </a>    
+</div>
 <div class="container" style="padding-right: 0px; padding-left: 0px;">
     <div class="product-category-container" style="margin-left: 5px;">
         @php

@@ -10,10 +10,13 @@
     
    <link rel="icon" type="image/x-icon" href="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Ohbuddielogo.png">
     <style>
+    a{
+        text-decoration: none !important;
+    }
     body{
         background-color: black;
     }
-    .search-container {
+    .search-containerr {
       display: flex;
       align-items: center;
       gap: 10px;
@@ -132,7 +135,7 @@
   </style>
 
 
-    <div class="search-container">
+    <div class="search-containerr">
       <!-- Search Bar -->
       <div class="input-group">
         <span class="input-group-text">

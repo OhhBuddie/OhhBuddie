@@ -139,12 +139,12 @@
                                     <input type="hidden" name="otp" id="otp" class="@error('otp') is-invalid @enderror" value="{{ old('otp') }}" />
                                 
                                     <div class="otp-input">
-                                        <input type="number" min="0" max="1" required oninput="moveNext(this, 1)" maxlength="1">
-                                        <input type="number" min="0" max="1" required oninput="moveNext(this, 2)" maxlength="1">
-                                        <input type="number" min="0" max="1" required oninput="moveNext(this, 3)" maxlength="1">
-                                        <input type="number" min="0" max="1" required oninput="moveNext(this, 4)" maxlength="1">
-                                        <input type="number" min="0" max="1" required oninput="moveNext(this, 5)" maxlength="1">
-                                        <input type="number" min="0" max="1" required oninput="moveNext(this, 6)" maxlength="1">
+                                        <input type="number" min="0" max="9" required oninput="moveNext(this, 1)" maxlength="1">
+                                        <input type="number" min="0" max="9" required oninput="moveNext(this, 2)" maxlength="1">
+                                        <input type="number" min="0" max="9" required oninput="moveNext(this, 3)" maxlength="1">
+                                        <input type="number" min="0" max="9" required oninput="moveNext(this, 4)" maxlength="1">
+                                        <input type="number" min="0" max="9" required oninput="moveNext(this, 5)" maxlength="1">
+                                        <input type="number" min="0" max="9" required oninput="moveNext(this, 6)" maxlength="1">
                                     </div>
       
     

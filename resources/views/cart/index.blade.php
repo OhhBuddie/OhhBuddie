@@ -1193,7 +1193,9 @@
                                         @php
                                             $mrp = $wslt['mrp'];
                                             $sellingPrice = $wslt['price'];
-                                            $discount = $mrp > 0 ? round((($mrp - $sellingPrice) / $mrp) * 100) : 0;
+                                            $discount = (is_numeric($mrp) && is_numeric($sellingPrice) && $mrp > 0)
+                                                ? round((($mrp - $sellingPrice) / $mrp) * 100)
+                                                : 0;
                                             $images = json_decode($wslt['images'], true);
                                             $size_data = DB::table('products')
                                                 ->select('id', 'size_name')

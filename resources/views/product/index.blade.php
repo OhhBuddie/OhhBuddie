@@ -392,8 +392,8 @@
 
     
     @php
-        $mrp = $product_details->maximum_retail_price;
-        $sellingPrice = $product_details->portal_updated_price;
+        $mrp = floatval(preg_replace('/[^0-9.]/', '', $product_details->maximum_retail_price ?? 0));
+        $sellingPrice = floatval(preg_replace('/[^0-9.]/', '', $product_details->portal_updated_price ?? 0));
         $discount = $mrp > 0 ? round((($mrp - $sellingPrice) / $mrp) * 100) : 0;
     @endphp
     @php
@@ -464,7 +464,7 @@
             <!--</span>-->
             
             <span class="badge badgee bg-success me-2 position-absolute" 
-                  style="bottom: 18px; right: 10px; background-color:#04AA6D; color: white; padding: 8px 15px; border-radius: 12px; font-size: 10px; z-index:9999;">
+                  style="bottom: 18px; right: 10px; background-color:#04AA6D; color: white; padding: 8px 15px; border-radius: 12px; font-size: 10px; z-index:1000;">
                No Reviews Yet
             </span>
            
@@ -552,6 +552,7 @@
            <!-- Modal Container -->
           <div id="modal-container">
             <div class="modal-content">
+                <h4 class="text-dark"><b>Size Chart</b></h4>
                 <button class="close-button" onclick="closeModal()">×</button>
                 @if($subcat_id == 23)
                     <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Size+Chart/Men+---+Footwear.jpg" alt="Men's Bottom Wear Size Chart" class="size-chart-image">

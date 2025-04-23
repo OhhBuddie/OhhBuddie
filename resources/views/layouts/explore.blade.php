@@ -10,7 +10,6 @@
     <title>Ohhbuddie | Explore</title>
      <link rel="icon" type="image/x-icon" href="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Ohbuddielogo.png">
     <!-- Font Awesome for Icons -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('public/assets/css/style.css') }}"> 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -107,7 +106,7 @@
         .bottom-navbar {
             display: block;
             position: fixed;
-            bottom: 20px;
+            bottom: 34px;
             left: 0;
             width: 100%;
             background-color: black;
@@ -120,7 +119,7 @@
             justify-content: space-around;
             align-items: center;
             margin: 0;
-            padding: 5px 0;
+            padding: 5px 17px;
             list-style: none;
         }
 
@@ -502,7 +501,7 @@
 
     <div class="bottom-navbar">
         <ul>
-            &nbsp;
+           
             <li>
                 <a href="/">
                     <i class="fas fa-home"></i>
@@ -533,10 +532,10 @@
                     Account
                 </a>
             </li>
-            &nbsp;
+           
         </ul>
     </div>
-    </div>
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     

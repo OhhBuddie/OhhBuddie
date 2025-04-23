@@ -108,6 +108,12 @@
                 width: 40%;
                 margin-left: 30%;
             }
+            #modal-container{
+                left: 30% !important;
+                width: 40% !important;
+            }
+    
+
     
          }
          

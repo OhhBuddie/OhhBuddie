@@ -17,6 +17,7 @@ class CartController extends Controller
      */
     public function index(Request $request)
     {
+        $cartQuery = DB::table('carts');
         // Check if user is logged in
         if (Auth::check()) {
             $userId = Auth::id();
@@ -24,18 +25,22 @@ class CartController extends Controller
             
             $address = DB::table('addresses')->where('user_id', $userId)->get();
             $ad_cnt = DB::table('addresses')->where('user_id', $userId)->count();
+            
+            $cart_data = $cartQuery->where('user_id', $userId)->latest()->get();
         } else {
             // If user is not logged in, get temp_user_id from session or request
             $userId = 0;
             $tempUserId = session('temp_user_id') ?? $request->cookie('temp_user_id');
             $address = 'NA';
             $ad_cnt = 0;
+            
+            $cart_data = $cartQuery->where('temp_user_id', $tempUserId)->latest()->get();
         }
         
         
     
         // Fetch cart data for either user_id or temp_user_id
-        $cartQuery = DB::table('carts');
+        
         
         // Apply user condition
         if ($userId > 0) {
@@ -52,7 +57,7 @@ class CartController extends Controller
         });
         
         // Get the result
-        $cart_data = $cartQuery->latest()->get();
+        
     
         // Initialize cart details
         $cart_details = [];

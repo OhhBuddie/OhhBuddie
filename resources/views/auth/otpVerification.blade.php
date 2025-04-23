@@ -8,30 +8,50 @@
     <title>OhhBuddie | OTP Verification</title>
     <link rel="icon" type="image/x-icon" href="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Ohbuddielogo.png">
     <style>
+    
+        @media screen and (min-width: 778px){
+            .container, .body{
+                 width: 40% !important;
+                 
+            }
+            
+            
+        }
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: Arial, sans-serif;
         }
-        body {
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: black;
+        }
+        
+        .body {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            width: 100%;
             background: url('https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/login+page_new.png') no-repeat center center;
             background-size: cover;
         }
         .container {
             text-align: center;
-            border-radius: 10px;
-            width: 90%;
-            max-width: 400px;
+            border-top-left-radius: 10px;
+            width: 100%;
+           
+            background: #1f1f1f;
+            padding: 2rem 1rem;
+            border-top-right-radius: 10px;
+            position: absolute;
+            bottom: 0;
         }
-        .container img {
-            width: 100px;
-            margin-bottom: 15px;
-        }
+
         h2 {
             font-size: 20px;
             margin-bottom: 10px;
@@ -86,60 +106,75 @@
         .white{
             color:white;
         }
+        
+        /* Chrome, Safari, Edge, Opera */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+        
+        /* Firefox */
+        input[type=number] {
+          -moz-appearance: textfield;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-     
-        <h2 class="white">Enter Verification Code</h2>
-
-        <p>Code has been sent to ****{{ substr($phone, -4) }} on WhatsApp</p>
-        
-        
-        <form method="POST" action="{{ route('otp.getlogin') }}">
-
-                        @csrf
-                        <input type="hidden" name="user_id" value="{{$user_id}}" />
-                        
-						<div class="input-group">
-
-                                <input type="hidden" name="otp" id="otp" class="@error('otp') is-invalid @enderror" value="{{ old('otp') }}" />
+    <div class="body">
+        <div class="container">
+         
+            <h2 class="white">Enter Verification Code</h2>
+    
+            <p>Code has been sent to ****{{ substr($phone, -4) }} on WhatsApp</p>
+            
+            
+            <form method="POST" action="{{ route('otp.getlogin') }}">
+    
+                            @csrf
+                            <input type="hidden" name="user_id" value="{{$user_id}}" />
                             
-                                <div class="otp-input">
-                                    <input type="number" min="0" max="9" required oninput="moveNext(this, 1)" maxlength="1">
-                                    <input type="number" min="0" max="9" required oninput="moveNext(this, 2)" maxlength="1">
-                                    <input type="number" min="0" max="9" required oninput="moveNext(this, 3)" maxlength="1">
-                                    <input type="number" min="0" max="9" required oninput="moveNext(this, 4)" maxlength="1">
-                                    <input type="number" min="0" max="9" required oninput="moveNext(this, 5)" maxlength="1">
-                                    <input type="number" min="0" max="9" required oninput="moveNext(this, 6)" maxlength="1">
+    						<div class="input-group">
+    
+                                    <input type="hidden" name="otp" id="otp" class="@error('otp') is-invalid @enderror" value="{{ old('otp') }}" />
+                                
+                                    <div class="otp-input">
+                                        <input type="number" min="0" max="1" required oninput="moveNext(this, 1)" maxlength="1">
+                                        <input type="number" min="0" max="1" required oninput="moveNext(this, 2)" maxlength="1">
+                                        <input type="number" min="0" max="1" required oninput="moveNext(this, 3)" maxlength="1">
+                                        <input type="number" min="0" max="1" required oninput="moveNext(this, 4)" maxlength="1">
+                                        <input type="number" min="0" max="1" required oninput="moveNext(this, 5)" maxlength="1">
+                                        <input type="number" min="0" max="1" required oninput="moveNext(this, 6)" maxlength="1">
+                                    </div>
+      
+    
+                                    @error('otp')
+    
+                                        <span class="invalid-feedback" role="alert">
+    
+                                            <strong>{{ $message }}</strong>
+    
+                                        </span>
+    
+                                    @enderror
+    						</div>
+                                <div class="resend-container">
+                                    <a href="#" class="resend white">Send Otp In Sms</a>
+                                    <a href="#" class="resend white">Resend Otp</a>
                                 </div>
-  
-
-                                @error('otp')
-
-                                    <span class="invalid-feedback" role="alert">
-
-                                        <strong>{{ $message }}</strong>
-
-                                    </span>
-
-                                @enderror
-						</div>
-                            <div class="resend-container">
-                                <a href="#" class="resend white">Send Otp In Sms</a>
-                                <a href="#" class="resend white">Resend Otp</a>
-                            </div>
-						<button class="signin">
-							Sign in
-						</button>
-
-			</form>
-			
-		
-
-
-
-    </div>
+    						<button class="signin">
+    							Sign in
+    						</button>
+    
+    			</form>
+    			
+    		
+    
+    
+    
+        </div>
+        
+    </div>    
 
     <script>
           const inputs = document.querySelectorAll('.otp-input input');

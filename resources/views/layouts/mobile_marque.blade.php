@@ -177,6 +177,8 @@
         /* Adjust navbar elements positioning */
         .navbar {
             width: 100%;
+            margin-bottom: 0px; 
+            border: none;
         }
 
         /* Override any full-width elements */

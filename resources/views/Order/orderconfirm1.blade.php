@@ -44,5 +44,20 @@
             
    
         </div>
+
+
+
+        @if (Auth::check())
+        <script src="https://cdn.logrocket.io/LogRocket.min.js"></script>
+        <script>
+            LogRocket.init('a4hegy/ohh-buddie'); // Replace this with your actual LogRocket ID
+
+            LogRocket.identify("{{ Auth::user()->id }}", {
+                name: "{{ Auth::user()->name }}",
+                email: "{{ Auth::user()->email }}",
+                phone: "{{ Auth::user()->phone }}"
+            });
+        </script>
+        @endif
 </body>
 </html>

@@ -78,5 +78,19 @@
             <p><strong>CIN:</strong> U47910WB2025PTC277434</p>
         </div>
     </div>
+
+
+    @if (Auth::check())
+    <script src="https://cdn.logrocket.io/LogRocket.min.js"></script>
+    <script>
+        LogRocket.init('a4hegy/ohh-buddie'); // Replace this with your actual LogRocket ID
+
+        LogRocket.identify("{{ Auth::user()->id }}", {
+            name: "{{ Auth::user()->name }}",
+            email: "{{ Auth::user()->email }}",
+            phone: "{{ Auth::user()->phone }}"
+        });
+    </script>
+    @endif
 </body>
 </html>

@@ -22,6 +22,18 @@
     <link rel="stylesheet" href="{{ asset('public/assets/css/style.css') }}">
 
     <style>
+        @media screen and (min-width: 778px){
+            .navbar-fixed-top, .btn-fixed-bottom{
+                left: 30% !important;
+                right: 30% !important;
+            }
+            .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+                max-width: 40% !important;
+            }
+        }
+        
+    </style>
+    <style>
         body {
             font-family: 'Arial', sans-serif;
             background-color: black;
@@ -220,7 +232,7 @@
 
             <!-- Submit Button -->
             <div class="btn-fixed-bottom">
-                <button type="submit" class=" btn-primaryy w-100">Save Profile</button>
+                <button type="submit" class=" btn-primaryy w-100 py-2">Save Profile</button>
 
             </div>
 
@@ -265,7 +277,18 @@
             }
         });
     </script>
+@if (Auth::check())
+<script src="https://cdn.logrocket.io/LogRocket.min.js"></script>
+<script>
+    LogRocket.init('a4hegy/ohh-buddie'); // Replace this with your actual LogRocket ID
 
+    LogRocket.identify("{{ Auth::user()->id }}", {
+        name: "{{ Auth::user()->name }}",
+        email: "{{ Auth::user()->email }}",
+        phone: "{{ Auth::user()->phone }}"
+    });
+</script>
+@endif
 </body>
 
 </html>

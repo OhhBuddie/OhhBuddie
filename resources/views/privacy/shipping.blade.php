@@ -65,5 +65,19 @@ email or phone. </p>
         <!--<h2>Cancellation Policy</h2>-->
         <!--<p>Customers can <strong>cancel</strong> an order only before it has been shipped/dispatched. Once the product has been shipped, cancellation is not possible. However, returns are allowed for all eligible orders.</p>-->
     </div>
+
+
+    @if (Auth::check())
+    <script src="https://cdn.logrocket.io/LogRocket.min.js"></script>
+    <script>
+        LogRocket.init('a4hegy/ohh-buddie'); // Replace this with your actual LogRocket ID
+
+        LogRocket.identify("{{ Auth::user()->id }}", {
+            name: "{{ Auth::user()->name }}",
+            email: "{{ Auth::user()->email }}",
+            phone: "{{ Auth::user()->phone }}"
+        });
+    </script>
+    @endif
 </body>
 </html>

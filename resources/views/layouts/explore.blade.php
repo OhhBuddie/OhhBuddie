@@ -790,7 +790,18 @@ $(document).ready(function() {
     
 });
 </script>
+@if (Auth::check())
+    <script src="https://cdn.logrocket.io/LogRocket.min.js"></script>
+    <script>
+        LogRocket.init('a4hegy/ohh-buddie'); // Replace this with your actual LogRocket ID
 
+        LogRocket.identify("{{ Auth::user()->id }}", {
+            name: "{{ Auth::user()->name }}",
+            email: "{{ Auth::user()->email }}",
+            phone: "{{ Auth::user()->phone }}"
+        });
+    </script>
+    @endif
 <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCL2HTR9"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>

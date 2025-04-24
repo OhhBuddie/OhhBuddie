@@ -84,8 +84,9 @@
             .modal.bottom-modal .modal-dialog {
                 left: 32% !important;
             }
-            .coupon i{
-                right:32% !important;
+
+            .coupon i {
+                right: 32% !important;
             }
 
         }
@@ -925,15 +926,63 @@
                         }
 
                     @endphp
+                    @php
+                        // Get the product
+                        $same_p = DB::table('products')->where('id', $dat['pid'])->first();
+
+                        // Initialize variables
+                        $sub = '';
+                        $brnd_name11 = '';
+
+                        if ($same_p) {
+                            // Get seller (common in both cases)
+                            $seller_id = DB::table('sellers')
+                                ->where('seller_id', $same_p->seller_id)
+                                ->latest()
+                                ->first();
+
+                            if ($same_p->category_id == 88) {
+                                // Get subcategory
+                                $cat_id = DB::table('categories')
+                                    ->where('id', $same_p->subcategory_id)
+                                    ->latest()
+                                    ->first();
+                                $sub = $cat_id ? $cat_id->subcategory : '';
+                            } else {
+                                // Get sub-subcategory
+                                $cat_id = DB::table('categories')
+                                    ->where('id', $same_p->sub_subcategory_id)
+                                    ->latest()
+                                    ->first();
+                                $sub = $cat_id ? $cat_id->sub_subcategory : '';
+                            }
+
+                            // Get brand or fallback to seller company name
+                            $brnd_cnt = DB::table('brands')->where('id', $same_p->brand_id)->count();
+                            if ($brnd_cnt > 0) {
+                                $brnd_name = DB::table('brands')->where('id', $same_p->brand_id)->latest()->first();
+                                $brnd_name11 = $brnd_name ? $brnd_name->brand_name : '';
+                            } else {
+                                $brnd_name11 = $seller_id ? $seller_id->company_name : '';
+                            }
+                        }
+                    @endphp
+
+
+
                     <div class="cart-item">
-                        <div class="cart-item-img">
-                            <img src="{{ $dat['image'] }}" alt="Product Image">
-                            <!--<input class="form-check-input" type="checkbox" id="defaultAddress" style="position: absolute; left: 0;">-->
-                            <input class="form-check-input product-checkbox" type="checkbox"
-                                data-cartid="{{ $dat['id'] }}" style="position: absolute; left: 4px;" checked>
+                        <a href="/product/{{ \Illuminate\Support\Str::slug($sub ?? '') }}/{{ \Illuminate\Support\Str::slug($brnd_name11 ?? '') }}/{{ \Illuminate\Support\Str::slug($same_p->product_name ?? '') }}/{{ $same_p->id }}/buy"
+                            style="text-decoration: none;">
 
+                            <div class="cart-item-img">
+                                <img src="{{ $dat['image'] }}" alt="Product Image">
+                                <!--<input class="form-check-input" type="checkbox" id="defaultAddress" style="position: absolute; left: 0;">-->
+                                <input class="form-check-input product-checkbox" type="checkbox"
+                                    data-cartid="{{ $dat['id'] }}" style="position: absolute; left: 4px;" checked>
 
-                        </div>
+                            </div>
+
+                        </a>
                         <div class="item-details">
 
                             <div class="d-flex justify-content-between align-items-center">
@@ -1193,9 +1242,10 @@
                                         @php
                                             $mrp = $wslt['mrp'];
                                             $sellingPrice = $wslt['price'];
-                                            $discount = (is_numeric($mrp) && is_numeric($sellingPrice) && $mrp > 0)
-                                                ? round((($mrp - $sellingPrice) / $mrp) * 100)
-                                                : 0;
+                                            $discount =
+                                                is_numeric($mrp) && is_numeric($sellingPrice) && $mrp > 0
+                                                    ? round((($mrp - $sellingPrice) / $mrp) * 100)
+                                                    : 0;
                                             $images = json_decode($wslt['images'], true);
                                             $size_data = DB::table('products')
                                                 ->select('id', 'size_name')
@@ -1863,7 +1913,8 @@
     <!--<script src="https://kit.fontawesome.com/YOUR_KIT_CODE.js" crossorigin="anonymous">
         < /script-->
 
-        <script src = "https://code.jquery.com/jquery-3.6.0.min.js" >
+        <
+        script src = "https://code.jquery.com/jquery-3.6.0.min.js" >
     </script>
     <script>
         $(document).ready(function() {
@@ -2095,16 +2146,16 @@
     </script>
 
     @if (Auth::check())
-    <script src="https://cdn.logrocket.io/LogRocket.min.js"></script>
-    <script>
-        LogRocket.init('a4hegy/ohh-buddie'); // Replace this with your actual LogRocket ID
+        <script src="https://cdn.logrocket.io/LogRocket.min.js"></script>
+        <script>
+            LogRocket.init('a4hegy/ohh-buddie'); // Replace this with your actual LogRocket ID
 
-        LogRocket.identify("{{ Auth::user()->id }}", {
-            name: "{{ Auth::user()->name }}",
-            email: "{{ Auth::user()->email }}",
-            phone: "{{ Auth::user()->phone }}"
-        });
-    </script>
+            LogRocket.identify("{{ Auth::user()->id }}", {
+                name: "{{ Auth::user()->name }}",
+                email: "{{ Auth::user()->email }}",
+                phone: "{{ Auth::user()->phone }}"
+            });
+        </script>
     @endif
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCL2HTR9" height="0" width="0"

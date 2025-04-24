@@ -297,7 +297,40 @@
         </div>
     </div>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+        <script>
+            function showToast(message, type = 'primary') {
+                const toastContainer = document.getElementById('toast-container');
     
+                const toast = document.createElement('div');
+                toast.className = `toast custom-toast bg-${type} text-white border-0`;
+                toast.setAttribute('role', 'alert');
+                toast.setAttribute('aria-live', 'assertive');
+                toast.setAttribute('aria-atomic', 'true');
+    
+                toast.innerHTML = `
+                    <div class="toast-body w-100 d-flex justify-content-between align-items-center">
+                        ${message}
+                        <button type="button" class="btn-close btn-close-dark" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                `;
+    
+                toastContainer.appendChild(toast);
+    
+                // Initialize Toast
+                const bsToast = new bootstrap.Toast(toast, {
+                    delay: 3000, // Show for 3 seconds
+                    autohide: true
+                });
+    
+                bsToast.show();
+    
+                // Remove from DOM after hidden
+                toast.addEventListener('hidden.bs.toast', () => {
+                    toast.remove();
+                });
+            }
+        </script>
     <script>
         // Toggle wishlist icon color
         function toggleWishlist(icon) {
@@ -332,7 +365,9 @@
                 
                 let selectedSize = sizeDropdown ? sizeDropdown.value : null;
                 if (!selectedSize && product.sid != 40) {
-                    alert("Please select a size");
+                    // alert("Please select a size");
+                    showToast("Please select a size", "success");
+
                     return;
                 }
             
@@ -357,7 +392,9 @@
                         newid:product.id,
                     },
                     success: function (response) {
-                        alert("Product added to cart successfully!");
+                        // alert("Product added to cart successfully!");
+                        showToast("Product added to cart successfully!", "success");
+
                         window.location.reload();
                         localStorage.setItem("temp_user_id", response.temp_user_id);
                         document.cookie = `temp_user_id=${response.temp_user_id}; path=/;`;
@@ -366,7 +403,9 @@
                     },
                     error: function (xhr) {
                         console.log(xhr.responseText);
-                        alert("Something went wrong! Please try again.");
+                        // alert("Something went wrong! Please try again.");
+                        showToast("Something went wrong! Please try again.", "success");
+
                     }
                 });
             }

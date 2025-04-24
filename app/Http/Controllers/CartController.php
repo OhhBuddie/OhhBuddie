@@ -224,8 +224,13 @@ class CartController extends Controller
         {
              DB::table('wishlists')
                 ->where(function ($query) use ($tempUserId) {
-                    $query->where('temp_user_id', $tempUserId)
-                          ->Where('user_id', Auth::id());
+                    if (Auth::check()) {
+                        $query->Where('user_id', Auth::id());;
+                    } else {
+                        $query->where('temp_user_id', $tempUserId);
+                    }
+
+                          
                 })
                 ->where('product_uid', $request->product_id)
                 // ->where('size_name', $request->size_name)

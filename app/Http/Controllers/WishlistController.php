@@ -67,24 +67,69 @@ class WishlistController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        $pdata = DB::table('products')->where('id',$request->product_id)->latest()->first();
-        $wishlist = new Wishlist();
-        $wishlist->temp_user_id = $request->temp_user_id;
-        $wishlist->user_id = $request->user_id;
-        $wishlist->product_id = $request->product_id;
-        $wishlist->product_uid = $pdata->product_id;
-        $wishlist->size_name = $pdata->size_name;
+    // public function store(Request $request)
+    // {
+    //     $pdata = DB::table('products')->where('id',$request->product_id)->latest()->first();
+    //     $wishlist = new Wishlist();
+    //     $wishlist->temp_user_id = $request->temp_user_id;
+    //     $wishlist->user_id = $request->user_id;
+    //     $wishlist->product_id = $request->product_id;
+    //     $wishlist->product_uid = $pdata->product_id;
+    //     $wishlist->size_name = $pdata->size_name;
 
-        $wishlist->save();
+    //     $wishlist->save();
     
-        DB::table('carts')->where('id', $request->ppid)->delete();
+    //     DB::table('carts')->where('id', $request->ppid)->delete();
     
-        return redirect()->url('/addtocart')->with(['toast_message' => 'Product Added to cart Successfully.']);
+    //     return redirect()->url('/addtocart')->with(['toast_message' => 'Product Added to cart Successfully.']);
 
         
+    // }
+    
+    public function store(Request $request)
+{
+
+    // Check if product already exists in wishlist
+    $existing = DB::table('wishlists')
+        ->where('product_id', $request->product_id)
+        ->where(function ($query) use ($request) {
+            if ($request->user_id) {
+                $query->where('user_id', $request->user_id);
+            } else {
+                $query->where('temp_user_id', $request->temp_user_id);
+            }
+        })
+        ->first();
+
+    if ($existing) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Product is already in your wishlist.'
+        ]);
     }
+
+    // Fetch product data
+    $pdata = DB::table('products')->where('id', $request->product_id)->first();
+
+    // Create new wishlist entry
+    $wishlist = new Wishlist();
+    $wishlist->temp_user_id = $request->temp_user_id;
+    $wishlist->user_id = $request->user_id;
+    $wishlist->product_id = $request->product_id;
+    $wishlist->product_uid = $pdata->product_id;
+    $wishlist->size_name = $pdata->size_name;
+    $wishlist->save();
+
+    // Remove from cart
+    DB::table('carts')->where('id', $request->ppid)->delete();
+
+    return response()->json([
+        'success' => true,
+        'message' => 'Product added to your wishlist!',
+        'redirect' => url()->previous() // or any other page you want
+    ]);
+}
+
         /**
      * Display the specified resource.
      *

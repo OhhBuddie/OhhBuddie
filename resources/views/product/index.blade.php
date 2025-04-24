@@ -898,13 +898,70 @@
     
          <!-- Bottom Navbar -->
         <div class=" fixed-bottom-navbar d-flex flex-row flex-md-row gap-3 " id="bottomNavbar" style="background-color:black; color:white; border:none;">
-            
-         <div class="btn btn-lg fs-5 text-light" style="flex: 0 0 40%; max-width: 40%; border: 1px solid white;">
-        
-                <i class="far fa-heart wishlist-icon" style="margin-right: 5px; font-size: 17px;" onclick="toggleWishlist(this)"></i>
-                Wishlist
+    
+    
 
-        </div>
+@php
+    use Illuminate\Support\Facades\Auth;
+    use Illuminate\Support\Facades\Session;
+
+    $userId = Auth::check() ? Auth::id() : 0;
+
+    if (Auth::check()) {
+        $tempUserId = null;
+    } else {
+        $tempUserId = request()->cookie('temp_user_id') ?? Session::get('temp_user_id');
+
+        if (!$tempUserId) {
+            
+            $tempUserId = 'temp_' . time();
+            
+            session(['temp_user_id' => $tempUserId]);
+            
+        }
+    }
+
+    $productId = $product_details->id;
+
+    $isWishlisted = DB::table('wishlists')
+        ->where('product_id', $productId)
+        ->where(function ($query) use ($userId, $tempUserId) {
+            if ($userId) {
+                $query->where('user_id', $userId);
+            } else {
+                $query->where('temp_user_id', $tempUserId);
+            }
+        })
+        ->exists();
+
+    $cartRow = DB::table('carts')
+        ->where(function ($query) use ($userId, $tempUserId) {
+            if ($userId) {
+                $query->where('user_id', $userId);
+            } else {
+                $query->where('temp_user_id', $tempUserId);
+            }
+        })
+        ->where('product_id', $productId)
+        ->first();
+
+    $cartId = $cartRow ? $cartRow->id : null;
+@endphp
+
+
+
+
+<div class="btn btn-lg fs-5 text-light"
+     style="flex: 0 0 40%; max-width: 40%; border: 1px solid white; cursor: pointer;"
+     onclick="addToWishlist(this, '{{ $tempUserId }}', '{{ $userId }}', '{{ $productId }}', '{{ $cartId }}')">
+
+    <i class="{{ $isWishlisted ? 'fas' : 'far' }} {{ $isWishlisted ? 'text-danger' : '' }} fa-heart wishlist-icon"
+       style="margin-right: 5px; font-size: 17px;"></i>
+    Wishlist
+
+</div>
+
+
         
         <a id="addToBagBtn" class="btn btn-lg fs-5 addtobag" 
            style="flex: 0 0 57%; max-width: 57%; background-color: var(--primary-color); color: black;" 
@@ -1221,12 +1278,59 @@
         
     </script>
 
+    <script>
+    // If not present, create and store it in localStorage & cookie
+    let tempUserId = localStorage.getItem("temp_user_id") || getCookie("temp_user_id");
+
+    if (!tempUserId) {
+        tempUserId = "temp_" + Date.now();
+        localStorage.setItem("temp_user_id", tempUserId);
+        setCookie("temp_user_id", tempUserId, 30);
+    }
+
+    // Set a JS-accessible hidden input so Blade/PHP can read it if needed
+    document.cookie = `temp_user_id=${tempUserId}; path=/; max-age=${60 * 60 * 24 * 30}`;
     
+    
+</script>
         <script>
         // Toggle wishlist icon color
-        function toggleWishlist(icon) {
+    
+    function addToWishlist(divElement, tempUserId, userId, productId, cartId) {
+        const icon = divElement.querySelector('.wishlist-icon');
+
+        $.ajax({
+            url: "/wishlist/store",
+            type: "POST",
+            data: {
+                _token: document.querySelector('meta[name="csrf-token"]').getAttribute("content"),
+                temp_user_id: tempUserId,
+                user_id: userId,
+                product_id: productId,
+                ppid: cartId
+            },
+            success: function(response) {
+                // alert(response.message);
+                showToast("Product added to Wishlist successfully!", "success");
+                if (response.success) {
+                    toggleWishlist(icon);
+                    window.location.href = response.redirect;
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error("Error:", error);
+            }
+        });
+    }
+
+
+
+
+    function toggleWishlist(icon) {
             icon.classList.toggle('selected');
         }
+
+
     </script>
     
     

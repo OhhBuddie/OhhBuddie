@@ -135,8 +135,7 @@
     </style>
     </head>
 <body style="background-color:black;">
-    <div class="d-flex justify-content-between align-items-center px-3 navbar-fixed-top"
-        >
+    <div class="d-flex justify-content-between align-items-center px-3 navbar-fixed-top">
 
         <div class="d-flex ml-auto align-items-center">
             
@@ -219,6 +218,9 @@
     
     
     <div class="container" style="padding: 0px; margin-top: 60px;">
+
+        <div id="toast-container" class="position-fixed w-100" style="z-index: 9999;top: 66px;"></div>
+
             
     @if(!$wish_list)
         <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Blank+Pages/Whishlish+is+Empty.jpg" 

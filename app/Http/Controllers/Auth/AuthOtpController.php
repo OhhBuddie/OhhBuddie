@@ -29,7 +29,7 @@ class AuthOtpController extends Controller
         ]);
 
         $mobileNo = $request->input('mobile_no');
-        $prefixedNumber = '+91' . $mobileNo; // Append +91 for Indian numbers
+        $prefixedNumber = '91' . $mobileNo; // Append +91 for Indian numbers
 
         // Check if the mobile number exists in the `users` table
         $user = User::where('phone', $prefixedNumber)->first();
@@ -123,36 +123,54 @@ class AuthOtpController extends Controller
     
     
     
-    protected function sendOtpSms($phone, $otp)
-    {
-        // dd($otp);
-        try {
-            $token = 'EAAS6NxQsZCfkBOxJBjShCSZBH6h6Oxy72mW1ssiefQxuIKI62iijYi1rZBBRliL4Xr6RgrqsMS4afNKQ9flpaGMDeh6X7zF0UagqFRjjJ3VazfLwqncMWPL42TjpCChKdgPoeYsbis6VNMp1jnSIWTjji6A3hyulMjKFzNlq8YANi98b2EnhUhDqA1mNqIRxQZDZD';
-            $phone_number_id = '648701208316154';
-    
-            $messageBody = "Welcome to Ohh! Buddie: Use One Time Password (OTP) {$otp} to log in to your account. DO NOT SHARE this code with anyone. This code will expire in 5 minutes.";
-    
-            $response = Http::withToken($token)->post("https://graph.facebook.com/v19.0/{$phone_number_id}/messages", [
-                'messaging_product' => 'whatsapp',
-                'to' => $phone,
-                'type' => 'text',
-                'text' => [
-                    'body' => $messageBody,
+protected function sendOtpSms($phone, $otp)
+{
+    try {
+        $token = 'EAAS6NxQsZCfkBOxJBjShCSZBH6h6Oxy72mW1ssiefQxuIKI62iijYi1rZBBRliL4Xr6RgrqsMS4afNKQ9flpaGMDeh6X7zF0UagqFRjjJ3VazfLwqncMWPL42TjpCChKdgPoeYsbis6VNMp1jnSIWTjji6A3hyulMjKFzNlq8YANi98b2EnhUhDqA1mNqIRxQZDZD';
+        $phone_number_id = '648701208316154';
+
+        $response = Http::withToken($token)->post("https://graph.facebook.com/v19.0/{$phone_number_id}/messages", [
+            "messaging_product" => "whatsapp",
+            "to" => $phone, // e.g., 91XXXXXXXXXX
+            "type" => "template",
+            "template" => [
+                "name" => "login", // your template name
+                "language" => [
+                    "code" => "en"
                 ],
-            ]);
-    
-            if ($response->successful()) {
-                return true;
-            } else {
-                Log::error('WhatsApp API Error: ' . $response->body());
-                return false;
-            }
-        } catch (\Exception $e) {
-            Log::error('WhatsApp Exception: ' . $e->getMessage());
-            return false;
-        }
+                "components" => [
+                    [
+                        "type" => "body",
+                        "parameters" => [
+                            [
+                                "type" => "text",
+                                "text" => $otp
+                            ]
+                        ]
+                    ],
+                    [
+                        "type" => "button",
+                        "sub_type" => "url",
+                        "index" => "0",
+                        "parameters" => [
+                            [
+                                "type" => "text",
+                                "text" => $otp
+                            ]
+                        ]
+                    ]
+                ]
+            ]
+        ]);
+
+        Log::info('WhatsApp API Response: ' . $response->body());
+
+        return $response->successful();
+    } catch (\Exception $e) {
+        Log::error('WhatsApp Send OTP Error: ' . $e->getMessage());
+        return false;
     }
-        
+}
         public function verification($user_id)
 
     {

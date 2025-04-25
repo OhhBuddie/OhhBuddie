@@ -99,7 +99,7 @@ class AuthOtpController extends Controller
         ]);
     }
 
-    protected function sendOtpSms11($phone, $otp)
+    protected function sendOtpSms1($phone, $otp)
     {
         try {
             $sid = 'ACf0cc3b4153233032c74de604c24c84b2';

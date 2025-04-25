@@ -103,7 +103,7 @@ class CategoryController extends Controller
             }
             elseif($category == 'Housecoat')
             {
-                $psubcat=[82];
+                $subcat=[82];
             }
             elseif($category == 'Trousers')
             {

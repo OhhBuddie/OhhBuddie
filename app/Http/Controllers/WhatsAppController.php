@@ -30,29 +30,28 @@ class WhatsAppController extends Controller
 
         $url = "https://graph.facebook.com/v19.0/$phone_number_id/messages";
 
-        $response = Http::withToken($token)->post($url, [
-            'messaging_product' => 'whatsapp',
-            'to' => $to,
-            'type' => 'template',
-            'template' => [
-                'name' => 'opening_sale_2025',
-                'language' => ['code' => 'en'],
-                'components' => [
-                    [
-                        'type' => 'header',
-                        'parameters' => [
+       $response = Http::withToken($token)->post($url, [
+                    'messaging_product' => 'whatsapp',
+                    'to' => $to,
+                    'type' => 'template',
+                    'template' => [
+                        'name' => 'opening_sale_2025',
+                        'language' => ['code' => 'en'],
+                        'components' => [
                             [
-                                'type' => 'image',
-                                'image' => [
-                                    'link' => 'https://fileinfo.com/img/ss/xl/jpg_44-2.jpg' // <-- your image URL
+                                'type' => 'header',
+                                'parameters' => [
+                                    [
+                                        'type' => 'image',
+                                        'image' => [
+                                            'id' => '1373092757228514'
+                                        ]
+                                    ]
                                 ]
                             ]
                         ]
                     ]
-                ]
-            ]
-        ]);
-
+                ]);
 
 
         // $response = Http::withToken($token)->post($url, [

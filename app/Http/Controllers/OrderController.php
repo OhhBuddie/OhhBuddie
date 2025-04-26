@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use DB;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use Barryvdh\DomPDF\Facade\Pdf; // Make sure you have this at the top
 
 
 
@@ -58,10 +59,47 @@ class OrderController extends Controller
     {
         $myorders = Auth::check() ? DB::table('orders')->where('user_id', Auth::id())->latest()->first() : null;
         
-        return view('Order.orderdetails',compact('myorders'));
+        return view('Order.orderdetails',compact('myorders', 'id'));
         
         
     }
+    
+    
+    public function downloadInvoice($id)
+    {
+      
+        $orderdetails = DB::table('orderdetails')->where('id', $id)->latest()->first();
+        $order = DB::table('orders')->where('id', $orderdetails->order_id)->latest()->first();
+        $product_data = DB::table('products')->where('id', $orderdetails->product_id)->first();
+        $address_data = DB::table('addresses')->where('id', $order->shipping_address)->first();
+        
+        $brand_name = DB::table('brands')->where('id', $product_data->brand_id)->first();
+        $color_data = DB::table('colors')->where('hex_code', $product_data->color_name)->first();
+        $user_data = DB::table('users')->where('id', $address_data->user_id)->first();
+        
+        $data = compact('orderdetails', 'order', 'product_data', 'address_data', 'brand_name', 'color_data', 'user_data' );
+        
+        $pdf = Pdf::loadView('invoice', $data);
+        
+        // Set paper size (A4 portrait)
+        $pdf->setPaper('a4', 'portrait');
+        
+        // Set minimal margins (in mm)
+        $pdf->setOption('margin-top', '0');
+        $pdf->setOption('margin-right', '0');
+        $pdf->setOption('margin-bottom', '0');
+        $pdf->setOption('margin-left', '0');
+        
+        // Ensure no automatic page breaks within elements
+        $pdf->setOption('enable-smart-shrinking', true);
+        $pdf->setOption('no-stop-slow-scripts', true);
+        
+        // Adjust scale if needed
+        $pdf->setOption('dpi', 130); // Lower DPI can help fit more content
+        
+        return $pdf->download('invoice_'.$orderdetails->order_id.'.pdf');
+    }
+
     /**
      * Show the form for creating a new resource.
      *

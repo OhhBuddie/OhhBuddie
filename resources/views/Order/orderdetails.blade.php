@@ -218,7 +218,12 @@
         <img src="https://img.icons8.com/color/48/google-pay-india.png" alt="UPI Icon" width="32" class="me-2">
         <span class="">Paid by {{ $orders_data->payment_type }}</span>
       </div>
-      <button class="get-invoice-btn" style="border: 1px solid #ddd; background-color: black; width: 100%;">Get Invoice</button>
+      <!--<button class="get-invoice-btn" style="border: 1px solid #ddd; background-color: black; width: 100%;">Get Invoice</button>-->
+      <a href="{{ route('download.invoice', $id) }}" style="text-decoration: none; color:white;">
+        <button class="get-invoice-btn" style="border: 1px solid #ddd; background-color: black; width: 100%;">
+            Get Invoice
+        </button>
+    </a>
     </div>
   </div>
 

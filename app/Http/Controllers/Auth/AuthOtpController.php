@@ -12,6 +12,8 @@ use Illuminate\Validation\Rule;
 use DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Http;
+use App\Http\Controllers\WhatsAppController;
+
 
 class AuthOtpController extends Controller
 {
@@ -29,7 +31,7 @@ class AuthOtpController extends Controller
         ]);
 
         $mobileNo = $request->input('mobile_no');
-        $prefixedNumber = '91' . $mobileNo; // Append +91 for Indian numbers
+        $prefixedNumber = '+91' . $mobileNo; // Append +91 for Indian numbers
 
         // Check if the mobile number exists in the `users` table
         $user = User::where('phone', $prefixedNumber)->first();
@@ -237,6 +239,46 @@ protected function sendOtpSms($phone, $otp)
                 'expire_at' => now()
 
             ]);
+            
+            
+            
+
+          
+                if ($user->phone) {
+                    // Format phone number if needed
+                    $phone = preg_replace('/[^0-9]/', '', $user->phone);
+                    
+                    // If phone number doesn't start with country code, add it
+                    // if (strlen($phone) == 10) {
+                    //     $phone = '91' . $phone;
+                    // }
+                    
+                    if($user->name === null){
+                        $name = 'Enter Name';
+                    }
+                    else{
+                        $name = $user->name;
+                    }
+                    
+                    // Create a request object for the WhatsApp controller
+                    $whatsappRequest = new Request([
+                        'phone' => $phone,
+                        'message' => "Your order has been confirmed and payment received successfully!",
+                        'name' => $name,
+                        'id' => 2
+                    ]);
+                    
+                    // Call WhatsAppController's sendMessage method
+                    $whatsappController = new WhatsAppController();
+                    $whatsappController->sendMessage($whatsappRequest);
+                    
+                    // Log success
+                    Log::info('Login Successfull for Phone Number : ' . $user->phone);
+                }
+            
+            
+           
+
 
 
 

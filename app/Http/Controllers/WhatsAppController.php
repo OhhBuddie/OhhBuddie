@@ -20,7 +20,9 @@ class WhatsAppController extends Controller
 
         $to = $request->input('phone');
         $message = $request->input('message');
-
+        $customerName = $request->input('name');
+        $id = $request->input('id');
+        
         // Log the request details
         Log::info('WhatsApp API Request', [
             'to' => $to,
@@ -30,28 +32,100 @@ class WhatsAppController extends Controller
 
         $url = "https://graph.facebook.com/v19.0/$phone_number_id/messages";
 
-       $response = Http::withToken($token)->post($url, [
-                    'messaging_product' => 'whatsapp',
-                    'to' => $to,
-                    'type' => 'template',
-                    'template' => [
-                        'name' => 'opening_sale_2025',
-                        'language' => ['code' => 'en'],
-                        'components' => [
+    //   $response = Http::withToken($token)->post($url, [
+    //                 'messaging_product' => 'whatsapp',
+    //                 'to' => $to,
+    //                 'type' => 'template',
+    //                 'template' => [
+    //                     'name' => 'order_confirmed',
+    //                     'language' => ['code' => 'en'],
+    //                     'components' => [
+    //                         [
+    //                             'type' => 'header',
+    //                             'parameters' => [
+    //                                 [
+    //                                     'type' => 'image',
+    //                                     'image' => [
+    //                                         'id' => '1639830590191084'
+    //                                     ]
+    //                                 ]
+    //                             ]
+    //                         ]
+    //                     ]
+    //                 ]
+    //             ]);
+    
+    
+    if($id === 1){
+        $response = Http::withToken($token)->post($url, [
+            'messaging_product' => 'whatsapp',
+            'to' => $to,
+            'type' => 'template',
+            'template' => [
+                'name' => 'order_confirmed', // Use your actual template name as shown in WhatsApp Business
+                'language' => ['code' => 'en'],
+                'components' => [
+                    [
+                        'type' => 'header',
+                        'parameters' => [
                             [
-                                'type' => 'header',
-                                'parameters' => [
-                                    [
-                                        'type' => 'image',
-                                        'image' => [
-                                            'id' => '1373092757228514'
-                                        ]
-                                    ]
+                                'type' => 'image',
+                                'image' => [
+                                    'id' => '1639830590191084'
                                 ]
                             ]
                         ]
+                    ],
+                    [
+                        'type' => 'body',
+                        'parameters' => [
+                            [
+                                'type' => 'text',
+                                'text' => $customerName  // This will replace {{1}} in your template
+                            ]
+                        ]
                     ]
-                ]);
+                ]
+            ]
+        ]);
+    }
+    elseif($id === 2)
+    {
+        $response = Http::withToken($token)->post($url, [
+            'messaging_product' => 'whatsapp',
+            'to' => $to,
+            'type' => 'template',
+            'template' => [
+                'name' => 'new_user', // Use your actual template name as shown in WhatsApp Business
+                'language' => ['code' => 'en'],
+                'components' => [
+                    [
+                        'type' => 'header',
+                        'parameters' => [
+                            [
+                                'type' => 'image',
+                                'image' => [
+                                    'id' => '1689555878312113'
+                                ]
+                            ]
+                        ]
+                    ],
+                    [
+                        'type' => 'body',
+                        'parameters' => [
+                            [
+                                'type' => 'text',
+                                'text' => $customerName  // This will replace {{1}} in your template
+                            ]
+                        ]
+                    ]
+                ]
+            ]
+        ]);
+    }
+    
+    
+
 
 
         // $response = Http::withToken($token)->post($url, [
@@ -76,6 +150,8 @@ class WhatsAppController extends Controller
         //         ]
         //     ]
         // ]);
+        
+        
         // Log the full response
         Log::info('WhatsApp API Response', [
             'status' => $response->status(),

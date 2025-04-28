@@ -25,25 +25,11 @@
             }
         }
 
-        /* Hide mobile layout on large screens */
-        @media screen and (min-width: 769px) {
-            .desktop-layout {
-                display: block;
-            }
-            .mobile-layout {
-                display: none;
-            }
-        }
     </style>
 </head>
 <body>
     
 
-
-
-        <div class="desktop-layout">
-            @include('mobile')
-        </div>  
 
 
     <!-- Desktop Layout -->

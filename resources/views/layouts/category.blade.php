@@ -88,6 +88,10 @@
                 width: 40%;
                 left: 428px !important ;
             }
+            .bottom-modal, .filter-modal{
+                left: 30% !important;
+                width: 40% !important;
+            }
         }
     
         

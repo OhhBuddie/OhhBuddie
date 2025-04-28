@@ -254,7 +254,7 @@ protected function sendOtpSms($phone, $otp)
                     // }
                     
                     if($user->name === null){
-                        $name = 'Enter Name';
+                        $name = 'Hello Buddie!';
                     }
                     else{
                         $name = $user->name;

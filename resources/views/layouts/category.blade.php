@@ -92,6 +92,10 @@
                 left: 30% !important;
                 width: 40% !important;
             }
+            .accordion{
+                width: 40%  !important;
+                z-index: 666   !important;
+            }
         }
     
         
@@ -598,7 +602,7 @@
                 <footer class="footer" > 
                   
         
-                    <div class="container" style="background-color:black; color:white;">
+                    <div class="containerr" style="background-color:black; color:white;">
                         <div style="margin-bottom: 70px;">
                             <div class="col-md-4 text-md-start mb-2">
                                 <h5 class="mt-2" style="font-weight:bold;">SHOP FOR</h5>

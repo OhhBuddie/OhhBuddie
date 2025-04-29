@@ -292,9 +292,11 @@ class CheckoutController extends Controller
                     // Create a request object for the WhatsApp controller
                     $whatsappRequest = new Request([
                         'phone' => $phone,
-                        'message' => "Your order #{$order->order_id} has been confirmed and payment received successfully!",
+                        'message' => "Your order has been confirmed and payment received successfully!",
                         'name' => $phoneno->name,
-                        'id' => 1
+                        'id' => 1,
+                        'orderid' => $request->txnid,
+                        'price' => $order->total_mrp
                     ]);
                     
                     // Call WhatsAppController's sendMessage method

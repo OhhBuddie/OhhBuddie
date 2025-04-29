@@ -244,37 +244,37 @@ protected function sendOtpSms($phone, $otp)
             
 
           
-                if ($user->phone) {
+            if ($user->phone && is_null($user->name)) {
                     // Format phone number if needed
-                    $phone = preg_replace('/[^0-9]/', '', $user->phone);
-                    
-                    // If phone number doesn't start with country code, add it
-                    // if (strlen($phone) == 10) {
-                    //     $phone = '91' . $phone;
-                    // }
-                    
-                    if($user->name === null){
-                        $name = 'Hello Buddie!';
-                    }
-                    else{
-                        $name = $user->name;
-                    }
-                    
-                    // Create a request object for the WhatsApp controller
-                    $whatsappRequest = new Request([
-                        'phone' => $phone,
-                        'message' => "Your order has been confirmed and payment received successfully!",
-                        'name' => $name,
-                        'id' => 2
-                    ]);
-                    
-                    // Call WhatsAppController's sendMessage method
-                    $whatsappController = new WhatsAppController();
-                    $whatsappController->sendMessage($whatsappRequest);
-                    
-                    // Log success
-                    Log::info('Login Successfull for Phone Number : ' . $user->phone);
+                $phone = preg_replace('/[^0-9]/', '', $user->phone);
+                
+                // If phone number doesn't start with country code, add it
+                if (strlen($phone) == 10) {
+                    $phone = '91' . $phone;
                 }
+                
+                if($user->name === null){
+                    $name = 'Hello Buddie!';
+                }
+                else{
+                    $name = $user->name;
+                }
+                
+                // Create a request object for the WhatsApp controller
+                $whatsappRequest = new Request([
+                    'phone' => $phone,
+                    'message' => "Your order has been confirmed and payment received successfully!",
+                    'name' => $name,
+                    'id' => 2
+                ]);
+                
+                // Call WhatsAppController's sendMessage method
+                $whatsappController = new WhatsAppController();
+                $whatsappController->sendMessage($whatsappRequest);
+                
+                // Log success
+                Log::info('Login Successfull for Phone Number : ' . $user->phone);
+            }
             
             
            

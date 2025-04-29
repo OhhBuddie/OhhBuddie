@@ -21,7 +21,10 @@ class WhatsAppController extends Controller
         $to = $request->input('phone');
         $message = $request->input('message');
         $customerName = $request->input('name');
-        $id = $request->input('id');
+        $id = $request->input('id'); 
+        $orderid = $request->input('orderid'); 
+        $price = $request->input('price');
+
         
         // Log the request details
         Log::info('WhatsApp API Request', [
@@ -82,6 +85,24 @@ class WhatsAppController extends Controller
                             [
                                 'type' => 'text',
                                 'text' => $customerName  // This will replace {{1}} in your template
+                            ]
+                        ]
+                    ],
+                    [
+                        'type' => 'body',
+                        'parameters' => [
+                            [
+                                'type' => 'text',
+                                'text' => $orderid  // This will replace {{1}} in your template
+                            ]
+                        ]
+                    ],
+                    [
+                        'type' => 'body',
+                        'parameters' => [
+                            [
+                                'type' => 'text',
+                                'text' => $price  // This will replace {{1}} in your template
                             ]
                         ]
                     ]

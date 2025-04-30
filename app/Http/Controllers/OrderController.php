@@ -180,6 +180,13 @@ class OrderController extends Controller
         return response()->json(['success' => true, 'message' => 'Order status updated successfully.']);
     }
     
+    public function returnandrefund($id)
+    {
+        $orderdetail = DB::table('orderdetails')->where('id',$id)->latest()->first();
+        $order = DB::table('orders')->where('id',$orderdetail->order_id)->latest()->first();
+        $product_details = DB::table('products')->where('id',$orderdetail->product_id)->latest()->first();
+        return view('Order.returnandrefund',compact('orderdetail','product_details','order'));
+    }
 
 
 }

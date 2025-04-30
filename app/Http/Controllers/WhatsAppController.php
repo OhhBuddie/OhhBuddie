@@ -10,6 +10,8 @@ class WhatsAppController extends Controller
 {
     public function sendMessage(Request $request)
     {
+        
+        
         $request->validate([
             'phone' => 'required|regex:/^\d+$/', // Ensure phone contains only digits
             'message' => 'required',
@@ -18,12 +20,12 @@ class WhatsAppController extends Controller
         $token = 'EAAS6NxQsZCfkBOxJBjShCSZBH6h6Oxy72mW1ssiefQxuIKI62iijYi1rZBBRliL4Xr6RgrqsMS4afNKQ9flpaGMDeh6X7zF0UagqFRjjJ3VazfLwqncMWPL42TjpCChKdgPoeYsbis6VNMp1jnSIWTjji6A3hyulMjKFzNlq8YANi98b2EnhUhDqA1mNqIRxQZDZD';
         $phone_number_id = '648701208316154';
 
-        $to = $request->input('phone');
-        $message = $request->input('message');
-        $customerName = $request->input('name');
-        $id = $request->input('id'); 
-        $orderid = $request->input('orderid'); 
-        $price = $request->input('price');
+        $to = $request->phone;
+        $message = $request->message;
+        $customerName = $request->name;
+        $id = $request->id; 
+        $orderid = $request->orderid; 
+        $price = $request->price;
 
         
         // Log the request details
@@ -35,28 +37,6 @@ class WhatsAppController extends Controller
 
         $url = "https://graph.facebook.com/v19.0/$phone_number_id/messages";
 
-    //   $response = Http::withToken($token)->post($url, [
-    //                 'messaging_product' => 'whatsapp',
-    //                 'to' => $to,
-    //                 'type' => 'template',
-    //                 'template' => [
-    //                     'name' => 'order_confirmed',
-    //                     'language' => ['code' => 'en'],
-    //                     'components' => [
-    //                         [
-    //                             'type' => 'header',
-    //                             'parameters' => [
-    //                                 [
-    //                                     'type' => 'image',
-    //                                     'image' => [
-    //                                         'id' => '1639830590191084'
-    //                                     ]
-    //                                 ]
-    //                             ]
-    //                         ]
-    //                     ]
-    //                 ]
-    //             ]);
     
     
     if($id === 1){
@@ -85,21 +65,11 @@ class WhatsAppController extends Controller
                             [
                                 'type' => 'text',
                                 'text' => $customerName  // This will replace {{1}} in your template
-                            ]
-                        ]
-                    ],
-                    [
-                        'type' => 'body',
-                        'parameters' => [
+                            ],
                             [
                                 'type' => 'text',
                                 'text' => $orderid  // This will replace {{1}} in your template
-                            ]
-                        ]
-                    ],
-                    [
-                        'type' => 'body',
-                        'parameters' => [
+                            ],
                             [
                                 'type' => 'text',
                                 'text' => $price  // This will replace {{1}} in your template
@@ -143,7 +113,51 @@ class WhatsAppController extends Controller
                 ]
             ]
         ]);
+        
     }
+    elseif($id === 3)
+    {
+        $response = Http::withToken($token)->post($url, [
+            'messaging_product' => 'whatsapp',
+            'to' => $to,
+            'type' => 'template',
+            'template' => [
+                'name' => 'incomplete__checkout', // Use your actual template name as shown in WhatsApp Business
+                'language' => ['code' => 'en'],
+                'components' => [
+                    [
+                        'type' => 'header',
+                        'parameters' => [
+                            [
+                                'type' => 'image',
+                                'image' => [
+                                    'id' => '1405863220414249'
+                                ]
+                            ]
+                        ]
+                    ],
+                    [
+                        'type' => 'body',
+                        'parameters' => [
+                            [
+                                'type' => 'text',
+                                'text' => $customerName  // This will replace {{1}} in your template
+                            ],
+                            [
+                                'type' => 'text',
+                                'text' => $orderid  // This will replace {{1}} in your template
+                            ],
+                            [
+                                'type' => 'text',
+                                'text' => $price  // This will replace {{1}} in your template
+                            ]
+                        ]
+                    ]
+                ]
+            ]
+        ]);
+    }
+    
     
     
 

@@ -1,5 +1,6 @@
 @extends('layouts.order')
 @section('content')
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
     <style>
    
@@ -135,6 +136,22 @@
           <p class="mb-1 text-light" style="font-size: 13px;">{{$product_data->product_name}}</p>
           <p class="text-light" style="font-size: 14px;">Size: {{$product_data->size_name}}  | Color: {{$color_data->color_name}} </p>
         </div>
+        
+        
+        
+            <div class="d-flex justify-content-around my-3 text-white">
+                <div class="text-center px-3 py-2" style="border: 1px solid #ddd; border-radius: 6px; width: 48%; cursor: pointer;">
+                    <i class="bi bi-arrow-left-right" style="font-size: 20px;"></i>
+                    <p class="mb-0" style="font-weight: 500;">Size Exchange</p>
+                </div>
+                <div class="text-center px-3 py-2" style="border: 1px solid #ddd; border-radius: 6px; width: 48%; cursor: pointer;">
+                    <a href="/returnandrefund/{{$orderdetails->id}}" style="color:white">
+                        <i class="bi bi-arrow-counterclockwise" style="font-size: 20px;"></i>
+                        <p class="mb-0" style="font-weight: 500;">Return</p>
+                    </a>
+                </div>
+            </div>
+
         
       </div>
       

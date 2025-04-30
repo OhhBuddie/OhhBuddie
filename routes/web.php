@@ -88,6 +88,7 @@ Route::get('/payment', [App\Http\Controllers\PaymentController::class, 'index'])
 Route::get('/order', [App\Http\Controllers\OrderController::class, 'index']);
 Route::get('/orderdetails/{id}', [App\Http\Controllers\OrderController::class, 'orderdetails']);
 Route::get('/download-invoice/{order_id}', [App\Http\Controllers\OrderController::class, 'downloadInvoice'])->name('download.invoice');
+Route::get('/returnandrefund/{id}', [App\Http\Controllers\OrderController::class, 'returnandrefund']);
 
 
 // Route::get('/orderdetails/{id}', [App\Http\Controllers\OrderdetailsController::class, 'index']);
@@ -290,3 +291,8 @@ Route::post('/payment/failure', [CheckoutController::class, 'paymentFailure'])
 Route::get('/get-cities', [AddressController::class, 'getCities'])->name('getCities');
 
 Route::view('/whatsapp', 'whatsapp-form');
+
+Route::get('/debug-sentry', function () {
+    throw new Exception('My first Sentry error!');
+});
+

@@ -257,7 +257,7 @@ class CheckoutController extends Controller
             
             // Update orders table
             $order = DB::table('orders')->where('order_id', $request->txnid)->first();
-            $phoneno = DB::table('users')->where('id', $order->user_id)->select('phone')->latest()->first();
+            $phoneno = DB::table('users')->where('id', $order->user_id)->latest()->first();
 
             if ($order) {
                 DB::table('orders')
@@ -296,7 +296,7 @@ class CheckoutController extends Controller
                         'name' => $phoneno->name,
                         'id' => 1,
                         'orderid' => $request->txnid,
-                        'price' => $order->total_mrp
+                        'price' => $order->grand_total
                     ]);
                     
                     // Call WhatsAppController's sendMessage method
@@ -331,6 +331,7 @@ class CheckoutController extends Controller
         }
         // Find the transaction by order ID (txnid)
         $transaction = DB::table('transactions')->where('order_id', $request->txnid)->first();
+        
 
         if ($transaction) {
             // Update transactions table
@@ -344,6 +345,8 @@ class CheckoutController extends Controller
 
             // Update orders table
             $order = DB::table('orders')->where('order_id', $request->txnid)->first();
+            $orderDetailsCount = DB::table('orderdetails')->where('order_id', $order->id)->count();
+            $phoneno = DB::table('users')->where('id', $order->user_id)->latest()->first();
 
             if ($order) {
                 DB::table('orders')
@@ -359,6 +362,47 @@ class CheckoutController extends Controller
                         'payment_status' => 'failed',
                     ]);
             }
+            
+            
+            
+            try {
+                // Get user's phone number
+          
+                if ($phoneno->phone) {
+                    // Format phone number if needed
+                    $phone = preg_replace('/[^0-9]/', '', $phoneno->phone);
+                    
+                    // If phone number doesn't start with country code, add it
+                    if (strlen($phone) == 10) {
+                        $phone = '91' . $phone;
+                    }
+                    
+                   
+                    // Create a request object for the WhatsApp controller
+                    $whatsappRequest = new Request([
+                        'phone' => $phone,
+                        'message' => "Your order has been confirmed and payment received successfully!",
+                        'name' => $phoneno->name,
+                        'id' => 3,
+                        'orderid' => $orderDetailsCount,
+                        'price' => $order->grand_total
+                    ]);
+                    
+                    // Call WhatsAppController's sendMessage method
+                    $whatsappController = new WhatsAppController();
+                    $whatsappController->sendMessage($whatsappRequest);
+                    
+                    // Log success
+                    Log::info('WhatsApp notification sent for order: ' . $phoneno->phone);
+                }
+            } catch (\Exception $e) {
+                // Log error but continue with the payment success flow
+                Log::error('Failed to send WhatsApp notification: ' . $e->getMessage());
+            }
+            
+           
+            
+            
         } 
         else {
             // Handle case where transaction is not found

@@ -38,10 +38,10 @@
       transition: transform 0.2s ease-in-out;
     }
 
-    .card-option:hover {
-      background-color: #2a2a2a;
-      transform: scale(1.02);
-    }
+    /*.card-option:hover {*/
+    /*  background-color: #2a2a2a;*/
+    /*  transform: scale(1.02);*/
+    /*}*/
 
     .card-option i {
       font-size: 32px;
@@ -95,6 +95,7 @@
       border-color: #EFC475;
     }
   </style>
+
 </head>
 <body>
   <div class="container py-4">
@@ -106,152 +107,219 @@
       <img src="{{ $images[0] }}" alt="Product" class="me-3" style="width:120px"/>
       <div>
         <strong>{{$product_details->product_name}}</strong><br />
-        Size: {{$product_details->size_name}} | â‚¹{{$product_details->portal_updated_price}}
+        Size: {{$product_details->size_name}} | Rs.{{$product_details->portal_updated_price}}
       </div>
     </div>
 
     <!-- Heading -->
-    <div class="heading">Want to return? <span>ðŸ˜Ÿ</span></div>
+    <div class="heading">Want to return?</div>
     <p class="subheading">Don't worry, we are here to help you!</p>
     <div class="divider"></div>
     <p class="subheading" style="color: #EFC475;">Select return reason</p>
 
     <div id="returnAccordion">
-      <!-- Quality Issues -->
+        
+        
+        
+      <!-- Quality Issues Form -->
+    <form action="{{ route('returnandrefund.store') }}" method="POST" enctype="multipart/form-data">
+      @csrf
       <div class="collapse mt-3" id="qualityCollapse" data-bs-parent="#returnAccordion">
         <div class="sub-reasons">
           <h6 style="color: #EFC475;">Quality issues</h6>
           <p>Poor Quality Product</p>
           <hr class="border-light" />
+    
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="quality_reason" id="reason1" />
-            <label class="form-check-label" for="reason1">
-              Received a poor quality product
-            </label>
+            <input class="form-check-input" type="radio" name="quality_reason" id="reason1" value="Received a poor quality product" required />
+            <label class="form-check-label" for="reason1">Received a poor quality product</label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="quality_reason" id="reason2" />
-            <label class="form-check-label" for="reason2">
-              Product image was better than the actual product
-            </label>
+            <input class="form-check-input" type="radio" name="quality_reason" id="reason2" value="Product image was better than actual product" required />
+            <label class="form-check-label" for="reason2">Product image was better than the actual product</label>
           </div>
+    
           <br>
-          <input type="file" class="form-control" required>
-          <input type="hidden" class="form-control" name="section" value="Quality issues">
+          <input type="hidden" name="section" value="Quality issues">
+          
+          <input type="file" class="form-control" name="image" style="background-color:black; color:white" required>
+          <input type="hidden" name="product_id" value="{{$product_details->id}}">
+          <input type="hidden" name="order_id" value="{{$order->id}}">
+          <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+          <input type="hidden" name="pid" value="{{$product_details->product_id}}">
+          <input type="hidden" name="oid" value="{{$order->order_id}}">
+          <input type="hidden" name="seller_id" value="{{$product_details->seller_id}}">
+          <input type="hidden" name="seller_user_id" value="{{$seller_details->user_table_id}}">
+          
+          <button type="submit" class="btn btn-primary mt-2" style="background-color:#EFC475; color:black; border:none; width:300px">Submit</button>
         </div>
-
-        
       </div>
-
-      <!-- Size & Fit Issues -->
+    </form>
+    
+    <!-- Size & Fit Issues Form -->
+    <form action="{{ route('returnandrefund.store') }}" method="POST" enctype="multipart/form-data">
+      @csrf
       <div class="collapse mt-3" id="sizefitCollapse" data-bs-parent="#returnAccordion">
         <div class="sub-reasons">
           <h6 style="color: #EFC475;">Size & Fit Issues</h6>
           <p>Doesn't fit me well</p>
           <hr class="border-light" />
+    
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="size_reason" id="reason3" />
+            <input class="form-check-input" type="radio" name="size_reason" id="reason3" value="Size too small" required />
             <label class="form-check-label" for="reason3">Size too small</label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="size_reason" id="reason4" />
+            <input class="form-check-input" type="radio" name="size_reason" id="reason4" value="Size too big" required />
             <label class="form-check-label" for="reason4">Size too big</label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="size_reason" id="reason5" />
+            <input class="form-check-input" type="radio" name="size_reason" id="reason5" value="Did not like the fit" required />
             <label class="form-check-label" for="reason5">I did not like the fit</label>
           </div>
+    
+          <br>
+          <input type="file" class="form-control" name="image" style="background-color:black; color:white" required>
+          <input type="hidden" name="product_id" value="{{$product_details->id}}">
+          <input type="hidden" name="order_id" value="{{$order->id}}">
+          <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+          <input type="hidden" name="pid" value="{{$product_details->product_id}}">
+          <input type="hidden" name="oid" value="{{$order->order_id}}">
+          <input type="hidden" name="seller_id" value="{{$product_details->seller_id}}">
+          <input type="hidden" name="seller_user_id" value="{{$seller_details->user_table_id}}">
           
-           <br>
-          <input type="file" class="form-control" required>
-          <input type="hidden" class="form-control" name="section" value="Size & Fit Issues">
+          <input type="hidden" name="section" value="Size & Fit Issues">
+    
+          <button type="submit" class="btn btn-primary mt-2">Submit</button>
         </div>
       </div>
-
-      <!-- Changed My Mind -->
+    </form>
+    
+    <!-- Changed My Mind Form -->
+    <form action="{{ route('returnandrefund.store') }}" method="POST" enctype="multipart/form-data">
+      @csrf
       <div class="collapse mt-3" id="mindCollapse" data-bs-parent="#returnAccordion">
         <div class="sub-reasons">
           <h6 style="color: #EFC475;">Changed My Mind</h6>
           <p>I don't want this product</p>
           <hr class="border-light" />
+    
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="mind_reason" id="mind1" />
+            <input class="form-check-input" type="radio" name="mind_reason" id="mind1" value="Found a better price on Myntra" required />
             <label class="form-check-label" for="mind1">Found a better price on Myntra</label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="mind_reason" id="mind2" />
+            <input class="form-check-input" type="radio" name="mind_reason" id="mind2" value="Delivery was delayed" required />
             <label class="form-check-label" for="mind2">Delivery was delayed</label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="mind_reason" id="mind3" />
+            <input class="form-check-input" type="radio" name="mind_reason" id="mind3" value="Found a better price elsewhere" required />
             <label class="form-check-label" for="mind3">Found a better price elsewhere</label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="mind_reason" id="mind4" />
+            <input class="form-check-input" type="radio" name="mind_reason" id="mind4" value="No longer needed" required />
             <label class="form-check-label" for="mind4">I do not need it anymore</label>
           </div>
+    
           <br>
-          <input type="file" class="form-control" required>
-          <input type="hidden" class="form-control" name="section" value="Changed My Mind">
+          <input type="file" class="form-control" name="image" style="background-color:black; color:white">
+          <input type="hidden" name="product_id" value="{{$product_details->id}}">
+          <input type="hidden" name="order_id" value="{{$order->id}}">
+          <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+          <input type="hidden" name="pid" value="{{$product_details->product_id}}">
+          <input type="hidden" name="oid" value="{{$order->order_id}}">
+          <input type="hidden" name="seller_id" value="{{$product_details->seller_id}}">
+          <input type="hidden" name="seller_user_id" value="{{$seller_details->user_table_id}}">
+          <input type="hidden" name="section" value="Changed My Mind">
+    
+          <button type="submit" class="btn btn-primary mt-2">Submit</button>
         </div>
       </div>
+    </form>
 
-      <!-- Different Product -->
+    <!-- Different Product Form -->
+    <form action="{{ route('returnandrefund.store') }}" method="POST" enctype="multipart/form-data">
+      @csrf
       <div class="collapse mt-3" id="differentCollapse" data-bs-parent="#returnAccordion">
         <div class="sub-reasons">
           <h6 style="color: #EFC475;">Different Product</h6>
           <p>Not what I ordered</p>
           <hr class="border-light" />
+    
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="different_reason" id="diff1" />
+            <input class="form-check-input" type="radio" name="different_reason" id="diff1" value="Different color" required />
             <label class="form-check-label" for="diff1">Received same product, but different color</label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="different_reason" id="diff2" />
+            <input class="form-check-input" type="radio" name="different_reason" id="diff2" value="Different size" required />
             <label class="form-check-label" for="diff2">Received same product, but different size</label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="different_reason" id="diff3" />
+            <input class="form-check-input" type="radio" name="different_reason" id="diff3" value="Completely different product" required />
             <label class="form-check-label" for="diff3">Received a completely different product</label>
           </div>
-          
+    
           <br>
-          <input type="file" class="form-control" required>
-          <input type="hidden" class="form-control" name="section" value="Different Product">
+          <input type="file" class="form-control" name="image" style="background-color:black; color:white" required>
+          <input type="hidden" name="product_id" value="{{$product_details->id}}">
+          <input type="hidden" name="order_id" value="{{$order->id}}">
+          <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+          <input type="hidden" name="pid" value="{{$product_details->product_id}}">
+          <input type="hidden" name="oid" value="{{$order->order_id}}">
+          <input type="hidden" name="seller_id" value="{{$product_details->seller_id}}">
+          <input type="hidden" name="seller_user_id" value="{{$seller_details->user_table_id}}">
+          <input type="hidden" name="section" value="Different Product">
+    
+          <button type="submit" class="btn btn-primary mt-2">Submit</button>
         </div>
       </div>
+    </form>
 
-      <!-- Damaged Product -->
+    <!-- Damaged Product Form -->
+    <form action="{{ route('returnandrefund.store') }}" method="POST" enctype="multipart/form-data">
+      @csrf
       <div class="collapse mt-3" id="damagedCollapse" data-bs-parent="#returnAccordion">
         <div class="sub-reasons">
           <h6 style="color: #EFC475;">Damaged/Used/Stained</h6>
           <p>Not in good condition</p>
           <hr class="border-light" />
+    
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="damaged_reason" id="damaged1" />
+            <input class="form-check-input" type="radio" name="damaged_reason" id="damaged1" value="Defective" required />
             <label class="form-check-label" for="damaged1">Product was defective</label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="damaged_reason" id="damaged2" />
+            <input class="form-check-input" type="radio" name="damaged_reason" id="damaged2" value="Damaged" required />
             <label class="form-check-label" for="damaged2">Product was damaged</label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="damaged_reason" id="damaged3" />
+            <input class="form-check-input" type="radio" name="damaged_reason" id="damaged3" value="Packaging damaged" required />
             <label class="form-check-label" for="damaged3">Primary packaging damaged</label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="damaged_reason" id="damaged4" />
+            <input class="form-check-input" type="radio" name="damaged_reason" id="damaged4" value="Looked old" required />
             <label class="form-check-label" for="damaged4">Product looked old</label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="damaged_reason" id="damaged5" />
+            <input class="form-check-input" type="radio" name="damaged_reason" id="damaged5" value="Stained/dirty" required />
             <label class="form-check-label" for="damaged5">Product was dirty and had stains</label>
           </div>
+    
           <br>
-          <input type="file" class="form-control" required>
-          <input type="hidden" class="form-control" name="section" value="Damaged/Used/Stained">
+          <input type="file" class="form-control" name="image" style="background-color:black; color:white" required>
+          <input type="hidden" name="product_id" value="{{$product_details->id}}">
+          <input type="hidden" name="order_id" value="{{$order->id}}">
+          <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+          <input type="hidden" name="pid" value="{{$product_details->product_id}}">
+          <input type="hidden" name="oid" value="{{$order->order_id}}">
+          <input type="hidden" name="seller_id" value="{{$product_details->seller_id}}">
+          <input type="hidden" name="seller_user_id" value="{{$seller_details->user_table_id}}">
+          <input type="hidden" name="section" value="Damaged/Used/Stained">
+    
+          <button type="submit" class="btn btn-primary mt-2">Submit</button>
         </div>
       </div>
+    </form>
     </div>
 
     <!-- Option Buttons -->

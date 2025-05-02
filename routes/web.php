@@ -88,8 +88,10 @@ Route::get('/payment', [App\Http\Controllers\PaymentController::class, 'index'])
 Route::get('/order', [App\Http\Controllers\OrderController::class, 'index']);
 Route::get('/orderdetails/{id}', [App\Http\Controllers\OrderController::class, 'orderdetails']);
 Route::get('/download-invoice/{order_id}', [App\Http\Controllers\OrderController::class, 'downloadInvoice'])->name('download.invoice');
-Route::get('/returnandrefund/{id}', [App\Http\Controllers\OrderController::class, 'returnandrefund']);
+// Route::get('/returnandrefund/{id}', [App\Http\Controllers\OrderController::class, 'returnandrefund']);
 
+Route::post('/store', [App\Http\Controllers\ReturnandrefundController::class, 'store'])->name('returnandrefund.store');
+Route::get('/returnandrefund/{id}', [App\Http\Controllers\ReturnandrefundController::class, 'returnandrefund']);
 
 // Route::get('/orderdetails/{id}', [App\Http\Controllers\OrderdetailsController::class, 'index']);
 Route::get('/wishlist', [App\Http\Controllers\WishlistController::class, 'index']);

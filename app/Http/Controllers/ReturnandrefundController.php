@@ -9,6 +9,7 @@ use App\Models\Product;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use DB;
 
 class ReturnandrefundController extends Controller
 {
@@ -140,4 +141,76 @@ class ReturnandrefundController extends Controller
         
         return redirect()->route('returns.view')->with('success', 'Return request cancelled successfully.');
     }
+    
+    
+    public function returnandrefund($id)
+    {
+        $orderdetail = DB::table('orderdetails')->where('id',$id)->latest()->first();
+        $order = DB::table('orders')->where('id',$orderdetail->order_id)->latest()->first();
+        $product_details = DB::table('products')->where('id',$orderdetail->product_id)->latest()->first();
+        $seller_details = DB::table('sellers')->where('seller_id',$product_details->seller_id)->latest()->first();
+        return view('Order.returnandrefund',compact('orderdetail','product_details','order','seller_details'));
+    }
+    
+    public function store(Request $request)
+    {
+
+        // Determine the selected reason
+        $reason = $request->input('quality_reason') ??
+                  $request->input('size_reason') ??
+                  $request->input('mind_reason') ??
+                  $request->input('different_reason') ??
+                  $request->input('damaged_reason');
+    
+        // Prepare AWS S3 path
+        $folderPath = "returnandrefund/{$request->oid}/{$request->pid}";
+        $file = $request->file('image');
+        $fileName = time() . '_' . $file->getClientOriginalName();
+        $extension = strtolower($file->getClientOriginalExtension());
+    
+        // Create image resource
+        switch ($extension) {
+            case 'jpeg':
+            case 'jpg':
+                $sourceImage = imagecreatefromjpeg($file->getPathname());
+                break;
+            case 'png':
+                $sourceImage = imagecreatefrompng($file->getPathname());
+                break;
+            default:
+                return back()->with('error', 'Unsupported image format.');
+        }
+    
+        // Compress and capture output
+        ob_start();
+        imagejpeg($sourceImage, null, 70); // adjust quality if needed
+        $imageData = ob_get_clean();
+    
+        // Store to S3
+        $filePath = $folderPath . '/' . $fileName;
+        Storage::disk('s3')->put($filePath, $imageData, 'public');
+    
+        // Cleanup
+        imagedestroy($sourceImage);
+    
+        // Get public URL
+        $imageUrl = Storage::disk('s3')->url($filePath);
+    
+        // Save to DB
+        DB::table('return_requests')->insert([
+            'return_reason_category' => $request->input('section'),
+            'product_id'             => $request->input('product_id'),
+            'order_id'               => $request->input('order_id'),
+            'user_id'                => $request->input('user_id'),
+            'seller_id'              => $request->input('seller_id'),
+            'seller_user_id'         => $request->input('seller_user_id'),
+            'return_reason'          => $reason,
+            'image'                  => $imageUrl,
+            'created_at'             => now(),
+            'updated_at'             => now(),
+        ]);
+    
+        return redirect()->back()->with('success', 'Return request submitted successfully.');
+    }
+
 }

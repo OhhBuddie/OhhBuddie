@@ -298,3 +298,5 @@ Route::get('/debug-sentry', function () {
     throw new Exception('My first Sentry error!');
 });
 
+Route::post('/apply-coupon', [CartController::class, 'applyCoupon'])->name('apply.coupon');
+Route::post('/remove-coupon', [CartController::class, 'removeCoupon'])->name('remove.coupon');

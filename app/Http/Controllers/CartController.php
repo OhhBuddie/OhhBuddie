@@ -67,7 +67,7 @@ class CartController extends Controller
         $total_discount = 0;
         $total_tax = 0;
         $total_shipping = 0;
-
+        $total_coupon = 0;
 
         foreach ($cart_data as $cdats) {
 
@@ -117,8 +117,10 @@ class CartController extends Controller
             $total_tax += $cdats->tax;
             $total_shipping = $cdats->shipping_cost;
             $total_shipping = $total_shippingg;
+            $total_coupon += $cdats->coupon_discount;
         }
-
+     
+        
 
 
         $subSubCatIds = [];
@@ -191,7 +193,8 @@ class CartController extends Controller
             'total_shipping',
             'total_tax',
             'may_like',
-            'wish_list'
+            'wish_list',
+            'total_coupon'
         ));
     }
 
@@ -290,7 +293,7 @@ class CartController extends Controller
             'carrier_id' => 1,
             'product_referral_code' => "NA",
             'coupon_code' => "NA",
-            'coupon_applied' => 1,
+            'coupon_applied' => 0,
             'quantity' => 1,
             'segment' => "Buy",
             'mrp' => $request->mrp,
@@ -487,6 +490,80 @@ class CartController extends Controller
             'total_tax' => $total_tax,
             'total_shipping' => $total_shipping,
             'final_price' => $final_price
+        ]);
+    }
+    
+     public function applyCoupon(Request $request)
+     {
+            $request->validate([
+                'coupon_code' => 'required|string',
+                'cart_id' => 'required|exists:carts,id'
+            ]);
+    
+            $validCoupons = ['AMRITA200', 'RUPSA200', 'ASMITA200', 'SOUMI200', 'MOUTRISHA200', 'NIDHI200'];
+            $couponCode = strtoupper($request->coupon_code);
+    
+            if (!in_array($couponCode, $validCoupons)) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Invalid coupon code'
+                ], 400);
+            }
+    
+            $cart = Cart::find($request->cart_id);
+            
+            // Check if user owns this cart
+            if (Auth::check()) {
+                if ($cart->user_id != Auth::id()) {
+                    return response()->json(['success' => false, 'message' => 'Unauthorized'], 403);
+                }
+            } else {
+                if ($cart->temp_user_id != $request->temp_user_id) {
+                    return response()->json(['success' => false, 'message' => 'Unauthorized'], 403);
+                }
+            }
+    
+            $cart->update([
+                'coupon_code' => $couponCode,
+                'coupon_applied' => 1,
+                'coupon_discount' => 200
+            ]);
+    
+            return response()->json([
+                'success' => true,
+                'message' => 'Coupon applied successfully',
+                'discount' => 200
+            ]);
+    }
+
+    public function removeCoupon(Request $request)
+    {
+        $request->validate([
+            'cart_id' => 'required|exists:carts,id'
+        ]);
+
+        $cart = Cart::find($request->cart_id);
+        
+        // Check if user owns this cart
+        if (Auth::check()) {
+            if ($cart->user_id != Auth::id()) {
+                return response()->json(['success' => false, 'message' => 'Unauthorized'], 403);
+            }
+        } else {
+            if ($cart->temp_user_id != $request->temp_user_id) {
+                return response()->json(['success' => false, 'message' => 'Unauthorized'], 403);
+            }
+        }
+
+        $cart->update([
+            'coupon_code' => null,
+            'coupon_applied' => 0,
+            'coupon_discount' => null
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Coupon removed successfully'
         ]);
     }
 

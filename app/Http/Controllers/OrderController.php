@@ -8,6 +8,8 @@ use DB;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use Barryvdh\DomPDF\Facade\Pdf; // Make sure you have this at the top
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Cache;
 
 
 
@@ -32,12 +34,22 @@ class OrderController extends Controller
             {
                 $orderdetails = DB::table('orderdetails')->where('order_id',$orders->id)->latest()->first();
                 $product_data = DB::table('products')->where('id',$orderdetails->product_id)->latest()->first();
-                $brand_data = DB::table('brands')->where('id',$product_data->brand_id)->latest()->first();
+                $brandcnt = DB::table('brands')->where('id',$product_data->brand_id)->count();
+                if($brandcnt == 0)
+                {
+                    $dat['brand_name'] = 'NA';
+                }
+                else
+                {
+                    $brand_data = DB::table('brands')->where('id',$product_data->brand_id)->latest()->first();
+                    $dat['brand_name'] = $brand_data->brand_name;
+                }
+                
                 $color_data = DB::table('colors')->where('hex_code',$product_data->color_name)->latest()->first();
                 
                 $dat['id'] = $orderdetails->id;
                 $dat['product_name'] = $product_data->product_name;
-                $dat['brand_name'] = $brand_data->brand_name;
+                
                 $images = json_decode($product_data->images, true); 
                 
                 $dat['image'] = !empty($images) ? $images[0] : null;  
@@ -57,7 +69,10 @@ class OrderController extends Controller
 
     public function orderdetails($id)
     {
-        $myorders = Auth::check() ? DB::table('orders')->where('user_id', Auth::id())->latest()->first() : null;
+
+        $order_id = DB::table('orderdetails')->where('id',$id)->latest()->first();
+        
+        $myorders = Auth::check() ? DB::table('orders')->where('user_id', Auth::id())->where('id',$order_id->order_id)->latest()->first() : null;
         
         return view('Order.orderdetails',compact('myorders', 'id'));
         
@@ -187,6 +202,104 @@ class OrderController extends Controller
         $product_details = DB::table('products')->where('id',$orderdetail->product_id)->latest()->first();
         return view('Order.returnandrefund',compact('orderdetail','product_details','order'));
     }
+    
+    
+ public function sendInvoiceToZoho(Request $request)
+{
+    $clientId = '1000.VTWB7ECPGBCKRLS27SXHGCLYBGH57J';
+    $clientSecret = '27947cbfe1b0a8a7d5b319bf986e494084d1f81488';
+    $refreshToken = '1000.7b0a2ba27f9f4b622c09552558e92550.e1d475cdbe1dd57ec5bf7054d0142aea';
+    $orgId = '60040824848';
+    $apiDomain = 'https://www.zohoapis.in';
+    $authDomain = 'https://accounts.zoho.in';
+
+    // Step 1: Refresh Zoho access token if needed
+    $accessToken = Cache::get('zoho_access_token');
+    if (!$accessToken) {
+        $tokenResponse = Http::asForm()->post("$authDomain/oauth/v2/token", [
+            'refresh_token' => $refreshToken,
+            'client_id' => $clientId,
+            'client_secret' => $clientSecret,
+            'grant_type' => 'refresh_token',
+        ]);
+
+        if (!$tokenResponse->ok() || !isset($tokenResponse->json()['access_token'])) {
+            Log::error('Zoho token refresh failed', [
+                'status' => $tokenResponse->status(),
+                'body' => $tokenResponse->body(),
+            ]);
+
+            return response()->json([
+                'error' => 'Failed to refresh Zoho access token.',
+                'details' => $tokenResponse->json(),
+            ], 500);
+        }
+
+        $accessToken = $tokenResponse->json()['access_token'];
+        Cache::put('zoho_access_token', $accessToken, now()->addMinutes(55));
+    }
+
+    // Step 2: Create invoice
+    $contactId = '2503040000000033002';
+    $productName = "Random Product";
+    $rate = 2000;
+    $quantity = 5;
+    $customCompanyName = 'ABC Company';
+
+$invoicePayload = [
+    'customer_id' => $contactId,
+    'line_items' => [
+        [
+            'name' => $productName,
+            'rate' => $rate,
+            'quantity' => $quantity,
+        ],
+    ],
+    'custom_fields' => [
+        [
+            'api_name' => 'cf_company_name',
+            'value' => $customCompanyName,
+        ],
+    ],
+];
+
+    $invoiceResponse = Http::withHeaders([
+        'Authorization' => "Bearer $accessToken",
+        'X-com-zoho-invoice-organizationid' => $orgId,
+        'Content-Type' => 'application/json',
+    ])->post("$apiDomain/invoice/v3/invoices", $invoicePayload);
+
+    if (!$invoiceResponse->ok()) {
+        return response()->json([
+            'error' => 'Failed to create invoice.',
+            'details' => $invoiceResponse->json(),
+        ], 500);
+    }
+
+    $invoice = $invoiceResponse->json('invoice');
+
+    // Step 3: Download PDF
+    $invoiceId = $invoice['invoice_id'];
+    $downloadResponse = Http::withHeaders([
+        'Authorization' => "Bearer $accessToken",
+        'X-com-zoho-invoice-organizationid' => $orgId,
+    ])->get("$apiDomain/invoice/v3/invoices/{$invoiceId}/pdf");
+
+    if (!$downloadResponse->ok()) {
+        return response()->json([
+            'error' => 'Failed to download invoice PDF.',
+            'details' => $downloadResponse->json(),
+        ], 500);
+    }
+
+    // Step 4: Return response
+    return response()->json([
+        'success' => true,
+        'invoice_id' => $invoice['invoice_id'],
+        'invoice_number' => $invoice['invoice_number'],
+        'download_url' => "$apiDomain/invoice/v3/invoices/{$invoiceId}/pdf?organization_id=$orgId",
+    ]);
+}
 
 
 }

@@ -8,6 +8,15 @@
          .help{
              right:31% !important;
          }
+         .dektop-view{
+             display: flex !important;
+             flex-direction: column !important;
+         }
+         .col-md-3, .col-md-9{
+             max-width: 100% !important;
+             width: 100% !important;
+         }
+         
      }
      
          
@@ -91,6 +100,7 @@
 
       
     <div class=" p-3" style="margin-top:60px;">
+        
             @php
                 $orderdetails = DB::table('orderdetails')->where('order_id', $myorders->id)->latest()->first();
                 $product_data = DB::table('products')->where('id',$orderdetails->product_id)->latest()->first();
@@ -114,25 +124,34 @@
                 $address_data = DB::table('addresses')->where('id',$orders_data->shipping_address)->latest()->first();
                 $user_data = DB::table('users')->where('id',$address_data->user_id)->latest()->first();
                 
+                
+                $inv_data = DB::table('invoices')->where('order_id',$orders_data->order_id)->where('product_id',$product_data->id)->latest()->first();
+                
+                
+                
             @endphp
     
         <div class="help d-flex flex-row align-items-center gap-2">
             <strong>Help</strong> 
-                        @php
-                            $images = json_decode($product_data->images, true);
-                        @endphp
+            @php
+                $images = json_decode($product_data->images, true);
+            @endphp
                      
             <!--<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQviJWxjVWRtXzYNBai88xRpl3hXtIlilwl1r41Dm_5_R52EuC3eX7YSm5wJpozGkTujl0&usqp=CAU"  style="width: 16px;">-->
         </div>
         
         
-      <div class="pt-5">
-        <div class="col-md-3 text-center">
+      <div class="pt-5 dektop-view">
+        <div class="col-md-3 text-center ">
             <img src="{{ $images[0] }}" alt="Image" style="width: 126px;">        
         </div>
         
-        <div class="d-flex flex-column align-items-center col-md-9 mt-3">
-          <p class="mb-1 text-light" style="font-size: 18px;font-weight: bold;">{{$brand_name->brand_name}}</p>
+        <div class="d-flex flex-column align-items-center col-md-9 mt-3 ">
+          <p class="mb-1 text-light" style="font-size: 18px;font-weight: bold;">
+              @if($brand_name!='NA')
+                {{$brand_name->brand_name}}
+              @endif
+              </p>
           <p class="mb-1 text-light" style="font-size: 13px;">{{$product_data->product_name}}</p>
           <p class="text-light" style="font-size: 14px;">Size: {{$product_data->size_name}}  | Color: {{$color_data->color_name}} </p>
         </div>
@@ -144,12 +163,12 @@
                     <i class="bi bi-arrow-left-right" style="font-size: 20px;"></i>
                     <p class="mb-0" style="font-weight: 500;">Size Exchange</p>
                 </div>
-                <div class="text-center px-3 py-2" style="border: 1px solid #ddd; border-radius: 6px; width: 48%; cursor: pointer;">
-                    <a href="/returnandrefund/{{$orderdetails->id}}" style="color:white">
-                        <i class="bi bi-arrow-counterclockwise" style="font-size: 20px;"></i>
-                        <p class="mb-0" style="font-weight: 500;">Return</p>
+                    <a href="/returnandrefund/{{$orderdetails->id}}" style="color:white; text-decoration:none; border: 1px solid #ddd; border-radius: 6px; width: 48%; cursor: pointer;">
+                        <div class="text-center px-3 py-2" >
+                                <i class="bi bi-arrow-counterclockwise" style="font-size: 20px;"></i>
+                                <p class="mb-0" style="font-weight: 500;">Return</p>
+                        </div>
                     </a>
-                </div>
             </div>
 
         
@@ -235,12 +254,21 @@
         <img src="https://img.icons8.com/color/48/google-pay-india.png" alt="UPI Icon" width="32" class="me-2">
         <span class="">Paid by {{ $orders_data->payment_type }}</span>
       </div>
-      <!--<button class="get-invoice-btn" style="border: 1px solid #ddd; background-color: black; width: 100%;">Get Invoice</button>-->
-      <a href="{{ route('download.invoice', $id) }}" style="text-decoration: none; color:white;">
-        <button class="get-invoice-btn" style="border: 1px solid #ddd; background-color: black; width: 100%;">
-            Get Invoice
-        </button>
-    </a>
+      
+      <a href="{{ $inv_data->invoice_link }}" download class="get-invoice-btn" style="border: 1px solid #ddd; background-color: black; width: 100%; display: block; text-align: center; padding: 10px; color: white; text-decoration: none;" target="blank()">
+    Get Invoice
+</a>
+     
+      <!--<button class="get-invoice-btn" style="border: 1px solid #ddd; background-color: black; width: 100%;"><a href="/invoice-pdf/{{$orderdetails->id}}" style="color:white;text-decoration:none">Get Invoice{{$inv_data->invoice_link}} </a> </button>-->
+<!--   <form action="{{ route('download.invoice', ['id' => $orderdetails->id]) }}" method="GET" style="width: 100%;">-->
+<!--    <button type="submit" class="get-invoice-btn" style="border: 1px solid #ddd; background-color: black; width: 100%; color: white;">-->
+<!--        Get Invoice-->
+<!--    </button>-->
+<!--</form>-->
+          
+
+    
+    
     </div>
   </div>
 

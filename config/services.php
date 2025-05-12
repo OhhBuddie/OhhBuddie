@@ -35,5 +35,10 @@ return [
         'client_secret' => env('GOOGLE_CLIENT_SECRET'),
         'redirect'      => env('GOOGLE_REDIRECT_URI'),
     ],
+    
+    'zoho' => [
+    'token' => env('ZOHO_AUTH_TOKEN'),
+    'org_id' => env('ZOHO_ORGANIZATION_ID'),
+],
 
 ];

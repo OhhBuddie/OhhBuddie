@@ -72,15 +72,12 @@
     <script>window.LogRocket && window.LogRocket.init('a4hegy/ohh-buddie');</script>
 
     <!-- End Log Rocket -->
-    
-     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
-        
-        body, .heading, a, p, button, b, strong, div, .bottom-navbar, .accordion, footer{
-            font-family: "Inter" !important;
-        }
-    </style>
-    <style>
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+
+
         /* Desktop specific styles */
         @media (min-width: 992px) {
             .website-container {
@@ -136,9 +133,7 @@
         }
 
         /* Rest of your existing styles */
-    </style>
-    <!-- Add your desktop layout constraint CSS here -->
-    <style>
+  
         /* Container for the entire website content */
         .website-container {
             width: 40%;
@@ -224,8 +219,7 @@
         }
 
         /* Keep all your other existing styles */
-    </style>
-    <style>
+
         .accordion-header {
             background-color: black;
             color: white;
@@ -273,21 +267,10 @@
     
 
 
-    </style>
-    
-    
-    
-    
-    
-    
-    
-    
-    <style>
         .translate-middle {
             transform: translate(-58%, -50%) !important;
         }
-    </style>
-    <style>
+
         :root {
           --icon-height: 3rem;
           --transition-speed: .45s;
@@ -404,11 +387,7 @@
             width: 34vw;
           }
         }
-      </style>
-      
-              
 
-    <style>
     /* !important styles to override any conflicts */
     .search-results-dropdown {
       position: absolute !important;

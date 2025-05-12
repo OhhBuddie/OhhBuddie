@@ -17,6 +17,7 @@ class CartController extends Controller
      */
     public function index(Request $request)
     {
+        // $coupon = DB::table('carts')->where()->latest()->first();
         $cartQuery = DB::table('carts');
         // Check if user is logged in
         if (Auth::check()) {
@@ -98,6 +99,8 @@ class CartController extends Controller
                 'cart_value' => $cdats->cart_value,
                 'user_id' => $cdats->user_id,
                 'temp_user_id' => $cdats->temp_user_id,
+                'coupon_code' => $cdats->coupon_code,
+                'coupon_discount' => $cdats->coupon_discount
             ];
 
             // Calculate totals
@@ -495,22 +498,78 @@ class CartController extends Controller
     
      public function applyCoupon(Request $request)
      {
+            // return $request;
             $request->validate([
                 'coupon_code' => 'required|string',
                 'cart_id' => 'required|exists:carts,id'
             ]);
     
-            $validCoupons = ['AMRITA200', 'RUPSA200', 'ASMITA200', 'SOUMI200', 'MOUTRISHA200', 'NIDHI200'];
+            $validCoupons = [ 
+                              'AMRITA200',
+                              'RUPSA200',
+                              'ASMITA200',
+                              'SOUMI200',
+                              'MOUTRISHA200',
+                              'NIDHI200',
+                              'NEWBUDDIE20',
+                              'ISHANI200',
+                              'MOITREYEE200',
+                              'KRITIKA200',
+                              'MISTU200',
+                              'SAYANTANI200',
+                              'RIZA200',
+                              'DISHA200'
+                            ];
             $couponCode = strtoupper($request->coupon_code);
     
+    
+            $order_ids = DB::table('transactions')->where('status','Completed')->pluck('order_id');
+            
+            $order_tbl = DB::table('orders')->whereIn('order_id',$order_ids)->where('user_id',Auth::user()->id)->count();
+            
+            $cart = Cart::find($request->cart_id);
+            
+            $cpn_cnt = DB::table('carts')->where('user_id',Auth::user()->id)->where('coupon_code',$couponCode)->count();
+            
             if (!in_array($couponCode, $validCoupons)) {
                 return response()->json([
                     'success' => false,
                     'message' => 'Invalid coupon code'
                 ], 400);
             }
-    
-            $cart = Cart::find($request->cart_id);
+            
+            if ($couponCode === 'NEWBUDDIE20' && $order_tbl > 0) {
+                
+                return response()->json([
+                    'success' => false,
+                    'message' => 'This Coupon is valid for New users Only'
+                ], 400);
+                
+            } 
+            elseif ($couponCode != 'NEWBUDDIE20' && $cpn_cnt > 0) {
+                
+                return response()->json([
+                    'success' => false,
+                    'message' => 'You have used this coupon already, try another one'
+                ], 400);
+                
+            }
+            
+            if ($couponCode === 'NEWBUDDIE20' && $cart->cart_value < 799) {
+                $due = 799 - $cart->cart_value;
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Add more Rs.' . $due . ' to apply this coupon.',
+                ], 400);
+            }
+            elseif($couponCode != 'NEWBUDDIE20' && $cart->cart_value <= 999)
+            {
+                $due = 999 - $cart->cart_value;
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Add more Rs.' . $due . ' to apply this coupon.',
+                ], 400);
+            }
             
             // Check if user owns this cart
             if (Auth::check()) {
@@ -522,13 +581,23 @@ class CartController extends Controller
                     return response()->json(['success' => false, 'message' => 'Unauthorized'], 403);
                 }
             }
-    
+            
+        
+            $couponCode = $request->coupon_code;
+
+            if ($couponCode === 'NEWBUDDIE20') {
+                $discount = round($cart->price * 0.2, 2); // 20% discount
+            } else {
+                $discount = 200; // Flat ₹200 discount
+            }
+            
             $cart->update([
                 'coupon_code' => $couponCode,
                 'coupon_applied' => 1,
-                'coupon_discount' => 200
+                'coupon_discount' => $discount,
             ]);
-    
+
+
             return response()->json([
                 'success' => true,
                 'message' => 'Coupon applied successfully',

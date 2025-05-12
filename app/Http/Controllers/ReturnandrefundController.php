@@ -25,7 +25,7 @@ class ReturnandrefundController extends Controller
     
     public function store(Request $request)
     {
-
+    //   return $request;
         // Determine the selected reason
         $reason = $request->input('quality_reason') ??
                   $request->input('size_reason') ??
@@ -72,26 +72,39 @@ class ReturnandrefundController extends Controller
         $orderdetails_data = DB::table('orderdetails')->where('order_id',$order_data->id)->latest()->first();
         $product_data = DB::table('products')->where('id',$orderdetails_data->product_id)->latest()->first();
         // Save to DB
-        DB::table('return_requests')->insert([
-            'return_reason_category' => $request->input('section'),
+        DB::table('orderreturns')->insert([
+            'return_category' => $request->input('section'),
             'product_id'             => $request->input('product_id'),
             'order_id'               => $request->input('order_id'),
             'user_id'                => $request->input('user_id'),
             'seller_id'              => $request->input('seller_id'),
             'seller_user_id'         => $request->input('seller_user_id'),
-            'transaction_id'         => $transaction_data->txn_id,
-            'payment_mode'           => $transaction_data->payment_method,
+            'refund_source'          => $request->input('refund_source'),
+            // 'transaction_id'         => $transaction_data->txn_id,
+            // 'payment_mode'           => $transaction_data->payment_method,
             'paid_amount'            => $transaction_data->amount,
             'address_id'             => $order_data->shipping_address,
             'product_name'           => $product_data->product_name,
-            'color'                  => $product_data->color_name,
-            'size'                   => $product_data->size_name,
-            'quantity'               => $orderdetails_data->quantity,
+            // 'color'                  => $product_data->color_name,
+            // 'size'                   => $product_data->size_name,
+            // 'quantity'               => $orderdetails_data->quantity,
+            'sku'                    => $product_data->sku,
             'return_reason'          => $reason,
             'image'                  => $imageUrl,
             'created_at'             => now(),
             'updated_at'             => now(),
         ]);
+        
+        
+        
+        
+            // $table->string('pickup_required');
+            // $table->string('pickup_status');
+            // $table->string('product_stored_in');
+            // $table->string('refund_source');
+            // $table->text('note')->nullable();
+            // $table->timestamps();
+        
     
         return redirect()->back()->with('success', 'Return request submitted successfully.');
     }

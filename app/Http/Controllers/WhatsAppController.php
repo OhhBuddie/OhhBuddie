@@ -12,10 +12,7 @@ class WhatsAppController extends Controller
     {
         
         
-        $request->validate([
-            'phone' => 'required|regex:/^\d+$/', // Ensure phone contains only digits
-            'message' => 'required',
-        ]);
+    
 
         $token = 'EAAS6NxQsZCfkBOxJBjShCSZBH6h6Oxy72mW1ssiefQxuIKI62iijYi1rZBBRliL4Xr6RgrqsMS4afNKQ9flpaGMDeh6X7zF0UagqFRjjJ3VazfLwqncMWPL42TjpCChKdgPoeYsbis6VNMp1jnSIWTjji6A3hyulMjKFzNlq8YANi98b2EnhUhDqA1mNqIRxQZDZD';
         $phone_number_id = '648701208316154';
@@ -26,8 +23,13 @@ class WhatsAppController extends Controller
         $id = $request->id; 
         $orderid = $request->orderid; 
         $price = $request->price;
-
+        $delivaryaddress = $request->delivaryaddress;
         
+        $sellerData = $request->sellerData;
+        $adminData = $request->adminData;
+       
+        
+    
         // Log the request details
         Log::info('WhatsApp API Request', [
             'to' => $to,
@@ -40,7 +42,79 @@ class WhatsAppController extends Controller
     
     
     if($id === 1){
-        $response = Http::withToken($token)->post($url, [
+        
+       
+        foreach ($sellerData as $seller) {
+            // Extract data for this specific seller
+            $sellername = $seller['sellername'];
+            $productname = $seller['productname'];
+            $totalorderamount = $seller['totalorderamount'];
+            $sellernumber = $seller['sellernumber'];
+            
+            // Send WhatsApp message to this seller
+            $response = Http::withToken($token)->post($url, [
+                'messaging_product' => 'whatsapp',
+                'to' => $sellernumber,
+                'type' => 'template',
+                'template' => [
+                    'name' => 'slr_order_received',
+                    'language' => ['code' => 'en'],
+                    'components' => [
+                        [   // This opening bracket was missing
+                            'type' => 'body',
+                            'parameters' => [
+                                ['type' => 'text', 'text' => $sellername],
+                                ['type' => 'text', 'text' => $productname],
+                                ['type' => 'text', 'text' => $customerName],
+                                ['type' => 'text', 'text' => $delivaryaddress],
+                                ['type' => 'text', 'text' => $totalorderamount]
+                            ]
+                        ]   // This closing bracket was missing
+                    ]
+                ]
+            ]);
+        
+        }
+        
+        
+        foreach ($adminData as $admin) {
+            // Extract data for this specific seller
+            $adminrname = $admin['adminname'];
+            $adminnumber = $admin['adminnumber'];
+            
+            
+            // Send WhatsApp message to this seller
+            $response = Http::withToken($token)->post($url, [
+                'messaging_product' => 'whatsapp',
+                'to' => $adminnumber,
+                'type' => 'template',
+                'template' => [
+                    'name' => 'adm_order_received',
+                    'language' => ['code' => 'en'],
+                    'components' => [
+                        [   // This opening bracket was missing
+                            'type' => 'body',
+                            'parameters' => [
+                                ['type' => 'text', 'text' => $adminrname],
+                                ['type' => 'text', 'text' => $customerName],
+                                ['type' => 'text', 'text' => $orderid],
+                                ['type' => 'text', 'text' => $request->noofproduct ],
+                                ['type' => 'text', 'text' => $delivaryaddress ],
+                                ['type' => 'text', 'text' => $totalorderamount]
+                            ]
+                        ]   // This closing bracket was missing
+                    ]
+                ]
+            ]);
+        
+        }
+        
+        
+        
+        
+        
+        
+        $response1 = Http::withToken($token)->post($url, [
             'messaging_product' => 'whatsapp',
             'to' => $to,
             'type' => 'template',
@@ -79,6 +153,9 @@ class WhatsAppController extends Controller
                 ]
             ]
         ]);
+        
+        
+        
     }
     elseif($id === 2)
     {
@@ -205,6 +282,8 @@ class WhatsAppController extends Controller
                 'error' => $response->json()
             ], 500);
         }
+        
+        
     }
 
     public function verifyWebhook(Request $request)

@@ -97,6 +97,9 @@ $categories = [
         <div class="item-active item active">
             <img loading="lazy" src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/Sliders/static+slider+western.webp" alt="Slider Image 1">
         </div>
+        <div class="item-active item ">
+            <img loading="lazy" src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/Sliders/NEWBUDDIE20.webp" alt="Slider Image 1">
+        </div>
         <div class="item-active item">
             <img loading="lazy" src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/Sliders/try+out.webp" alt="Slider Image 5">
         </div>
@@ -115,6 +118,7 @@ $categories = [
              <img loading="lazy" src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/Sliders/static+slider+saree.webp" alt="Slider Image 4">
             </a>
         </div>
+        
     </div>
     <a class="left carousel-control" href="#myCarousel" data-slide="prev">
         <span class="glyphicon glyphicon-chevron-left"></span>
@@ -124,6 +128,13 @@ $categories = [
         <span class="glyphicon glyphicon-chevron-right"></span>
         <span class="sr-only">Next</span>
     </a>
+</div>
+
+
+
+<h3 class="heading">Coupons For You</h3>
+<div class="Banner">
+     <img loading="lazy" src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/Coupon/NEWBUDDIE20+(2).webp" class="couponimg" alt="Shoes">
 </div>
 
 <h3 class="heading">Weekly Trends</h3>
@@ -167,7 +178,7 @@ $categories = [
     </div>
 </div>
 
-<h3 class="heading">OUR USP</h3>
+<h3 class="heading">Our USP</h3>
 <div class="Banner">
     <video playsinline muted loop autoplay width="100%">
         <source src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/USP+Banner/usp+banner+17.02.mp4" type="video/mp4">

@@ -1099,7 +1099,7 @@
                                 </p>
                             </div>
                             <p class="price"><strike style="color:grey;">Rs. {{ $dat['mrp'] }}</strike> <span
-                                    class="discount">Rs. {{ $dat['price'] }}</span></p>
+                                    class="discount">Rs. {{ $dat['mrp'] - $dat['price'] }}</span></p>
                             <p>Discount: Rs. {{ $dat['discount'] }}</p>
                             <p class="d-flex">Total: Rs.<span class="price-value">{{ $dat['cart_value'] }}</span>
                             </p>
@@ -1338,38 +1338,77 @@
                 </div>
 
             @endif
-
-            <!-- Coupon Section -->
-            <div class="coupon-section px-3 py-2" style="background: black; border-top: 1px solid #333; border-bottom: 1px solid #333;">
-                <div class="d-flex align-items-center mb-2">
-                    <div class="d-flex align-items-center" style="flex-grow: 1;">
-                        <img src="https://w7.pngwing.com/pngs/62/407/png-transparent-coupon-computer-icons-discounts-and-allowances-voucher-clear-choice-cannabis-term-thumbnail.png" 
-                             alt="Coupon" style="width: 20px; height: 20px; margin-right: 10px;">
-                        <h6 class="m-0" style="color: white; font-size: 14px;">Apply Coupon</h6>
-                    </div>
-                    <i class="fas fa-chevron-down text-white" id="couponToggle" style="cursor: pointer;"></i>
-                </div>
+            @php
+                  
+                $coupon_discount = session('coupon_discount') ?? 0;
+                 
+                if ($total_price >= 200 && $total_price <= 499) {
+                    $shipping_fee = 49;
+                } elseif ($total_price >= 500 && $total_price <= 749) {
+                    $shipping_fee = 29;
+                } else {
+                    $shipping_fee = 0;
+                }
             
-                <div>
-                    <div class="input-group mb-2">
-                        <input type="text" id="couponCode" class="form-control" 
-                               placeholder="Enter coupon code" 
-                               style="background: black; color: white; border: 1px solid #555;">
-                        <button class="btn" style="background-color: #efc475; color: black;" 
-                                onclick="applyCoupon()">Apply</button>
+                $final_price = max(0, $total_price + $shipping_fee - $coupon_discount);
+            @endphp
+                <!-- Coupon Section -->
+                <div class="coupon-section px-3 py-2" style="background: black; border-top: 1px solid #333; border-bottom: 1px solid #333;">
+                        <div class="d-flex align-items-center mb-2">
+                            <div class="d-flex align-items-center" style="flex-grow: 1;">
+                                <img src="https://w7.pngwing.com/pngs/62/407/png-transparent-coupon-computer-icons-discounts-and-allowances-voucher-clear-choice-cannabis-term-thumbnail.png" 
+                                     alt="Coupon" style="width: 20px; height: 20px; margin-right: 10px;">
+                                <h6 class="m-0" style="color: white; font-size: 14px;">Apply Coupon</h6>
+                            </div>
+                            <!--<i class="fas fa-chevron-down text-white" id="couponToggle" style="cursor: pointer;"></i>-->
+                        </div>
+                    
+                   <div>
+                        
+                    @auth
+                        <div class="input-group mb-2">
+                            <input type="text" id="couponCode" class="form-control" 
+                                   placeholder="Enter coupon code" 
+                                   style="background: black; color: white; border: 1px solid #555;">
+                            <button class="btn" style="background-color: #efc475; color: black;" 
+                                    onclick="applyCoupon()">Apply</button>
+                        </div>
+                        
+                        <div id="couponMessage" class="mb-2" style="font-size: 12px; min-height: 20px;"></div>
+                 
+                    @endauth
+                    
+                    @guest
+                       <div class="input-group mb-2">
+                            <input type="text" id="couponCode" class="form-control" 
+                                   placeholder="Enter coupon code" 
+                                   style="background: black; color: white; border: 1px solid #555;">
+                            <button class="btn" style="background-color: #efc475; color: black;" 
+                                    onclick="myFunction1()">Apply</button>
+                        </div>
+                        <!--<small style="color: #f88;">Please add ₹{{ 999 - $final_price }} more to apply a coupon.</small>-->
+                        <p id="text1" style="color: #f88;"></p>               
+                        
+                        <script>
+                            function myFunction1() {
+                                document.getElementById('text1').innerHTML = 'Please <a href="/otp/login">Log In</a> to apply a coupon.';
+                            }
+                        </script>
+                     @endguest
+ 
+                 
+            </div>
+                
+                @if(!empty($total_coupon))
+                    <div id="appliedCoupon" class="d-flex justify-content-between align-items-center p-2"  style="background: #1a1a1a; border-radius: 4px; display:none;">
+                        <div class="d-flex align-items-center">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                <span id="appliedCouponCode" style="color: white; font-size: 13px;"></span>
+                        </div>
+                        <button class="btn btn-sm" style="background: transparent; color: #efc475; border: 1px solid #efc475;" onclick="removeCoupon()">Remove</button>
                     </div>
-                    <div id="couponMessage" class="mb-2" style="font-size: 12px; min-height: 20px;"></div>
-                </div>
-            
-                <div id="appliedCoupon" class="d-flex justify-content-between align-items-center p-2" 
-                     style="background: #1a1a1a; border-radius: 4px; display:none;">
-                    <div class="d-flex align-items-center">
-                        <i class="fas fa-check-circle text-success me-2"></i>
-                        <span id="appliedCouponCode" style="color: white; font-size: 13px;"></span>
-                    </div>
-                    <button class="btn btn-sm" style="background: transparent; color: #efc475; border: 1px solid #efc475;" 
-                            onclick="removeCoupon()">Remove</button>
-                </div>
+                @endif
+                
             </div>
             
             <div class="price-details  text-light">
@@ -1384,30 +1423,6 @@
                 </div>
 
 
-                <!--@php-->
-                <!--    if ($total_price >= 200 && $total_price <= 499) {-->
-                <!--        $total_shippingg = 49;-->
-                <!--    } elseif ($total_price >= 499 && $total_price <= 799) {-->
-                <!--        $total_shippingg = 29;-->
-                <!--    } else {-->
-                <!--        $total_shippingg = 'Free';-->
-                <!--    }-->
-                <!--@endphp-->
-                
-                @php
-                      
-                    $coupon_discount = session('coupon_discount') ?? 0;
-                     
-                    if ($total_price >= 200 && $total_price <= 499) {
-                        $shipping_fee = 49;
-                    } elseif ($total_price >= 500 && $total_price <= 749) {
-                        $shipping_fee = 29;
-                    } else {
-                        $shipping_fee = 0;
-                    }
-                
-                    $final_price = max(0, $total_price + $shipping_fee - $coupon_discount);
-                @endphp
 
                 <div class="d-flex justify-content-between" style="font-size: 13px;">
              
@@ -1467,7 +1482,7 @@
             <div class="total">{{ $total_qty }} Items Selected (Rs. {{ $display_total - $total_coupon }})</div></div>
 
                 <!--<button><a href="/payment" style="color:black; text-decoration:none">Place Order</a></button>-->
-                {{-- <button id="placeOrderBtn" style="color:black; text-decoration:none">Place Order</button> --}}
+                <!--{{-- <button id="placeOrderBtn" style="color:black; text-decoration:none">Place Order</button> --}}-->
 
                 <form id="checkoutForm" action="{{ route('checkout.store') }}" method="POST">
                     @csrf
@@ -1478,6 +1493,7 @@
                     <input type="hidden" name="total_price" value="{{ $total_price }}">
                     <input type="hidden" name="total_discount" value="{{ $total_discount }}">
                     <input type="hidden" name="total_payable" value="{{ $final_price }}">
+                    <input type="hidden" name="coupon_discount" value="{{ $total_discount + $total_coupon}}">
 
                     <button type="submit" id="placeOrderBtn" style="color:black; text-decoration:none">Place
                         Order</button>
@@ -1502,7 +1518,7 @@
 
     <script>
         let originalFinalPrice = {{ $final_price }};
-        let discountApplied = {{ $cart_details[0]['coupon_applied'] ?? 0 ? 'true' : 'false' }};
+        let discountApplied = {{ $cart_details[0]['coupon_applied'] ?? 1 ? 'true' : 'false' }};
         let appliedCouponCode = "{{ $cart_details[0]['coupon_code'] ?? '' }}";
         
         // Initialize UI based on current coupon state
@@ -1533,129 +1549,152 @@
             }
         });
         
-        function applyCoupon() {
-            const couponCode = document.getElementById('couponCode').value.trim().toUpperCase();
-            const messageEl = document.getElementById('couponMessage');
-            const cartId = "{{ $cart_details[0]['id'] ?? '' }}";
-            const tempUserId = localStorage.getItem('temp_user_id') || getCookie('temp_user_id');
-            const userId = "{{ Auth::check() ? Auth::id() : 0 }}";
-        
-            // Clear previous messages
-            messageEl.textContent = '';
-            messageEl.style.display = 'block';
-        
-            if (!couponCode) {
-                showMessage("Please enter a coupon code", "error");
-                return;
+       function applyCoupon() {
+        const couponCode = document.getElementById('couponCode').value.trim().toUpperCase();
+        const messageEl = document.getElementById('couponMessage');
+        const cartId = "{{ $cart_details[0]['id'] ?? '' }}";
+        const tempUserId = localStorage.getItem('temp_user_id') || getCookie('temp_user_id');
+        const userId = "{{ Auth::check() ? Auth::id() : 0 }}";
+
+        // Clear previous messages
+        messageEl.textContent = '';
+        messageEl.style.display = 'block';
+
+        if (!couponCode) {
+            showMessage("Please enter a coupon code", "error");
+            return;
+        }
+
+        $.ajax({
+            url: "{{ route('apply.coupon') }}",
+            type: "POST",
+            data: {
+                _token: "{{ csrf_token() }}",
+                coupon_code: couponCode,
+                cart_id: cartId,
+                temp_user_id: tempUserId,
+                user_id: userId
+            },
+            success: function(response) {
+                if (response.success) {
+                    const discountAmount = parseFloat(response.discount);
+                    const priceDisplay = document.querySelector(".price-value");
+                    const couponDiscountEl = document.getElementById("coupon-discount-value");
+                    const appliedCouponSection = document.getElementById("appliedCoupon");
+                    const appliedCouponCodeEl = document.getElementById("appliedCouponCode");
+
+                    if (priceDisplay) {
+                        const currentPrice = parseFloat(priceDisplay.textContent);
+                        const discountedPrice = currentPrice - discountAmount;
+
+                        // Update prices
+                        priceDisplay.textContent = discountedPrice.toFixed(2);
+                        document.querySelector("input[name='total_payable']").value = discountedPrice.toFixed(2);
+                    }
+
+                    if (couponDiscountEl) {
+                        couponDiscountEl.textContent = discountAmount.toFixed(2);
+                    }
+
+                    // Update UI
+                    showMessage(`Coupon applied! ₹${discountAmount} discount`, "success");
+
+                    if (appliedCouponCodeEl) {
+                        appliedCouponCodeEl.textContent = `${couponCode} - ₹${discountAmount} OFF`;
+                    }
+
+                    if (appliedCouponSection) {
+                        appliedCouponSection.style.display = "flex";
+                    }
+
+                    // Hide form
+                    const couponForm = document.getElementById('couponForm');
+                    if (couponForm) couponForm.style.display = 'none';
+
+                    const couponToggle = document.getElementById('couponToggle');
+                    if (couponToggle) {
+                        couponToggle.classList.remove('fa-chevron-up');
+                        couponToggle.classList.add('fa-chevron-down');
+                    }
+
+                    // Update state (optional)
+                    discountApplied = true;
+                    appliedCouponCode = couponCode;
+
+                    // Reload after short delay to show message
+                    
+                      window.location.reload();
+                
+                    
+                    
+                } else {
+                    showMessage(response.message, "error");
+                }
+            },
+                    error: function(xhr) {
+                        if (xhr.responseJSON && xhr.responseJSON.message) {
+                            showMessage(xhr.responseJSON.message, "error");
+                        } else {
+                            showMessage("An error occurred. Please try again.", "error");
+                        }
+                    }
+                });
             }
         
-            $.ajax({
-                url: "{{ route('apply.coupon') }}",
-                type: "POST",
-                data: {
-                    _token: "{{ csrf_token() }}",
-                    coupon_code: couponCode,
-                    cart_id: cartId,
-                    temp_user_id: tempUserId,
-                    user_id: userId
-                },
-                success: function(response) {
-                    if (response.success) {
-                        const discountAmount = response.discount;
-                        const priceDisplay = document.querySelector(".price-value");
-                        const couponDiscountEl = document.getElementById("coupon-discount-value");
-                        const appliedCouponSection = document.getElementById("appliedCoupon");
-                        const appliedCouponCodeEl = document.getElementById("appliedCouponCode");
-        
-                        // Update prices
-                        const currentPrice = parseFloat(priceDisplay.textContent);
-                        originalFinalPrice = currentPrice; // Store original price
-                        const discountedPrice = currentPrice - discountAmount;
-                        priceDisplay.textContent = discountedPrice.toFixed(2);
-                        couponDiscountEl.textContent = discountAmount;
-                        document.querySelector("input[name='total_payable']").value = discountedPrice.toFixed(2);
-                        
-                        // Update UI
-                        showMessage(`Coupon applied! ₹${discountAmount} discount`, "success");
-                        appliedCouponCodeEl.textContent = `${couponCode} - ₹${discountAmount} OFF`;
-                        appliedCouponSection.style.display = "flex";
-                        
-                        // Hide form
-                        document.getElementById('couponForm').style.display = 'none';
-                        document.getElementById('couponToggle').classList.remove('fa-chevron-up');
-                        document.getElementById('couponToggle').classList.add('fa-chevron-down');
-                        
-                        // Update state
-                        discountApplied = true;
-                        appliedCouponCode = couponCode;
-                    } else {
-                        showMessage(response.message, "error");
+            function removeCoupon() {
+                const cartId = "{{ $cart_details[0]['id'] ?? '' }}";
+                const tempUserId = localStorage.getItem('temp_user_id') || getCookie('temp_user_id');
+                const userId = "{{ Auth::check() ? Auth::id() : 0 }}";
+            
+                $.ajax({
+                    url: "{{ route('remove.coupon') }}",
+                    type: "POST",
+                    data: {
+                        _token: "{{ csrf_token() }}",
+                        cart_id: cartId,
+                        temp_user_id: tempUserId,
+                        user_id: userId
+                    },
+                    success: function(response) {
+                        if (response.success) {
+                            const priceDisplay = document.querySelector(".price-value");
+                            const couponDiscountEl = document.getElementById("coupon-discount-value");
+                            const appliedCouponSection = document.getElementById("appliedCoupon");
+                            const messageEl = document.getElementById('couponMessage');
+            
+                            // Reset prices
+                            priceDisplay.textContent = originalFinalPrice.toFixed(2);
+                            couponDiscountEl.textContent = 0;
+                            document.querySelector("input[name='total_payable']").value = originalFinalPrice.toFixed(2);
+                            
+                            // Update UI
+                            showMessage("Coupon removed", "info");
+                            appliedCouponSection.style.display = "none";
+                            
+                            // Clear any previous messages after 2 seconds
+                            setTimeout(() => {
+                                messageEl.textContent = '';
+                                messageEl.style.display = 'none';
+                            }, 2000);
+                            
+                            // Reset state
+                            discountApplied = false;
+                            appliedCouponCode = null;
+                            location.reload();
+                        } else {
+                            showMessage(response.message, "error");
+                        }
+                    },
+                    error: function(xhr) {
+                        if (xhr.responseJSON && xhr.responseJSON.message) {
+                            showMessage(xhr.responseJSON.message, "error");
+                        } else {
+                            showMessage("An error occurred. Please try again.", "error");
+                        }
                     }
-                },
-                error: function(xhr) {
-                    if (xhr.responseJSON && xhr.responseJSON.message) {
-                        showMessage(xhr.responseJSON.message, "error");
-                    } else {
-                        showMessage("An error occurred. Please try again.", "error");
-                    }
-                }
-            });
-        }
-        
-        function removeCoupon() {
-            const cartId = "{{ $cart_details[0]['id'] ?? '' }}";
-            const tempUserId = localStorage.getItem('temp_user_id') || getCookie('temp_user_id');
-            const userId = "{{ Auth::check() ? Auth::id() : 0 }}";
-        
-            $.ajax({
-                url: "{{ route('remove.coupon') }}",
-                type: "POST",
-                data: {
-                    _token: "{{ csrf_token() }}",
-                    cart_id: cartId,
-                    temp_user_id: tempUserId,
-                    user_id: userId
-                },
-                success: function(response) {
-                    if (response.success) {
-                        const priceDisplay = document.querySelector(".price-value");
-                        const couponDiscountEl = document.getElementById("coupon-discount-value");
-                        const appliedCouponSection = document.getElementById("appliedCoupon");
-                        const messageEl = document.getElementById('couponMessage');
-        
-                        // Reset prices
-                        priceDisplay.textContent = originalFinalPrice.toFixed(2);
-                        couponDiscountEl.textContent = 0;
-                        document.querySelector("input[name='total_payable']").value = originalFinalPrice.toFixed(2);
-                        
-                        // Update UI
-                        showMessage("Coupon removed", "info");
-                        appliedCouponSection.style.display = "none";
-                        
-                        // Clear any previous messages after 2 seconds
-                        setTimeout(() => {
-                            messageEl.textContent = '';
-                            messageEl.style.display = 'none';
-                        }, 2000);
-                        
-                        // Reset state
-                        discountApplied = false;
-                        appliedCouponCode = null;
-                        location.reload();
-                    } else {
-                        showMessage(response.message, "error");
-                    }
-                },
-                error: function(xhr) {
-                    if (xhr.responseJSON && xhr.responseJSON.message) {
-                        showMessage(xhr.responseJSON.message, "error");
-                    } else {
-                        showMessage("An error occurred. Please try again.", "error");
-                    }
-                }
-            });
-        }
-        
+                });
+            }
+            
         function showMessage(message, type) {
             const messageEl = document.getElementById('couponMessage');
             messageEl.textContent = message;

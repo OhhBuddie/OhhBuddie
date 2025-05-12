@@ -21,6 +21,11 @@ use App\Http\Controllers\ContactController;
 
 use App\Http\Controllers\Category1Controller;
 use App\Http\Controllers\WhatsAppController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\InvoiceController;
+
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -300,3 +305,8 @@ Route::get('/debug-sentry', function () {
 
 Route::post('/apply-coupon', [CartController::class, 'applyCoupon'])->name('apply.coupon');
 Route::post('/remove-coupon', [CartController::class, 'removeCoupon'])->name('remove.coupon');
+
+Route::get('/generate-random-invoice', [OrderController::class, 'sendInvoiceToZoho'])->name('download.invoice');
+
+Route::get('/invoice-pdf/{id}', [InvoiceController::class, 'index']);
+

@@ -12,7 +12,28 @@
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
   />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
   <style>
+  
+  
+    
+    @media screen and (min-width: 778px){
+        
+        body{
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: center !important;
+            align-items: center !important;
+            }
+        .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+            max-width: 40% !important;
+        }
+        .option-button{
+            width: 40% !important;
+        }
+    }
     body {
       background-color: #000;
       color: #fff;
@@ -151,11 +172,58 @@
           <input type="hidden" name="seller_id" value="{{$product_details->seller_id}}">
           <input type="hidden" name="seller_user_id" value="{{$seller_details->user_table_id}}">
           
-          <button type="submit" class="btn btn-primary mt-2" style="background-color:#EFC475; color:black; border:none; width:300px">Submit</button>
+          <!--<button type="submit" class="btn btn-primary mt-2" style="background-color:#EFC475; color:black; border:none; width:300px">Submit</button>-->
+          <input type="hidden" name="refund_source" id="refund_source_input">
+
+          <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#refundModeModal">Submit</button>
         </div>
       </div>
+      
+      <!-- Refund Mode Modal -->
+        <div class="modal fade" id="refundModeModal" tabindex="-1" aria-labelledby="refundModeLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content bg-dark">
+              <div class="modal-header">
+                <h5 class="modal-title" id="refundModeLabel">If Refund approved, what will your preferable mode?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body bg-dark">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="refund_source" id="primary_account" value="Primary Account" required>
+                  <label class="form-check-label" for="primary_account">Primary Account</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="refund_source" id="wallet" value="Ohhbuddie Wallet" required>
+                  <label class="form-check-label" for="wallet">Ohhbuddie Wallet</label>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" id="confirmRefundMode" class="btn btn-primary">Confirm & Submit</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
     </form>
-    
+          <script>
+              document.getElementById('confirmRefundMode').addEventListener('click', function () {
+                const selectedSource = document.querySelector('input[name="refund_source"]:checked');
+                if (!selectedSource) {
+                  alert('Please select a refund mode.');
+                  return;
+                }
+            
+                // Set the hidden input value
+                document.getElementById('refund_source_input').value = selectedSource.value;
+            
+                // Find the closest form and submit it
+                const form = document.querySelector('#sizefitCollapse').closest('form');
+                form.submit();
+              });
+        </script>
+        
+        
     <!-- Size & Fit Issues Form -->
     <form action="{{ route('returnandrefund.store') }}" method="POST" enctype="multipart/form-data">
       @csrf
@@ -190,11 +258,56 @@
           
           <input type="hidden" name="section" value="Size & Fit Issues">
     
-          <button type="submit" class="btn btn-primary mt-2">Submit</button>
-        </div>
-      </div>
+          <!--<button type="submit" class="btn btn-primary mt-2">Submit</button>-->
+          <input type="hidden" name="refund_source" id="refund_source_input1">
+
+          <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#refundModeModal1">Submit</button>
+          
+            <!-- Refund Mode Modal -->
+            <div class="modal fade" id="refundModeModal1" tabindex="-1" aria-labelledby="refundModeLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content bg-dark">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="refundModeLabel">If Refund approved, what will your preferable mode?</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body bg-dark">
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="refund_source" id="primary_account" value="Primary Account" required>
+                      <label class="form-check-label" for="primary_account">Primary Account</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="refund_source" id="wallet" value="Ohhbuddie Wallet" required>
+                      <label class="form-check-label" for="wallet">Ohhbuddie Wallet</label>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" id="confirmRefundMode1" class="btn btn-primary">Confirm & Submit</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+          </div>
+
+
     </form>
-    
+    <script>
+          document.getElementById('confirmRefundMode1').addEventListener('click', function () {
+            const selectedSource = document.querySelector('input[name="refund_source"]:checked');
+            if (!selectedSource) {
+              alert('Please select a refund mode.');
+              return;
+            }
+        
+            // Set the hidden input value
+            document.getElementById('refund_source_input1').value = selectedSource.value;
+        
+            // Find the closest form and submit it
+            const form = document.querySelector('#sizefitCollapse').closest('form');
+            form.submit();
+          });
+    </script>
     <!-- Changed My Mind Form -->
     <form action="{{ route('returnandrefund.store') }}" method="POST" enctype="multipart/form-data">
       @csrf
@@ -232,11 +345,57 @@
           <input type="hidden" name="seller_user_id" value="{{$seller_details->user_table_id}}">
           <input type="hidden" name="section" value="Changed My Mind">
     
-          <button type="submit" class="btn btn-primary mt-2">Submit</button>
-        </div>
-      </div>
-    </form>
+          <input type="hidden" name="refund_source" id="refund_source_input2">
 
+          <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#refundModeModal2">Submit</button>
+          
+            <!-- Refund Mode Modal -->
+            <div class="modal fade" id="refundModeModal2" tabindex="-1" aria-labelledby="refundModeLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content bg-dark">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="refundModeLabel">If Refund approved, what will your preferable mode?</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body bg-dark">
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="refund_source" id="primary_account" value="Primary Account" required>
+                      <label class="form-check-label" for="primary_account">Primary Account</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="refund_source" id="wallet" value="Ohhbuddie Wallet" required>
+                      <label class="form-check-label" for="wallet">Ohhbuddie Wallet</label>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" id="confirmRefundMode2" class="btn btn-primary">Confirm & Submit</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+          </div>        
+          </div>
+      </div>
+      
+      
+    </form>
+    <script>
+          document.getElementById('confirmRefundMode2').addEventListener('click', function () {
+            const selectedSource = document.querySelector('input[name="refund_source"]:checked');
+            if (!selectedSource) {
+              alert('Please select a refund mode.');
+              return;
+            }
+        
+            // Set the hidden input value
+            document.getElementById('refund_source_input2').value = selectedSource.value;
+        
+            // Find the closest form and submit it
+            const form = document.querySelector('#sizefitCollapse').closest('form');
+            form.submit();
+          });
+    </script>
     <!-- Different Product Form -->
     <form action="{{ route('returnandrefund.store') }}" method="POST" enctype="multipart/form-data">
       @csrf
@@ -270,10 +429,57 @@
           <input type="hidden" name="seller_user_id" value="{{$seller_details->user_table_id}}">
           <input type="hidden" name="section" value="Different Product">
     
-          <button type="submit" class="btn btn-primary mt-2">Submit</button>
-        </div>
+           <input type="hidden" name="refund_source" id="refund_source_input3">
+
+          <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#refundModeModal3">Submit</button>
+          
+            <!-- Refund Mode Modal -->
+            <div class="modal fade" id="refundModeModal3" tabindex="-1" aria-labelledby="refundModeLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content bg-dark">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="refundModeLabel">If Refund approved, what will your preferable mode?</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body bg-dark">
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="refund_source" id="primary_account" value="Primary Account" required>
+                      <label class="form-check-label" for="primary_account">Primary Account</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="refund_source" id="wallet" value="Ohhbuddie Wallet" required>
+                      <label class="form-check-label" for="wallet">Ohhbuddie Wallet</label>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" id="confirmRefundMode3" class="btn btn-primary">Confirm & Submit</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+          </div>        
+          </div>
       </div>
+      
+      
     </form>
+    <script>
+          document.getElementById('confirmRefundMode3').addEventListener('click', function () {
+            const selectedSource = document.querySelector('input[name="refund_source"]:checked');
+            if (!selectedSource) {
+              alert('Please select a refund mode.');
+              return;
+            }
+        
+            // Set the hidden input value
+            document.getElementById('refund_source_input3').value = selectedSource.value;
+        
+            // Find the closest form and submit it
+            const form = document.querySelector('#sizefitCollapse').closest('form');
+            form.submit();
+          });
+    </script>
 
     <!-- Damaged Product Form -->
     <form action="{{ route('returnandrefund.store') }}" method="POST" enctype="multipart/form-data">
@@ -316,14 +522,61 @@
           <input type="hidden" name="seller_user_id" value="{{$seller_details->user_table_id}}">
           <input type="hidden" name="section" value="Damaged/Used/Stained">
     
-          <button type="submit" class="btn btn-primary mt-2">Submit</button>
-        </div>
+           <input type="hidden" name="refund_source" id="refund_source_input4">
+
+          <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#refundModeModal4">Submit</button>
+          
+            <!-- Refund Mode Modal -->
+            <div class="modal fade" id="refundModeModal4" tabindex="-1" aria-labelledby="refundModeLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content bg-dark">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="refundModeLabel">If Refund approved, what will your preferable mode?</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body bg-dark">
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="refund_source" id="primary_account" value="Primary Account" required>
+                      <label class="form-check-label" for="primary_account">Primary Account</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="refund_source" id="wallet" value="Ohhbuddie Wallet" required>
+                      <label class="form-check-label" for="wallet">Ohhbuddie Wallet</label>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" id="confirmRefundMode4" class="btn btn-primary">Confirm & Submit</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+          </div>        
+          </div>
       </div>
+      
+      
     </form>
-    </div>
+    <script>
+          document.getElementById('confirmRefundMode4').addEventListener('click', function () {
+            const selectedSource = document.querySelector('input[name="refund_source"]:checked');
+            if (!selectedSource) {
+              alert('Please select a refund mode.');
+              return;
+            }
+        
+            // Set the hidden input value
+            document.getElementById('refund_source_input4').value = selectedSource.value;
+        
+            // Find the closest form and submit it
+            const form = document.querySelector('#sizefitCollapse').closest('form');
+            form.submit();
+          });
+    </script>
+
 
     <!-- Option Buttons -->
-    <div class="row g-3 mt-4">
+    <div class="row g-3 mt-4 option-button">
       <div class="col-6">
         <div class="card-option" data-bs-toggle="collapse" data-bs-target="#qualityCollapse">
           <i class="fas fa-shirt"></i>
@@ -363,5 +616,25 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      document.getElementById('openRefundModal').addEventListener('click', function () {
+        const refundModal = new bootstrap.Modal(document.getElementById('refundModeModal'));
+        refundModal.show();
+      });
+    
+      document.getElementById('confirmRefundMode').addEventListener('click', function () {
+        const selected = document.querySelector('input[name="refund_source"]:checked');
+        if (!selected) {
+          alert("Please select a refund mode.");
+          return;
+        }
+    
+        // Set the hidden input value
+        document.getElementById('refund_source_input').value = selected.value;
+    
+        // Submit the form
+        document.querySelector('form').submit();
+      });
+    </script>
 </body>
 </html>

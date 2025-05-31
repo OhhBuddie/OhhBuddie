@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <title>OhhBuddie | Online Shopping</title>
     <link rel="icon" type="image/x-icon"
-        href="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Ohbuddielogo.png">
+        href="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Ohbuddielogo.png">
     <!-- Font Awesome for Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('public/assets/css/style.css') }}">
@@ -23,9 +23,11 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <!--Bootstrap Carausel-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    
+    
     <!-- Google Tag Manager -->
     <script>
         (function(w, d, s, l, i) {
@@ -98,6 +100,12 @@
                 bottom: 0px;
                 transform: translateX(-50%);
             }
+            
+            .logoimg{
+                bottom: 1vh !important;
+                right: 16vw !important;
+            }
+              
         }
 
         /* Mobile reset styles */
@@ -122,7 +130,7 @@
             }
 
             .main-body {
-                margin-top: 90px !important;
+                margin-top: 105px !important;
             }
         }
 
@@ -179,6 +187,7 @@
         .navbar {
             width: 100%;
             margin-bottom: 0px; 
+            min-height: 100px !important;
             border: none;
         }
 
@@ -207,15 +216,17 @@
             justify-content: center;
             text-align: center;
             position: relative;
-            width: 60px;
-            height: 60px;
+            width: 84px;
+            height: 74px;;
             border-radius: 50%;
-            background: radial-gradient(at right center, #D7CCB7, #EFC475);
+            background: black;
             margin-right: -5px;
             overflow: hidden;
             font-weight: bold;
             font-family: cursive;
-
+             position: absolute;
+            bottom: 17px;
+            right: 181px;
         }
 
         /* Keep all your other existing styles */
@@ -309,8 +320,8 @@
           height: var(--icon-height);
           position: absolute;
           border-radius: 100px;
-          top: -4px;
-          right: 4px;
+          top: 3px;
+           right: 0px;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -360,15 +371,16 @@
           display: block;
             position: absolute;
             transition: opacity var(--transition-speed) var(--timing-function);
-            top: 0px;
+            top: -6px;
+            right: -11px;
         }
     
         .search-icon__svg-close {
           display: block;
-        opacity: 0;
-        position: absolute;
-        top: 2px;
-        right: -6px;
+            opacity: 0;
+            position: absolute;
+            top: -4px;
+            right: 1px;
     
         transition: opacity var(--transition-speed) var(--timing-function);
         }
@@ -422,33 +434,129 @@
     .search-item:hover {
       background-color: #f0f0f0 !important;
     }
+    
+    .badge{
+        padding: 3px 7px !important;
+        font-size: 12px !important;
+    }
+  
     </style>
+    
+        <style>
+        /* Preloader styles */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+        
+        #preloader-content {
+            text-align: center;
+            color: white;
+        }
+        
+        .loader {
+            width: 48px;
+            height: 48px;
+            border: 5px solid #efc475;
+            border-bottom-color: transparent;
+            border-radius: 50%;
+            display: inline-block;
+            box-sizing: border-box;
+            animation: rotation 1s linear infinite;
+            margin-bottom: 20px;
+        }
+        
+        @keyframes rotation {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        
+        .loaded #preloader {
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .logo-preloader {
+            height: 80px;
+            margin-bottom: 20px;
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+      <style>
+        .blink-text {
+            animation: blinker 1s linear infinite;
+            font-weight: 700 !important;
+            /* Force bold */
+            color: black;
+            font-family: cursive !important;
+        }
+
+        @keyframes blinker {
+            50% {
+                opacity: 0;
+            }
+        }
+    </style>
+    
     <!-- Keep all your existing styles -->
 </head>
 
 <body>
     <!-- Google Tag Manager -->
-
+ <div id="preloader">
+        <div id="preloader-content">
+            <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/LOGO%20ON%20THE%20ROCKS%20(1).png" class="logo-preloader" alt="Ohh! Buddie">
+            <!--<div class="loader"></div>-->
+            <!--<h3>Loading...</h3>-->
+        </div>
+    </div>
     <!-- Wrap your entire website content in a container div -->
     <div class="website-container">
         <div class="fixed-top-container">
-            <!-- Information Slider -->
-            <marquee class="marq" direction="left">
-                ️Delivery In 69 Minutes 🚀 &nbsp;&nbsp;&nbsp;&nbsp;Trendiest Styles Available 👗
-                &nbsp;&nbsp;&nbsp;&nbsp;Hot Deals From Top Brands 🔥 &nbsp;&nbsp;&nbsp;&nbsp;
-                ️Delivery In 69 Minutes 🚀 &nbsp;&nbsp;&nbsp;&nbsp;Trendiest Styles Available 👗
-                &nbsp;&nbsp;&nbsp;&nbsp;Hot Deals From Top Brands 🔥 &nbsp;&nbsp;&nbsp;&nbsp;
-                ️Delivery In 69 Minutes 🚀 &nbsp;&nbsp;&nbsp;&nbsp;Trendiest Styles Available 👗
-                &nbsp;&nbsp;&nbsp;&nbsp;Hot Deals From Top Brands 🔥 &nbsp;&nbsp;&nbsp;&nbsp;
-            </marquee>
-
-            <!-- Navbar -->
+                      <!-- Navbar -->
             <nav class="navbar navbar-expand-lg" style="margin-top: -5px;">
-                <a class="navbar-brand" href="/">
-                    <img src="{{ asset('public/assets/images/logo/logo_showloom.png') }}" class="logoimg"
-                        alt="Shoes">
-                </a>
+                <!--<a class="navbar-brand" href="/">-->
+                <!--    <img src="{{ asset('public/assets/images/logo/logo_showloom.png') }}" class="logoimg"-->
+                <!--        alt="Shoes">-->
+                <!--</a>-->
+                
+                <div class="d-flex " style="flex-direction: column; color: white; max-width:70vw;">
+                   <span style="display: flex; align-items: center;"> <h4 style="margin: 0px 6px 0px 0px; font-size: 20px !important;">Ohh! Buddie</h4> <span style="margin-top:7px !important;">delivers in</span>  </span>
+                    <h2 style="margin: -7px 0px 0px 0px; color:#efc475;">69 minutes</h2>
+                   
+                    
+                </div>
 
+
+               
+
+                    
+                    
                 <!-- Icons -->
                 <div class="d-flex ml-auto align-items-center">
 
@@ -463,14 +571,11 @@
                     
                         <div class="search-icon__wrapper">
                           <div class="search-icon__svg">
-                            <!-- Search icon SVG -->
-                            <!--<svg class="search-icon__svg-search" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 50 50" fill="none">-->
-                            <!--  <circle cx="20" cy="20" r="9" stroke="white" stroke-width="2"/>-->
-                            <!--  <line x1="26" y1="26" x2="34" y2="34" stroke="white" stroke-width="2" stroke-linecap="round"/>-->
-                            <!--</svg>-->
-                            
+                       
                             <a href="#" class="text-light search-icon__svg-search" style="font-size: 24px; font-weight: normal; margin-right: 20px;">
-                                <i class="fas fa-search"></i>
+                                <!--<i class="fas fa-search"></i>-->
+                                <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Home/ICONS/SEARCH.svg" style="width: 25px; height: 25px;">
+
                             </a>
                             
                             <!-- Close (X) icon SVG -->
@@ -478,6 +583,7 @@
                               <line x1="15" y1="15" x2="35" y2="35" stroke="white" stroke-width="2" stroke-linecap="round"/>
                               <line x1="35" y1="15" x2="15" y2="35" stroke="white" stroke-width="2" stroke-linecap="round"/>
                             </svg>
+                            
                           </div>
                         </div>
                       </div>
@@ -488,12 +594,16 @@
 
                     <a href="/wishlist" class="text-light position-relative"
                         style="font-size: 24px; font-weight: normal; margin-right: 20px;">
-                        <i class="far fa-heart"></i>
+                        <!--<i class="far fa-heart"></i>-->
+                        <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Home/ICONS/WISHLIST.svg" style="width: 25px; height: 25px;">
+
                     </a>
 
                     <a href="/addtocart" class="text-light position-relative"
                         style="font-size: 24px; font-weight: normal;">
-                        <i class="fa fa-shopping-bag"></i>
+                        <!--<i class="fa fa-shopping-bag"></i>-->
+                        <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Home/ICONS/BAG.svg" style="width: 25px; height: 25px;">
+
                         @php
                             $cartCount = 0;
                             if (Auth::check()) {
@@ -550,89 +660,81 @@
             @yield('content')
         </div>
 
-        <div class="bottom-navbar">
-            <ul>
-                &nbsp;
-                <li>
-                    <a href="/">
-                        <i class="fas fa-home"></i>
+     
+        <div class="bottom-navbar" style="height: 67px;">
+            
+            <div class="row align-items-center">
+                <div class="col-1"></div>
+                <div class="col-2 text-center" >
+                    <a href="/" style="color: white !important; font-size: 14px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-decoration: none;">
+                        <!--<i class="fas fa-home"></i>--> 
+                        <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Home/ICONS/HOME.svg" style="width: 25px; height: 25px;">
                         Home
                     </a>
-                </li>
-                <li>
-                    <a href="/allproduct">
-                        <i class="fa fa-shopping-cart"></i>
+                </div>
+                <div class="col-2 text-center">
+                    <a href="/allproduct" style="color: white !important;font-size: 14px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-decoration: none;">
+                        <!--<i class="fa fa-shopping-cart"></i> -->
+                        <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Home/ICONS/SHOP%20CART%20.svg" style="width: 25px; height: 25px;">
+
                         Shop
                     </a>
-                </li>
-                <li>
-                    <div class="circle-icon">
-                        <span class="blink-text text-dark">69-Min</span>
-                        <span class="blink-text text-dark">Delivery</span>
-                    </div>
+                </div>
+                <div class="col-2 text-center">
+                       <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/LOGO%20ON%20THE%20ROCKS%20(1).png" alt="Shoes" class="logoimg" style="height: 104px !important; width: 105px !important; margin-top: -40px;">
 
-                    <style>
-                        .blink-text {
-                            animation: blinker 1s linear infinite;
-                            font-weight: 700 !important;
-                            /* Force bold */
-                            color: black;
-                            font-family: cursive !important;
-                        }
-
-                        @keyframes blinker {
-                            50% {
-                                opacity: 0;
-                            }
-                        }
-                    </style>
-
-                </li>
-                <li>
-                    <a href="/explore">
-                        <i class="fas fa-search"></i>
+                </div>
+                <div class="col-2 text-center">
+                    <a href="/explore" style="color: white !important;font-size: 14px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-decoration: none;">
+                        <!--<i class="fas fa-search"></i>-->
+                        <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Home/ICONS/APPLICATION.svg" style="width: 25px; height: 25px;">
                         Explore
                     </a>
-                </li>
-                <li>
-                    <a href="{{ url('/account') }}">
-                        <i class="fas fa-user"></i>
+                </div>
+                <div class="col-2 text-center">
+                    <a href="{{ url('/account') }}" style="color: white !important;font-size: 14px;  display: flex; flex-direction: column; align-items: center; justify-content: center; text-decoration: none;">
+                        <!--<i class="fas fa-user"></i> -->
+                        <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Home/ICONS/USER.svg" style="width: 25px; height: 25px;">
+
+                        
                         Profile
                     </a>
-                </li>
-                &nbsp;
-            </ul>
+                </div>
+                <div class="col-1"></div>
+            </div>
+           
+         
         </div>
 
-        <div class="accordion" style="margin-bottom:69px;">
+        <div class="accordion" style="margin-bottom:69px; font-family: 'Manrope' !important;">
             
             <div class="accordion-item">
-                <div class="accordion-header d-flex justify-content-between" style="margin-left-20px">
+                <div class="accordion-header d-flex justify-content-between" style="margin-left-20px; ">
                     Know More About Ohh! Buddie
                     <i class="fa-solid fa-angles-right fs-1 rotatee"></i>
                 </div>
                 
      
 
-                <div class="accordion-content" style="display: none;">
+                <div class="accordion-content" style="display: none;  font-family: 'Manrope' !important;">
                     
                     
-                    <footer class="footer" style="text-align:justify">
+                    <footer class="footer" style="text-align:justify;  font-family: 'Manrope' !important;">
 
-
-                        <div class="container" style="background-color:black; color:white;">
-                            <div class="row" style="margin-bottom: 70px;">
+ 
+                        <div class="container" style="background-color:black; color:white;  font-family: 'Manrope' !important;">
+                            <div class="row" style="margin-bottom: 70px;  font-family: 'Manrope' !important;">
                                 <div class="col-md-4 text-md-start mb-2">
-                                    <h5 class="mt-2" style="font-weight:bold;">SHOP FOR</h5>
+                                    <h4 class="mt-2" style="font-weight:bold;  font-family: 'Manrope' !important;">SHOP FOR</h4>
                                     <div class="social-links d-flex flex-column">
-                                        <span style="color: white;">Explore | Men | Women | Kids | Try Out</span>
+                                        <span style="color: white;  font-family: 'Manrope' !important;">Explore | Men | Women | Kids | Try Out</span>
                                     </div>
                                 </div>
 
 
                                 <div class="col-md-4 text-md-start mb-2">
                                     <br>
-                                    <h5 class="mt-2" style="font-weight:bold;">CONNECT WITH US</h5>
+                                    <h4 class="mt-2" style="font-weight:bold;  font-family: 'Manrope' !important;">CONNECT WITH US</h4>
                                     <div class="social-links d-flex flex-column">
                                         <span style="color: white;"><img
                                                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Facebook_logo_%28square%29.png/600px-Facebook_logo_%28square%29.png"
@@ -648,29 +750,29 @@
 
                                 <div class="col-md-4 text-md-start mb-2">
 
-                                    <h5 class="mt-2" style="font-weight:bold;">CUSTOMER SERVICES</h5>
+                                    <h4 class="mt-5" style="font-weight:bold; ">CUSTOMER SERVICES</h4>
                                     <div class="social-links d-flex flex-column">
                                         <span style="color: white; text-decoration:none;"><a
                                                 href="https://ohhbuddie.com/terms-and-condition"
-                                                style="color:white; text-decoration:none;">Terms & Conditions</a> | <a
+                                                style="color:white; text-decoration:none;  font-family: 'Manrope' !important;">Terms & Conditions</a> | <a
                                                 href="https://ohhbuddie.com/privacy-policy"
-                                                style="color:white; text-decoration:none;">Privacy Policy</a> |<a
-                                                href="https://ohhbuddie.com/return-refund" style="color:white;">
+                                                style="color:white; text-decoration:none;  font-family: 'Manrope' !important;">Privacy Policy</a> |<a
+                                                href="https://ohhbuddie.com/return-refund" style="color:white;  font-family: 'Manrope' !important;">
                                                 Return & Replacement</a>
                                             | <a href="https://ohhbuddie.com/Shipping-and-Delivery-Policy"
-                                                style="color:white; text-decoration:none;">Shipping Policy</a></span>
+                                                style="color:white; text-decoration:none; font-family: 'Manrope' !important;">Shipping Policy</a></span>
                                     </div>
                                 </div>
                                 <br>
                                 <div class="col-md-4 text-md-start mb-2">
                                     <br>
-                                    <h5 class="mt-2" style="font-weight:bold;">USEFUL LINKS</h5>
+                                    <h4 class="mt-2" style="font-weight:bold; ">USEFUL LINKS</h4>
                                     <div class="social-links d-flex flex-column">
                                         <span style="color: white; text-decoration:none;"><a
                                                 href="https://ohhbuddie.com/about-us"
-                                                style="color:white; text-decoration:none;">About Us</a> | <a
+                                                style="color:white; text-decoration:none; font-family: 'Manrope' !important;">About Us</a> | <a
                                                 href="https://ohhbuddie.com/contact-us"
-                                                style="color:white; text-decoration:none;">Contact Us</a></span>
+                                                style="color:white; text-decoration:none; font-family: 'Manrope' !important;">Contact Us</a></span>
                                     </div>
 
                                 </div>
@@ -680,9 +782,9 @@
                                     <div class="col-md-4 text-md-start mb-2">
                                         <br>
 
-                                        <h5 class="mt-2" style="font-weight:bold;">MY ACCOUNT </h5>
+                                        <h4 class="mt-2" style="font-weight:bold; font-family: 'Manrope' !important;">MY ACCOUNT </h4>
                                         <div class="social-links d-flex flex-column">
-                                            <span style="color: white;"><a href="/logout">Logout</a> | Order History
+                                            <span style="color: white; font-family: 'Manrope' !important;"><a href="/logout">Logout</a> | Order History
                                                 |<a href="/wishlist">My Wishlist</a> | Track Order</span>
                                         </div>
 
@@ -692,8 +794,8 @@
                                 <div class="col-md-12 text-md-start mb-2 text-center">
                                     <br>
 
-                                    <h5 class="mt-2"><i style="font-size:14px" class="fa">&#xf1f9;</i> 2025
-                                        www.ohhbuddie.com All rights reserved</h5>
+                                    <h4 class="mt-2" style=" font-family: 'Manrope' !important;"><i style="font-size:14px" class="fa">&#xf1f9;</i> 2025
+                                        www.ohhbuddie.com All rights reserved</h4>
 
 
                                 </div>
@@ -704,9 +806,9 @@
                                 <div class="col-md-12 text-md-start mb-2">
                                     <br>
 
-                                    <h5 class="mt-2" style="font-weight:bold;">POPULAR SEARCHES </h5>
+                                    <h4 class="mt-2" style="font-weight:bold;">POPULAR SEARCHES </h4>
                                     <div class="social-links d-flex flex-column">
-                                        <span style="color: white;"> Dresses For Girls | T-Shirts | Sandals | Babydolls| Sport Shoes | Boxers | Tops | Kurtis | Designer Blouse |Gowns </span>
+                                        <span style="color: white; font-family: 'Manrope' !important;"> Dresses For Girls | T-Shirts | Sandals | Babydolls| Sport Shoes | Boxers | Tops | Kurtis | Designer Blouse |Gowns </span>
                                     </div>
 
                                 </div>
@@ -715,12 +817,12 @@
                                 <div class="col-md-12 text-md-start mb-2">
                                     <br>
 
-                                    <h5 class="mt-2" style="font-weight:bold;">POPULAR SEARCHES </h5>
+                                    <h4 class="mt-2" style="font-weight:bold;">POPULAR SEARCHES </h4>
                                     <div class="social-links d-flex flex-column">
                                         <span>ONLINE SHOPPING MADE EASY AT Ohhbuddie
                                             <h3><b>ONLINE SHOPPING MADE EASY AT OHH! BUDDIE</h3></b>
 
-                                            <p>If you're looking for the best online shopping experience for men, women,
+                                            <p  style=" font-family: 'Manrope' !important;">If you're looking for the best online shopping experience for men, women,
                                                 and kids in India, you've arrived at the perfect destination. Ohh!
                                                 Buddie is your one-stop shop for fashion and lifestyle, offering a vast
                                                 selection of clothing, footwear, accessories, jewellery, personal care
@@ -729,25 +831,25 @@
                                                 online shopping and get your favorite styles delivered straight to your
                                                 doorstep!</p>
 
-                                            <h3><b>BEST ONLINE FASHION DESTINATION IN INDIA</h3></b>
+                                            <h3 ><b>BEST ONLINE FASHION DESTINATION IN INDIA</h3></b>
 
-                                            <p>Whether you're searching for stylish clothing, trendy footwear, or
+                                            <p  style=" font-family: 'Manrope' !important;" style=" font-family: 'Manrope' !important;">Whether you're searching for stylish clothing, trendy footwear, or
                                                 must-have accessories, Ohh! Buddie combines fashion and functionality
                                                 for everyone. With limitless outfit options for all occasions, we ensure
                                                 that you step out in style every day.</p>
 
-                                            <h3><b>Smart Men’s Fashion</h3></b>
+                                            <h3><b>Smart Men�s Fashion</h3></b>
 
-                                            <p>Upgrade your wardrobe with sleek formal shirts, trendy T-shirts, dapper
+                                            <p style=" font-family: 'Manrope' !important;">Upgrade your wardrobe with sleek formal shirts, trendy T-shirts, dapper
                                                 jeans, and classic kurta-pyjama sets. Add an edge to your look with
                                                 printed tees, varsity styles, or checkered shirts that pair perfectly
                                                 with chinos and cuffed jeans. Brave the elements in biker jackets and
                                                 water-resistant outerwear, and explore our innerwear range for all-day
                                                 comfort and confidence.</p>
 
-                                            <h3><b>Trendy Women’s Fashion</h3></b>
+                                            <h3><b>Trendy Women�s Fashion</h3></b>
 
-                                            <p>Shopping for women’s fashion at Ohh! Buddie is an exciting experience!
+                                            <p style=" font-family: 'Manrope' !important;">Shopping for women�s fashion at Ohh! Buddie is an exciting experience!
                                                 Stay comfortable in chinos and printed shorts, turn heads in a little
                                                 black dress, or embrace nautical fashion with striped tees and dresses.
                                                 Whether you're drawn to off-shoulder, embroidered, or peplum tops, pair
@@ -757,8 +859,8 @@
 
                                             <h3><b>Fashionable Footwear</h3></b>
 
-                                            <p>Your footwear speaks volumes about your personality, and at Ohh! Buddie,
-                                                we’ve got something for everyone! From stylish sneakers and loafers to
+                                            <p style=" font-family: 'Manrope' !important;">Your footwear speaks volumes about your personality, and at Ohh! Buddie,
+                                                we�ve got something for everyone! From stylish sneakers and loafers to
                                                 classic brogues and oxfords, your work-to-weekend style is covered. Find
                                                 running shoes, sports-specific footwear, sandals, sliders, and more.
                                                 Women can enjoy pumps, heeled boots, and metallic flats that blend
@@ -766,7 +868,7 @@
 
                                             <h3><b>Shopping for Kids Made Fun</h3></b>
 
-                                            <p>Your little ones deserve the best! Explore adorable dresses, ballerina
+                                            <p style=" font-family: 'Manrope' !important;">Your little ones deserve the best! Explore adorable dresses, ballerina
                                                 shoes, superhero tees, and fun jerseys. Our wide range of toys ensures
                                                 playtime is filled with joy and creativity.</p>
 
@@ -787,6 +889,7 @@
             </div>
         </div>
     </div>
+
 
        <script>
     const searchIcon = document.querySelector(".search-icon__wrapper");
@@ -980,36 +1083,6 @@ $(document).ready(function() {
 
     </script>
 
-
-
-    <script>
-        // function toggleSearchBar() {
-        //     const searchInput = document.querySelector('.search-input');
-        //     searchInput.classList.toggle('active');
-
-        //     if (searchInput.classList.contains('active')) {
-        //         // Small delay to ensure transition works properly on mobile
-        //         setTimeout(() => {
-        //             searchInput.focus();
-        //         }, 50);
-        //     }
-        // }
-
-        // // Close search when clicking outside (optional but helpful on mobile)
-        // document.addEventListener('click', function(event) {
-        //     const searchContainer = document.querySelector('.search-container');
-        //     const searchInput = document.querySelector('.search-input');
-
-        //     if (!searchContainer.contains(event.target) && searchInput.classList.contains('active')) {
-        //         searchInput.classList.remove('active');
-        //     }
-        // });
-
-        // // Prevent the search container click from closing the search
-        // document.querySelector('.search-container').addEventListener('click', function(event) {
-        //     event.stopPropagation();
-        // });
-    </script>
     @if (Auth::check())
     <script src="https://cdn.logrocket.io/LogRocket.min.js"></script>
     <script>
@@ -1029,6 +1102,43 @@ $(document).ready(function() {
     
     <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2681722928691492&ev=PageView&noscript=1"/></noscript>
 
+
+
+<script>
+        // Wait for window load
+        window.addEventListener('load', function() {
+            // First, wait for all resources to load
+            setTimeout(function() {
+                // Then wait for all dynamic content to load (if any)
+                setTimeout(function() {
+                    document.body.classList.add('loaded');
+                    
+                    // Remove preloader from DOM after animation completes
+                    setTimeout(function() {
+                        const preloader = document.getElementById('preloader');
+                        if (preloader) {
+                            preloader.remove();
+                        }
+                    }, 500); // Match this with the CSS transition time
+                }, 500); // Additional buffer time for dynamic content
+            }, 500); // Initial buffer time after window load
+        });
+
+        // Fallback in case load event doesn't fire
+        setTimeout(function() {
+            if (!document.body.classList.contains('loaded')) {
+                document.body.classList.add('loaded');
+                
+                // Remove preloader from DOM after animation completes
+                setTimeout(function() {
+                    const preloader = document.getElementById('preloader');
+                    if (preloader) {
+                        preloader.remove();
+                    }
+                }, 500);
+            }
+        }, 5000); // Maximum 5 seconds wait time
+    </script>
 </body>
 
 </html>

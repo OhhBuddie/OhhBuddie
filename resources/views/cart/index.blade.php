@@ -11,7 +11,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <title>OhhBuddie | Add to Cart</title>
     <link rel="icon" type="image/x-icon"
-        href="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Ohbuddielogo.png">
+        href="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Ohbuddielogo.png">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Meta Pixel Code -->
@@ -255,14 +255,13 @@
 
 
         .suggested-section {
-            padding: 16px 0px 16px 16px;
+            padding: 16px 0px 16px 0px;
         }
 
         .suggested-section h3 {
             font-size: 16px;
             color: white;
-            margin-bottom: 16px;
-
+            padding-left: 13px;
         }
 
         .suggested-products {
@@ -598,7 +597,7 @@
         }
     </style>
     <link rel="icon" type="image/x-icon"
-        href="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Ohbuddielogo.png">
+        href="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Ohbuddielogo.png">
     <link rel="stylesheet" href="{{ asset('public/assets/css/style.css') }}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
@@ -716,6 +715,15 @@
         .form-check-input:checked {
             background-color: #08ADc5;
             border-color: #08ADc5;
+        }
+        
+        ::placeholder {
+          color: white  !important;
+          opacity: 1; /* Firefox */
+        }
+        
+        ::-ms-input-placeholder { /* Edge 12 -18 */
+          color: white !important;
         }
     </style>
 </head>
@@ -915,7 +923,7 @@
         <div id="buy-it-now" class="cart-items active">
 
             @if (count($cart_details) == 0)
-                <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Blank+Pages/Empty.jpg"
+                <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Blank%20Pages/Empty.jpg"
                     style="object-fit:fill; width:100%; height:88vh;">
             @else
                 @foreach ($cart_details as $dat)
@@ -1117,7 +1125,7 @@
 
 
         <div id="try-it-now" class="cart-items">
-            <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Blank+Pages/Try+-+Out+Is+Loading+Soon+(1).jpg"
+            <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Blank%20Pages/Try%20-%20Out%20Is%20Loading%20Soon%20(1).jpg"
                 style="object-fit:fill; width:100%; height:88vh;">
 
             <!--<div class="cart-item">-->
@@ -1228,10 +1236,10 @@
 
                         <!----Started here-->
 
-                        <div class="container" style="padding: 10px; margin-top: 0px;">
+                        <div class="container" style="padding: 2px; margin-top: 0px;">
 
                             @if (!$wish_list)
-                                <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Blank+Pages/Whishlish+is+Empty.jpg"
+                                <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Blank%20Pages/Whishlish%20is%20Empty.jpg"
                                     style="width: 100%; height: calc( 100vh - 60px); display: block; margin: 0px; border-radius: 8px;">
                             @endif
 
@@ -1265,15 +1273,60 @@
                                             }
 
                                         @endphp
+                                        
+                                        
+                                        
+                                        @php
+                                            // Get the product
+                                            $same_p1 = DB::table('products')->where('id', $wslt['id'])->first();
+                    
+                                            // Initialize variables
+                                            $sub1 = '';
+                                            $brnd_name12 = '';
+                    
+                                            if ($same_p1) {
+                                                // Get seller (common in both cases)
+                                                $seller_id = DB::table('sellers')
+                                                    ->where('seller_id', $same_p1->seller_id)
+                                                    ->latest()
+                                                    ->first();
+                    
+                                                if ($same_p1->category_id == 88) {
+                                                    // Get subcategory
+                                                    $cat_id = DB::table('categories')
+                                                        ->where('id', $same_p1->subcategory_id)
+                                                        ->latest()
+                                                        ->first();
+                                                    $sub1 = $cat_id ? $cat_id->subcategory : '';
+                                                } else {
+                                                    // Get sub-subcategory
+                                                    $cat_id = DB::table('categories')
+                                                        ->where('id', $same_p1->sub_subcategory_id)
+                                                        ->latest()
+                                                        ->first();
+                                                    $sub1 = $cat_id ? $cat_id->sub_subcategory : '';
+                                                }
+                    
+                                                // Get brand or fallback to seller company name
+                                                $brnd_cnt = DB::table('brands')->where('id', $same_p1->brand_id)->count();
+                                                if ($brnd_cnt > 0) {
+                                                    $brnd_name = DB::table('brands')->where('id', $same_p1->brand_id)->latest()->first();
+                                                    $brnd_name12 = $brnd_name ? $brnd_name->brand_name : '';
+                                                } else {
+                                                    $brnd_name12 = $seller_id ? $seller_id->company_name : '';
+                                                }
+                                            }
+                                        @endphp
 
                                         <div style="min-width: 165px;">
                                             <div class="card position-relative"
                                                 style="border: none; background-color: #000; color: #fff; border: 1px solid white; border-radius: 8px;">
 
                                                 @if (!empty($images) && isset($images[0]))
-                                                    <img src="{{ $images[0] }}" class="card-img-top product-img"
-                                                        alt="Image"
-                                                        style="height: 200px; object-fit: cover; border-radius: 8px; object-fit:fill">
+                                                <a href="/product/{{ \Illuminate\Support\Str::slug($sub1 ?? '') }}/{{ \Illuminate\Support\Str::slug($brnd_name12 ?? '') }}/{{ \Illuminate\Support\Str::slug($same_p1->product_name ?? '') }}/{{ $same_p1->id }}/buy" style="text-decoration: none;">
+                                                  <img src="{{ $images[0] }}" class="card-img-top product-img"
+                                                        alt="Image" style="height: 200px; object-fit: cover; border-top-left-radius: 8px; object-fit: fill; border-top-right-radius: 8px;">
+                                                </a>
                                                 @endif
 
 
@@ -1358,7 +1411,7 @@
                             <div class="d-flex align-items-center" style="flex-grow: 1;">
                                 <img src="https://w7.pngwing.com/pngs/62/407/png-transparent-coupon-computer-icons-discounts-and-allowances-voucher-clear-choice-cannabis-term-thumbnail.png" 
                                      alt="Coupon" style="width: 20px; height: 20px; margin-right: 10px;">
-                                <h6 class="m-0" style="color: white; font-size: 14px;">Apply Coupon</h6>
+                                <h3 style="color: white; font-size: 14px;">Apply Coupon</h3>
                             </div>
                             <!--<i class="fas fa-chevron-down text-white" id="couponToggle" style="cursor: pointer;"></i>-->
                         </div>

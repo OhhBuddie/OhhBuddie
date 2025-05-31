@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon"
-        href="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Ohbuddielogo.png">
+        href="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Ohbuddielogo.png">
     <!-- Font Awesome for Icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
@@ -90,6 +90,12 @@
 </style>
 
     <style>
+        .navbar {
+            width: 100%;
+            margin-bottom: 0px; 
+            min-height: 100px !important;
+            border: none;
+        }
         @media screen and (min-width: 778px) {
             body {
                 display: flex !important;
@@ -103,6 +109,15 @@
                 width: 40% !important;
                 border-radius: unset !important;
             }
+            .bottom-navbar{
+                left: 30% !important;
+                width: 40% !important;
+            }
+            
+            .logoimg{
+                right: 16vw !important;
+            }
+                
         }
 
 
@@ -172,11 +187,12 @@
 
         }
 
+        
         /* Styles for the Bottom Navbar */
         .bottom-navbar {
-            display: none;
+            display: block;
             position: fixed;
-            bottom: 20;
+            bottom: 31px;
             left: 0;
             width: 100%;
             background-color: black;
@@ -186,10 +202,10 @@
 
         .bottom-navbar ul {
             display: flex;
-            justify-content: space-around;
+            justify-content: space-between;
             align-items: center;
             margin: 0;
-            padding: 5px 0;
+            padding: 11px 13px;
             list-style: none;
         }
 
@@ -479,116 +495,113 @@
 
 
 
-    <nav class="navbar navbar-expand-lg" style="position:fixed;">
+    <nav class="navbar navbar-expand-lg navbar-light" style="position:fixed; margin-top: -5px;">
 
-        <a class="navbar-brand" href="/">
-            <img src="{{ asset('public/assets/images/logo/logo_showloom.png') }}" class="logoimg" alt="Shoes">
-        </a>
+        <!--<a class="navbar-brand" href="/">-->
+        <!--    <img src="{{ asset('public/assets/images/logo/logo_showloom.png') }}" class="logoimg" alt="OhhBuddie">-->
+        <!--</a>-->
+        
+        <div class="d-flex " style="flex-direction: column; color: white; max-width:70vw;">
+           <span style="display: flex; align-items: center;"> <h4 style="margin: 0px 6px 0px 0px; font-size: 20px !important;">Ohh! Buddie</h4> <span style="margin-top:7px !important; font-size: 1rem;">delivers in</span>  </span>
+            <h2 style="margin: -7px 0px 0px 0px; color:#efc475;">69 minutes</h2>
+        </div>
 
         <!-- Icons -->
         <div class="d-flex ml-auto align-items-center">
 
-            <div class="search-icon">
+                    <div class="search-icon">
+              
+                        <div class="search-container">
+                            <input type="text" id="search-input" class="search-icon__input" placeholder="search ..." autocomplete="off" />
+                            <div id="search-results" class="search-results-dropdown" style="display: none;"></div>
+                        </div>            
+            
+            
+                    
+                        <div class="search-icon__wrapper">
+                          <div class="search-icon__svg">
+                       
+                            <a href="#" class="text-light search-icon__svg-search" style="font-size: 24px; font-weight: normal; margin-right: 20px;">
+                                <!--<i class="fas fa-search"></i>-->
+                                <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Home/ICONS/SEARCH.svg" style="width: 25px; height: 25px;">
 
-                <div class="search-container">
-                    <input type="text" id="search-input" class="search-icon__input" placeholder="search ..."
-                        autocomplete="off" />
-                    <div id="search-results" class="search-results-dropdown" style="display: none;"></div>
-                </div>
-
-
-
-                <div class="search-icon__wrapper">
-                    <div class="search-icon__svg">
-                        <!-- Search icon SVG -->
-                        <!--<svg class="search-icon__svg-search" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 50 50" fill="none">-->
-                        <!--  <circle cx="20" cy="20" r="9" stroke="white" stroke-width="2"/>-->
-                        <!--  <line x1="26" y1="26" x2="34" y2="34" stroke="white" stroke-width="2" stroke-linecap="round"/>-->
-                        <!--</svg>-->
-
-                        <a href="#" class="text-light search-icon__svg-search"
-                            style="font-size: 24px; font-weight: normal; margin-right: 20px;">
-                            <i class="fas fa-search"></i>
-                        </a>
-
-                        <!-- Close (X) icon SVG -->
-                        <svg class="search-icon__svg-close" xmlns="http://www.w3.org/2000/svg" width="30"
-                            height="30" viewBox="0 0 50 50" fill="none">
-                            <line x1="15" y1="15" x2="35" y2="35" stroke="white"
-                                stroke-width="2" stroke-linecap="round" />
-                            <line x1="35" y1="15" x2="15" y2="35" stroke="white"
-                                stroke-width="2" stroke-linecap="round" />
-                        </svg>
-                    </div>
-                </div>
-            </div>
+                            </a>
+                            
+                            <!-- Close (X) icon SVG -->
+                            <svg class="search-icon__svg-close" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 50 50" fill="none">
+                              <line x1="15" y1="15" x2="35" y2="35" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                              <line x1="35" y1="15" x2="15" y2="35" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                            
+                          </div>
+                        </div>
+                      </div>
 
 
 
 
 
-            <a href="/wishlist" class="text-light position-relative"
-                style="font-size: 24px; font-weight: normal; margin-right: 20px;">
-                <i class="far fa-heart"></i>
+                    <a href="/wishlist" class="text-light position-relative"
+                        style="font-size: 24px; font-weight: normal; margin-right: 20px;">
+                        <!--<i class="far fa-heart"></i>-->
+                        <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Home/ICONS/WISHLIST.svg" style="width: 25px; height: 25px;">
 
-            </a>
-            <a href="/addtocart" class="text-light position-relative" style="font-size: 24px; font-weight: normal;">
-                <i class="fa fa-shopping-bag"></i>
+                    </a>
 
-                @php
-                    $cartCount = 0;
+                    <a href="/addtocart" class="text-light position-relative"
+                        style="font-size: 24px; font-weight: normal;">
+                        <!--<i class="fa fa-shopping-bag"></i>-->
+                        <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Home/ICONS/BAG.svg" style="width: 25px; height: 25px;">
 
-                    if (Auth::check()) {
-                        // Logged-in user: Fetch cart count using user_id
-                        $cartCount = DB::table('carts')->where('user_id', Auth::id())->count();
-                    } else {
-                        // Guest user: Fetch temp_user_id from session or cookies
-                        $tempUserId = session('temp_user_id') ?? request()->cookie('temp_user_id');
-
-                        if ($tempUserId) {
-                            $cartCount = DB::table('carts')
-                                ->where('temp_user_id', $tempUserId)
-                                ->where('user_id', 0)
-                                ->count();
-                        }
-                    }
-                @endphp
-
-
-                @if ($cartCount > 0)
-                    <style>
-                        .cart-count {
-                            opacity: 0;
-                            transform: scale(0.5);
-                            animation: fadeInScale 0.5s ease-in-out forwards;
-                        }
-
-                        @keyframes fadeInScale {
-                            from {
-                                opacity: 0;
-                                transform: scale(0.5);
+                        @php
+                            $cartCount = 0;
+                            if (Auth::check()) {
+                                // Logged-in user: Fetch cart count using user_id
+                                $cartCount = DB::table('carts')->where('user_id', Auth::id())->count();
+                            } else {
+                                // Guest user: Fetch temp_user_id from session or cookies
+                                $tempUserId = session('temp_user_id') ?? request()->cookie('temp_user_id');
+                                if ($tempUserId) {
+                                    $cartCount = DB::table('carts')
+                                        ->where('temp_user_id', $tempUserId)
+                                        ->where('user_id', 0)
+                                        ->count();
+                                }
                             }
+                        @endphp
 
-                            to {
-                                opacity: 1;
-                                transform: scale(1);
-                            }
-                        }
-                    </style>
+                        @if ($cartCount > 0)
+                            <style>
+                                .cart-count {
+                                    opacity: 0;
+                                    transform: scale(0.5);
+                                    animation: fadeInScale 0.5s ease-in-out forwards;
+                                }
 
-                    <span
-                        class="cart-count bag-count position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                        {{ $cartCount }}
-                    </span>
-                @else
-                    <span
-                        class="cart-count bag-count position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                        0
-                    </span>
-                @endif
-            </a>
+                                @keyframes fadeInScale {
+                                    from {
+                                        opacity: 0;
+                                        transform: scale(0.5);
+                                    }
 
-        </div>
+                                    to {
+                                        opacity: 1;
+                                        transform: scale(1);
+                                    }
+                                }
+                            </style>
+                            <span
+                                class="cart-count bag-count position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                {{ $cartCount }}
+                            </span>
+                        @else
+                            <span
+                                class="cart-count bag-count position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                0
+                            </span>
+                        @endif
+                    </a>
+                </div>
     </nav>
 
 
@@ -602,44 +615,50 @@
     <!-- Footer Section -->
 
 
-    <div class="bottom-navbar">
-        <ul>
-            &nbsp;
-            <li>
-                <a href="/welcome">
-                    <i class="fas fa-home"></i>
-                    Home
-                </a>
-            </li>
-            <li>
-                <a href="/allproduct">
-                    <i class="fa fa-shopping-cart"></i>
-                    Shop
-                </a>
-            </li>
-            <li>
-                <a href="#orders" class="circle-icon">
-                    <i class="fas fa-shirt"></i>
-                    <span>Tryout</span>
-                </a>
-            </li>
-            <li>
-                <a href="/explore">
-                    <!--<i class="fas fa-shopping-cart"></i>-->
-                    <i class="fas fa-search"></i>
-                    Explore
-                </a>
-            </li>
-            <li>
-                <a href="{{ url('/account') }}">
-                    <i class="fas fa-user"></i>
-                    Profile
-                </a>
-            </li>
-            &nbsp;
-        </ul>
+           <div class="bottom-navbar" style="height: 67px;">
+            
+            <div class="row align-items-center">
+                <div class="col-1"></div>
+                <div class="col-2 text-center" >
+                    <a href="/" style="color: white !important;font-size: 14px;  display: flex; flex-direction: column; align-items: center; justify-content: center; text-decoration: none;">
+                        <!--<i class="fas fa-home"></i>--> 
+                        <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Home/ICONS/HOME.svg" style="width: 25px; height: 25px;">
+                        Home
+                    </a>
+                </div>
+                <div class="col-2 text-center">
+                    <a href="/allproduct" style="color: white !important;font-size: 14px;  display: flex; flex-direction: column; align-items: center; justify-content: center; text-decoration: none;">
+                        <!--<i class="fa fa-shopping-cart"></i> -->
+                        <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Home/ICONS/SHOP%20CART%20.svg" style="width: 25px; height: 25px;">
 
-    </div>
+                        Shop
+                    </a>
+                </div>
+                <div class="col-2 text-center">
+                       <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/LOGO%20ON%20THE%20ROCKS%20(1).png" alt="Shoes" class="logoimg" style="height: 104px !important; width: 105px !important; margin-top: -40px;">
+
+                </div>
+                <div class="col-2 text-center">
+                    <a href="/explore" style="color: white !important;font-size: 14px;  display: flex; flex-direction: column; align-items: center; justify-content: center; text-decoration: none;">
+                        <!--<i class="fas fa-search"></i>-->
+                        <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Home/ICONS/APPLICATION.svg" style="width: 25px; height: 25px;">
+                        Explore
+                    </a>
+                </div>
+                <div class="col-2 text-center">
+                    <a href="{{ url('/account') }}" style="color: white !important;font-size: 14px;  display: flex; flex-direction: column; align-items: center; justify-content: center; text-decoration: none;">
+                        <!--<i class="fas fa-user"></i> -->
+                        <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Home/ICONS/USER.svg" style="width: 25px; height: 25px;">
+
+                        
+                        Profile
+                    </a>
+                </div>
+                <div class="col-1"></div>
+            </div>
+           
+         
+        </div>
     </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>

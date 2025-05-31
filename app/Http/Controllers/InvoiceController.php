@@ -34,7 +34,6 @@ class InvoiceController extends Controller
     public function index(Request $request, $id)
 
     {
-
         $order_detail = DB::table('orderdetails')->where('id',$id)->latest()->first();
         $odr_data = DB::table('orders')->where('id',$order_detail->order_id)->latest()->first();
         $seller_detail = DB::table('sellers')->where('seller_id',$order_detail->seller_id)->latest()->first();
@@ -101,7 +100,6 @@ class InvoiceController extends Controller
                                              'inv_id' => $inv_id]);
 
       
-
         return $pdf->download($inv_id . '.pdf');
 
     }

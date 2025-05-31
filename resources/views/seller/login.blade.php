@@ -12,7 +12,7 @@
     <button type="submit" class="btn btn-danger w-100">Continue</button>
 </form>
 <div class="text-center my-3">OR</div>
-<button class="btn btn-light w-100 mb-2">📩 Continue with Email</button>
+<button class="btn btn-light w-100 mb-2">ðŸ“© Continue with Email</button>
 <div class="d-flex justify-content-between">
     <button class="btn btn-light w-48"><i class="fa-brands fa-facebook-f"></i> Facebook</button>
     <button class="btn btn-light w-48"><i class="fa-brands fa-google"></i> Google</button>

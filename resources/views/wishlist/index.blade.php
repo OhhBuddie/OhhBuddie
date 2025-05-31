@@ -10,7 +10,7 @@
 
     <title>Ohhbuddie | WishList</title>
     
-    <link rel="icon" type="image/x-icon" href="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Ohbuddielogo.png">
+    <link rel="icon" type="image/x-icon" href="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Ohbuddielogo.png">
     <link rel="stylesheet" href="{{ asset('public/assets/css/style.css') }}"> 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
@@ -223,7 +223,7 @@
 
             
     @if(!$wish_list)
-        <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Blank+Pages/Whishlish+is+Empty.jpg" 
+        <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Blank%20Pages/Whishlish%20is%20Empty.jpg" 
              style="width: 100%; height: calc( 100vh - 60px); display: block; margin: 0px;">
     @endif
 

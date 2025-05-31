@@ -431,7 +431,12 @@
                             
                             @endphp
                                 <tr>
-                                    <td><img class="product-img" src="{{ json_decode($products->images)[0] }}" alt="product_Image"></td>
+                                    @if($products->images)
+                                        <td><img class="product-img" src="{{ json_decode($products->images)[0] }}" alt="product_Image"></td>
+                                    @else
+                                    <td>----</td>
+                                    @endif
+                                    
                                     <td>
                                         <div class="product-name">{{$products->product_name}}</div>
                                         <div class="product-size">Size: {{ $products->size_name}}</div>

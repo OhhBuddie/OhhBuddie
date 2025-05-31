@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title> OhhBuddie | Order</title>
     
-   <link rel="icon" type="image/x-icon" href="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Ohbuddielogo.png">
+   <link rel="icon" type="image/x-icon" href="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Ohbuddielogo.png">
     <style>
     a{
         text-decoration: none !important;
@@ -22,7 +22,7 @@
       gap: 10px;
       width: 100%;
       padding: 5px;
-      margin-top: 64px;
+      margin-top: 90px;
       background: #1f1f1f;
    
     }
@@ -141,8 +141,8 @@
         <span class="input-group-text">
           <i class="fas fa-search"></i>
         </span>
-        <input type="text" class="form-control" placeholder="Search here..." aria-label="Search" style=" color:white; background-color: #1f1f1f;">
-        <button class="btn btn-search" style="background-color:var(--primary-color); color: black; border-radius: unset;">
+        <input type="text" class="form-control" placeholder="Search here..." aria-label="Search" style=" color:white; background-color: #1f1f1f; height: unset;">
+        <button class="btn btn-search" style="background-color:var(--primary-color); color: black; border-radius: unset; ">
           Search
         </button>
       </div>

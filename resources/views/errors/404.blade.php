@@ -34,9 +34,9 @@
 </head>
 <body>
     <!-- Mobile image (Full screen) -->
-    <img class="mobile-image" src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Error+Page/pagenotfound+copy+(1).jpg" alt="500 Server Error">
+    <img class="mobile-image" src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Error%20Pages/pagenotfound%20copy.jpg" alt="500 Server Error">
 
     <!-- Desktop image (Centered) -->
-    <img class="desktop-image" src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Error+Page/pagenotfound2+copy+(1).jpg" alt="500 Server Error">
+    <img class="desktop-image" src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Error%20Pages/pagenotfound2%20copy.jpg" alt="500 Server Error">
 </body>
 </html>

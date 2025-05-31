@@ -7,6 +7,8 @@
 
     <title>Privacy Policy - Fashionsta Technologies Private Limited</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+       <link rel="icon" type="image/x-icon" href="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Ohbuddielogo.png">
+
     <style>
         body {
             font-family: Arial, sans-serif;

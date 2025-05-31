@@ -17,77 +17,77 @@ class ExploreController extends Controller
     {
         // Men 
         
-        $men1 = Storage::disk('s3')->url('Explore/Men/explore cetegories t shirt.jpg');
-        $men2 = Storage::disk('s3')->url('Explore/Men/explore cetegories kurta.jpg');
-        $men3 = Storage::disk('s3')->url('Explore/Men/explore cetegories bottom.jpg');
-        $men4 = Storage::disk('s3')->url('Explore/Men/explore cetegories shoe.jpg');
-        $men5 = Storage::disk('s3')->url('Explore/Men/explore cetegories inner.jpg');
-        $men6 = Storage::disk('s3')->url('Explore/Men/Men Plus (1).jpg');
+        $men1 = 'https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Men/explore cetegories t shirt.jpg';
+        $men2 = 'https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Men/explore cetegories kurta.jpg';
+        $men3 = 'https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Men/explore cetegories bottom.jpg';
+        $men4 = 'https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Men/explore cetegories shoe.jpg';
+        $men5 = 'https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Men/explore cetegories inner.jpg';
+        $men6 = 'https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Men/Men Plus (1).jpg';
         
         // Mens Category
         
         // TopWare
-        $mentop1 = Storage::disk('s3')->url('Explore/Sub Category/Men/Top/tshirt.jpg');
-        $mentop2 = Storage::disk('s3')->url('Explore/Sub Category/Men/Top/shirt.jpg');
-        $mentop3 = Storage::disk('s3')->url('Explore/Sub Category/Men/Top/sweatshirt.jpg');
-        $mentop4 = Storage::disk('s3')->url('Explore/Sub Category/Men/Top/jacket.jpg');
-        $mentop5 = Storage::disk('s3')->url('Explore/Sub Category/Men/Top/blazer.jpg');
-        $mentop6 = Storage::disk('s3')->url('Explore/Sub Category/Men/Top/suit.jpg');
-        $mentop7 = Storage::disk('s3')->url('Explore/Sub Category/Men/Top/tshirt.jpg');
-        $mentop8 = Storage::disk('s3')->url('Explore/Sub Category/Men/Top/hoodie.jpg');
-        $mentop9 = Storage::disk('s3')->url('Explore/Sub Category/Men/Top/Shackets.jpg');
+        $mentop1 = 'https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub Category/Men/Top/tshirt.jpg';
+        $mentop2 = 'https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub Category/Men/Top/shirt.jpg';
+        $mentop3 = 'https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub Category/Men/Top/sweatshirt.jpg';
+        $mentop4 = 'https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub Category/Men/Top/jacket.jpg';
+        $mentop5 = 'https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub Category/Men/Top/blazer.jpg';
+        $mentop6 = 'https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub Category/Men/Top/suit.jpg';
+        $mentop7 = 'https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub Category/Men/Top/tshirt.jpg';
+        $mentop8 = 'https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub Category/Men/Top/hoodie.jpg';
+        $mentop9 = 'https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub Category/Men/Top/Shackets.jpg';
         
         // Indian
         
-        $menindan1 = Storage::disk('s3')->url('Explore/Sub Category/Men/Indian/kurta.jpg');
-        $menindan2 = Storage::disk('s3')->url('Explore/Sub Category/Men/Indian/sherwani.jpg');
-        $menindan3 = Storage::disk('s3')->url('Explore/Sub Category/Men/Indian/indo western.jpg');
-        $menindan4 = Storage::disk('s3')->url('Explore/Sub Category/Men/Indian/nehru.jpg');
+        $menindan1 = 'https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub Category/Men/Indian/kurta.jpg';
+        $menindan2 = 'https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub Category/Men/Indian/sherwani.jpg';
+        $menindan3 = 'https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub Category/Men/Indian/indo western.jpg';
+        $menindan4 = 'https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub Category/Men/Indian/nehru.jpg';
         
         // Bottom 
         
-        $menbottom1 = Storage::disk('s3')->url('Explore/Sub Category/Men/Bottom/jeans.jpg');
-        $menbottom2 = Storage::disk('s3')->url('Explore/Sub Category/Men/Bottom/Trousers.jpg');
-        $menbottom3 = Storage::disk('s3')->url('Explore/Sub Category/Men/Bottom/Track Pant.jpg');
-        $menbottom4 = Storage::disk('s3')->url('Explore/Sub Category/Men/Bottom/shorts.jpg');
-        $menbottom5 = Storage::disk('s3')->url('Explore/Sub Category/Men/Bottom/cargo.jpg');
+        $menbottom1 = 'https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub Category/Men/Bottom/jeans.jpg';
+        $menbottom2 = 'https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub Category/Men/Bottom/Trousers.jpg';
+        $menbottom3 = 'https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub Category/Men/Bottom/Track Pant.jpg';
+        $menbottom4 = 'https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub Category/Men/Bottom/shorts.jpg';
+        $menbottom5 = 'https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub Category/Men/Bottom/cargo.jpg';
         
         // Foot
         
-        $menfoot1 = Storage::disk('s3')->url('Explore/Sub Category/Men/Foot/flip.jpg');
-        $menfoot2 = Storage::disk('s3')->url('Explore/Sub Category/Men/Foot/casual.jpg');
-        $menfoot3 = Storage::disk('s3')->url('Explore/Sub Category/Men/Foot/formal.jpg');
-        $menfoot4 = Storage::disk('s3')->url('Explore/Sub Category/Men/Foot/sneakers.jpg');
-        $menfoot5 = Storage::disk('s3')->url('Explore/Sub Category/Men/Foot/sports.jpg');
-        $menfoot6 = Storage::disk('s3')->url('Explore/Sub Category/Men/Foot/lofers.jpg');
-        $menfoot7 = Storage::disk('s3')->url('Explore/Sub Category/Men/Foot/socks.jpg');
+        $menfoot1 = 'https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub Category/Men/Foot/flip.jpg';
+        $menfoot2 = 'https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub Category/Men/Foot/casual.jpg';
+        $menfoot3 = 'https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub Category/Men/Foot/formal.jpg';
+        $menfoot4 = 'https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub Category/Men/Foot/sneakers.jpg';
+        $menfoot5 = 'https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub Category/Men/Foot/sports.jpg';
+        $menfoot6 = 'https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub Category/Men/Foot/lofers.jpg';
+        $menfoot7 = 'https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub Category/Men/Foot/socks.jpg';
         
         // Inner
         
-        $meninner1 = Storage::disk('s3')->url('Explore/Sub Category/Men/Inner/brief.jpg');
-        $meninner2 = Storage::disk('s3')->url('Explore/Sub Category/Men/Inner/boxer.jpg');
-        $meninner3 = Storage::disk('s3')->url('Explore/Sub Category/Men/Inner/tanks.jpg');
-        $meninner4 = Storage::disk('s3')->url('Explore/Sub Category/Men/Inner/night men.jpg');
-        $meninner5 = Storage::disk('s3')->url('Explore/Sub Category/Men/Inner/thermals.jpg');
-        $meninner6 = Storage::disk('s3')->url('Explore/Sub Category/Men/Inner/bath.jpg');
+        $meninner1 = 'https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub Category/Men/Inner/brief.jpg';
+        $meninner2 = 'https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub Category/Men/Inner/boxer.jpg';
+        $meninner3 = 'https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub Category/Men/Inner/tanks.jpg';
+        $meninner4 = 'https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub Category/Men/Inner/night men.jpg';
+        $meninner5 = 'https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub Category/Men/Inner/thermals.jpg';
+        $meninner6 = 'https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub Category/Men/Inner/bath.jpg';
         
    
         // Women
         
-        $Women1 = Storage::disk('s3')->url('Explore/Women/explore cetegories indian.jpg');
-        $Women2 = Storage::disk('s3')->url('Explore/Women/explore cetegories western.jpg');
-        $Women3 = Storage::disk('s3')->url('Explore/Women/explore cetegories bottom.jpg');
-        $Women4 = Storage::disk('s3')->url('Explore/Women/explore cetegories foot.jpg');
-        $Women5 = Storage::disk('s3')->url('Explore/Women/explore cetegories lingerie.jpg');
-        $Women6 = Storage::disk('s3')->url('Explore/Women/explore cetegories meternity.jpg');
-        $Women7 = Storage::disk('s3')->url('Explore/Women/Women Plus.jpg');
+        $Women1 = 'https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Women/explore cetegories indian.jpg';
+        $Women2 = 'https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Women/explore cetegories western.jpg';
+        $Women3 = 'https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Women/explore cetegories bottom.jpg';
+        $Women4 = 'https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Women/explore cetegories foot.jpg';
+        $Women5 = 'https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Women/explore cetegories lingerie.jpg';
+        $Women6 = 'https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Women/explore cetegories meternity.jpg';
+        $Women7 = 'https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Women/Women Plus.jpg';
         
         // Kids
         
-        $kids1 = Storage::disk('s3')->url('Explore/Kids/explore cetegories boy.jpg');
-        $kids2 = Storage::disk('s3')->url('Explore/Kids/explore cetegories girl.jpg');
-        $kids3 = Storage::disk('s3')->url('Explore/Kids/explore cetegories kids infants.jpg');
-        $kids4 = Storage::disk('s3')->url('Explore/Kids/explore cetegories kids accessories.jpg');
+        $kids1 = 'https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Kids/explore cetegories boy.jpg';
+        $kids2 = 'https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Kids/explore cetegories girl.jpg';
+        $kids3 = 'https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Kids/explore cetegories kids infants.jpg';
+        $kids4 = 'https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Kids/explore cetegories kids accessories.jpg';
         
         return view('explore.index', 
         compact('men1','men2','men3','men4','men5', 'men6',

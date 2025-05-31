@@ -3,7 +3,7 @@
     <!-- Bootstrap CSS -->
     <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">-->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Ohbuddielogo.png">
+    <link rel="icon" type="image/x-icon" href="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Ohbuddielogo.png">
     
  <style>
  
@@ -84,7 +84,7 @@
         width: 100%;
         height: 240px;
         overflow: hidden;
-        margin-top: -60px;
+        margin-top: -33px;
         object-fit: fill;
     }
 
@@ -110,15 +110,13 @@
         border: 4px solid black; /* To highlight the profile picture */
     }
 
-    .profile-header p {
+    .profile-header h4 {
         font-size: 16px;
         margin-top: -2px;
         color: white;
     }
     
-    .row{
-        background: #1f1f1f;
-    }
+  
 </style>
 <style>
     .profile-img {
@@ -165,13 +163,13 @@
     
    
     
-    <video width="430" height="360"  playsinline autoplay muted loop style="width: -webkit-fill-available;"><source src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/user/user_cover.mp4" type="video/mp4" class="cover-img" ></video>
+    <video width="430" height="360"  playsinline autoplay muted loop style="width: -webkit-fill-available;"><source src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/User/Comp%201%20(1).mp4" type="video/mp4" class="cover-img" ></video>
  </div>
  
 <div class="profile-header text-center">
     <div class="position-relative d-inline-block">
         @if(Auth::user()->profile_photo == null)
-            <img src="https://cdn-icons-png.flaticon.com/128/3177/3177440.png" class="profile-img">
+            <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/User/DP.jpg" class="profile-img">
         @else
             <img src="{{ Auth::user()->profile_photo }}" class="profile-img">
 
@@ -183,8 +181,8 @@
         </a>
     </div>
 
-    <p style="margin-bottom:0px;">{{Auth::user()->name}}</p>
-    <p>{{Auth::user()->email}}<br></p>
+    <h4 style="margin-bottom:0px;">{{Auth::user()->name}}</h4>
+    <h4>{{Auth::user()->email}}<br></h4>
     <br>
 </div>
 
@@ -194,48 +192,48 @@
     <ul class="list-group">
         <li class="list-group-item">
             <!--<i class="bi bi-basket"></i>-->
-            <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/SVG+Icons/bag.png">
+            <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/SVG%20Icons/bag%20(2).png">
             <a href="/order" class="flex-grow-1">My Orders</a>
-             <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/SVG+Icons/ARROW.png">
+             <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/SVG%20Icons/arrow%20icon%20(1).png">
 
         </li>
         <li class="list-group-item">
             <!--<i class="bi bi-box-seam"></i>-->
-            <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/SVG+Icons/hanger.png">
+            <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/SVG%20Icons/hanger%20(1).png">
             <a href="/Mytryout" class="flex-grow-1">My Tryout Orders</a>
 
-            <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/SVG+Icons/ARROW.png">
+            <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/SVG%20Icons/arrow%20icon%20(1).png">
 
         </li>
         <li class="list-group-item">
             <!--<i class="bi bi-heart"></i>-->
-            <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/SVG+Icons/card.png">
+            <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/SVG%20Icons/card%20(1).png">
             <a href="/Mypayment" class="flex-grow-1">My Payment</a>
-              <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/SVG+Icons/ARROW.png">
+              <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/SVG%20Icons/arrow%20icon%20(1).png">
         </li>
         <li class="list-group-item">
             <!--<i class="bi bi-geo-alt"></i>-->
-            <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/SVG+Icons/wallet+card.png">
+            <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/SVG%20Icons/wallet%20card%20(1).png">
             <a href="/Mywallet" class="flex-grow-1">My Wallet</a>
-             <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/SVG+Icons/ARROW.png">
+             <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/SVG%20Icons/arrow%20icon%20(1).png">
         </li>
         <li class="list-group-item">
             <!--<i class="bi bi-wallet"></i>-->
-            <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/SVG+Icons/location.png">
+            <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/SVG%20Icons/location%20(1).png">
             <a href="/Myaddress" class="flex-grow-1">My Addresses</a>
-              <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/SVG+Icons/ARROW.png">
+              <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/SVG%20Icons/arrow%20icon%20(1).png">
         </li>
         <li class="list-group-item">
             <!--<i class="bi bi-ticket"></i>-->
-            <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/SVG+Icons/cart.png">
+            <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/SVG%20Icons/cart%20(1).png">
             <a href="/wishlist" class="flex-grow-1">My Wishlist</a>
-              <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/SVG+Icons/ARROW.png">
+              <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/SVG%20Icons/arrow%20icon%20(1).png">
         </li>
         <li class="list-group-item">
             <!--<i class="bi bi-chat-dots"></i>-->
-            <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/SVG+Icons/support.png">
+            <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/SVG%20Icons/support.png">
             <a href="/Mysupport" class="flex-grow-1">My Support Ticket</a>
-              <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/SVG+Icons/ARROW.png">
+              <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/SVG%20Icons/arrow%20icon%20(1).png">
         </li>
         
     </ul>

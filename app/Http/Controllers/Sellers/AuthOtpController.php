@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Sellers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -11,14 +11,12 @@ use Twilio\Rest\Client;
 use Illuminate\Validation\Rule;
 use DB;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Http;
 
 class AuthOtpController extends Controller
 {
     public function login()
     {
-
-        return view('auth.otpLogin');
+        return view('seller.login.otpLogin');
     }
 
     public function generate(Request $request)
@@ -29,21 +27,59 @@ class AuthOtpController extends Controller
         ]);
 
         $mobileNo = $request->input('mobile_no');
-        $prefixedNumber = '91' . $mobileNo; // Append +91 for Indian numbers
+        $prefixedNumber = '+91' . $mobileNo; // Append +91 for Indian numbers
 
         // Check if the mobile number exists in the `users` table
         $user = User::where('phone', $prefixedNumber)->first();
         
+        
+        
+        
+        
         // return $prefixedNumber;
         if (!$user) {
             
+
+            // User ID
+            $lastUser = DB::table('users')->whereNotNull('user_id')->orderBy('id', 'desc')->first();
+
+            if ($lastUser && preg_match('/OBD-(\d+)/', $lastUser->user_id, $matches)) {
+                $nextNumber = str_pad($matches[1] + 1, 4, '0', STR_PAD_LEFT);
+            } else {
+                $nextNumber = '1000'; // Start from OBD-0001
+            }
+
+            $newUserId = 'OBD-' . $nextNumber;
+            
             $id = DB::table('users')->insertGetId([
                             'phone' => $prefixedNumber,
-                            'user_type' => 'Customer',
+                            'user_type' => 'Seller',
+                            'user_id' => $newUserId,
                             'created_at' => now(),
                             'updated_at' => now(),
                         ]);
+                        
+            // Seller ID
+            
+            
+            $lastUser1 = DB::table('sellers')->whereNotNull('seller_id')->orderBy('id', 'desc')->first();
 
+            if ($lastUser1 && preg_match('/OBD-Seller-(\d+)/', $lastUser1->seller_id, $matches1)) {
+                $nextNumber1 = str_pad($matches1[1] + 1, 4, '0', STR_PAD_LEFT);
+            } else {
+                $nextNumber1 = '1000'; // Start from OBD-0001
+            }
+
+            $newSellerId = 'OBD-Seller-' . $nextNumber1;
+            
+
+            $sid = DB::table('sellers')->insertGetId([
+                                        'registered_phone_number' => $prefixedNumber,
+                                        'user_table_id' => $id,
+                                        'seller_id' => $newSellerId,
+                                        'created_at' => now(),
+                                        'updated_at' => now(),
+                                    ]);
 
                $user = User::where('id', $id)->first(); 
                $otp = rand(100000, 999999);
@@ -59,7 +95,7 @@ class AuthOtpController extends Controller
                     }
             
             
-                    return redirect()->route('otp.verification', ['user_id' => $user->id])
+                    return redirect()->route('sellerotp.verification', ['user_id' => $user->id])
             
                                      ->with('success',  "OTP has been sent on Your Mobile Number."); 
                         
@@ -67,20 +103,20 @@ class AuthOtpController extends Controller
         }
 
         // Generate OTP
-         $otp = rand(100000, 999999);
+        $otp = rand(100000, 999999);
 
         // Save OTP to the database
         $this->saveOtp($prefixedNumber, $otp);
 
         // Send OTP via SMS
-        $this->sendOtpSms($prefixedNumber, $otp);
+        $sendStatus = $this->sendOtpSms($prefixedNumber, $otp);
 
-        // if ($sendStatus !== true) {
-        //     return back()->with('error', 'Failed to send OTP. Please try again.');
-        // }
+        if ($sendStatus !== true) {
+            return back()->with('error', 'Failed to send OTP. Please try again.');
+        }
 
 
-        return redirect()->route('otp.verification', ['user_id' => $user->id])
+        return redirect()->route('sellerotp.verification', ['user_id' => $user->id])
 
                          ->with('success',  "OTP has been sent on Your Mobile Number."); 
     }
@@ -99,7 +135,7 @@ class AuthOtpController extends Controller
         ]);
     }
 
-    protected function sendOtpSms1($phone, $otp)
+    protected function sendOtpSms($phone, $otp)
     {
         try {
             $sid = 'ACf0cc3b4153233032c74de604c24c84b2';
@@ -121,65 +157,14 @@ class AuthOtpController extends Controller
         }
     }
     
-    
-    
-protected function sendOtpSms($phone, $otp)
-{
-    try {
-        $token = 'EAAS6NxQsZCfkBOxJBjShCSZBH6h6Oxy72mW1ssiefQxuIKI62iijYi1rZBBRliL4Xr6RgrqsMS4afNKQ9flpaGMDeh6X7zF0UagqFRjjJ3VazfLwqncMWPL42TjpCChKdgPoeYsbis6VNMp1jnSIWTjji6A3hyulMjKFzNlq8YANi98b2EnhUhDqA1mNqIRxQZDZD';
-        $phone_number_id = '648701208316154';
-
-        $response = Http::withToken($token)->post("https://graph.facebook.com/v19.0/{$phone_number_id}/messages", [
-            "messaging_product" => "whatsapp",
-            "to" => $phone, // e.g., 91XXXXXXXXXX
-            "type" => "template",
-            "template" => [
-                "name" => "login", // your template name
-                "language" => [
-                    "code" => "en"
-                ],
-                "components" => [
-                    [
-                        "type" => "body",
-                        "parameters" => [
-                            [
-                                "type" => "text",
-                                "text" => $otp
-                            ]
-                        ]
-                    ],
-                    [
-                        "type" => "button",
-                        "sub_type" => "url",
-                        "index" => "0",
-                        "parameters" => [
-                            [
-                                "type" => "text",
-                                "text" => $otp
-                            ]
-                        ]
-                    ]
-                ]
-            ]
-        ]);
-
-        Log::info('WhatsApp API Response: ' . $response->body());
-
-        return $response->successful();
-    } catch (\Exception $e) {
-        Log::error('WhatsApp Send OTP Error: ' . $e->getMessage());
-        return false;
-    }
-}
         public function verification($user_id)
 
     {
-        
         $mob_no = User::where('id',$user_id)->latest()->first();
         
         $mobile = $mob_no->phone;
 
-        return view('auth.otpVerification')->with([
+        return view('seller.login.otpVerification')->with([
 
             'user_id' => $user_id,
             'phone' => $mobile
@@ -218,7 +203,7 @@ protected function sendOtpSms($phone, $otp)
 
         }else if($userOtp && $now->isAfter($userOtp->expire_at)){
 
-            return redirect()->route('otp.login')->with('error', 'Your OTP has been expired');
+            return redirect()->route('sellerotp.login')->with('error', 'Your OTP has been expired');
 
         }
 
@@ -238,32 +223,30 @@ protected function sendOtpSms($phone, $otp)
 
             ]);
 
-
-
-            if (!session()->has('temp_user_id')) {
-                session()->put('temp_user_id', 'temp_' . time()); // Example unique ID
-            }
-            
-            $tempUserId = session()->get('temp_user_id');
-            
-             DB::table('carts')->where('temp_user_id',$tempUserId)->update([
-    
-                    'user_id' => $request->user_id
-    
-                ]);
-
+  
 
             Auth::login($user);
 
+            $emailcnt = DB::table('users')->whereNull('email')->where('id',Auth::user()->id)->count();
+            
+            // return $emailcnt;
   
-            return redirect()->intended();
-            // return redirect('/welcome');
+            if($emailcnt > 0)
+            {
+                
+                return redirect('/seller/enter-email');
+            }
+            else
+            {
+                return redirect('/showloom.com');
+            }
+            
 
         }
 
   
 
-        return redirect()->route('otp.login')->with('error', 'Your Otp is not correct');
+        return redirect()->route('sellerotp.login')->with('error', 'Your Otp is not correct');
 
     }
 
@@ -271,7 +254,12 @@ protected function sendOtpSms($phone, $otp)
     {
         if ($this->guard()->user() != null && ($this->guard()->user()->user_type == 'admin' || $this->guard()->user()->user_type == 'staff')) {
             $redirect_route = 'login';
-        } else {
+        } 
+        else if($this->guard()->user()->user_type == 'Seller')
+        {
+            $redirect_route = 'dashboard';
+        }
+        else {
             $redirect_route = 'home';
         }
 

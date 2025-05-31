@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
+use Illuminate\Support\Facades\Auth;
+
 class WhatsAppController extends Controller
 {
     public function sendMessage(Request $request)
@@ -28,6 +30,19 @@ class WhatsAppController extends Controller
         $sellerData = $request->sellerData;
         $adminData = $request->adminData;
        
+       
+       $userphone = $request->userphone;
+       $username = $request->username;
+       $oid = $request->oid;
+       
+       
+       $viewphone = $request->viewphone;
+       $viewname = $request->viewname;
+       
+       // For Testing 
+       
+       $akashphone = $request->akashphone;
+       $akashname = $request->akashname;
         
     
         // Log the request details
@@ -234,6 +249,117 @@ class WhatsAppController extends Controller
             ]
         ]);
     }
+    
+    elseif($id === 4)
+    {
+        $response = Http::withToken($token)->post($url, [
+            'messaging_product' => 'whatsapp',
+            'to' => $userphone,
+            'type' => 'template',
+            'template' => [
+                'name' => 'product_return', // Use your actual template name as shown in WhatsApp Business
+                'language' => ['code' => 'en'],
+                'components' => [
+                    [
+                        'type' => 'header',
+                        'parameters' => [
+                            [
+                                'type' => 'image',
+                                'image' => [
+                                    'id' => '1220508096144677'
+                                ]
+                            ]
+                        ]
+                    ],
+                    [
+                        'type' => 'body',
+                        'parameters' => [
+                            [
+                                'type' => 'text',
+                                'text' => $username  // This will replace {{1}} in your template
+                            ],
+                            [
+                                'type' => 'text',
+                                'text' => $oid  // This will replace {{1}} in your template
+                            ]
+                        ]
+                    ]
+                ]
+            ]
+        ]);
+    }
+    
+    elseif($id === 5)
+    {
+        $response = Http::withToken($token)->post($url, [
+            'messaging_product' => 'whatsapp',
+            'to' => $akashphone,
+            'type' => 'template',
+            'template' => [
+                'name' => 'new_user', // Use your actual template name as shown in WhatsApp Business
+                'language' => ['code' => 'en'],
+                'components' => [
+                    [
+                        'type' => 'header',
+                        'parameters' => [
+                            [
+                                'type' => 'image',
+                                'image' => [
+                                    'id' => '1689555878312113'
+                                ]
+                            ]
+                        ]
+                    ],
+                    [
+                        'type' => 'body',
+                        'parameters' => [
+                            [
+                                'type' => 'text',
+                                'text' => $akashname  // This will replace {{1}} in your template
+                            ]
+                        ]
+                    ]
+                ]
+            ]
+        ]);
+        
+    }
+    elseif($id === 6)
+    {
+        $response = Http::withToken($token)->post($url, [
+            'messaging_product' => 'whatsapp',
+            'to' => $viewphone,
+            'type' => 'template',
+            'template' => [
+                'name' => 'view_cart', // Use your actual template name as shown in WhatsApp Business
+                'language' => ['code' => 'en'],
+                'components' => [
+                    [
+                        'type' => 'header',
+                        'parameters' => [
+                            [
+                                'type' => 'image',
+                                'image' => [
+                                    'id' => '1332167114556642'
+                                ]
+                            ]
+                        ]
+                    ],
+                    [
+                        'type' => 'body',
+                        'parameters' => [
+                            [
+                                'type' => 'text',
+                                'text' => $viewname  // This will replace {{1}} in your template
+                            ]
+                        ]
+                    ]
+                ]
+            ]
+        ]);
+        
+    }
+    
     
     
     

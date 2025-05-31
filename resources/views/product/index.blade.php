@@ -8,6 +8,10 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <style>
+        p{
+            font-family: "Manrope" !important;;
+        }
+    
         .product-image {
             max-width: 100%;
             height: 500px;
@@ -446,7 +450,7 @@
         <div id="toast-container" class="position-fixed w-100" style="z-index: 9999;top: 66px;"></div>
 
 
-        <div class="row align-items-center mb-3" style="margin-top:63px;">
+        <div class="row align-items-center mb-3" style="margin-top:96px;">
 
             <!-- Product Image -->
             <div class="col-12 col-md-6 text-center mb-md-0 position-relative p-0">
@@ -469,7 +473,7 @@
                                     // Check if the image URL contains the S3 path
                                     $isS3Image = Str::startsWith(
                                         $pimages,
-                                        'https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/products/',
+                                        'https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/products/',
                                     );
 
                                     // If it's not an S3 image, prepend the seller's image path
@@ -508,7 +512,7 @@
                 <!--</span>-->
 
                 <span class="badge badgee bg-success me-2 position-absolute"
-                    style="bottom: 18px; right: 10px; background-color:#04AA6D; color: white; padding: 8px 15px; border-radius: 12px; font-size: 10px; z-index:1000;">
+                    style="bottom: 38px; right: 10px; background-color:#04AA6D; color: white; padding: 8px 15px; border-radius: 12px; font-size: 10px; z-index:20 !important;">
                     No Reviews Yet
                 </span>
 
@@ -558,9 +562,9 @@
                     @if ($subsubcat_id == 40)
                     @else
                         <div class="px-4 d-flex justify-content-between align-items-center mb-3" style="gap: 1rem;">
-                            <h5 class="mb-0">Selected Size: <span id="selectedSize"></span></h5>
+                            <h4 class="mb-0">Selected Size: <span id="selectedSize"></span></h4>
 
-                            <h5 class="mb-0 size-chart-button" onclick="openModal()">Size Chart</h5>
+                            <h4 class="mb-0 size-chart-button" onclick="openModal()">Size Chart</h4>
                         </div>
 
 
@@ -568,13 +572,13 @@
                             @foreach ($size_data as $sdata)
                                 @if ($product_details->category_id == 88)
                                     <button type="button" class="btn btn-outline-secondary newbtn border-light fs-2 m-1"
-                                        style="font-weight: bold; height: 41px; border-radius: 16px; width: 81px;"
+                                        style="font-weight: bold; height: 45px; border-radius: 16px; width: 51px;"
                                         onclick="selectSize(this, '{{ $sdata->size_name }}')">
                                         {{ $sdata->size_name }}
                                     </button>
                                 @else
                                     <button type="button" class="btn btn-outline-secondary newbtn border-light fs-2 m-1"
-                                        style="font-weight: bold; height: 61px; border-radius: 16px; width: 61px;"
+                                        style="font-weight: bold; height: 45px; border-radius: 16px; width: 51px;"
                                         onclick="selectSize(this, '{{ $sdata->size_name }}')">
                                         {{ $sdata->size_name }}
                                     </button>
@@ -594,25 +598,22 @@
                         <h4 class="text-dark"><b>Size Chart</b></h4>
                         <button class="close-button" onclick="closeModal()">×</button>
                         @if ($subcat_id == 23)
-                            <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Size+Chart/Men+---+Footwear.jpg"
+                            <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Size%20Chart/Men%20---%20Footwear.jpg"
                                 alt="Men's Bottom Wear Size Chart" class="size-chart-image">
                         @elseif($subcat_id == 67)
-                            <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Size+Chart/Women+-+Footware.jpg"
+                            <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Size%20Chart/Women%20-%20Footware.jpg"
                                 alt="Men's Bottom Wear Size Chart" class="size-chart-image">
                         @elseif($subcat_id == 39 || $subcat_id == 46 || $subcat_id == 76)
-                            <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Size+Chart/Women+---+Indian+and+fusion+wear%2C+Western+wear%2C+Nightwear.jpg"
+                            <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Size%20Chart/Women%20---%20Indian%20and%20fusion%20wear%2C%20Western%20wear%2C%20Nightwear.jpg"
                                 alt="Men's Bottom Wear Size Chart" class="size-chart-image">
                         @elseif($subcat_id == 59)
-                            <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Size+Chart/Women+---+Bottom+Wear.jpg"
-                                alt="Men's Bottom Wear Size Chart" class="size-chart-image">
-                        @elseif($subcat_id == 59)
-                            <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Size+Chart/Women+---+Bottom+Wear.jpg"
+                            <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Size%20Chart/Women%20---%20Bottom%20Wear.jpg"
                                 alt="Men's Bottom Wear Size Chart" class="size-chart-image">
                         @elseif($subcat_id == 2 || $subcat_id == 12)
-                            <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Size+Chart/Men+---+Topwear%2C+Indian+and+Festive+Wear%2C+nightwear.jpg"
+                            <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Size%20Chart/Men%20---%20Topwear%2C%20Indian%20and%20Festive%20Wear%2C%20nightwear.jpg"
                                 alt="Men's Bottom Wear Size Chart" class="size-chart-image">
                         @elseif($subcat_id == 17)
-                            <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Size+Chart/Men+-+Bottom+Wear.jpg"
+                            <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Size%20Chart/Men%20-%20Bottom%20Wear.jpg"
                                 alt="Men's Bottom Wear Size Chart" class="size-chart-image">
                         @endif
 
@@ -621,11 +622,11 @@
 
                 @if ($colorcnt == 0)
                 @else
-                    <h5>Colors </h5>
+                    <h4>Colors </h4>
                     <div class="d-flex mb-2" style="gap: 1.5rem; overflow: scroll; scrollbar-width: none;">
                         @foreach ($similar as $sim)
                             @php
-                                if ($sim->category_id == 88) {
+                                if ($sim->category_id == 88 || $sim->subcategory_id == 95 ) {
                                     $cat_id = DB::table('categories')
                                         ->where('id', $sim->subcategory_id)
                                         ->latest()
@@ -683,10 +684,10 @@
 
         <div class="row text-light">
             <div class="mb-4">
-                <h5>Check Delivery & Services :</h5>
+                <h4>Check Delivery & Services :</h4>
                 <div class="input-group d-flex">
                     <input type="number" id="pincode" class="form-control mr-2" placeholder="Enter Your Pin Code"
-                        style="width:60%;" oninput="enforceLength(this)" required>
+                        style="width:60%; height: unset !important;" oninput="enforceLength(this)" required>
                     <button class="btn" style="background-color: var(--primary-color); color: black; width: 25%;"
                         onclick="validatePincode()">Check</button>
                 </div>
@@ -789,7 +790,7 @@
 
 
 
-        <h5 class="px-4 text-light mt-4 mb-0 row p-3">Product Information</h5>
+        <h4 class="px-4 text-light mt-4 mb-0 row p-3">Product Information</h4>
         <div class="row mb-2">
 
             <div class="accordion accordionn" style="padding:0px; border: none;">
@@ -915,7 +916,7 @@
                         <i class="fa-solid fa-angles-right fs-1 icons"></i>
                     </button>
                     <div class="accordion-content px-4 text-light">
-                        <p style="text-align:justify"><b>Description: {!! $product_details->description !!}</b></p>
+                        <p style="text-align:justify"><b>Description: </b>{!! $product_details->description !!}</p>
                     </div>
 
                 </div>
@@ -1040,14 +1041,14 @@
     <div class="container pr-0" style="background-color: #1f1f1f;">
 
         <!--Product -->
-        <h5 class=" text-light">Similar Products</h5>
+        <h4 class=" text-light">Similar Products</h4>
         <div id="contentDiv"></div>
         <div style="padding-right: 0px; padding-left: 0px;">
             <div class="product-category-container">
                 <!-- Category Product 1 -->
                 @foreach ($same_products as $same_p)
                     @php
-                        if ($same_p->category_id == 88) {
+                        if ($same_p->category_id == 88 || $same_p->subcategory_id == 95) {
                             $cat_id = DB::table('categories')->where('id', $same_p->subcategory_id)->latest()->first();
                             $seller_id = DB::table('sellers')
                                 ->where('seller_id', $same_p->seller_id)
@@ -1091,7 +1092,7 @@
                                 <img src="{{ $images[0] }}" alt="Image" style="height: 200px; width: 150px;">
                             @endif
 
-                            <div class="card-body product-item-card-body text-left" style="height:95px;">
+                            <div class="card-body product-item-card-body text-left" style="height:115px;">
                                 <h8 class="card-title" title="{{ $same_p->product_name }}">
                                     @if ($brnd_cnt != 0)
                                         <span

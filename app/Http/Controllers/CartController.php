@@ -6,6 +6,7 @@ use App\Models\Cart;
 use Illuminate\Http\Request;
 use DB;
 use Illuminate\Support\Facades\Auth;
+use App\Models\ScheduledWhatsappMessage;
 
 
 class CartController extends Controller
@@ -54,6 +55,7 @@ class CartController extends Controller
         $cartQuery->whereNotIn('id', function ($query) {
             $query->select('cart_id')
                 ->from('orderdetails')
+                ->whereNotNull('images')
                 ->where('payment_status', 'completed');
         });
 
@@ -132,6 +134,7 @@ class CartController extends Controller
             $cat_id = DB::table('products')
                 ->select('sub_subcategory_id', 'subcategory_id')
                 ->where('id', $cdat->product_id)
+                ->whereNotNull('images')
                 ->first();
 
             if ($cat_id) {
@@ -306,6 +309,21 @@ class CartController extends Controller
             'updated_price' => $pdetail->portal_updated_price,
 
         ]);
+        
+        if(Auth::check() && Auth::user()->phone)
+        {
+            ScheduledWhatsappMessage::create([
+                'phone' => Auth::check() ? Auth::user()->phone : null ,
+                'message' => "Your order has been confirmed and payment received successfully!",
+                'name' => Auth::check() ? Auth::user()->name : 'Hello Buddie!',
+                'dynamic_id' => 6,
+                'orderid' => Auth::check() ? Auth::id() : null,
+                'send_after' => now()->addMinutes(45),
+            ]);
+        }
+        
+
+        
 
         // Fetch the product details
         $pdetail = DB::table('products')->where('id', $request->product_id)->first();
@@ -518,7 +536,9 @@ class CartController extends Controller
                               'MISTU200',
                               'SAYANTANI200',
                               'RIZA200',
-                              'DISHA200'
+                              'DISHA200',
+                              'SHARANYA200',
+                              'ANIKET200'
                             ];
             $couponCode = strtoupper($request->coupon_code);
     

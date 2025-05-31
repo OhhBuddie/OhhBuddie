@@ -15,6 +15,11 @@ use App\Http\Controllers\WhatsAppController;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Cache;
+use App\Models\ScheduledWhatsappMessage;
+
+use App\Jobs\DelayedWhatsAppJob;
 
 class CheckoutController extends Controller
 {
@@ -97,6 +102,8 @@ class CheckoutController extends Controller
     public function checkout(Request $request)
     {
         
+        DB::table('carts')->where('user_id', Auth::id())->update(['checkout_initiative' => true]);
+
             
         if ($request->total_payable >= 200 && $request->total_payable <= 499) {
             $shipping_cost = 49;
@@ -239,17 +246,15 @@ class CheckoutController extends Controller
     
     public function paymentSuccess(Request $request)
     {
-
         $this->logPayUResponse($request, 'Success');
     
         if (!$request->has('txnid')) {
             return redirect('/addtocart')->with('error', 'Invalid payment response');
         }
-
-
+    
         // Find the transaction by order ID (txnid)
         $transaction = Transaction::where('order_id', $request->txnid)->first();
-        
+    
         if ($transaction) {
             $transaction->update([
                 'txn_id' => $request->mihpayid ?? null,
@@ -257,61 +262,60 @@ class CheckoutController extends Controller
                 'payment_method' => $request->mode ?? 'online',
                 'payment_details' => json_encode($request->all())
             ]);
-            
-            
-            
-            
+    
             // =========================================WHATSAPP MESSAGE START===================================================
-
+    
             // Update orders table
-
             $order = DB::table('orders')->where('order_id', $request->txnid)->first();
             $orderDetailsCount = DB::table('orderdetails')->where('order_id', $order->id)->count();
-
+            
+            
+            
+    
             // =========================================INVOICE CREATION START===================================================
-
+    
+    
             $od_detail = DB::table('orderdetails')->where('order_id', $order->id)->get();
- 
+    
             foreach ($od_detail as $orders1) {
-                
-                // Common seller details (assuming same seller for all)
-                // $firstOrder = $allorders->first();
+                // Common seller details
                 $firstOrderDetail = DB::table('orderdetails')->where('id', $orders1->id)->first();
                 $seller_detail = DB::table('sellers')->where('seller_id', $firstOrderDetail->seller_id)->first();
-            
+    
                 $numericSellerId = preg_replace('/\D/', '', $seller_detail->seller_id);
                 $companyPrefix = strtoupper(Str::substr(preg_replace('/\W+/', '', $seller_detail->company_name), 0, 3));
                 $next_year = Carbon::now()->addYear(1)->format('Y');
                 $base = $numericSellerId . $companyPrefix . $next_year;
-            
+    
+                // Get the last invoice number for the seller
                 $latestInvoice = DB::table('invoices')
                     ->where('seller_id', $seller_detail->seller_id)
                     ->whereYear('created_at', Carbon::now()->year)
                     ->whereNotNull('invoice_id')
                     ->orderByDesc('invoice_id')
                     ->first();
-            
+    
                 if ($latestInvoice && isset($latestInvoice->invoice_id)) {
                     $lastInvId = $latestInvoice->invoice_id;
                     $lastNumber = (int) substr($lastInvId, strlen($base));
                 } else {
                     $lastNumber = 0;
                 }
-                
-                
+    
+                // Generate the invoice ID for the product invoice
                 $order_detail = DB::table('orderdetails')->where('id', $orders1->id)->latest()->first();
                 $odr_data = DB::table('orders')->where('id', $order_detail->order_id)->latest()->first();
                 $product_detail = DB::table('products')->where('id', $order_detail->product_id)->latest()->first();
                 $address_data = DB::table('addresses')->where('id', $odr_data->shipping_address)->latest()->first();
                 $transaction_data = DB::table('transactions')->where('order_id', $odr_data->order_id)->latest()->first();
-        
+    
                 $finalAmount = $order_detail->price;
                 $gstRate = $product_detail->gst_rate;
                 $isInterstate = false;
-        
+    
                 $taxableAmount = $finalAmount * 100 / (100 + $gstRate);
                 $gstAmount = $finalAmount - $taxableAmount;
-        
+    
                 if ($isInterstate) {
                     $igst = $gstAmount;
                     $cgst = $sgst = 0;
@@ -319,57 +323,160 @@ class CheckoutController extends Controller
                     $cgst = $sgst = $gstAmount / 2;
                     $igst = 0;
                 }
-        
-                // Generate new unique invoice ID
+    
+                // Generate new unique invoice ID for the product
                 $lastNumber++;
                 $nextNumber = str_pad($lastNumber, 7, '0', STR_PAD_LEFT);
                 $inv_id = $base . $nextNumber;
-        
+    
                 DB::table('orderdetails')->where('id', $order_detail->id)->update([
                     'invoice_id' => $inv_id,
                     'updated_at' => now()
                 ]);
+    
+    
+               if($seller_detail->shipping_mode == 'In-Store')
+               {
+                   
+                        // Generate the invoice PDF for the product
+                        $pdf = Pdf::loadView('invoice_new', [
+                            'seller_detail' => $seller_detail,
+                            'product_detail' => $product_detail,
+                            'odr_data' => $odr_data,
+                            'address_data' => $address_data,
+                            'cgst'=> $cgst,
+                            'sgst'=> $sgst,
+                            'taxableAmount'=> $taxableAmount,
+                            'finalAmount' => $finalAmount,
+                            'inv_id' => $inv_id
+                        ]);
+            
+                        $pdfContent = $pdf->output();
+            
+                        // Store invoice PDF to S3
+                        $folderPath = "invoices/seller/{$seller_detail->seller_id}/{$odr_data->order_id}/{$inv_id}";
+                        $fileName = $inv_id . '.pdf';
+                        $filePath = "{$folderPath}/{$fileName}";
+            
+                        Storage::disk('s3')->put($filePath, $pdfContent, 'public');
+                        $invoiceUrl = Storage::disk('s3')->url($filePath);
+            
+                        // Insert invoice into the invoices table
+                        DB::table('invoices')->insert([
+                            'invoice_id' => $inv_id,
+                            'product_id' => $product_detail->id,
+                            'seller_id' =>  $seller_detail->seller_id,
+                            'order_id' =>   $odr_data->order_id,
+                            'order_table_id' => $odr_data->id,
+                            'user_id' => $odr_data->user_id,
+                            'invoice_link' => $invoiceUrl,
+                            'type' => 'Seller to customer',
+                            'created_at' => now(),
+                            'updated_at' => now(),
+                        ]);
+                   
+               }
+                else {
+                    // Step 1: Send invoice to Zoho
+                    $zohoRequest = new Request([
+                        'contact_id' => $seller_detail->zoho_contact_id ?? '2503040000000033002',
+                        'product_name' => 'Shipping Charges',
+                        'rate' => $odr_data->shipping_cost,
+                        'quantity' => 1,
+                        'custom_company_name' => $seller_detail->company_name ?? 'Unknown Company',
+                    ]);
+                
+                    $zohoController = new OrderController();
+                    $zohoInvoiceResponse = $zohoController->sendInvoiceToZoho($zohoRequest,$order_detail->id);
+                
+                    // Step 2: Handle response
+                    if ($zohoInvoiceResponse instanceof JsonResponse) {
+                        $responseArray = $zohoInvoiceResponse->getData(true);
+                
+                        if (isset($responseArray['success']) && $responseArray['success']) {
+                            $zohoInvoiceId = $responseArray['invoice_id'];
+                            $zohoInvoiceNumber = $responseArray['invoice_number'];
+                            $pdfUrl = $responseArray['download_url'];
+                
+                            // Step 3: Use same access token & orgId again
+                            $accessToken = Cache::get('zoho_access_token');
+                            $orgId = '60040824848';
+                
+                            $pdfResponse = Http::withHeaders([
+                                'Authorization' => "Bearer $accessToken",
+                                'X-com-zoho-invoice-organizationid' => $orgId,
+                            ])->get($pdfUrl);
+                
+                            if ($pdfResponse->ok()) {
+                                $pdfContent = $pdfResponse->body();
+                
+                                $folderPath = "invoices/seller/{$seller_detail->seller_id}/{$odr_data->order_id}/{$zohoInvoiceId}";
+                                $fileName = $zohoInvoiceNumber . '.pdf';
+                                $filePath = "{$folderPath}/{$fileName}";
+                
+                                Storage::disk('s3')->put($filePath, $pdfContent, 'public');
+                                $invoiceUrl = Storage::disk('s3')->url($filePath);
+                
+                                DB::table('invoices')->insert([
+                                    'invoice_id' => $zohoInvoiceId,
+                                    'product_id' => null, // Shipping invoice, no product
+                                    'seller_id' => $seller_detail->seller_id,
+                                    'order_id' => $odr_data->order_id,
+                                    'order_table_id' => $odr_data->id,
+                                    'user_id' => $odr_data->user_id,
+                                    'invoice_link' => $invoiceUrl,
+                                    'type' => 'Zoho shipping invoice',
+                                    'created_at' => now(),
+                                    'updated_at' => now(),
+                                ]);
+                            } else {
+                                Log::error('Failed to download Zoho invoice PDF', [
+                                    'response' => $pdfResponse->body()
+                                ]);
+                            }
+                        } else {
+                            Log::error('Zoho Invoice Error', $responseArray);
+                        }
+                    } else {
+                        Log::error('Unexpected Zoho response format');
+                    }
+                }
+    
+                
+                
+                
+                
+                
+                
+            }
         
-                $pdf = Pdf::loadView('invoice_new', [
-                    'seller_detail' => $seller_detail,
-                    'product_detail' => $product_detail,
-                    'odr_data' => $odr_data,
-                    'address_data' => $address_data,
-                    'cgst'=> $cgst,
-                    'sgst'=> $sgst,
-                    'taxableAmount'=> $taxableAmount,
-                    'finalAmount' => $finalAmount,
-                    'inv_id' => $inv_id
-                ]);
-        
-                $pdfContent = $pdf->output();
-        
-                $folderPath = "invoices/seller/{$seller_detail->seller_id}/{$odr_data->order_id}/{$inv_id}";
-                $fileName = $inv_id . '.pdf';
-                $filePath = "{$folderPath}/{$fileName}";
-        
-                Storage::disk('s3')->put($filePath, $pdfContent, 'public');
-                $invoiceUrl = Storage::disk('s3')->url($filePath);
-        
+     
+           // =========================================ADDITIONAL INVOICE FOR SHIPPING COST START===================================================
+
+            // If shipping cost is greater than 0, create a separate invoice for it
+            if ($odr_data->shipping_cost > 0) {
+                $shippingInvoiceId = $base . str_pad(++$lastNumber, 7, '0', STR_PAD_LEFT);
+                
+                // Create the invoice for the shipping cost
                 DB::table('invoices')->insert([
-                    'invoice_id' => $inv_id,
-                    'product_id' => $product_detail->id,
-                    'seller_id' =>  $seller_detail->seller_id,
-                    'order_id' =>   $odr_data->order_id,
-                    'order_table_id' => $odr_data->id,
+                    'invoice_id' => $shippingInvoiceId,
+                    'seller_id' => $seller_detail->seller_id,
+                    'order_id' => $odr_data->order_id,
                     'user_id' => $odr_data->user_id,
-                    'invoice_link' => $invoiceUrl,
-                    'type' => 'Seller to customer',
+                    'invoice_link' => '', // Link would be empty, if it's a manual entry
+                    'type' => 'Shipping',
+                    'shipping_cost' => $odr_data->shipping_cost, // Assuming a new field `shipping_cost`
                     'created_at' => now(),
                     'updated_at' => now(),
                 ]);
             }
+
+            // =========================================ADDITIONAL INVOICE FOR SHIPPING COST END===================================================
+        
+                
             
-            // =========================================INVOICE CREATION END===================================================
             
-            
-            
-            // Update orders table
+            // Update orders table -> WHATSAPP MSG PART 
 
             
             $delivaryadd = DB::table('addresses')->where('id', $order->shipping_address)->first();
@@ -469,34 +576,105 @@ class CheckoutController extends Controller
             $whatsappController->sendMessage($whatsappRequest);
             
             // =========================================WHATSAPP MESSAGE END===================================================
-            if ($order) {
-                DB::table('orders')
-                    ->where('order_id', $request->txnid)
-                    ->update([
-                        'payment_status' => 'completed',
-                        'payment_type' => $request->mode ?? null
-                    ]);
 
-                // Update orderdetails table using the ID of the orders table
-                DB::table('orderdetails')
-                    ->where('order_id', $order->id)
-                    ->update([
-                        'payment_status' => 'completed',
-                    ]);
-            }
-            
-            
-           
-            
-        } else {
-            // Handle case where transaction is not found
-            return redirect('/addtocart')->with('error', 'Transaction not found');
+        // Update orders table
+        if ($order) {
+            DB::table('orders')
+                ->where('order_id', $request->txnid)
+                ->update([
+                    'payment_status' => 'completed',
+                    'payment_type' => $request->mode ?? null
+                ]);
+
+            // Update orderdetails table using the ID of the orders table
+            DB::table('orderdetails')
+                ->where('order_id', $order->id)
+                ->update([
+                    'payment_status' => 'completed',
+                ]);
         }
 
         // return view('payment.payment-success', compact('transaction'));
         return redirect('/order-confirm');
     }
+    
+    // If transaction not found
+        return redirect('/addtocart')->with('error', 'Transaction not found');
+   }
 
+    public function sendInvoiceToZoho(Request $request)
+    {
+        $clientId = '1000.VTWB7ECPGBCKRLS27SXHGCLYBGH57J';
+        $clientSecret = '27947cbfe1b0a8a7d5b319bf986e494084d1f81488';
+        $refreshToken = '1000.7b0a2ba27f9f4b622c09552558e92550.e1d475cdbe1dd57ec5bf7054d0142aea';
+        $orgId = '60040824848';
+        $apiDomain = 'https://www.zohoapis.in';
+        $authDomain = 'https://accounts.zoho.in';
+    
+        // Step 1: Refresh Token
+        $accessToken = Cache::get('zoho_access_token');
+        if (!$accessToken) {
+            $tokenResponse = Http::asForm()->post("$authDomain/oauth/v2/token", [
+                'refresh_token' => $refreshToken,
+                'client_id' => $clientId,
+                'client_secret' => $clientSecret,
+                'grant_type' => 'refresh_token',
+            ]);
+    
+            if (!$tokenResponse->ok() || !isset($tokenResponse->json()['access_token'])) {
+                Log::error('Zoho token refresh failed', [
+                    'status' => $tokenResponse->status(),
+                    'body' => $tokenResponse->body(),
+                ]);
+    
+                return ['error' => 'Token refresh failed', 'details' => $tokenResponse->json()];
+            }
+    
+            $accessToken = $tokenResponse->json()['access_token'];
+            Cache::put('zoho_access_token', $accessToken, now()->addMinutes(55));
+        }
+    
+        // Step 2: Prepare invoice payload
+        $invoicePayload = [
+            'customer_id' => $request->contact_id,
+            'line_items' => [
+                [
+                    'name' => $request->product_name,
+                    'rate' => $request->rate,
+                    'quantity' => $request->quantity,
+                ],
+            ],
+            'custom_fields' => [
+                [
+                    'api_name' => 'cf_company_name',
+                    'value' => $request->custom_company_name,
+                ],
+            ],
+        ];
+    
+        // Step 3: Create invoice
+        $invoiceResponse = Http::withHeaders([
+            'Authorization' => "Bearer $accessToken",
+            'X-com-zoho-invoice-organizationid' => $orgId,
+            'Content-Type' => 'application/json',
+        ])->post("$apiDomain/invoice/v3/invoices", $invoicePayload);
+    
+        if (!$invoiceResponse->ok()) {
+            return ['error' => 'Failed to create invoice.', 'details' => $invoiceResponse->json()];
+        }
+    
+        $invoice = $invoiceResponse->json('invoice');
+    
+        // Step 4: Return the invoice info
+        return [
+            'success' => true,
+            'invoice_id' => $invoice['invoice_id'],
+            'invoice_number' => $invoice['invoice_number'],
+            'download_url' => "$apiDomain/invoice/v3/invoices/{$invoice['invoice_id']}/pdf?organization_id=$orgId",
+        ];
+    }
+    
+    
     public function paymentFailure(Request $request)
     {
         $this->logPayUResponse($request, 'Failure');
@@ -553,24 +731,36 @@ class CheckoutController extends Controller
                     if (strlen($phone) == 10) {
                         $phone = '91' . $phone;
                     }
+
                     
-                   
                     // Create a request object for the WhatsApp controller
-                    $whatsappRequest = new Request([
+                    // $whatsappRequest = new Request([
+                    //     'phone' => $phone,
+                    //     'message' => "Your order has been confirmed and payment received successfully!",
+                    //     'name' => $phoneno->name,
+                    //     'id' => 3,
+                    //     'orderid' => $orderDetailsCount,
+                    //     'price' => $order->grand_total
+                    // ]);
+                    
+                    // // Call WhatsAppController's sendMessage method
+                    // $whatsappController = new WhatsAppController();
+                    // $whatsappController->sendMessage($whatsappRequest);
+                    
+                    ScheduledWhatsappMessage::create([
                         'phone' => $phone,
                         'message' => "Your order has been confirmed and payment received successfully!",
                         'name' => $phoneno->name,
-                        'id' => 3,
                         'orderid' => $orderDetailsCount,
-                        'price' => $order->grand_total
+                        'price' => $order->grand_total,
+                        'dynamic_id' => 3,
+                        'send_after' => now()->addMinutes(45),
                     ]);
-                    
-                    // Call WhatsAppController's sendMessage method
-                    $whatsappController = new WhatsAppController();
-                    $whatsappController->sendMessage($whatsappRequest);
                     
                     // Log success
                     Log::info('WhatsApp notification sent for order: ' . $phoneno->phone);
+                    
+                    
                 }
             } catch (\Exception $e) {
                 // Log error but continue with the payment success flow
@@ -601,6 +791,27 @@ class CheckoutController extends Controller
             'status' => $request->status,
             'all_data' => $request->all()
         ]);
+    }
+    
+    public function handleRefund(Request $request)
+    {
+        // Log the raw payload for debugging
+        Log::info('PayU Refund Webhook Received:', $request->all());
+
+        // Example data fields (based on PayU refund webhook payload structure)
+        $refundStatus = $request->input('status'); // "success" or "failure"
+        $transactionId = $request->input('txnid');
+        $refundAmount = $request->input('refund_amount');
+        $refundId = $request->input('refundid');
+        $message = $request->input('message');
+
+        // ✅ Optional: Verify authenticity using hash if PayU provides one
+
+        // ✅ Save or update refund status in your database
+        // Example:
+        // Refund::createOrUpdate(['transaction_id' => $transactionId, 'status' => $refundStatus, ...]);
+
+        return response('OK', 200);
     }
 
 

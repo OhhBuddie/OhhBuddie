@@ -2,7 +2,7 @@
 @section('content')
 
 <title>OhhBuddie | Category</title>
-<link rel="icon" type="image/x-icon" href="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Ohbuddielogo.png">
+<link rel="icon" type="image/x-icon" href="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Ohbuddielogo.png">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
 
@@ -301,34 +301,65 @@
             font-weight: 700;
         }
         .bottom-button {
-      position: absolute;
-      bottom: 48px;
-      max-width: 228px;
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: #efc475;
-      color: white;
-      padding: 15px 30px;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: 600;
-      font-size: 19px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-      transition: 0.3s;
-      text-align: center;
+          position: absolute;
+          bottom: 48px;
+          max-width: 268px;
+          left: 50%;
+          transform: translateX(-50%);
+          background-color: #efc475;
+          color: white;
+          padding: 15px 30px;
+          text-decoration: none;
+          border-radius: 8px;
+          font-weight: 600;
+          font-size: 12px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+          transition: 0.3s;
+          text-align: center;
+        }
+        .bottom-button:hover {
+          opacity: 0.9;
+          text-decoration: none;
+          color: white;
+        }
+    </style>
+    <!-- Add CSS for animation -->
+    <style>
+    @keyframes tagPulse {
+        0% {
+            transform: scale(1);
+            box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+        }
+        50% {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+        }
+        100% {
+            transform: scale(1);
+            box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+        }
     }
-    .bottom-button:hover {
-      opacity: 0.9;
-      text-decoration: none;
-      color: white;
+    
+    .product-tag-badge:hover {
+        transform: scale(1.1) !important;
+        transition: transform 0.2s ease;
+    }
+    
+    /* Alternative simple version without animation */
+    .simple-tag-badge {
+        background: linear-gradient(135deg, #ff6b35, #ff8c42);
+        color: white;
+        padding: 4px 8px;
+        border-radius: 12px;
+        font-size: 10px;
+        font-weight: bold;
+        text-transform: uppercase;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        letter-spacing: 0.5px;
     }
     </style>
-    <div class="container" style="padding: 0; margin: 0; width: 100vw; max-width: 100%; margin-top: 60px;">
-        @if($cat_id->parent_id ==88)
-            <h6 style="color:white; margin-left:5px;"><a href="/" style="color:white;">Home /</a><a href="/allproduct" style="color:white;"> Clothing / </a> {{$cat_id->category}} / {{$cat_id->subcategory}}</h6>
-        @else
-            <h6 style="color:white; margin-left:5px;"><a href="/" style="color:white;">Home /</a><a href="/allproduct" style="color:white;">Clothing / </a>{{$cat_id->category}} / {{$cat_id->subcategory}} /{{$cat_id->sub_subcategory}}</h6>
-        @endif
+    <div class="container" style="padding: 0; margin: 0; width: 100vw; max-width: 100%; margin-top: 96px;">
+
         <div class="row m-0 product" style="min-height: 81vh;">
             <!-- Product Card 1 -->
                 @php
@@ -336,7 +367,7 @@
                 @endphp
                 
                 @if($products->isEmpty())
-                    <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Blank+Pages/Exciting+Collection+Loading+Soon+(1).jpg"  class="full-page-image" >
+                    <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Blank%20Pages/Exciting%20Collection%20Loading%20Soon%20(1).jpg"  class="full-page-image" >
                     
                     <a href="/explore" class="bottom-button">Explore More</a>
                 @else
@@ -345,7 +376,7 @@
                     
                 
                     @php
-                        if($pdts->category_id ==88)
+                        if($pdts->category_id ==88 || $pdts->subcategory_id == 95 )
                         {
                            $cat_id = DB::table('categories')->where('id',$pdts->subcategory_id)->latest()->first();
                            $seller_id = DB::table('sellers')->where('seller_id',$pdts->seller_id)->latest()->first();
@@ -378,7 +409,7 @@
                     @endphp
                     
                     <div class="col-6"  data-created-at="{{ $pdts->created_at }}" data-price="{{ $pdts->portal_updated_price }}"  data-color="{{ $pdts->color_name }}"  data-size="{{ $pdts->size_name }}">
-                        <div class="card position-relative" style="border-radius: unset; background-color: white; color: black; border-radius: 10px;">
+                        <div class="card position-relative" style="border-radius: unset; background-color: white; color: black; ">
                             <!-- Product Image -->
                             <!--<a  href="/product/{{ Crypt::encryptString($pdts->id) }}" style="text-decoration:none;">-->
                             <a href="/product/{{ \Illuminate\Support\Str::slug($cat_id->subcategory) }}/{{ \Illuminate\Support\Str::slug($brnd_name11) }}/{{ \Illuminate\Support\Str::slug($pdts->product_name) }}/{{$pdts->id}}/buy" style="text-decoration:none;">
@@ -388,16 +419,17 @@
                                     $images = json_decode($pdts->images, true);
                                 @endphp
                                 @if(empty($images))
-                                <img src="https://assets.ajio.com/medias/sys_master/root/20230728/GBrh/64c3db50a9b42d15c979555c/-473Wx593H-466398360-green-MODEL.jpg" alt="Image" style="width:100%; border-top-left-radius: 10px; border-top-right-radius: 10px; height: 245px;">
+                                <img src="https://assets.ajio.com/medias/sys_master/root/20230728/GBrh/64c3db50a9b42d15c979555c/-473Wx593H-466398360-green-MODEL.jpg" alt="Image" style="width:100%; border-top-left-radius: 10px; border-top-right-radius: 10px; height: 314px;">
                                 @elseif(!empty($images) && isset($images[0]))
-                                    <img src="{{ $images[0] }}" alt="Image" style="width:100%; border-top-left-radius: 10px; border-top-right-radius: 10px; height: 245px;">
+                                    <img src="{{ $images[0] }}" alt="Image" style="width:100%;  height: 314px;">
                                 @endif
                                     
              
                                 <!-- Rating at the Bottom Right of the Image -->
-                                <div class="rating-label position-absolute" style="bottom: 80px; right: 10px; background-color:#04AA6D; color: white; padding: 2px 8px; border-radius: 12px; font-size: 10px;">
+                                <div class="rating-label position-absolute" style="bottom: 100px; right: 10px; background-color:#04AA6D; color: white; padding: 2px 8px; border-radius: 12px; font-size: 10px;">
                                     No Reviews Yet
                                 </div>
+                                
 
                                 <div class="card-body product-item-card-body text-left">
                                     
@@ -427,7 +459,7 @@
      
      @else
     <!-- Fixed Bottom Navbar -->
-    <div class="fixed-bottom-navbar d-flex justify-content-around align-items-center" style="background-color:black;">
+    <div class="fixed-bottom-navbar d-flex justify-content-around align-items-center" style="background-color:black; z-index: 999;">
         
         <!-- Sort Button -->
         <button class="btn-lg d-flex align-items-center gap-2"  style="background-color:transparent; border: none;" id="sortBtn" >

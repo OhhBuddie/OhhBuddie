@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use DB;
+use App\Http\Controllers\WhatsAppController;
 
 class ReturnandrefundController extends Controller
 {
@@ -71,6 +72,7 @@ class ReturnandrefundController extends Controller
         $order_data = DB::table('orders')->where('order_id',$request->oid)->latest()->first();
         $orderdetails_data = DB::table('orderdetails')->where('order_id',$order_data->id)->latest()->first();
         $product_data = DB::table('products')->where('id',$orderdetails_data->product_id)->latest()->first();
+        
         // Save to DB
         DB::table('orderreturns')->insert([
             'return_category' => $request->input('section'),
@@ -96,7 +98,24 @@ class ReturnandrefundController extends Controller
         ]);
         
         
+        $user = DB::table('users')->where('id', $request->user_id)->latest()->first();
         
+        $phone = preg_replace('/[^0-9]/', '', $user->phone);
+        if (strlen($phone) == 10) {
+                $phone = '91' . $phone;
+        }
+                    
+            // Now create the WhatsApp request with all seller data
+            $whatsappRequest = new Request([
+                'userphone' => $phone,
+                'message' => "Your order has been confirmed and payment received successfully!",
+                'username' => $user->name,
+                'id' => 4,
+                'oid' => $request->oid
+            ]);
+            
+            $whatsappController = new WhatsAppController();
+            $whatsappController->sendMessage($whatsappRequest);
         
             // $table->string('pickup_required');
             // $table->string('pickup_status');

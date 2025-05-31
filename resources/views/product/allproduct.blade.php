@@ -2,7 +2,7 @@
 @section('content')
 
 <title>OhhBuddie | Category</title>
-<link rel="icon" type="image/x-icon" href="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Ohbuddielogo.png">
+<link rel="icon" type="image/x-icon" href="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Ohbuddielogo.png">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
 
@@ -300,7 +300,7 @@
         }
     </style>
     
-    <div class="container" style="padding: 0; margin: 0; width: 100vw; max-width: 100%; margin-top: 60px;">
+    <div class="container" style="padding: 0; margin: 0; width: 100vw; max-width: 100%; margin-top: 96px;">
         <div class="row m-0 product" style="min-height: 81vh;">
             <!-- Product Card 1 -->
                 @php
@@ -308,14 +308,14 @@
                 @endphp
                 
                 @if($products->isEmpty())
-                    <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Blank+Pages/Exciting+Collection+Loading+Soon+(1).jpg"  class="full-page-image" >
+                    <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Blank+Pages/Exciting%20Collection%20Loading%20Soon%20(1).jpg"  class="full-page-image" >
                     
                 @else
                     @foreach($products as $pdts)
                     
                     
                     @php
-                        if($pdts->category_id ==88)
+                        if($pdts->category_id ==88 || $pdts->subcategory_id == 95 )
                         {
                            $cat_id = DB::table('categories')->where('id',$pdts->subcategory_id)->latest()->first();
                            $seller_id = DB::table('sellers')->where('seller_id',$pdts->seller_id)->latest()->first();
@@ -343,7 +343,7 @@
                     @endphp
                     
                     <div class="col-6"  data-created-at="{{ $pdts->created_at }}" data-price="{{ $pdts->portal_updated_price }}"  data-color="{{ $pdts->color_name }}"  data-category="{{ $pdts->category_id }}">
-                        <div class="card position-relative" style="border-radius: unset; background-color: white; color: black; border-radius: 10px;">
+                        <div class="card position-relative" style="border-radius: unset; background-color: white; color: black; border-radius: unset;">
                             <!-- Product Image -->
                             <!--<a  href="/product/{{ Crypt::encryptString($pdts->id) }}" style="text-decoration:none;">-->
                             <a href="/product/{{ \Illuminate\Support\Str::slug($cat_id->subcategory) }}/{{ \Illuminate\Support\Str::slug($brnd_name11) }}/{{ \Illuminate\Support\Str::slug($pdts->product_name) }}/{{$pdts->id}}/buy" style="text-decoration:none;">
@@ -352,14 +352,14 @@
                                     $images = json_decode($pdts->images, true);
                                 @endphp
                                 @if(empty($images))
-                                <img src="https://assets.ajio.com/medias/sys_master/root/20230728/GBrh/64c3db50a9b42d15c979555c/-473Wx593H-466398360-green-MODEL.jpg" alt="Image" style="width:100%; border-top-left-radius: 10px; border-top-right-radius: 10px; height: 245px;">
+                                <img src="https://assets.ajio.com/medias/sys_master/root/20230728/GBrh/64c3db50a9b42d15c979555c/-473Wx593H-466398360-green-MODEL.jpg" alt="Image" style="width:100%; border-top-left-radius: 10px; border-top-right-radius: 10px; height: 314px;">
                                 @elseif(!empty($images) && isset($images[0]))
-                                    <img src="{{ $images[0] }}" alt="Image" style="width:100%; border-top-left-radius: 10px; border-top-right-radius: 10px; height: 245px;">
+                                    <img src="{{ $images[0] }}" alt="Image" style="width:100%;  height: 314px;">
                                 @endif
                                     
              
                                 <!-- Rating at the Bottom Right of the Image -->
-                                <div class="rating-label position-absolute" style="bottom: 80px; right: 10px; background-color:#04AA6D; color: white; padding: 2px 8px; border-radius: 12px; font-size: 10px;">
+                                <div class="rating-label position-absolute" style="bottom: 100px; right: 10px; background-color:#04AA6D; color: white; padding: 2px 8px; border-radius: 12px; font-size: 10px;">
                                     No Reviews Yet
                                 </div>
                                 @php

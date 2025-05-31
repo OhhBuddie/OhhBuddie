@@ -260,7 +260,7 @@ body {
     width: 100%;
     transform: translate(35%, 0);
     /* background: url("{{ asset('public/assets/images/banners/login page.jpg') }}") no-repeat center center; */
-    background: url('https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/login+page_new.png') no-repeat center center;
+    background: url('https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Welcome/login%20page_new.png') no-repeat center center;
 
     background-size: cover;
     transition: 1s ease-in-out;
@@ -458,7 +458,7 @@ body {
     margin-right: 5px;
 }
 
-.mobile-input-wrapper input[type="text"] {
+.mobile-input-wrapper input[type="number"] {
     flex: 1;
     border: none;
     padding: 5px;
@@ -482,6 +482,18 @@ body {
   margin: 5px;
 }
 
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
 </style>
 
 
@@ -506,7 +518,7 @@ body {
                                     <img src="https://upload.wikimedia.org/wikipedia/en/4/41/Flag_of_India.svg" alt="India Flag" class="flag-icon">
                                      +91 
                                 </span>
-                                    <input type="text" id="mobile_code" placeholder="Enter Your WhatsApp Number" name="mobile_no" value="{{ old('mobile_no') }}" autocomplete="mobile_no" class="bg-dark" style="color:white; margin-left: 6px;" required>
+                                    <input type="number" oninput="enforceLength(this)" id="mobile_code" placeholder="Enter Your WhatsApp Number" name="mobile_no" value="{{ old('mobile_no') }}" autocomplete="mobile_no" class="bg-dark" style="color:white; margin-left: 6px;" required>
                
                                 
                                 
@@ -545,7 +557,7 @@ body {
                         
                         <a href="/auth/google" class="btn btn-light m-1" style=" font-family: sans-serif; flex-grow: 1; width: 50%; border-color: black; box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); display: flex; align-items: center; justify-content: center; gap: 10px;">
                             <!--<img src="{{ asset('public/assets/images/logo/google.png') }}" alt="Google Logo" style="height: 28px; width: auto;">-->
-                            <img src="https://www.edigitalagency.com.au/wp-content/uploads/google-logo-icon-PNG-Transparent-Background-letter-G-multiple-colors-300x300.png" alt="Google Logo" style="height: 28px; width: auto;">
+                            <img src="https://i.pinimg.com/736x/68/3d/9a/683d9a1a8150ee8b29bfd25d46804605.jpg" alt="Google Logo" style="height: 28px; width: auto;">
                             <span>Google</span>
                         </a>
                     </div>
@@ -562,6 +574,17 @@ body {
 	
 	
 	<script>
+	
+	function enforceLength(input) {
+        let value = input.value;
+        value = value.replace(/\D/g, '');
+        if (value.length > 6) {
+            value = value.slice(0, 10);
+        }
+        input.value = value;
+    }
+	
+	
 	    let container = document.getElementById('container')
 
 toggle = () => {

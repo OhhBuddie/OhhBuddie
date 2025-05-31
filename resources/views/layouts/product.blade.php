@@ -9,7 +9,7 @@
 
     <title>OhhBuddie | Product</title>
     
-     <link rel="icon" type="image/x-icon" href="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Ohbuddielogo.png">
+     <link rel="icon" type="image/x-icon" href="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Ohbuddielogo.png">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome for Wishlist Icon -->
@@ -58,7 +58,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 </style>
     <style>
-        
+        .navbar {
+            width: 100%;
+            margin-bottom: 0px; 
+            min-height: 100px !important;
+            border: none;
+        }
          @media (min-width: 778px) {
              
              .row{
@@ -516,117 +521,117 @@
 
 <body>
     
-        <nav class="navbar navbar-expand-lg" style="position:fixed;">
+        <nav class="navbar navbar-expand-lg navbar-light" style="position:fixed; margin-top: -5px;">
 
+        <!--<a class="navbar-brand" href="/">-->
+        <!--    <img src="{{ asset('public/assets/images/logo/logo_showloom.png') }}" class="logoimg" alt="OhhBuddie">-->
+        <!--</a>-->
         <!-- Back Button -->
         <a href="javascript:history.back();" style="font-size: 17px; margin-right: 12px; color: white;">
            <i class="fa-solid fa-arrow-left"></i>
         </a>
-    
-        <!-- Logo -->
-        <a class="navbar-brand" href="/" >
-            <img src="{{ asset('public/assets/images/logo/logo_showloom.png') }}" class="logoimg" alt="Shoes">
-        </a>
-    
+        
+        <div class="d-flex " style="flex-direction: column; color: white; max-width:70vw;">
+           <span style="display: flex; align-items: center;"> <h4 style="margin: 0px 6px 0px 0px; font-size: 20px !important;">Ohh! Buddie</h4> <span style="margin-top:7px !important; font-size: 1rem;">delivers in</span>  </span>
+            <h2 style="margin: -7px 0px 0px 0px; color:#efc475;">69 minutes</h2>
+        </div>
+
         <!-- Icons -->
         <div class="d-flex ml-auto align-items-center">
-                              
-            <div class="search-icon">
+
+                    <div class="search-icon">
               
-                <div class="search-container">
-                    <input type="text" id="search-input" class="search-icon__input" placeholder="search ..." autocomplete="off"/>
-                    <div id="search-results" class="search-results-dropdown" style="display: none;"></div>
-                </div>            
-    
-    
+                        <div class="search-container">
+                            <input type="text" id="search-input" class="search-icon__input" placeholder="search ..." autocomplete="off" />
+                            <div id="search-results" class="search-results-dropdown" style="display: none;"></div>
+                        </div>            
             
-                <div class="search-icon__wrapper">
-                  <div class="search-icon__svg">
-                    <!-- Search icon SVG -->
-                    <!--<svg class="search-icon__svg-search" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 50 50" fill="none">-->
-                    <!--  <circle cx="20" cy="20" r="9" stroke="white" stroke-width="2"/>-->
-                    <!--  <line x1="26" y1="26" x2="34" y2="34" stroke="white" stroke-width="2" stroke-linecap="round"/>-->
-                    <!--</svg>-->
+            
                     
-                    <a href="#" class="text-light search-icon__svg-search" style="font-size: 24px; font-weight: normal; margin-right: 20px;">
-                        <i class="fas fa-search"></i>
-                    </a>
-                    
-                    <!-- Close (X) icon SVG -->
-                    <svg class="search-icon__svg-close" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 50 50" fill="none">
-                      <line x1="15" y1="15" x2="35" y2="35" stroke="white" stroke-width="2" stroke-linecap="round"/>
-                      <line x1="35" y1="15" x2="15" y2="35" stroke="white" stroke-width="2" stroke-linecap="round"/>
-                    </svg>
-                  </div>
-                </div>
-              </div>
+                        <div class="search-icon__wrapper">
+                          <div class="search-icon__svg">
+                       
+                            <a href="#" class="text-light search-icon__svg-search" style="font-size: 24px; font-weight: normal; margin-right: 20px;">
+                                <!--<i class="fas fa-search"></i>-->
+                                <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Home/ICONS/SEARCH.svg" style="width: 25px; height: 25px;">
 
-
-            <a href="/wishlist" class="text-light position-relative" style="font-size: 24px; font-weight: normal; margin-right: 20px;">
-                <i class="far fa-heart"></i>
-                
-            </a>
-            
-            
-            <a href="/addtocart" class="text-light position-relative" style="font-size: 24px; font-weight: normal;" >
-                <i class="fa fa-shopping-bag" ></i>
+                            </a>
                             
-    
-                @php
-                    $cartCount = 0;
-                
-                    if (Auth::check()) {
-                        // Logged-in user: Fetch cart count using user_id
-                        $cartCount = DB::table('carts')->where('user_id', Auth::id())->count();
-                    } else {
-                        // Guest user: Fetch temp_user_id from session or cookies
-                        $tempUserId = session('temp_user_id') ?? request()->cookie('temp_user_id');
-                        
-                        if ($tempUserId) {
-                            $cartCount = DB::table('carts')->where('temp_user_id', $tempUserId)->where('user_id', 0)->count();
-                        }
-                    }
-                @endphp
-    
-    
-                @if($cartCount > 0)
-                    <style>
-                        .cart-count {
-                            opacity: 0;
-                            transform: scale(0.5);
-                            animation: fadeInScale 0.5s ease-in-out forwards;
-                        }
-                
-                        @keyframes fadeInScale {
-                            from {
-                                opacity: 0;
-                                transform: scale(0.5);
-                            }
-                            to {
-                                opacity: 1;
-                                transform: scale(1);
-                            }
-                        }
-                    </style>
-                
-                    <span class="cart-count bag-count position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                        {{ $cartCount }}
-                    </span>
-                    
-                @else
-                    <span class="cart-count bag-count position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                       0
-                    </span>
-                
-                @endif
-                               <!--<a href="{{ route('cart.index') }}" class="bag-icon">-->
-                               <!--     <i class="fa fa-shopping-bag"></i>-->
-                               <!--     <span class="cart-count">{{ $cartCount }}</span>-->
-                               <!-- </a>-->
-            </a>
-            
+                            <!-- Close (X) icon SVG -->
+                            <svg class="search-icon__svg-close" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 50 50" fill="none">
+                              <line x1="15" y1="15" x2="35" y2="35" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                              <line x1="35" y1="15" x2="15" y2="35" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                            
+                          </div>
+                        </div>
+                      </div>
 
-        </div>
+
+
+
+
+                    <a href="/wishlist" class="text-light position-relative"
+                        style="font-size: 24px; font-weight: normal; margin-right: 20px;">
+                        <!--<i class="far fa-heart"></i>-->
+                        <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Home/ICONS/WISHLIST.svg" style="width: 25px; height: 25px;">
+
+                    </a>
+
+                    <a href="/addtocart" class="text-light position-relative"
+                        style="font-size: 24px; font-weight: normal;">
+                        <!--<i class="fa fa-shopping-bag"></i>-->
+                        <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Home/ICONS/BAG.svg" style="width: 25px; height: 25px;">
+
+                        @php
+                            $cartCount = 0;
+                            if (Auth::check()) {
+                                // Logged-in user: Fetch cart count using user_id
+                                $cartCount = DB::table('carts')->where('user_id', Auth::id())->count();
+                            } else {
+                                // Guest user: Fetch temp_user_id from session or cookies
+                                $tempUserId = session('temp_user_id') ?? request()->cookie('temp_user_id');
+                                if ($tempUserId) {
+                                    $cartCount = DB::table('carts')
+                                        ->where('temp_user_id', $tempUserId)
+                                        ->where('user_id', 0)
+                                        ->count();
+                                }
+                            }
+                        @endphp
+
+                        @if ($cartCount > 0)
+                            <style>
+                                .cart-count {
+                                    opacity: 0;
+                                    transform: scale(0.5);
+                                    animation: fadeInScale 0.5s ease-in-out forwards;
+                                }
+
+                                @keyframes fadeInScale {
+                                    from {
+                                        opacity: 0;
+                                        transform: scale(0.5);
+                                    }
+
+                                    to {
+                                        opacity: 1;
+                                        transform: scale(1);
+                                    }
+                                }
+                            </style>
+                            <span
+                                class="cart-count bag-count position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                {{ $cartCount }}
+                            </span>
+                        @else
+                            <span
+                                class="cart-count bag-count position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                0
+                            </span>
+                        @endif
+                    </a>
+                </div>
     </nav>
 
     <div class="container" style="padding: 0px;">

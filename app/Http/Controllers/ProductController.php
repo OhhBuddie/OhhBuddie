@@ -43,6 +43,8 @@ class ProductController extends Controller
                     ->where('parent_id', $product_details->parent_id)
                     ->select('products.*') // Select all columns
                     ->orderByDesc('id') // Latest first
+                    ->where('portal_updated_price','!=',1)
+                    ->whereNotNull('images')
                     ->get()
                     ->groupBy('parent_id')
                     ->map(function ($group) {
@@ -57,6 +59,8 @@ class ProductController extends Controller
                     ->whereNotNull('product_name')
                     ->where('color_name', '!=', $product_details->color_name)
                     ->where('id', '!=', $decryptedId)
+                    ->where('portal_updated_price','!=',1)
+                    ->whereNotNull('images')
                     ->select('products.*') // Select all columns
                     ->orderByDesc('id') // Latest first
                     ->get()
@@ -69,9 +73,11 @@ class ProductController extends Controller
        else{
            $same_products = DB::table('products')
                     ->where('sub_subcategory_id', $product_details->sub_subcategory_id)
+                    ->whereNotNull('images')
                     ->whereNotNull('parent_id')
                     ->whereNotNull('product_name')
                     ->where('color_name', '!=', $product_details->color_name)
+                    ->where('portal_updated_price','!=',1)
                     ->where('id', '!=', $decryptedId)
                     ->select('products.*') // Select all columns
                     ->orderByDesc('id') // Latest first
@@ -91,10 +97,12 @@ class ProductController extends Controller
                     ->whereNotNull('parent_id')
                     ->where('id', '!=', $decryptedId)
                     ->where('color_name', '!=', $product_details->color_name)
+                    ->where('portal_updated_price','!=',1)
+                    
                     ->where('parent_id', $product_details->parent_id)
                     ->count();  
        
-        $product = Storage::disk('s3')->url('Product/Easy Return.mp4');
+        $product = 'https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Product/Easy%20Return.mp4';
        
        
         return view('product.index', compact('product','product_details','similar','same_products','subcat_id','subsubcat_id','colorcnt'));
@@ -127,6 +135,8 @@ class ProductController extends Controller
                     ->whereNotNull('parent_id')
                     ->where('id', '!=', $decryptedId)
                     ->where('color_name', '!=', $product_details->color_name)
+                    ->where('portal_updated_price','!=',1)
+                    ->whereNotNull('images')
                     ->where('parent_id', $product_details->parent_id)
                     ->select('products.*') // Select all columns
                     ->orderByDesc('id') // Latest first
@@ -143,6 +153,7 @@ class ProductController extends Controller
                     ->whereNotNull('parent_id')
                     ->whereNotNull('product_name')
                     ->where('color_name', '!=', $product_details->color_name)
+                    ->where('portal_updated_price','!=',1)
                     ->where('id', '!=', $decryptedId)
                     ->select('products.*') // Select all columns
                     ->orderByDesc('id') // Latest first
@@ -159,6 +170,8 @@ class ProductController extends Controller
                     ->whereNotNull('parent_id')
                     ->whereNotNull('product_name')
                     ->where('color_name', '!=', $product_details->color_name)
+                    ->where('portal_updated_price','!=',1)
+                    ->whereNotNull('images')
                     ->where('id', '!=', $decryptedId)
                     ->select('products.*') // Select all columns
                     ->orderByDesc('id') // Latest first
@@ -178,10 +191,12 @@ class ProductController extends Controller
                     ->whereNotNull('parent_id')
                     ->where('id', '!=', $decryptedId)
                     ->where('color_name', '!=', $product_details->color_name)
+                    ->where('portal_updated_price','!=',1)
+                    ->whereNotNull('images')
                     ->where('parent_id', $product_details->parent_id)
                     ->count();  
        
-        $product = Storage::disk('s3')->url('Product/Easy Return.mp4');
+        $product = 'https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Product/Easy%20Return.mp4';
        
        
         return view('product.index', compact('product','product_details','similar','same_products','subcat_id','subsubcat_id','colorcnt'));
@@ -711,6 +726,7 @@ class ProductController extends Controller
         $categoryFilter = request('category');
         
         $query = DB::table('products')
+                    ->whereNotNull('images')
                     ->whereNotNull('product_name');
                     
         if ($categoryFilter) {

@@ -1,252 +1,199 @@
 @extends('layouts.mobile_marque')
-
 @section('content')
+<link rel="preload" as="image" href="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Home/Sliders/69%20Minutes%20Delivery.webp">
 
 <style>
-@media (min-width: 768px) {
-    .desktop-alert {
-        display: block; /* Show alert only on larger screens */
+    @media (min-width: 768px) {
+        .desktop-alert {
+            display: block;
+        }
+        .product-category-container {
+            display: flex !important;
+        }
+        .product-item-card {
+            flex: 0 0 33% !important;
+        }
     }
-    .product-category-container{
-        
-        display: flex !important;
+    @media (max-width: 767px) {
+        .desktop-alert {
+            display: none !important;
+        }
     }
-    .product-item-card {
-        flex: 0 0 33% !important;
+    .video-lazy {
+        opacity: 0;
+        transition: opacity 0.3s;
     }
-}
-@media (max-width: 767px) {
-    .desktop-alert {
-        display: none !important; /* Ensure it's hidden on mobile */
+    .video-lazy.loaded {
+        opacity: 1;
     }
-}
-/* Preload optimization */
-.video-lazy {
-    opacity: 0;
-    transition: opacity 0.3s;
-}
-.video-lazy.loaded {
-    opacity: 1;
-}
-/* Optimize carousel performance */
-.carousel-inner .item img {
-    height: auto;
-    max-height: 600px;
-    width: 100%;
-    object-fit: cover;
-}
+    .carousel-inner .item img {
+        height: auto;
+        max-height: 600px;
+        width: 100%;
+        object-fit: cover;
+    }
+    .mySlides {
+        display: none;
+        width: 100%;
+    }
+    .mySlides.active-slide {
+        display: block;
+    }
+    .dot {
+        height: 4px;
+        width: 25px;
+        margin: 0 3px;
+        background-color: white;
+        border-radius: 20%;
+        display: inline-block;
+        transition: background-color 0.3s;
+        cursor: pointer;
+    }
+    .dot.active {
+        background-color: #EFC475;
+    }
 </style>
-<link rel="preconnect" href="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com">
-<link rel="dns-prefetch" href="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com">
-<div class="alert alert-warning alert-dismissible show d-flex align-items-center justify-content-between desktop-alert"
-    role="alert" style="background-color: black; color: white; border-radius: 0px; position: relative;">
-    <strong>For Better Visibility, Please View On Your Mobile!</strong>
-    <button type="button" data-dismiss="alert" aria-label="Close"
-        style="color: white; position: absolute; right: 10px; top: 13px; background: transparent; border: 1px solid white;">
-        <span aria-hidden="true">&times;</span>
-    </button>
-</div>
-
-<!-- Defer loading of non-critical scripts -->
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0" defer></script>
-<script src="script.js" defer></script>
-
-<div class="category-container">
 @php
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Cache;
-
+// Pre-calculate encrypted category names
+$encryptedCategories = [
+    'Saree' => Crypt::encryptString('Saree'),
+    'Dresses' => Crypt::encryptString('Dresses'),
+    'Jeans' => Crypt::encryptString('Jeans'),
+    'Kurti' => Crypt::encryptString('Kurti'),
+    'Kids' => Crypt::encryptString('Kids'),
+    'Shoes' => Crypt::encryptString('Shoes'),
+    'T-Shirt' => Crypt::encryptString('T-Shirt'),
+    'Tops' => Crypt::encryptString('Tops')
+];
 $categories = [
-    ['name' => 'Saree','icon' => 'https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/Category+Icons/sareebg(brown).gif'],    
-    ['name' => 'Dresses', 'icon' => 'https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/Category+Icons/dress1.gif'],
-    ['name' => 'Jeans', 'icon' => 'https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/Category+Icons/jeans.gif'],
-    ['name' => 'Kurti', 'icon' => 'https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/Category+Icons/kurti.gif'],
-    ['name' => 'Housecoat', 'icon' => 'https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/Category+Icons/housecoat(bgblue).gif'],
-    ['name' => 'Trousers', 'icon' => 'https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/Category+Icons/traouser.gif'],
-    ['name' => 'T-Shirt', 'icon' => 'https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/Category+Icons/tshirt.gif'],
-    ['name' => 'Shoes', 'icon' => 'https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/Category+Icons/shoe.gif'],
-    ['name' => 'Nighty', 'icon' => 'https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/Category+Icons/night+dress.gif'],
+    ['name' => 'Saree', 'icon' => 'https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Home/Category%20Icons/sareebg(brown).gif'],    
+    ['name' => 'Dresses', 'icon' => 'https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Home/Category%20Icons/dress1.gif'],
+    ['name' => 'Jeans', 'icon' => 'https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Home/Category%20Icons/jeans.gif'],
+    ['name' => 'Kurti', 'icon' => 'https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Home/Category%20Icons/kurti.gif'],
+    ['name' => 'Nighty', 'icon' => 'https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Home/Category%20Icons/night%20dress.gif'],
+    ['name' => 'Housecoat', 'icon' => 'https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Home/Category%20Icons/housecoat(bgblue).gif'],
+    ['name' => 'Trousers', 'icon' => 'https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Home/Category%20Icons/traouser.gif'],
+    ['name' => 'T-Shirt', 'icon' => 'https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Home/Category%20Icons/tshirt.gif'],
+    ['name' => 'Shoes', 'icon' => 'https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Home/Category%20Icons/shoe.gif'],
+];
+$trendingItems = [
+    ['url' => $encryptedCategories['Dresses'], 'video' => 'dress.mp4'],
+    ['url' => $encryptedCategories['Jeans'], 'video' => 'jeans.mp4'],
+    ['url' => $encryptedCategories['Saree'], 'video' => 'saree.mp4'],
+    ['url' => $encryptedCategories['Shoes'], 'video' => 'shoe.mp4'],
+    ['url' => $encryptedCategories['T-Shirt'], 'video' => 't+shirt.mp4'],
+];
+$trendingCategories = [
+    ['name' => 'Saree', 'img' => 'https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Home/Cards%202/4%20(1).jpg'],
+    ['name' => 'Dresses', 'img' => 'https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Home/Cards%202/ek%20sutta%20-%20Copy.jpg'],
+    ['name' => 'T-shirts', 'img' => 'https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Home/Cards%202/good%20sleep%20(5).jpg'],
 ];
 @endphp
-
-@foreach ($categories as $category)
-    @php
-    $encryptedCategory = Crypt::encryptString($category['name']);
-    @endphp
-    <div class="category-card">
-        <a href="/category/{{ $encryptedCategory }}" style="text-decoration:none;">
-            <img loading="lazy" src="{{ $category['icon'] }}" class="catimg" alt="{{ $category['name'] }}">
-            <p class="cat-text">{{ $category['name'] }}</p>
-        </a>
-    </div>
-@endforeach
+<link rel="preconnect" href="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev">
+<link rel="dns-prefetch" href="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev">
+<div class="category-container">
+    @foreach ($categories as $category)
+        <div class="category-card">
+            <a href="/category/{{ $encryptedCategories[$category['name']] ?? Crypt::encryptString($category['name']) }}" style="text-decoration:none;">
+                <img loading="lazy"  src="{{ $category['icon'] }}" class="catimg" alt="{{ $category['name'] }}">
+                <p class="cat-text">{{ $category['name'] }}</p>
+            </a>
+        </div>
+    @endforeach
 </div>
-@php
-    $encryptedSaree = Crypt::encryptString('Saree');
-    $encryptedJeans = Crypt::encryptString('Jeans');
-    $encryptedkids = Crypt::encryptString('Kids');
-    $encryptedDresses = Crypt::encryptString('Dresses');
-    $encryptedShoes = Crypt::encryptString('Shoes');
-    $encryptedTShirt = Crypt::encryptString('T-Shirt');
-    $encryptedKurti = Crypt::encryptString('Kurti');
+<div class="w3-content w3-display-container" style="position: relative; max-width:600px; margin:auto; ">
+<img 
+  class="mySlides active-slide" 
+  src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Home/Sliders/69%20Minutes%20Delivery.webp" 
+  alt="Slide 1" 
+  fetchpriority="high"
+  style="width:100%; display:block;">
+    <a href="/allproduct" style="text-decoration:none;"> 
+     <img class="mySlides" src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Home/Sliders/Flat%2050%20OFF.webp" alt="Slide 2" style="width:100%; display:none;">
+    </a>
+    <a href="/category/{{ $encryptedCategories['Dresses'] }}" style="text-decoration:none;">
+    <img class="mySlides" src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Home/Sliders/Fresh%20Drops.webp" alt="Slide 3" style="width:100%; display:none;">
+    </a>
+    <a href="/category/{{ $encryptedCategories['Kurti'] }}" style="text-decoration:none;">
+        <img class="mySlides" src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Home/Sliders/NEWBUDDIE20.webp" alt="Slide 4" style="width:100%; display:none;">
+    </a>
 
-@endphp
-<!-- Optimized Slider -->
-<div id="myCarousel" class="carousel slide" data-ride="carousel">
-    <div class="carousel-inner">
-        <div class="item-active item active">
-            <img loading="lazy" src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/Sliders/static+slider+western.webp" alt="Slider Image 1">
-        </div>
-        <div class="item-active item ">
-            <img loading="lazy" src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/Sliders/NEWBUDDIE20.webp" alt="Slider Image 1">
-        </div>
-        <div class="item-active item">
-            <img loading="lazy" src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/Sliders/try+out.webp" alt="Slider Image 5">
-        </div>
-        <div class="item-active item">
-            <a href="/category/{{ $encryptedJeans }}" style="text-decoration:none;">
-             <img loading="lazy" src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/Sliders/jeans+static+slider+(1).webp" alt="Slider Image 2">
-            </a>
-        </div>
-        <div class="item-active item">
-            <a href="/category/{{ $encryptedkids }}" style="text-decoration:none;">
-             <img loading="lazy" src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/Sliders/static+slider+kids.webp" alt="Slider Image 3">
-            </a>
-        </div>
-        <div class="item-active item">
-            <a href="/category/{{ $encryptedSaree }}" style="text-decoration:none;">
-             <img loading="lazy" src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/Sliders/static+slider+saree.webp" alt="Slider Image 4">
-            </a>
-        </div>
-        
+    <a href="/category/{{ $encryptedCategories['Tops'] }}" style="text-decoration:none;">
+        <img class="mySlides" src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Home/Sliders/Welcome%20To%20Summer.webp" alt="Slide 5" style="width:100%; display:none;">
+    </a>
+    <a href="/category/{{ $encryptedCategories['Kids'] }}" style="text-decoration:none;">
+        <img class="mySlides" src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Home/Sliders/static%20slider%20kids.webp" alt="Slide 6" style="width:100%; display:none;">
+    </a>
+
+    <div class="carousel-dots" style="text-align:center; position:absolute; bottom:10px; width:100%;">
+        @for ($i = 1; $i <= 6; $i++)
+            <span class="dot {{ $i === 1 ? 'active' : '' }}"  onclick="currentSlide({{ $i }})"></span>
+        @endfor
     </div>
-    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#myCarousel" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right"></span>
-        <span class="sr-only">Next</span>
-    </a>
 </div>
-
-
-
 <h3 class="heading">Coupons For You</h3>
 <div class="Banner">
-     <img loading="lazy" src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/Coupon/NEWBUDDIE20+(2).webp" class="couponimg" alt="Shoes">
+    <img loading="lazy" src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Home/Coupon/NEWBUDDIE20.webp" class="couponimg" alt="Coupon">
 </div>
-
 <h3 class="heading">Weekly Trends</h3>
-
-    <!-- Optimized Video Loading -->
-    <div class="tranding">
-    <div class="tranding-card" style="height:100%; background-color: unset; border: none;">
-        <a href="/category/{{ $encryptedDresses }}" style="text-decoration:none;">
-            <video width="320" height="240" playsinline muted loop autoplay style="border-radius: 10px;">
-                <source src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/Trending+Cards/dress.mp4" type="video/mp4">
-            </video>
-        </a>    
-    </div>
-    <div class="tranding-card" style="height:100%; background-color: unset; border: none;">
-        <a href="/category/{{ $encryptedJeans }}" style="text-decoration:none;">
-            <video width="320" height="240" playsinline muted loop autoplay style="border-radius: 10px;">
-                <source src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/Trending+Cards/jeans.mp4" type="video/mp4">
-            </video>
-        </a>    
-    </div>
-    <div class="tranding-card" style="height:100%; background-color: unset; border: none;">
-        <a href="/category/{{ $encryptedSaree }}" style="text-decoration:none;">
-            <video width="320" height="240" playsinline muted loop autoplay style="border-radius: 10px;">
-                <source src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/Trending+Cards/saree.mp4" type="video/mp4">
-            </video>
-        </a>    
-    </div>
-    <div class="tranding-card" style="height:100%; background-color: unset; border: none;">
-        <a href="/category/{{ $encryptedShoes }}" style="text-decoration:none;">
-            <video width="320" height="240" playsinline muted loop autoplay style="border-radius: 10px;">
-                <source src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/Trending+Cards/shoe.mp4" type="video/mp4">
-            </video>
-        </a>    
-    </div>
-    <div class="tranding-card" style="height:100%; background-color: unset; border: none;">
-        <a href="/category/{{ $encryptedTShirt }}" style="text-decoration:none;">
-            <video width="320" height="240" playsinline muted loop autoplay style="border-radius: 10px;">
-                <source src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/Trending+Cards/t+shirt.mp4" type="video/mp4">
-            </video>
-        </a>    
-    </div>
+<div class="tranding">
+    @foreach ($trendingItems as $item)
+        <div class="tranding-card" style="height:100%; background-color: unset; border: none;">
+            <a href="/category/{{ $item['url'] }}" style="text-decoration:none;">
+                 <video loading="lazy" width="320" height="240" playsinline muted loop autoplay preload="auto" style="border-radius: 10px;">
+                    <source src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Home/Trending%20Cards/{{ $item['video'] }}" type="video/mp4" >
+                </video>
+            </a>    
+        </div>
+    @endforeach
 </div>
-
-<h3 class="heading">Our USP</h3>
 <div class="Banner">
-    <video playsinline muted loop autoplay width="100%">
-        <source src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/USP+Banner/usp+banner+17.02.mp4" type="video/mp4">
+    <video loading="lazy" playsinline muted loop autoplay preload="auto" width="100%">
+        <source src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Home/USP%20Banner/usp%20banner%2017.02.mp4" type="video/mp4">
     </video>
 </div>
-
 <br>
-
-<!-- Saree -->
+<!-- Saree Section -->
 <div class="Banner">
-    <a href="/category/{{ $encryptedSaree }}" style="text-decoration:none;">
-        <video playsinline muted loop autoplay width="100%">
-            <source src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/Category+Banners/saree+mobile+banner.mp4" type="video/mp4">
+    <a href="/category/{{ $encryptedCategories['Saree'] }}" style="text-decoration:none;">
+        <video loading="lazy" playsinline muted loop autoplay preload="auto" width="100%">
+            <source src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Home/Category%20Banners/saree%20mobile%20banner.mp4" type="video/mp4">
         </video>
     </a>
 </div>
-
-
+@php
+// Pre-fetch data for saree products
+$sareeBrandIds = $saree->pluck('brand_id')->filter()->unique();
+$sareeCategoryIds = $saree->pluck('sub_subcategory_id')->filter()->unique();
+$sareeSellerIds = $saree->pluck('seller_id')->filter()->unique();
+$sareeBrands = DB::table('brands')->whereIn('id', $sareeBrandIds)->get()->keyBy('id');
+$sareeCategories = DB::table('categories')->whereIn('id', $sareeCategoryIds)->get()->keyBy('id');
+$sareeSellers = DB::table('sellers')->whereIn('seller_id', $sareeSellerIds)->get()->keyBy('seller_id');
+@endphp
 <div class="container" style="padding-right: 0px; padding-left: 0px;">
     <div class="product-category-container" style="margin-left: 5px;">
-        @php
-        // Pre-fetch brand data to avoid repeated queries
-        $brandCache = [];
-        $sareeIds = $saree->pluck('brand_id')->filter()->unique()->toArray();
-        
-        if (!empty($sareeIds)) {
-            $brands = DB::table('brands')->whereIn('id', $sareeIds)->get();
-            foreach ($brands as $brand) {
-                $brandCache[$brand->id] = $brand->brand_name;
-            }
-            
-
-        }
-        
-        @endphp
-        
         @foreach ($saree as $sar)
-        @php
-           $cat_id = DB::table('categories')->where('id',$sar->sub_subcategory_id)->latest()->first();
-           $seller_id = DB::table('sellers')->where('seller_id',$sar->seller_id)->latest()->first();
-        @endphp
-
+            @php
+                $cat = $sareeCategories[$sar->sub_subcategory_id] ?? null;
+                $seller = $sareeSellers[$sar->seller_id] ?? null;
+                $brand = $sareeBrands[$sar->brand_id] ?? null;
+                $images = json_decode($sar->images, true);
+                $brandName = $brand->brand_name ?? '';
+                $brandName1 = $brandName ?: ($seller->company_name ?? '');
+            @endphp
             <div class="product-item-card">
-                
-                    @php
-                        $images = json_decode($sar->images, true);
-                        $brandName = isset($brandCache[$sar->brand_id]) ? $brandCache[$sar->brand_id] : '';
-                        $brandName1 = isset($brandCache[$sar->brand_id]) ? $brandCache[$sar->brand_id] : '';
-                        
-                        if (empty($brandName1)) {
-                            $brandName1 = $seller_id->company_name;
-                        }
-                    @endphp
-                <!--<a href="/product/{{ Crypt::encryptString($sar->id) }}" style="text-decoration:none;">-->
-                    <a href="/product/{{$cat_id->sub_subcategory}}/{{ \Illuminate\Support\Str::slug($brandName1) }}/{{ \Illuminate\Support\Str::slug($sar->product_name) }}/{{$sar->id}}/buy" style="text-decoration:none;">
-
-            
-                    
+                <a href="/product/{{ $cat->sub_subcategory ?? 'unknown' }}/{{ \Illuminate\Support\Str::slug($brandName1) }}/{{ \Illuminate\Support\Str::slug($sar->product_name) }}/{{ $sar->id }}/buy" style="text-decoration:none;">
                     @if (empty($images))
-                        <img loading="lazy" src="https://assets.ajio.com/medias/sys_master/root/20230728/GBrh/64c3db50a9b42d15c979555c/-473Wx593H-466398360-green-MODEL.jpg" alt="Image">
-                    @elseif(!empty($images) && isset($images[0]))
-                        <img loading="lazy" src="{{ $images[0] }}" alt="Image">
+                        <img loading="lazy"  src="https://assets.ajio.com/medias/sys_master/root/20230728/GBrh/64c3db50a9b42d15c979555c/-473Wx593H-466398360-green-MODEL.jpg" alt="Image">
+                    @elseif(isset($images[0]))
+                        <img loading="lazy"  src="{{ $images[0] }}" alt="Image">
                     @endif
-                    
                     <div class="card-body product-item-card-body text-left">
                         <h8 class="card-title"><b>{{ $brandName }}</b></h8><br>
                         <h8 class="card-title" title="{{ $sar->product_name }}">
-                            {{ strlen($sar->product_name) <= 16 ? $sar->product_name : substr($sar->product_name, 0, 16) . '...' }}
+                            {{ \Illuminate\Support\Str::limit($sar->product_name, 16) }}
                         </h8>
                         <div class="d-flex">
                             <p class="card-text me-2" style="text-decoration: line-through; color:red">Rs. {{ $sar->maximum_retail_price }}</p>
@@ -258,126 +205,90 @@ $categories = [
         @endforeach
     </div>
 </div>
-
-{{-- Kids Banner  --}}
- <div class="Banner">
-    <a href="/category/{{ $encryptedkids }}" style="text-decoration:none;">
-        <video  playsinline autoplay muted loop width="100%">
-              <source src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/Category+Banners/kids+mobile+banner+(1).mp4" type="video/mp4" class="catimg" style="width:100%;">
-    
+<!-- Kids Section -->
+<div class="Banner">
+    <a href="/category/{{ $encryptedCategories['Kids'] }}" style="text-decoration:none;">
+        <video loading="lazy" playsinline autoplay muted loop width="100%">
+            <source src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Home/Category%20Banners/kids%20mobile%20banner%20(1).mp4" type="video/mp4" class="catimg" style="width:100%;">
         </video>
     </a>    
 </div>
-
-
-    <div class="container" style="padding-right: 0px; padding-left: 0px;">
-        <div class="product-category-container" style="margin-left: 5px;">
-            <!-- Category Product 1 -->
-               @foreach ($kids as $kds)
-                @php
-                   $cat_id = DB::table('categories')->where('id',$kds->subcategory_id)->latest()->first();
-                   $seller_id = DB::table('sellers')->where('seller_id',$kds->seller_id)->latest()->first();
-                @endphp
-                @php
-                    $images = json_decode($kds->images, true);
-                    
-                    $bncnt = DB::table('brands')->where('id',$kds->brand_id)->count();
-                    if($bncnt == 0)
-                    {
-                        $brand_name = 'NA';
-                        $brand_name2 = $seller_id->company_name;
-                    }
-                    else
-                    {
-                        $brand_name = DB::table('brands')->where('id',$kds->brand_id)->latest()->first();
-                        $brand_name2 = $brand_name->brand_name;
-                    }
-                    
-                @endphp
-                <div class="product-item-card">
-                    <!--<a  href="/product/{{ Crypt::encryptString($kds->id) }}" style="text-decoration:none;">-->
-                    <a href="/product/{{ \Illuminate\Support\Str::slug($cat_id->subcategory) }}/{{ \Illuminate\Support\Str::slug($brand_name2) }}/{{ \Illuminate\Support\Str::slug($kds->product_name) }}/{{$kds->id}}/buy" style="text-decoration:none;">
-
-                           
-                            
-                            @if(!empty($images) && isset($images[0]))
-                                <img src="{{ $images[0] }}" alt="Image">
-                            @endif
-    
-
-                        <div class="card-body product-item-card-body text-left">
-                            <h8 class="card-title"><b>
-                                @if($brand_name == 'NA')
-                                
-                                @else
-                                    {{$brand_name->brand_name}}
-                                @endif
-                                </b></h8><br>
-                                <h8 class="card-title" title="{{ $kds->product_name }}">
-                                    {{ Str::limit($kds->product_name, 16, '...') }}
-                                </h8>                        
-                                <div class="d-flex">
-                                <p class="card-text me-2" style="text-decoration: line-through; color:red">Rs. {{$kds->maximum_retail_price}}</p>
-                                <p class="card-text ml-2">Rs. {{$kds->portal_updated_price}}</p>
-                            </div>                    
-                        </div>
-                    </a>
-                </div>
-            @endforeach
-        </div>
-    </div>
-
- <div class="Banner">
-    <a href="/category/{{ $encryptedkids }}" style="text-decoration:none;">
-        <video  playsinline autoplay muted loop width="100%">
-              <source src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/Category+Banners/co-ordsetmobile+banner.mp4" type="video/mp4" class="catimg" style="width:100%;">
-    
-        </video>
-    </a>    
-</div>
+@php
+// Pre-fetch data for kids products
+$kidsBrandIds = $kids->pluck('brand_id')->filter()->unique();
+$kidsCategoryIds = $kids->pluck('subcategory_id')->filter()->unique();
+$kidsSellerIds = $kids->pluck('seller_id')->filter()->unique();
+$kidsBrands = DB::table('brands')->whereIn('id', $kidsBrandIds)->get()->keyBy('id');
+$kidsCategories = DB::table('categories')->whereIn('id', $kidsCategoryIds)->get()->keyBy('id');
+$kidsSellers = DB::table('sellers')->whereIn('seller_id', $kidsSellerIds)->get()->keyBy('seller_id');
+@endphp
 <div class="container" style="padding-right: 0px; padding-left: 0px;">
     <div class="product-category-container" style="margin-left: 5px;">
-        @php
-        // Pre-fetch brand data for western products
-        $westernBrandCache = [];
-        $westernIds = $western->pluck('brand_id')->filter()->unique()->toArray();
-        
-        if (!empty($westernIds)) {
-            $westernBrands = DB::table('brands')->whereIn('id', $westernIds)->get();
-            foreach ($westernBrands as $brand) {
-                $westernBrandCache[$brand->id] = $brand->brand_name;
-            }
-        }
-        @endphp
-        
-        @foreach ($western as $wstrn)
+        @foreach ($kids as $kds)
             @php
-               $cat_id = DB::table('categories')->where('id',$wstrn->sub_subcategory_id)->latest()->first();
-               $seller_id = DB::table('sellers')->where('seller_id',$wstrn->seller_id)->latest()->first();
+                $cat = $kidsCategories[$kds->subcategory_id] ?? null;
+                $seller = $kidsSellers[$kds->seller_id] ?? null;
+                $brand = $kidsBrands[$kds->brand_id] ?? null;
+                $brandName = $brand->brand_name ?? 'NA';
+                $brandNameForURL = $brandName !== 'NA' ? $brandName : ($seller->company_name ?? 'unknown');
+                $images = json_decode($kds->images, true);
             @endphp
-            @php
-                $images = json_decode($wstrn->images, true);
-                $brandName = isset($westernBrandCache[$wstrn->brand_id]) ? $westernBrandCache[$wstrn->brand_id] : '';
-                $brandName3 = isset($westernBrandCache[$wstrn->brand_id]) ? $westernBrandCache[$wstrn->brand_id] : '';
-                
-                if (empty($brandName3)) {
-                    $brandName3 = $seller_id->company_name;
-                }
-            @endphp
-    
             <div class="product-item-card">
-                <!--<a href="/product/{{ Crypt::encryptString($wstrn->id) }}" style="text-decoration:none;">-->
-                <a href="/product/{{ \Illuminate\Support\Str::slug($cat_id->sub_subcategory) }}/{{ \Illuminate\Support\Str::slug($brandName3) }}/{{ \Illuminate\Support\Str::slug($wstrn->product_name) }}/{{$wstrn->id}}/buy" style="text-decoration:none;">
-
-                    
-                    @if (!empty($images) && isset($images[0]))
+                <a href="/product/{{ \Illuminate\Support\Str::slug($cat->subcategory ?? 'unknown') }}/{{ \Illuminate\Support\Str::slug($brandNameForURL) }}/{{ \Illuminate\Support\Str::slug($kds->product_name) }}/{{ $kds->id }}/buy" style="text-decoration:none;">
+                    @if(!empty($images) && isset($images[0]))
                         <img loading="lazy" src="{{ $images[0] }}" alt="Image">
                     @endif
-                    
+                    <div class="card-body product-item-card-body text-left">
+                        <h8 class="card-title"><b>{{ $brandName !== 'NA' ? $brandName : '' }}</b></h8><br>
+                        <h8 class="card-title" title="{{ $kds->product_name }}">
+                            {{ \Illuminate\Support\Str::limit($kds->product_name, 16, '...') }}
+                        </h8>
+                        <div class="d-flex">
+                            <p class="card-text me-2" style="text-decoration: line-through; color:red">Rs. {{ $kds->maximum_retail_price }}</p>
+                            <p class="card-text ml-2">Rs. {{ $kds->portal_updated_price }}</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        @endforeach
+    </div>
+</div>
+<div class="Banner">
+    <a href="/category/{{ $encryptedCategories['Kids'] }}" style="text-decoration:none;">
+        <video loading="lazy" playsinline autoplay muted loop width="100%">
+            <source src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Home/Category%20Banners/co-ordsetmobile%20banner.mp4" type="video/mp4" class="catimg" style="width:100%;">
+        </video>
+    </a>    
+</div>
+@php
+// Pre-fetch data for western products
+$westernBrandIds = $western->pluck('brand_id')->filter()->unique();
+$westernCategoryIds = $western->pluck('sub_subcategory_id')->filter()->unique();
+$westernSellerIds = $western->pluck('seller_id')->filter()->unique();
+$westernBrands = DB::table('brands')->whereIn('id', $westernBrandIds)->get()->keyBy('id');
+$westernCategories = DB::table('categories')->whereIn('id', $westernCategoryIds)->get()->keyBy('id');
+$westernSellers = DB::table('sellers')->whereIn('seller_id', $westernSellerIds)->get()->keyBy('seller_id');
+@endphp
+<div class="container" style="padding-right: 0px; padding-left: 0px;">
+    <div class="product-category-container" style="margin-left: 5px;">
+        @foreach ($western as $wstrn)
+            @php
+                $cat = $westernCategories[$wstrn->sub_subcategory_id] ?? null;
+                $seller = $westernSellers[$wstrn->seller_id] ?? null;
+                $brand = $westernBrands[$wstrn->brand_id] ?? null;
+                $brandName = $brand->brand_name ?? '';
+                $brandName3 = $brandName !== '' ? $brandName : ($seller->company_name ?? 'unknown');
+                $images = json_decode($wstrn->images, true);
+            @endphp
+            <div class="product-item-card">
+                <a href="/product/{{ \Illuminate\Support\Str::slug($cat->sub_subcategory ?? 'unknown') }}/{{ \Illuminate\Support\Str::slug($brandName3) }}/{{ \Illuminate\Support\Str::slug($wstrn->product_name) }}/{{ $wstrn->id }}/buy" style="text-decoration:none;">
+                    @if (!empty($images) && isset($images[0]))
+                        <img loading="lazy"  src="{{ $images[0] }}" alt="Image">
+                    @endif
                     <div class="card-body product-item-card-body text-left">
                         <h8 class="card-title"><b>{{ $brandName }}</b></h8><br>
                         <h8 class="card-title" title="{{ $wstrn->product_name }}">
-                            {{ strlen($wstrn->product_name) <= 16 ? $wstrn->product_name : substr($wstrn->product_name, 0, 16) . '...' }}
+                            {{ \Illuminate\Support\Str::limit($wstrn->product_name, 16, '...') }}
                         </h8>
                         <div class="d-flex">
                             <p class="card-text me-2" style="text-decoration: line-through; color:red">Rs. {{ $wstrn->maximum_retail_price }}</p>
@@ -389,59 +300,43 @@ $categories = [
         @endforeach
     </div>
 </div>
-
-{{-- Kurti Banner  --}}
- <div class="Banner"> 
-    <a href="/category/{{ $encryptedKurti }}" style="text-decoration:none;">
-        <video playsinline muted loop autoplay width="100%">
-            <source src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/Category+Banners/salwar+mobile+banner.mp4" type="video/mp4">
+<!-- Kurti Section -->
+<div class="Banner"> 
+    <a href="/category/{{ $encryptedCategories['Kurti'] }}" style="text-decoration:none;">
+        <video loading="lazy" playsinline muted loop autoplay preload="auto" width="100%">
+            <source src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Home/Category%20Banners/salwar%20mobile%20banner.mp4" type="video/mp4">
         </video>
     </a>    
- </div>
-
+</div>
+@php
+// Pre-fetch data for kurti products
+$kurtiBrandIds = $kurti->pluck('brand_id')->filter()->unique();
+$kurtiCategoryIds = $kurti->pluck('sub_subcategory_id')->filter()->unique();
+$kurtiSellerIds = $kurti->pluck('seller_id')->filter()->unique();
+$kurtiBrands = DB::table('brands')->whereIn('id', $kurtiBrandIds)->get()->keyBy('id');
+$kurtiCategories = DB::table('categories')->whereIn('id', $kurtiCategoryIds)->get()->keyBy('id');
+$kurtiSellers = DB::table('sellers')->whereIn('seller_id', $kurtiSellerIds)->get()->keyBy('seller_id');
+@endphp
 <div class="container" style="padding-right: 0px; padding-left: 0px;">
     <div class="product-category-container" style="margin-left: 5px;">
-        @php
-        // Pre-fetch brand data for kurti products
-        $kurtiBrandCache = [];
-        $kurtiIds = $kurti->pluck('brand_id')->filter()->unique()->toArray();
-        
-        if (!empty($kurtiIds)) {
-            $kurtiBrands = DB::table('brands')->whereIn('id', $kurtiIds)->get();
-            foreach ($kurtiBrands as $brand) {
-                $kurtiBrandCache[$brand->id] = $brand->brand_name;
-            }
-        }
-        @endphp
-        
         @foreach ($kurti as $krti)
             @php
-               $cat_id = DB::table('categories')->where('id',$krti->sub_subcategory_id)->latest()->first();
-               $seller_id = DB::table('sellers')->where('seller_id',$krti->seller_id)->latest()->first();
-            @endphp
-            @php
+                $cat = $kurtiCategories[$krti->sub_subcategory_id] ?? null;
+                $seller = $kurtiSellers[$krti->seller_id] ?? null;
+                $brand = $kurtiBrands[$krti->brand_id] ?? null;
+                $brandName = $brand->brand_name ?? '';
+                $brandName4 = $brandName !== '' ? $brandName : ($seller->company_name ?? 'unknown');
                 $images = json_decode($krti->images, true);
-                $brandName = isset($kurtiBrandCache[$krti->brand_id]) ? $kurtiBrandCache[$krti->brand_id] : '';
-                
-                $brandName4 = isset($kurtiBrandCache[$krti->brand_id]) ? $kurtiBrandCache[$krti->brand_id] : '';
-                
-                if (empty($brandName4)) {
-                    $brandName4 = $seller_id->company_name;
-                }
             @endphp
             <div class="product-item-card">
-                <!--<a href="/product/{{ Crypt::encryptString($krti->id) }}" style="text-decoration:none;">-->
-                <a href="/product/{{ \Illuminate\Support\Str::slug($cat_id->sub_subcategory) }}/{{ \Illuminate\Support\Str::slug($brandName4) }}/{{ \Illuminate\Support\Str::slug($krti->product_name) }}/{{$krti->id}}/buy" style="text-decoration:none;">
-
-                    
+                <a href="/product/{{ \Illuminate\Support\Str::slug($cat->sub_subcategory ?? 'unknown') }}/{{ \Illuminate\Support\Str::slug($brandName4) }}/{{ \Illuminate\Support\Str::slug($krti->product_name) }}/{{ $krti->id }}/buy" style="text-decoration:none;">
                     @if (!empty($images) && isset($images[0]))
-                        <img loading="lazy" src="{{ $images[0] }}" alt="Image">
+                        <img loading="lazy"  src="{{ $images[0] }}" alt="Image">
                     @endif
-                    
                     <div class="card-body product-item-card-body text-left">
                         <h8 class="card-title"><b>{{ $brandName }}</b></h8><br>
                         <h8 class="card-title" title="{{ $krti->product_name }}">
-                            {{ strlen($krti->product_name) <= 16 ? $krti->product_name : substr($krti->product_name, 0, 16) . '...' }}
+                            {{ \Illuminate\Support\Str::limit($krti->product_name, 16, '...') }}
                         </h8>
                         <div class="d-flex">
                             <p class="card-text me-2" style="text-decoration: line-through; color:red">Rs. {{ $krti->maximum_retail_price }}</p>
@@ -453,63 +348,43 @@ $categories = [
         @endforeach
     </div>
 </div>
-
-<!-- Footwear -->
+<!-- Footwear Section -->
 <div class="Banner">
-    <a href="/category/{{ $encryptedShoes }}" style="text-decoration:none;">
-        <video playsinline muted loop autoplay width="100%">
-            <source src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/Category+Banners/Shoe.mp4" type="video/mp4">
+    <a href="/category/{{ $encryptedCategories['Shoes'] }}" style="text-decoration:none;">
+        <video loading="lazy" playsinline muted loop autoplay preload="auto" width="100%">
+            <source src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Home/Category%20Banners/Shoe.mp4" type="video/mp4">
         </video>
     </a>    
 </div>
-
+@php
+// Pre-fetch data for shoes products
+$shoesBrandIds = $shoes->pluck('brand_id')->filter()->unique();
+$shoesCategoryIds = $shoes->pluck('sub_subcategory_id')->filter()->unique();
+$shoesSellerIds = $shoes->pluck('seller_id')->filter()->unique();
+$shoesBrands = DB::table('brands')->whereIn('id', $shoesBrandIds)->get()->keyBy('id');
+$shoesCategories = DB::table('categories')->whereIn('id', $shoesCategoryIds)->get()->keyBy('id');
+$shoesSellers = DB::table('sellers')->whereIn('seller_id', $shoesSellerIds)->get()->keyBy('seller_id');
+@endphp
 <div class="container" style="padding-right: 0px; padding-left: 0px;">
     <div class="product-category-container" style="margin-left: 5px;">
-        @php
-        // Pre-fetch brand data for shoes products
-        $shoesBrandCache = [];
-        $shoesIds = $shoes->pluck('brand_id')->filter()->unique()->toArray();
-        
-        if (!empty($shoesIds)) {
-            $shoesBrands = DB::table('brands')->whereIn('id', $shoesIds)->get();
-            foreach ($shoesBrands as $brand) {
-                $shoesBrandCache[$brand->id] = $brand->brand_name;
-            }
-        }
-        @endphp
-        
         @foreach ($shoes as $shs)
             @php
-               $cat_id = DB::table('categories')->where('id',$shs->sub_subcategory_id)->latest()->first();
-               $seller_id = DB::table('sellers')->where('seller_id',$shs->seller_id)->latest()->first();
-            @endphp
-            @php
+                $category = $shoesCategories[$shs->sub_subcategory_id] ?? null;
+                $seller = $shoesSellers[$shs->seller_id] ?? null;
+                $brand = $shoesBrands[$shs->brand_id] ?? null;
+                $brandName = $brand->brand_name ?? '';
+                $brandName5 = $brandName !== '' ? $brandName : ($seller->company_name ?? 'unknown');
                 $images = json_decode($shs->images, true);
-                $brandName = isset($shoesBrandCache[$shs->brand_id]) ? $shoesBrandCache[$shs->brand_id] : '';
-                $brandName5 = isset($shoesBrandCache[$shs->brand_id]) ? $shoesBrandCache[$shs->brand_id] : '';
-                
-                if (empty($brandName1)) {
-                    $brandName5 = $seller_id->company_name;
-                }
-                else
-                {
-                    $brandName5 = $brandName;
-                }
-                
             @endphp
             <div class="product-item-card">
-                <!--<a href="/product/{{ Crypt::encryptString($shs->id) }}" style="text-decoration:none;">-->
-                <a href="/product/{{ \Illuminate\Support\Str::slug($cat_id->sub_subcategory) }}/{{ \Illuminate\Support\Str::slug($brandName5) }}/{{ \Illuminate\Support\Str::slug($shs->product_name) }}/{{$shs->id}}/buy" style="text-decoration:none;">
-
-                    
+                <a href="/product/{{ \Illuminate\Support\Str::slug($category->sub_subcategory ?? 'unknown') }}/{{ \Illuminate\Support\Str::slug($brandName5) }}/{{ \Illuminate\Support\Str::slug($shs->product_name) }}/{{ $shs->id }}/buy" style="text-decoration:none;">
                     @if (!empty($images) && isset($images[0]))
-                        <img loading="lazy" src="{{ $images[0] }}" alt="Image">
+                        <img loading="lazy"  src="{{ $images[0] }}" alt="Image">
                     @endif
-                    
                     <div class="card-body product-item-card-body text-left">
                         <h8 class="card-title"><b>{{ $brandName }}</b></h8><br>
                         <h8 class="card-title" title="{{ $shs->product_name }}">
-                            {{ strlen($shs->product_name) <= 16 ? $shs->product_name : substr($shs->product_name, 0, 16) . '...' }}
+                            {{ \Illuminate\Support\Str::limit($shs->product_name, 16, '...') }}
                         </h8>
                         <div class="d-flex">
                             <p class="card-text me-2" style="text-decoration: line-through; color:red">Rs. {{ $shs->maximum_retail_price }}</p>
@@ -521,35 +396,24 @@ $categories = [
         @endforeach
     </div>
 </div>
-
 <h3 class="heading">Trendings</h3>
 <div class="tranding">
+    @foreach ($trendingCategories as $category)
+        <div class="tranding-card">
+            <a href="/category/{{ $encryptedCategories[$category['name']] ?? Crypt::encryptString($category['name']) }}" style="text-decoration:none;">
+                <img loading="lazy"  src="{{ $category['img'] }}" class="catimg" alt="{{ $category['name'] }}">
+            </a>
+        </div>
+    @endforeach
     <div class="tranding-card">
-        <a href="/category/{{ urlencode(Crypt::encryptString('Saree')) }}" style="text-decoration:none;">
-            <img loading="lazy" src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/Cards+2/4+(1).jpg" class="catimg" alt="Saree">
-        </a>
-    </div>
-    <div class="tranding-card">
-        <a href="/category/{{ urlencode(Crypt::encryptString('Dresses')) }}" style="text-decoration:none;">
-            <img loading="lazy" src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/Cards+2/ek+sutta+-+Copy.jpg" class="catimg" alt="Dresses">
-        </a>
-    </div>
-    <div class="tranding-card">
-        <a href="/category/{{ urlencode(Crypt::encryptString('T-shirts')) }}" style="text-decoration:none;">
-            <img loading="lazy" src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/Cards+2/good+sleep+(5).jpg" class="catimg" alt="T-shirts">
-        </a>
-    </div>
-    <div class="tranding-card">
-        <img loading="lazy" src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/Cards+2/For+the+Track(1).jpg" class="catimg" alt="Trending Item">
+        <img loading="lazy"  src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Home/Cards%202/For%20the%20Track(1).jpg" class="catimg" alt="Trending Item">
     </div>
 </div>
-
 <div class="Banner">
-    <a href="/category/{{ $encryptedShoes }}" style="text-decoration:none;">
-     <img loading="lazy" src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Home/Promotional+Banners/Shoe+banner+copy.webp" class="couponimg" alt="Shoes">
+    <a href="/category/{{ $encryptedCategories['Shoes'] }}" style="text-decoration:none;">
+        <img loading="lazy"  src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Home/Promotional%20Banners/Shoe%20banner%20copy.webp" class="couponimg" alt="Shoes">
     </a>
 </div>
-
 @if ($logincount == 0)
 <div id="pageLoadModal" class="modal">
     <div class="modal-content">
@@ -575,199 +439,64 @@ $categories = [
     </div>
 </div>
 @endif
-
-<!-- Optimized script loading -->
-<script>
-// Add intersection observer for efficient lazy loading of videos
-document.addEventListener("DOMContentLoaded", function() {
-    // Handle modal behavior
-    const modal = document.getElementById("pageLoadModal");
-    if (modal) {
-        modal.style.display = "flex"; // Show modal on page load
-    }
-    
-    // Function to close the modal
-    window.closeModal = function() {
-        const modal = document.getElementById("pageLoadModal");
-        if (modal) {
-            modal.style.display = "none";
+<script defer>
+document.addEventListener("DOMContentLoaded", function () {
+    var slideIndex = 0;
+    var slides = document.getElementsByClassName("mySlides");
+    var dots = document.getElementsByClassName("dot");
+    var slideTimer;
+    function showSlide(n) {
+        if (n >= slides.length) slideIndex = 0;
+        else if (n < 0) slideIndex = slides.length - 1;
+        else slideIndex = n;
+        for (var i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+            dots[i].style.backgroundColor = "#bbb";
+            dots[i].classList.remove("active");
         }
+        slides[slideIndex].style.display = "block";
+        dots[slideIndex].style.backgroundColor = "#717171";
+        dots[slideIndex].classList.add("active");
+    }
+    function autoSlide() {
+        slideIndex++;
+        showSlide(slideIndex);
+        slideTimer = setTimeout(autoSlide, 5000);
+    }
+    window.currentSlide = function (n) {
+        clearTimeout(slideTimer);
+        showSlide(n - 1);
+        slideTimer = setTimeout(autoSlide, 5000);
     };
-    
-    // Setup navigation class for proper styling
-    const nav = document.querySelector('nav');
-    const body = document.body;
-    if (nav) {
-        body.classList.add('has-nav');
-    } else {
-        body.classList.remove('has-nav');
-    }
-    
-    // Lazy load videos using Intersection Observer
-    const lazyVideos = document.querySelectorAll("video.video-lazy");
-    if ("IntersectionObserver" in window) {
-        const videoObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const video = entry.target;
-                    const src = video.dataset.src;
-                    if (src) {
-                        video.src = src;
-                        video.load();
-                        video.classList.add("loaded");
-                        // Only start playing when in viewport
-                        video.play().catch(error => {
-                            // Handle autoplay restrictions
-                            console.log("Video play prevented:", error);
-                        });
-                        videoObserver.unobserve(video);
-                    }
-                }
-            });
-        }, {
-            rootMargin: "100px 0px",
-            threshold: 0.1
-        });
-        
-        lazyVideos.forEach(video => {
-            videoObserver.observe(video);
-        });
-    } else {
-        // Fallback for browsers that don't support Intersection Observer
-        lazyVideos.forEach(video => {
-            const src = video.dataset.src;
-            if (src) {
-                video.src = src;
-                video.classList.add("loaded");
-            }
-        });
-    }
-});
-
-// Optimize carousel to reduce repaints
-const carouselItems = document.querySelectorAll('#myCarousel .item img');
-carouselItems.forEach(img => {
-    if (img.complete) {
-        img.classList.add('loaded');
-    } else {
-        img.addEventListener('load', () => {
-            img.classList.add('loaded');
-        });
-    }
-});
-</script>
-<script>
-    // Add this to your <head> section
-document.addEventListener("DOMContentLoaded", function() {
-    // Preload video metadata when page loads
-    const videoElements = document.querySelectorAll('video.video-lazy');
-    
-    // First, set up the observer
-    const videoObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            const video = entry.target;
-            
-            if (entry.isIntersecting) {
-                // Video is in view
-                const src = video.dataset.src;
-                if (src && !video.src) {
-                    console.log("Loading video:", src);
-                    
-                    // Set source and load
-                    video.src = src;
-                    video.load();
-                    
-                    // Play faster than normal
-                    video.playbackRate = 1.5;
-                    
-                    video.classList.add("loaded");
-                    
-                    // Attempt to play
-                    const playPromise = video.play();
-                    if (playPromise !== undefined) {
-                        playPromise.catch(error => {
-                            console.log("Autoplay prevented:", error);
-                            // Could show play button here if needed
-                        });
-                    }
-                }
+    showSlide(slideIndex);
+    slideTimer = setTimeout(autoSlide, 5000);
+    // Swipe detection
+    let touchStartX = 0;
+    let touchEndX = 0;
+    const minSwipeDistance = 50;
+    const sliderContainer = document.querySelector(".w3-content");
+    sliderContainer.addEventListener("touchstart", function (e) {
+        touchStartX = e.changedTouches[0].screenX;
+    });
+    sliderContainer.addEventListener("touchend", function (e) {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipeGesture();
+    });
+    function handleSwipeGesture() {
+        let deltaX = touchEndX - touchStartX;
+        if (Math.abs(deltaX) > minSwipeDistance) {
+            clearTimeout(slideTimer);
+            if (deltaX < 0) {
+                // Swipe left
+                slideIndex++;
             } else {
-                // Video is out of view
-                if (video.src) {
-                    video.pause();
-                    
-                    // Optional: completely unload the video to save resources
-                    // Comment this part out if you want videos to stay loaded
-                    if (!video.dataset.keepLoaded) {
-                        video.src = '';
-                        video.load();
-                        video.classList.remove("loaded");
-                    }
-                }
+                // Swipe right
+                slideIndex--;
             }
-        });
-    }, {
-        rootMargin: "100px 0px", // Load when within 100px of viewport
-        threshold: 0.1 // Trigger when at least 10% is visible
-    });
-    
-    // Apply observer to all lazy videos
-    videoElements.forEach(video => {
-        // Add poster if not already present
-        if (!video.hasAttribute('poster')) {
-            video.setAttribute('poster', 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIwIiBoZWlnaHQ9IjI0MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZTllOWU5Ii8+PC9zdmc+');
+            showSlide(slideIndex);
+            slideTimer = setTimeout(autoSlide, 5000);
         }
-        
-        // Set preload attribute
-        video.setAttribute('preload', 'metadata');
-        
-        // Observe this video
-        videoObserver.observe(video);
-    });
-    
-    // Preconnect to known video domains to speed up loading
-    const domains = [
-        'https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com'
-    ];
-    
-    domains.forEach(domain => {
-        const link = document.createElement('link');
-        link.rel = 'preconnect';
-        link.href = domain;
-        document.head.appendChild(link);
-        
-        const dnsPrefetch = document.createElement('link');
-        dnsPrefetch.rel = 'dns-prefetch';
-        dnsPrefetch.href = domain;
-        document.head.appendChild(dnsPrefetch);
-    });
+    }
 });
 </script>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const videos = document.querySelectorAll("video.video-lazy");
-
-        videos.forEach(video => {
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const vid = entry.target;
-                        const source = document.createElement("source");
-                        source.src = vid.getAttribute("data-src");
-                        source.type = "video/mp4";
-                        vid.appendChild(source);
-                        vid.load();
-                        vid.play();
-                        observer.unobserve(vid);
-                    }
-                });
-            }, {
-                threshold: 0.25
-            });
-
-            observer.observe(video);
-        });
-    });
-</script>
-
 @endsection

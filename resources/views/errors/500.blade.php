@@ -34,9 +34,9 @@
 </head>
 <body>
     <!-- Mobile image (Full screen) -->
-    <img class="mobile-image" src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Error+Page/somthingwrong+copy+(1).jpg" alt="500 Server Error">
+    <img class="mobile-image" src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Error%20Pages/somthingwrong%20copy.jpg" alt="500 Server Error">
 
     <!-- Desktop image (Centered) -->
-    <img class="desktop-image" src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Error+Page/somthingwrong2+copy+(1).jpg" alt="500 Server Error">
+    <img class="desktop-image" src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Error%20Pages/somthingwrong2%20copy.jpg" alt="500 Server Error">
 </body>
 </html>

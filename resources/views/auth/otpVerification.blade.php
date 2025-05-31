@@ -86,7 +86,7 @@
             align-items: center;
             height: 100vh;
             width: 100%;
-            background: url('https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/login+page_new.png') no-repeat center center;
+            background: url('https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Welcome/OTP.jpg') no-repeat center center;
             background-size: cover;
         }
         .container {

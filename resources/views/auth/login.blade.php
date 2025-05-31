@@ -257,7 +257,7 @@ body {
     height: 100%;
     width: 100%;
     transform: translate(35%, 0);
-    background: url('https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/login+page_new.png') no-repeat center center;
+    background: url('https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Welcome/login%20page_new.png') no-repeat center center;
     
     background-size: cover;
     transition: 1s ease-in-out;

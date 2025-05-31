@@ -10,7 +10,7 @@
         display: flex;
         height: 89vh;
         width: 100vw;
-        margin-top: 59px;
+        margin-top: 94px;
         background-color: black;
     }
 
@@ -108,7 +108,7 @@
         transform: scale(1.05);
     } */
 
-    .product h5 {
+    .product h4 {
         margin: 10px 0;
         font-size: 16px;
         color: white;
@@ -242,7 +242,7 @@
             <!-- Sections for categories -->
             <section id="women-ethnic"
                 style="height:unset; background-image: none; background-repeat: none; background-size: none;">
-                <!--<h5>Women Ethnic</h5>-->
+                <!--<h4>Women Ethnic</h4>-->
 
                 <div class="products">
                     <!-- Topwear -->
@@ -250,7 +250,7 @@
                         <div class="product ">
                             <img src="{{ $men1 }}"
                                 alt="Topwear">
-                            <h5>TopWear</h5>
+                            <h4>TopWear</h4>
                         </div>
                         <div class="extra-products">
                             <a href="/category/{{ urlencode(Crypt::encryptString('3')) }}" style="text-decoration:none;">
@@ -324,7 +324,7 @@
                         <div class="product">
                             <img src="{{ $men2 }}"
                                 alt="Bottomwear">
-                            <h5>Indian & Festive Wear</h5>
+                            <h4>Indian & Festive Wear</h4>
                         </div>
                         <div class="extra-products">
                             <a href="/category/{{ urlencode(Crypt::encryptString('13')) }}" style="text-decoration:none;">
@@ -363,7 +363,7 @@
                         <div class="product">
                             <img src="{{ $men3 }}"
                                 alt="Kidswear">
-                            <h5>BottomWear</h5>
+                            <h4>BottomWear</h4>
                         </div>
                         <div class="extra-products">
                             <a href="/category/{{ urlencode(Crypt::encryptString('18')) }}" style="text-decoration:none;">
@@ -409,7 +409,7 @@
                             <div class="product">
                                 <img src="{{ $men4 }}"
                                     alt="Menswear">
-                                <h5>FootWear</h5>
+                                <h4>FootWear</h4>
                             </div>
                         <a href="/category/{{ urlencode(Crypt::encryptString('24')) }}" style="text-decoration:none;">
                             <div class="extra-products">
@@ -466,7 +466,7 @@
                         <div class="product">
                             <img src="{{ $men5 }}"
                                 alt="Menswear">
-                            <h5>Innerwear</h5>
+                            <h4>Innerwear</h4>
                         </div>
                         <div class="extra-products">
                              <a href="/category/{{ urlencode(Crypt::encryptString('32')) }}" style="text-decoration:none;">
@@ -519,24 +519,24 @@
                             <div class="product">
                                 <img src="{{ $men6 }}"
                                     alt="Menswear">
-                                <h5>Plus Size</h5>
+                                <h4>Plus Size</h4>
                             </div>
                         </a>
                         <!--<div class="extra-products">-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://m.media-amazon.com/images/I/718phluzAFL._AC_UY1100_.jpg"-->
                         <!--            alt="Extra 1">-->
-                        <!--        <h5>Extra 1</h5>-->
+                        <!--        <h4>Extra 1</h4>-->
                         <!--    </div>-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://m.media-amazon.com/images/I/718phluzAFL._AC_UY1100_.jpg"-->
                         <!--            alt="Extra 2">-->
-                        <!--        <h5>Extra 2</h5>-->
+                        <!--        <h4>Extra 2</h4>-->
                         <!--    </div>-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://m.media-amazon.com/images/I/718phluzAFL._AC_UY1100_.jpg"-->
                         <!--            alt="Extra 3">-->
-                        <!--        <h5>Extra 3</h5>-->
+                        <!--        <h4>Extra 3</h4>-->
                         <!--    </div>-->
                         <!--</div>-->
                     </div>
@@ -547,54 +547,55 @@
 
             <section id="women-western"
                 style="height:unset; background-image: none; background-repeat: none; background-size: none;">
-                <!--<h5>Women Western</h5>-->
+                <!--<h4>Women Western</h4>-->
                 <div class="products">
       
                     <div class="product-wrapper">
                         <div class="product">
                             <img src="{{ $Women1 }}"
                                 alt="Bottomwear">
-                            <h5>Indian & Fusion Wear</h5>
+                            <h4>Indian & Fusion Wear</h4>
                         </div>
                         <div class="extra-products">
                             <a href="/category/{{ urlencode(Crypt::encryptString('40')) }}" style="text-decoration:none;">
                                 <div class="product">
-                                    <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Explore/Sub+Category/Women/Indian/saree.jpg"
+                                    <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub%20Category/Women/Indian/saree.jpg" 
+                                    
                                         alt="Extra 1">
                                     <p>Sarees</p>
                                 </div>
                             </a>
                             <a href="/category/{{ urlencode(Crypt::encryptString('41')) }}" style="text-decoration:none;">
                                 <div class="product">
-                                    <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Explore/Sub+Category/Women/Indian/Gowns.jpg"
+                                    <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub%20Category/Women/Indian/Gowns.jpg"
                                         alt="Extra 2">
                                     <p>Gowns</p>
                                 </div>
                             </a>
                             <a href="/category/{{ urlencode(Crypt::encryptString('42')) }}" style="text-decoration:none;">
                                 <div class="product">
-                                    <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Explore/Sub+Category/Women/Indian/tops.jpg"
+                                    <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub%20Category/Women/Indian/tops.jpg"
                                         alt="Extra 3">
                                     <p>Tops, Tunics & Kurtis</p>
                                 </div>
                             </a>
                             <a href="/category/{{ urlencode(Crypt::encryptString('43')) }}" style="text-decoration:none;">
                                 <div class="product">
-                                    <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Explore/Sub+Category/Women/Indian/Kurti+Set.jpg"
+                                    <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub%20Category/Women/Indian/Kurti%20Set.jpg"
                                         alt="Extra 3">
                                     <p>Kurtas & Sets</p>
                                 </div>
                             </a>
                             <a href="/category/{{ urlencode(Crypt::encryptString('44')) }}" style="text-decoration:none;">
                                 <div class="product">
-                                    <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Explore/Sub+Category/Women/Indian/Dupatta.jpg"
+                                    <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub%20Category/Women/Indian/Dupatta.jpg"
                                         alt="Extra 3">
                                     <p>Dupatta & Shawls</p>
                                 </div>
                             </a>
                             <a href="/category/{{ urlencode(Crypt::encryptString('45')) }}" style="text-decoration:none;">
                                 <div class="product">
-                                    <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Explore/Sub+Category/Women/Indian/Lahenga.jpg"
+                                    <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub%20Category/Women/Indian/Lahenga.jpg"
                                         alt="Extra 3">
                                     <p>Lehenga</p>
                                 </div>
@@ -607,82 +608,82 @@
                         <div class="product">
                             <img src="{{ $Women2 }}"
                                 alt="Bottomwear">
-                            <h5>Western Wear</h5>
+                            <h4>Western Wear</h4>
                         </div>
                         <div class="extra-products">
                             <a href="/category/{{ urlencode(Crypt::encryptString('47')) }}" style="text-decoration:none;">
                                 <div class="product">
-                                    <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Explore/Sub+Category/Women/Western/tops.jpg"
+                                    <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub%20Category/Women/Western/tops.jpg"
                                         alt="Extra 1">
                                     <p>Tops</p>
                                 </div>
                             </a>
                             <a href="/category/{{ urlencode(Crypt::encryptString('48')) }}" style="text-decoration:none;">
                                 <div class="product">
-                                    <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Explore/Sub+Category/Women/Western/T-shirt.jpg"
+                                    <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub%20Category/Women/Western/T-shirt.jpg"
                                         alt="Extra 2">
                                     <p>T-Shirts</p>
                                 </div>
                             </a>    
                             <a href="/category/{{ urlencode(Crypt::encryptString('49')) }}" style="text-decoration:none;">
                                 <div class="product">
-                                    <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Explore/Sub+Category/Women/Western/shirt.jpg"
+                                    <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub%20Category/Women/Western/shirt.jpg"
                                         alt="Extra 3">
                                     <p>Shirts</p>
                                 </div>
                             </a>
                             <a href="/category/{{ urlencode(Crypt::encryptString('50')) }}" style="text-decoration:none;">
                                 <div class="product">
-                                    <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Explore/Sub+Category/Women/Western/dress.jpg"
+                                    <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub%20Category/Women/Western/dress.jpg"
                                         alt="Extra 3">
                                     <p>Dresses</p>
                                 </div>
                             </a>
                             <a href="/category/{{ urlencode(Crypt::encryptString('51')) }}" style="text-decoration:none;">
                                 <div class="product">
-                                    <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Explore/Sub+Category/Women/Western/Cords.jpg"
+                                    <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub%20Category/Women/Western/Cords.jpg"
                                         alt="Extra 3">
                                     <p>Co-Ords</p>
                                 </div>
                             </a>
                             <a href="/category/{{ urlencode(Crypt::encryptString('52')) }}" style="text-decoration:none;">
                                 <div class="product">
-                                    <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Explore/Sub+Category/Women/Western/Jumpsuits.jpg"
+                                    <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub%20Category/Women/Western/Jumpsuits.jpg"
                                         alt="Extra 3">
                                     <p>Jumpsuits</p>
                                 </div>
                             </a>
                             <a href="/category/{{ urlencode(Crypt::encryptString('53')) }}" style="text-decoration:none;">
                                 <div class="product">
-                                    <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Explore/Sub+Category/Women/Western/Shrugs.jpg"
+                                    <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub%20Category/Women/Western/Shrugs.jpg"
                                         alt="Extra 3">
                                     <p>Shrugs</p>
                                 </div>
                             </a>
                             <a href="/category/{{ urlencode(Crypt::encryptString('54')) }}" style="text-decoration:none;">
                                 <div class="product">
-                                    <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Explore/Sub+Category/Women/Western/Hoodies.jpg"
+                                    <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub%20Category/Women/Western/Hoodies.jpg"
                                         alt="Extra 3">
                                     <p>Hoodie & Sweatshirts</p>
                                 </div>
                             </a>
                             <a href="/category/{{ urlencode(Crypt::encryptString('55')) }}" style="text-decoration:none;">
                                 <div class="product">
-                                    <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Explore/Sub+Category/Women/Western/Jacket.jpg"
+                                    <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub%20Category/Women/Western/Jacket.jpg"
                                         alt="Extra 3">
                                     <p>Jackets & Coats</p>
                                 </div>
                             </a>
                             <a href="/category/{{ urlencode(Crypt::encryptString('56')) }}" style="text-decoration:none;">
                                 <div class="product">
-                                    <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Explore/Sub+Category/Women/Western/Blazers.jpg"
+                                    <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub%20Category/Women/Western/Blazers.jpg"
                                         alt="Extra 3">
                                     <p>Blazers & Waistcoats</p>
                                 </div>
                             </a>
                             <a href="/category/{{ urlencode(Crypt::encryptString('57')) }}" style="text-decoration:none;">
                                 <div class="product">
-                                    <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Explore/Sub+Category/Women/Western/Playsuits.jpg"
+                                    <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub%20Category/Women/Western/Playsuits.jpg"
                                         alt="Extra 3">
                                     <p>Playsuits</p>
                                 </div>
@@ -690,7 +691,7 @@
                             
                             <a href="/category/{{ urlencode(Crypt::encryptString('58')) }}" style="text-decoration:none;">
                                 <div class="product">
-                                    <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Explore/Sub+Category/Women/Western/shacket.jpg"
+                                    <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub%20Category/Women/Western/shacket.jpg"
                                         alt="Extra 3">
                                     <p>Shackets</p>
                                 </div>
@@ -703,54 +704,54 @@
                         <div class="product">
                             <img src="{{ $Women3 }}"
                                 alt="Kidswear">
-                            <h5>Bottom Wear</h5>
+                            <h4>Bottom Wear</h4>
                         </div>
                         <div class="extra-products">
                             <a href="/category/{{ urlencode(Crypt::encryptString('60')) }}" style="text-decoration:none;">
                                 <div class="product">
-                                    <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Explore/Sub+Category/Women/Bottom+/Jeans.jpg"
+                                    <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub%20Category/Women/Bottom/jeans.webp"
                                         alt="Extra 1">
                                     <p>Jeans</p>
                                 </div>
                             </a>    
                             <a href="/category/{{ urlencode(Crypt::encryptString('61')) }}" style="text-decoration:none;">
                                 <div class="product">
-                                    <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Explore/Sub+Category/Women/Bottom+/Trousers.jpg"
+                                    <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub%20Category/Women/Bottom/Trousers.webp"
                                         alt="Extra 2">
                                     <p>Trousers & Capris</p>
                                 </div>
                             </a>
                             <a href="/category/{{ urlencode(Crypt::encryptString('62')) }}" style="text-decoration:none;">
                                 <div class="product">
-                                    <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Explore/Sub+Category/Women/Bottom+/short.jpg"
+                                    <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub%20Category/Women/Bottom/Shorts.webp"
                                         alt="Extra 3">
                                     <p>Shorts & Skirts</p>
                                 </div>
                             </a>
                             <a href="/category/{{ urlencode(Crypt::encryptString('63')) }}" style="text-decoration:none;">
                                 <div class="product">
-                                    <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Explore/Sub+Category/Women/Bottom+/Leggings.jpg"
+                                    <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub%20Category/Women/Bottom/Leggings.webp"
                                         alt="Extra 3">
                                     <p>Leggings & Tights</p>
                                 </div>
                             </a>
                             <a href="/category/{{ urlencode(Crypt::encryptString('64')) }}" style="text-decoration:none;">
                                 <div class="product">
-                                    <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Explore/Sub+Category/Women/Bottom+/Plazos.jpg"
+                                    <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub%20Category/Women/Bottom/Plazos.webp"
                                         alt="Extra 3">
                                     <p>Plazos, Churidar & Salwars</p>
                                 </div>
                             </a>
                             <a href="/category/{{ urlencode(Crypt::encryptString('65')) }}" style="text-decoration:none;">
                                 <div class="product">
-                                    <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Explore/Sub+Category/Women/Bottom+/W+Hot+Pant.jpg"
+                                    <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub%20Category/Women/Bottom/W%20Hot%20Pant.jpg"
                                         alt="Extra 3">
                                     <p>Hot Pants</p>
                                 </div>
                             </a>
                             <a href="/category/{{ urlencode(Crypt::encryptString('66')) }}" style="text-decoration:none;">
                                 <div class="product">
-                                    <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Explore/Sub+Category/Women/Bottom+/Cargos.jpg"
+                                    <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub%20Category/Women/Bottom/cargo.webp"
                                         alt="Extra 3">
                                     <p>Cargos & Parachutes</p>
                                 </div>
@@ -763,62 +764,62 @@
                         <div class="product">
                             <img src="{{ $Women4 }}"
                                 alt="Menswear">
-                            <h5>Footwear</h5>
+                            <h4>Footwear</h4>
                         </div>
                         <div class="extra-products">
                             
                             <a href="/category/{{ urlencode(Crypt::encryptString('68')) }}" style="text-decoration:none;">
                                 <div class="product">
-                                    <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Explore/Sub+Category/Women/Foot/Flats.jpg"
+                                    <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub%20Category/Women/Foot/Flats.jpg"
                                         alt="Extra 1">
                                     <p>Flats</p>
                                 </div>
                             </a>    
                             <a href="/category/{{ urlencode(Crypt::encryptString('69')) }}" style="text-decoration:none;">
                                 <div class="product">
-                                    <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Explore/Sub+Category/Women/Foot/Heels.jpg"
+                                    <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub%20Category/Women/Foot/Heels.jpg"
                                         alt="Extra 2">
                                     <p>Heels</p>
                                 </div>
                             </a>
                             <a href="/category/{{ urlencode(Crypt::encryptString('70')) }}" style="text-decoration:none;">
                                 <div class="product">
-                                    <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Explore/Sub+Category/Women/Foot/Floaters.jpg"
+                                    <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub%20Category/Women/Foot/Floaters.jpg"
                                         alt="Extra 3">
                                     <p>Floaters</p>
                                 </div>
                             </a>
                             <a href="/category/{{ urlencode(Crypt::encryptString('71')) }}" style="text-decoration:none;">
                                 <div class="product">
-                                    <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Explore/Sub+Category/Women/Foot/Boots.jpg"
+                                    <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub%20Category/Women/Foot/Boots.jpg"
                                         alt="Extra 3">
                                     <p>Boots</p>
                                 </div>
                             </a>
                             <a href="/category/{{ urlencode(Crypt::encryptString('72')) }}" style="text-decoration:none;">
                                 <div class="product">
-                                    <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Explore/Sub+Category/Women/Foot/Casual.jpg"
+                                    <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub%20Category/Women/Foot/Casual.jpg"
                                         alt="Extra 3">
                                     <p>Casual Shoes</p>
                                 </div>
                             </a>
                             <a href="/category/{{ urlencode(Crypt::encryptString('73')) }}" style="text-decoration:none;">
                                 <div class="product">
-                                    <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Explore/Sub+Category/Women/Foot/Sneakers.jpg"
+                                    <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub%20Category/Women/Foot/Sneakers.jpg"
                                         alt="Extra 3">
                                     <p>Sneakers</p>
                                 </div>
                             </a>
                             <a href="/category/{{ urlencode(Crypt::encryptString('74')) }}" style="text-decoration:none;">
                                 <div class="product">
-                                    <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Explore/Sub+Category/Women/Foot/Bellies.jpg"
+                                    <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub%20Category/Women/Foot/Bellies.jpg"
                                         alt="Extra 3">
                                     <p>Bellies</p>
                                 </div>
                             </a>
                             <a href="/category/{{ urlencode(Crypt::encryptString('75')) }}" style="text-decoration:none;">
                                 <div class="product">
-                                    <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Explore/Sub+Category/Women/Foot/Socks.jpg"
+                                    <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub%20Category/Women/Foot/Socks.jpg"
                                         alt="Extra 3">
                                     <p>Socks</p>
                                 </div>
@@ -830,82 +831,82 @@
                         <div class="product">
                             <img src="{{ $Women5 }}"
                                 alt="Menswear">
-                            <h5>Lingerie & Sleepwear</h5>
+                            <h4>Lingerie & Sleepwear</h4>
                         </div>
                         <div class="extra-products">
                             <a href="/category/{{ urlencode(Crypt::encryptString('77')) }}" style="text-decoration:none;">
                                 <div class="product">
-                                    <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Explore/Sub+Category/Women/Lingerie+/Bra+(1).jpg"
+                                    <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub%20Category/Women/Inner/bra.webp"
                                         alt="Extra 1">
                                     <p>Bra</p>
                                 </div>
                             </a>
                             <a href="/category/{{ urlencode(Crypt::encryptString('78')) }}" style="text-decoration:none;">
                                 <div class="product">
-                                    <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Explore/Sub+Category/Women/Lingerie+/Briefs+(1).jpg"
+                                    <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub%20Category/Women/Inner/BRIEF.webp"
                                         alt="Extra 2">
                                     <p>Brief</p>
                                 </div>
                             </a>
                             <a href="/category/{{ urlencode(Crypt::encryptString('79')) }}" style="text-decoration:none;">
                                 <div class="product">
-                                    <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Explore/Sub+Category/Women/Lingerie+/W+Cemisole.jpg"
+                                    <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub%20Category/Women/Inner/Camisole.webp"
                                         alt="Extra 3">
                                     <p>Camisoles</p>
                                 </div>
                             </a>
                             <a href="/category/{{ urlencode(Crypt::encryptString('80')) }}" style="text-decoration:none;">
                                 <div class="product">
-                                    <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Explore/Sub+Category/Women/Lingerie+/Lingerie+Set+(1).jpg"
+                                    <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub%20Category/Women/Inner/Lingerie%20Set.webp"
                                         alt="Extra 3">
                                     <p>Lingerie Set</p>
                                 </div>
                             </a>
                             <a href="/category/{{ urlencode(Crypt::encryptString('81')) }}" style="text-decoration:none;">
                                 <div class="product">
-                                    <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Explore/Sub+Category/Women/Lingerie+/Babydoll.jpg"
+                                    <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub%20Category/Women/Inner/baby%20doll.webp"
                                         alt="Extra 3">
                                     <p>Babydoll & Sets</p>
                                 </div>
                             </a>
                             <a href="/category/{{ urlencode(Crypt::encryptString('82')) }}" style="text-decoration:none;">
                                 <div class="product">
-                                    <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Explore/Sub+Category/Women/Lingerie+/HouseCoat.jpg"
+                                    <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub%20Category/Women/Inner/HOUSECOAT.webp"
                                         alt="Extra 3">
                                     <p>Housecoat</p>
                                 </div>
                             </a>
                             <a href="/category/{{ urlencode(Crypt::encryptString('83')) }}" style="text-decoration:none;">
                                 <div class="product">
-                                    <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Explore/Sub+Category/Women/Lingerie+/night+suit.jpg"
+                                    <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub%20Category/Women/Inner/night%20suites.webp"
                                         alt="Extra 3">
                                     <p>Night Suit</p>
                                 </div>
                             </a>
                             <a href="/category/{{ urlencode(Crypt::encryptString('84')) }}" style="text-decoration:none;">
                                 <div class="product">
-                                    <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Explore/Sub+Category/Women/Lingerie+/Nighties+(1).jpg"
+                                    <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub%20Category/Women/Inner/nighty.webp"
                                         alt="Extra 3">
                                     <p>Nighties</p>
                                 </div>
                             </a>
                             <a href="/category/{{ urlencode(Crypt::encryptString('85')) }}" style="text-decoration:none;">
                                 <div class="product">
-                                    <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Explore/Sub+Category/Women/Lingerie+/shapeware.jpg"
+                                    <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub%20Category/Women/Inner/shape%20wear.webp"
                                         alt="Extra 3">
                                     <p>Shapewear</p>
                                 </div>
                             </a>
                             <a href="/category/{{ urlencode(Crypt::encryptString('86')) }}" style="text-decoration:none;">
                                 <div class="product">
-                                    <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Explore/Sub+Category/Women/Lingerie+/thermal.jpg"
+                                    <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub%20Category/Women/Inner/terminal.webp"
                                         alt="Extra 3">
                                     <p>Thermals</p>
                                 </div>
                             </a>
                             <a href="/category/{{ urlencode(Crypt::encryptString('87')) }}" style="text-decoration:none;">
                                 <div class="product">
-                                    <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Explore/Sub+Category/Women/Lingerie+/bathrobe.jpg"
+                                    <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Sub%20Category/Women/Inner/bathrobs.webp"
                                         alt="Extra 3">
                                     <p>Bath Robes</p>
                                 </div>
@@ -917,24 +918,24 @@
                             <div class="product">
                                 <img src="{{ $Women6 }}"
                                     alt="Menswear">
-                                <h5>Maternity Wear</h5>
+                                <h4>Maternity Wear</h4>
                             </div>
                         </a>    
                         <!--<div class="extra-products">-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://m.media-amazon.com/images/I/718phluzAFL._AC_UY1100_.jpg"-->
                         <!--            alt="Extra 1">-->
-                        <!--        <h5>Extra 1</h5>-->
+                        <!--        <h4>Extra 1</h4>-->
                         <!--    </div>-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://m.media-amazon.com/images/I/718phluzAFL._AC_UY1100_.jpg"-->
                         <!--            alt="Extra 2">-->
-                        <!--        <h5>Extra 2</h5>-->
+                        <!--        <h4>Extra 2</h4>-->
                         <!--    </div>-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://m.media-amazon.com/images/I/718phluzAFL._AC_UY1100_.jpg"-->
                         <!--            alt="Extra 3">-->
-                        <!--        <h5>Extra 3</h5>-->
+                        <!--        <h4>Extra 3</h4>-->
                         <!--    </div>-->
                         <!--</div>-->
                     </div>
@@ -945,24 +946,24 @@
                             <div class="product">
                                 <img src="{{ $Women7 }}"
                                     alt="Menswear">
-                                <h5>Plus Size</h5>
+                                <h4>Plus Size</h4>
                             </div>
                         </a>
                         <!--<div class="extra-products">-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://m.media-amazon.com/images/I/718phluzAFL._AC_UY1100_.jpg"-->
                         <!--            alt="Extra 1">-->
-                        <!--        <h5>Extra 1</h5>-->
+                        <!--        <h4>Extra 1</h4>-->
                         <!--    </div>-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://m.media-amazon.com/images/I/718phluzAFL._AC_UY1100_.jpg"-->
                         <!--            alt="Extra 2">-->
-                        <!--        <h5>Extra 2</h5>-->
+                        <!--        <h4>Extra 2</h4>-->
                         <!--    </div>-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://m.media-amazon.com/images/I/718phluzAFL._AC_UY1100_.jpg"-->
                         <!--            alt="Extra 3">-->
-                        <!--        <h5>Extra 3</h5>-->
+                        <!--        <h4>Extra 3</h4>-->
                         <!--    </div>-->
                         <!--</div>-->
                     </div>
@@ -971,7 +972,7 @@
 
             <section id="men"
                 style="height:unset; background-image: none; background-repeat: none; background-size: none;">
-                <!--<h5>Men</h5>-->
+                <!--<h4>Men</h4>-->
                 <div class="products">
                     <!-- Topwear -->
                     <div class="product-wrapper">
@@ -980,24 +981,24 @@
                         <div class="product ">
                             <img src="{{ $kids1 }}"
                                 alt="Topwear">
-                            <h5>Boy's Clothing</h5>
+                            <h4>Boy's Clothing</h4>
                         </div>
                         </a>
                         <!--<div class="extra-products">-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://www.botnia.in/cdn/shop/files/5_41b6d8fa-fa23-4550-97f2-5161b85abcbd.png?v=1695274048"-->
                         <!--            alt="Extra 1">-->
-                        <!--        <h5>Extra 1</h5>-->
+                        <!--        <h4>Extra 1</h4>-->
                         <!--    </div>-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://www.botnia.in/cdn/shop/files/5_41b6d8fa-fa23-4550-97f2-5161b85abcbd.png?v=1695274048"-->
                         <!--            alt="Extra 2">-->
-                        <!--        <h5>Extra 2</h5>-->
+                        <!--        <h4>Extra 2</h4>-->
                         <!--    </div>-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://www.botnia.in/cdn/shop/files/5_41b6d8fa-fa23-4550-97f2-5161b85abcbd.png?v=1695274048"-->
                         <!--            alt="Extra 3">-->
-                        <!--        <h5>Extra 3</h5>-->
+                        <!--        <h4>Extra 3</h4>-->
                         <!--    </div>-->
                         <!--</div>-->
                     </div>
@@ -1009,24 +1010,24 @@
                         <div class="product">
                             <img src="{{ $kids2 }}"
                                 alt="Bottomwear">
-                            <h5>Girl's Clothing</h5>
+                            <h4>Girl's Clothing</h4>
                         </div>
                         </a>
                         <!--<div class="extra-products">-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSo6BwptVmQ776VMueRkmI7GhTUDgRq5adaJA&s"-->
                         <!--            alt="Extra 1">-->
-                        <!--        <h5>Extra 1</h5>-->
+                        <!--        <h4>Extra 1</h4>-->
                         <!--    </div>-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://levi.in/cdn/shop/files/817910059_01_Front_3bd1cd3d-2059-45da-9a67-bcd06c22030f.jpg?v=1698322814"-->
                         <!--            alt="Extra 2">-->
-                        <!--        <h5>Extra 2</h5>-->
+                        <!--        <h4>Extra 2</h4>-->
                         <!--    </div>-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://vilanapparels.com/cdn/shop/products/0W2A8704.jpg?v=1692488152&width=1946"-->
                         <!--            alt="Extra 3">-->
-                        <!--        <h5>Extra 3</h5>-->
+                        <!--        <h4>Extra 3</h4>-->
                         <!--    </div>-->
                         <!--</div>-->
                     </div>
@@ -1035,26 +1036,26 @@
                     <div class="product-wrapper">
                         <a href="/category/{{ urlencode(Crypt::encryptString('91')) }}" style="text-decoration:none;">
                             <div class="product">
-                                <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Explore/Kids/Shoe.png"
+                                <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Kids/Shoe.png"
                                     alt="Kidswear">
-                                <h5>Footwear</h5>
+                                <h4>Footwear</h4>
                             </div>
                         </a>    
                         <!--<div class="extra-products">-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://ramrajcotton.in/cdn/shop/products/1_fc2187ad-922f-4247-9e37-89737632e64c.jpg?v=1677146079"-->
                         <!--            alt="Extra 1">-->
-                        <!--        <h5>Extra 1</h5>-->
+                        <!--        <h4>Extra 1</h4>-->
                         <!--    </div>-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://ramrajcotton.in/cdn/shop/products/1_fc2187ad-922f-4247-9e37-89737632e64c.jpg?v=1677146079"-->
                         <!--            alt="Extra 2">-->
-                        <!--        <h5>Extra 2</h5>-->
+                        <!--        <h4>Extra 2</h4>-->
                         <!--    </div>-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://ramrajcotton.in/cdn/shop/products/1_fc2187ad-922f-4247-9e37-89737632e64c.jpg?v=1677146079"-->
                         <!--            alt="Extra 3">-->
-                        <!--        <h5>Extra 3</h5>-->
+                        <!--        <h4>Extra 3</h4>-->
                         <!--    </div>-->
                         <!--</div>-->
                     </div>
@@ -1065,24 +1066,24 @@
                             <div class="product">
                                 <img src="{{ $kids3 }}"
                                     alt="Menswear">
-                                <h5>Infants</h5>
+                                <h4>Infants</h4>
                             </div>
                         </a>
                         <!--<div class="extra-products">-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://m.media-amazon.com/images/I/718phluzAFL._AC_UY1100_.jpg"-->
                         <!--            alt="Extra 1">-->
-                        <!--        <h5>Extra 1</h5>-->
+                        <!--        <h4>Extra 1</h4>-->
                         <!--    </div>-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://m.media-amazon.com/images/I/718phluzAFL._AC_UY1100_.jpg"-->
                         <!--            alt="Extra 2">-->
-                        <!--        <h5>Extra 2</h5>-->
+                        <!--        <h4>Extra 2</h4>-->
                         <!--    </div>-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://m.media-amazon.com/images/I/718phluzAFL._AC_UY1100_.jpg"-->
                         <!--            alt="Extra 3">-->
-                        <!--        <h5>Extra 3</h5>-->
+                        <!--        <h4>Extra 3</h4>-->
                         <!--    </div>-->
                         <!--</div>-->
                     </div>
@@ -1092,24 +1093,24 @@
                             <div class="product">
                                 <img src="{{ $kids4 }}"
                                     alt="Menswear">
-                                <h5>Kids Accessories</h5>
+                                <h4>Kids Accessories</h4>
                             </div>
                         </a>
                         <!--<div class="extra-products">-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://m.media-amazon.com/images/I/718phluzAFL._AC_UY1100_.jpg"-->
                         <!--            alt="Extra 1">-->
-                        <!--        <h5>Extra 1</h5>-->
+                        <!--        <h4>Extra 1</h4>-->
                         <!--    </div>-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://m.media-amazon.com/images/I/718phluzAFL._AC_UY1100_.jpg"-->
                         <!--            alt="Extra 2">-->
-                        <!--        <h5>Extra 2</h5>-->
+                        <!--        <h4>Extra 2</h4>-->
                         <!--    </div>-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://m.media-amazon.com/images/I/718phluzAFL._AC_UY1100_.jpg"-->
                         <!--            alt="Extra 3">-->
-                        <!--        <h5>Extra 3</h5>-->
+                        <!--        <h4>Extra 3</h4>-->
                         <!--    </div>-->
                         <!--</div>-->
                     </div>
@@ -1117,26 +1118,26 @@
                     <div class="product-wrapper">
                         <a href="/category/{{ urlencode(Crypt::encryptString('94')) }}" style="text-decoration:none;">
                             <div class="product">
-                                <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Explore/Kids/Innerware.png"
+                                <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Kids/Innerware.png"
                                     alt="Menswear">
-                                <h5>Innerwear</h5>
+                                <h4>Innerwear</h4>
                             </div>
                         </a>
                         <!--<div class="extra-products">-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://m.media-amazon.com/images/I/718phluzAFL._AC_UY1100_.jpg"-->
                         <!--            alt="Extra 1">-->
-                        <!--        <h5>Extra 1</h5>-->
+                        <!--        <h4>Extra 1</h4>-->
                         <!--    </div>-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://m.media-amazon.com/images/I/718phluzAFL._AC_UY1100_.jpg"-->
                         <!--            alt="Extra 2">-->
-                        <!--        <h5>Extra 2</h5>-->
+                        <!--        <h4>Extra 2</h4>-->
                         <!--    </div>-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://m.media-amazon.com/images/I/718phluzAFL._AC_UY1100_.jpg"-->
                         <!--            alt="Extra 3">-->
-                        <!--        <h5>Extra 3</h5>-->
+                        <!--        <h4>Extra 3</h4>-->
                         <!--    </div>-->
                         <!--</div>-->
                     </div>
@@ -1145,30 +1146,30 @@
 
             <!--<section id="kids"-->
             <!--    style="height:unset; background-image: none; background-repeat: none; background-size: none;">-->
-                <!--<h5>Kids</h5>-->
+                <!--<h4>Kids</h4>-->
             <!--    <div class="products">-->
                     <!-- Topwear -->
             <!--        <div class="product-wrapper">-->
             <!--            <div class="product ">-->
             <!--                <img src="https://images.bestsellerclothing.in/data/only/21-oct-2024/130543501_g0.jpg"-->
             <!--                    alt="Topwear">-->
-            <!--                <h5>T-Shirt</h5>-->
+            <!--                <h4>T-Shirt</h4>-->
             <!--            </div>-->
                         <!--<div class="extra-products">-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://www.botnia.in/cdn/shop/files/5_41b6d8fa-fa23-4550-97f2-5161b85abcbd.png?v=1695274048"-->
                         <!--            alt="Extra 1">-->
-                        <!--        <h5>Extra 1</h5>-->
+                        <!--        <h4>Extra 1</h4>-->
                         <!--    </div>-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://www.botnia.in/cdn/shop/files/5_41b6d8fa-fa23-4550-97f2-5161b85abcbd.png?v=1695274048"-->
                         <!--            alt="Extra 2">-->
-                        <!--        <h5>Extra 2</h5>-->
+                        <!--        <h4>Extra 2</h4>-->
                         <!--    </div>-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://www.botnia.in/cdn/shop/files/5_41b6d8fa-fa23-4550-97f2-5161b85abcbd.png?v=1695274048"-->
                         <!--            alt="Extra 3">-->
-                        <!--        <h5>Extra 3</h5>-->
+                        <!--        <h4>Extra 3</h4>-->
                         <!--    </div>-->
                         <!--</div>-->
             <!--        </div>-->
@@ -1178,23 +1179,23 @@
             <!--            <div class="product">-->
             <!--                <img src="https://images.bestsellerclothing.in/data/only/21-oct-2024/130543501_g0.jpg"-->
             <!--                    alt="Bottomwear">-->
-            <!--                <h5>Shirt</h5>-->
+            <!--                <h4>Shirt</h4>-->
             <!--            </div>-->
                         <!--<div class="extra-products">-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSo6BwptVmQ776VMueRkmI7GhTUDgRq5adaJA&s"-->
                         <!--            alt="Extra 1">-->
-                        <!--        <h5>Extra 1</h5>-->
+                        <!--        <h4>Extra 1</h4>-->
                         <!--    </div>-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://levi.in/cdn/shop/files/817910059_01_Front_3bd1cd3d-2059-45da-9a67-bcd06c22030f.jpg?v=1698322814"-->
                         <!--            alt="Extra 2">-->
-                        <!--        <h5>Extra 2</h5>-->
+                        <!--        <h4>Extra 2</h4>-->
                         <!--    </div>-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://vilanapparels.com/cdn/shop/products/0W2A8704.jpg?v=1692488152&width=1946"-->
                         <!--            alt="Extra 3">-->
-                        <!--        <h5>Extra 3</h5>-->
+                        <!--        <h4>Extra 3</h4>-->
                         <!--    </div>-->
                         <!--</div>-->
             <!--        </div>-->
@@ -1204,23 +1205,23 @@
             <!--            <div class="product">-->
             <!--                <img src="https://images.bestsellerclothing.in/data/only/21-oct-2024/130543501_g0.jpg"-->
             <!--                    alt="Kidswear">-->
-            <!--                <h5>Hoodie</h5>-->
+            <!--                <h4>Hoodie</h4>-->
             <!--            </div>-->
                         <!--<div class="extra-products">-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://ramrajcotton.in/cdn/shop/products/1_fc2187ad-922f-4247-9e37-89737632e64c.jpg?v=1677146079"-->
                         <!--            alt="Extra 1">-->
-                        <!--        <h5>Extra 1</h5>-->
+                        <!--        <h4>Extra 1</h4>-->
                         <!--    </div>-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://ramrajcotton.in/cdn/shop/products/1_fc2187ad-922f-4247-9e37-89737632e64c.jpg?v=1677146079"-->
                         <!--            alt="Extra 2">-->
-                        <!--        <h5>Extra 2</h5>-->
+                        <!--        <h4>Extra 2</h4>-->
                         <!--    </div>-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://ramrajcotton.in/cdn/shop/products/1_fc2187ad-922f-4247-9e37-89737632e64c.jpg?v=1677146079"-->
                         <!--            alt="Extra 3">-->
-                        <!--        <h5>Extra 3</h5>-->
+                        <!--        <h4>Extra 3</h4>-->
                         <!--    </div>-->
                         <!--</div>-->
             <!--        </div>-->
@@ -1230,23 +1231,23 @@
             <!--            <div class="product">-->
             <!--                <img src="https://images.bestsellerclothing.in/data/only/21-oct-2024/130543501_g0.jpg"-->
             <!--                    alt="Menswear">-->
-            <!--                <h5>Sweatshirt</h5>-->
+            <!--                <h4>Sweatshirt</h4>-->
             <!--            </div>-->
                         <!--<div class="extra-products">-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://m.media-amazon.com/images/I/718phluzAFL._AC_UY1100_.jpg"-->
                         <!--            alt="Extra 1">-->
-                        <!--        <h5>Extra 1</h5>-->
+                        <!--        <h4>Extra 1</h4>-->
                         <!--    </div>-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://m.media-amazon.com/images/I/718phluzAFL._AC_UY1100_.jpg"-->
                         <!--            alt="Extra 2">-->
-                        <!--        <h5>Extra 2</h5>-->
+                        <!--        <h4>Extra 2</h4>-->
                         <!--    </div>-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://m.media-amazon.com/images/I/718phluzAFL._AC_UY1100_.jpg"-->
                         <!--            alt="Extra 3">-->
-                        <!--        <h5>Extra 3</h5>-->
+                        <!--        <h4>Extra 3</h4>-->
                         <!--    </div>-->
                         <!--</div>-->
             <!--        </div>-->
@@ -1255,23 +1256,23 @@
             <!--            <div class="product">-->
             <!--                <img src="https://images.bestsellerclothing.in/data/only/21-oct-2024/130543501_g0.jpg"-->
             <!--                    alt="Menswear">-->
-            <!--                <h5>Jeans</h5>-->
+            <!--                <h4>Jeans</h4>-->
             <!--            </div>-->
                         <!--<div class="extra-products">-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://m.media-amazon.com/images/I/718phluzAFL._AC_UY1100_.jpg"-->
                         <!--            alt="Extra 1">-->
-                        <!--        <h5>Extra 1</h5>-->
+                        <!--        <h4>Extra 1</h4>-->
                         <!--    </div>-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://m.media-amazon.com/images/I/718phluzAFL._AC_UY1100_.jpg"-->
                         <!--            alt="Extra 2">-->
-                        <!--        <h5>Extra 2</h5>-->
+                        <!--        <h4>Extra 2</h4>-->
                         <!--    </div>-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://m.media-amazon.com/images/I/718phluzAFL._AC_UY1100_.jpg"-->
                         <!--            alt="Extra 3">-->
-                        <!--        <h5>Extra 3</h5>-->
+                        <!--        <h4>Extra 3</h4>-->
                         <!--    </div>-->
                         <!--</div>-->
             <!--        </div>-->
@@ -1279,23 +1280,23 @@
             <!--            <div class="product">-->
             <!--                <img src="https://images.bestsellerclothing.in/data/only/21-oct-2024/130543501_g0.jpg"-->
             <!--                    alt="Menswear">-->
-            <!--                <h5>Cargo</h5>-->
+            <!--                <h4>Cargo</h4>-->
             <!--            </div>-->
                         <!--<div class="extra-products">-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://m.media-amazon.com/images/I/718phluzAFL._AC_UY1100_.jpg"-->
                         <!--            alt="Extra 1">-->
-                        <!--        <h5>Extra 1</h5>-->
+                        <!--        <h4>Extra 1</h4>-->
                         <!--    </div>-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://m.media-amazon.com/images/I/718phluzAFL._AC_UY1100_.jpg"-->
                         <!--            alt="Extra 2">-->
-                        <!--        <h5>Extra 2</h5>-->
+                        <!--        <h4>Extra 2</h4>-->
                         <!--    </div>-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://m.media-amazon.com/images/I/718phluzAFL._AC_UY1100_.jpg"-->
                         <!--            alt="Extra 3">-->
-                        <!--        <h5>Extra 3</h5>-->
+                        <!--        <h4>Extra 3</h4>-->
                         <!--    </div>-->
                         <!--</div>-->
             <!--        </div>-->
@@ -1304,23 +1305,23 @@
             <!--            <div class="product">-->
             <!--                <img src="https://images.bestsellerclothing.in/data/only/21-oct-2024/130543501_g0.jpg"-->
             <!--                    alt="Menswear">-->
-            <!--                <h5>Trousers</h5>-->
+            <!--                <h4>Trousers</h4>-->
             <!--            </div>-->
                         <!--<div class="extra-products">-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://m.media-amazon.com/images/I/718phluzAFL._AC_UY1100_.jpg"-->
                         <!--            alt="Extra 1">-->
-                        <!--        <h5>Extra 1</h5>-->
+                        <!--        <h4>Extra 1</h4>-->
                         <!--    </div>-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://m.media-amazon.com/images/I/718phluzAFL._AC_UY1100_.jpg"-->
                         <!--            alt="Extra 2">-->
-                        <!--        <h5>Extra 2</h5>-->
+                        <!--        <h4>Extra 2</h4>-->
                         <!--    </div>-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://m.media-amazon.com/images/I/718phluzAFL._AC_UY1100_.jpg"-->
                         <!--            alt="Extra 3">-->
-                        <!--        <h5>Extra 3</h5>-->
+                        <!--        <h4>Extra 3</h4>-->
                         <!--    </div>-->
                         <!--</div>-->
             <!--        </div>-->
@@ -1329,30 +1330,30 @@
 
             <!--<section id="home-kitchen"-->
             <!--    style="height:unset; background-image: none; background-repeat: none; background-size: none;">-->
-                <!--<h5>Home Kitchen</h5>-->
+                <!--<h4>Home Kitchen</h4>-->
             <!--    <div class="products">-->
                     <!-- Topwear -->
             <!--        <div class="product-wrapper">-->
             <!--            <div class="product ">-->
-            <!--                <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Explore/Plus+Size+All/Plus+Tees.jpg"-->
+            <!--                <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Plus+Size+All/Plus+Tees.jpg"-->
             <!--                    alt="Topwear">-->
-            <!--                <h5>Men</h5>-->
+            <!--                <h4>Men</h4>-->
             <!--            </div>-->
                         <!--<div class="extra-products">-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://www.botnia.in/cdn/shop/files/5_41b6d8fa-fa23-4550-97f2-5161b85abcbd.png?v=1695274048"-->
                         <!--            alt="Extra 1">-->
-                        <!--        <h5>Extra 1</h5>-->
+                        <!--        <h4>Extra 1</h4>-->
                         <!--    </div>-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://www.botnia.in/cdn/shop/files/5_41b6d8fa-fa23-4550-97f2-5161b85abcbd.png?v=1695274048"-->
                         <!--            alt="Extra 2">-->
-                        <!--        <h5>Extra 2</h5>-->
+                        <!--        <h4>Extra 2</h4>-->
                         <!--    </div>-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://www.botnia.in/cdn/shop/files/5_41b6d8fa-fa23-4550-97f2-5161b85abcbd.png?v=1695274048"-->
                         <!--            alt="Extra 3">-->
-                        <!--        <h5>Extra 3</h5>-->
+                        <!--        <h4>Extra 3</h4>-->
                         <!--    </div>-->
                         <!--</div>-->
             <!--        </div>-->
@@ -1360,25 +1361,25 @@
                     <!-- Bottomwear -->
             <!--        <div class="product-wrapper">-->
             <!--            <div class="product">-->
-            <!--                <img src="https://fileuploaderbucket.s3.ap-southeast-1.amazonaws.com/Explore/Plus+Size+All/Plus+Cargo.jpg"-->
+            <!--                <img src="https://pub-859cf3e1f0194751917386af714f48e5.r2.dev/Explore/Plus+Size+All/Plus+Cargo.jpg"-->
             <!--                    alt="Bottomwear">-->
-            <!--                <h5>Women</h5>-->
+            <!--                <h4>Women</h4>-->
             <!--            </div>-->
                         <!--<div class="extra-products">-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSo6BwptVmQ776VMueRkmI7GhTUDgRq5adaJA&s"-->
                         <!--            alt="Extra 1">-->
-                        <!--        <h5>Extra 1</h5>-->
+                        <!--        <h4>Extra 1</h4>-->
                         <!--    </div>-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://levi.in/cdn/shop/files/817910059_01_Front_3bd1cd3d-2059-45da-9a67-bcd06c22030f.jpg?v=1698322814"-->
                         <!--            alt="Extra 2">-->
-                        <!--        <h5>Extra 2</h5>-->
+                        <!--        <h4>Extra 2</h4>-->
                         <!--    </div>-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://vilanapparels.com/cdn/shop/products/0W2A8704.jpg?v=1692488152&width=1946"-->
                         <!--            alt="Extra 3">-->
-                        <!--        <h5>Extra 3</h5>-->
+                        <!--        <h4>Extra 3</h4>-->
                         <!--    </div>-->
                         <!--</div>-->
             <!--        </div>-->
@@ -1389,30 +1390,30 @@
 
             <!--<section id="beauty-health"-->
             <!--    style="height:unset; background-image: none; background-repeat: none; background-size: none;">-->
-                <!--<h5>Beauty & Health</h5>-->
+                <!--<h4>Beauty & Health</h4>-->
             <!--    <div class="products">-->
                     <!-- Topwear -->
             <!--        <div class="product-wrapper">-->
             <!--            <div class="product ">-->
             <!--                <img src="https://images.bestsellerclothing.in/data/only/21-oct-2024/130543501_g0.jpg"-->
             <!--                    alt="Topwear">-->
-            <!--                <h5>40% Off</h5>-->
+            <!--                <h4>40% Off</h4>-->
             <!--            </div>-->
                         <!--<div class="extra-products">-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://www.botnia.in/cdn/shop/files/5_41b6d8fa-fa23-4550-97f2-5161b85abcbd.png?v=1695274048"-->
                         <!--            alt="Extra 1">-->
-                        <!--        <h5>Extra 1</h5>-->
+                        <!--        <h4>Extra 1</h4>-->
                         <!--    </div>-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://www.botnia.in/cdn/shop/files/5_41b6d8fa-fa23-4550-97f2-5161b85abcbd.png?v=1695274048"-->
                         <!--            alt="Extra 2">-->
-                        <!--        <h5>Extra 2</h5>-->
+                        <!--        <h4>Extra 2</h4>-->
                         <!--    </div>-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://www.botnia.in/cdn/shop/files/5_41b6d8fa-fa23-4550-97f2-5161b85abcbd.png?v=1695274048"-->
                         <!--            alt="Extra 3">-->
-                        <!--        <h5>Extra 3</h5>-->
+                        <!--        <h4>Extra 3</h4>-->
                         <!--    </div>-->
                         <!--</div>-->
             <!--        </div>-->
@@ -1422,23 +1423,23 @@
             <!--            <div class="product">-->
             <!--                <img src="https://images.bestsellerclothing.in/data/only/21-oct-2024/130543501_g0.jpg"-->
             <!--                    alt="Bottomwear">-->
-            <!--                <h5>50% Off</h5>-->
+            <!--                <h4>50% Off</h4>-->
             <!--            </div>-->
                         <!--<div class="extra-products">-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSo6BwptVmQ776VMueRkmI7GhTUDgRq5adaJA&s"-->
                         <!--            alt="Extra 1">-->
-                        <!--        <h5>Extra 1</h5>-->
+                        <!--        <h4>Extra 1</h4>-->
                         <!--    </div>-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://levi.in/cdn/shop/files/817910059_01_Front_3bd1cd3d-2059-45da-9a67-bcd06c22030f.jpg?v=1698322814"-->
                         <!--            alt="Extra 2">-->
-                        <!--        <h5>Extra 2</h5>-->
+                        <!--        <h4>Extra 2</h4>-->
                         <!--    </div>-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://vilanapparels.com/cdn/shop/products/0W2A8704.jpg?v=1692488152&width=1946"-->
                         <!--            alt="Extra 3">-->
-                        <!--        <h5>Extra 3</h5>-->
+                        <!--        <h4>Extra 3</h4>-->
                         <!--    </div>-->
                         <!--</div>-->
             <!--        </div>-->
@@ -1448,23 +1449,23 @@
             <!--            <div class="product">-->
             <!--                <img src="https://images.bestsellerclothing.in/data/only/21-oct-2024/130543501_g0.jpg"-->
             <!--                    alt="Kidswear">-->
-            <!--                <h5>60% Off</h5>-->
+            <!--                <h4>60% Off</h4>-->
             <!--            </div>-->
                         <!--<div class="extra-products">-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://ramrajcotton.in/cdn/shop/products/1_fc2187ad-922f-4247-9e37-89737632e64c.jpg?v=1677146079"-->
                         <!--            alt="Extra 1">-->
-                        <!--        <h5>Extra 1</h5>-->
+                        <!--        <h4>Extra 1</h4>-->
                         <!--    </div>-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://ramrajcotton.in/cdn/shop/products/1_fc2187ad-922f-4247-9e37-89737632e64c.jpg?v=1677146079"-->
                         <!--            alt="Extra 2">-->
-                        <!--        <h5>Extra 2</h5>-->
+                        <!--        <h4>Extra 2</h4>-->
                         <!--    </div>-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://ramrajcotton.in/cdn/shop/products/1_fc2187ad-922f-4247-9e37-89737632e64c.jpg?v=1677146079"-->
                         <!--            alt="Extra 3">-->
-                        <!--        <h5>Extra 3</h5>-->
+                        <!--        <h4>Extra 3</h4>-->
                         <!--    </div>-->
                         <!--</div>-->
             <!--        </div>-->
@@ -1474,23 +1475,23 @@
             <!--            <div class="product">-->
             <!--                <img src="https://images.bestsellerclothing.in/data/only/21-oct-2024/130543501_g0.jpg"-->
             <!--                    alt="Menswear">-->
-            <!--                <h5>70% Off and more</h5>-->
+            <!--                <h4>70% Off and more</h4>-->
             <!--            </div>-->
                         <!--<div class="extra-products">-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://m.media-amazon.com/images/I/718phluzAFL._AC_UY1100_.jpg"-->
                         <!--            alt="Extra 1">-->
-                        <!--        <h5>Extra 1</h5>-->
+                        <!--        <h4>Extra 1</h4>-->
                         <!--    </div>-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://m.media-amazon.com/images/I/718phluzAFL._AC_UY1100_.jpg"-->
                         <!--            alt="Extra 2">-->
-                        <!--        <h5>Extra 2</h5>-->
+                        <!--        <h4>Extra 2</h4>-->
                         <!--    </div>-->
                         <!--    <div class="product">-->
                         <!--        <img src="https://m.media-amazon.com/images/I/718phluzAFL._AC_UY1100_.jpg"-->
                         <!--            alt="Extra 3">-->
-                        <!--        <h5>Extra 3</h5>-->
+                        <!--        <h4>Extra 3</h4>-->
                         <!--    </div>-->
                         <!--</div>-->
             <!--        </div>-->
@@ -1499,30 +1500,30 @@
 
             <!--<section id="electronics"-->
             <!--    style="height:unset; background-image: none; background-repeat: none; background-size: none;">-->
-            <!--    <h5>Electronics</h5>-->
+            <!--    <h4>Electronics</h4>-->
             <!--    <div class="products">-->
                     <!-- Topwear -->
             <!--        <div class="product-wrapper">-->
             <!--            <div class="product ">-->
             <!--                <img src="https://images.bestsellerclothing.in/data/only/21-oct-2024/130543501_g0.jpg"-->
             <!--                    alt="Topwear">-->
-            <!--                <h5>Topwear</h5>-->
+            <!--                <h4>Topwear</h4>-->
             <!--            </div>-->
             <!--            <div class="extra-products">-->
             <!--                <div class="product">-->
             <!--                    <img src="https://www.botnia.in/cdn/shop/files/5_41b6d8fa-fa23-4550-97f2-5161b85abcbd.png?v=1695274048"-->
             <!--                        alt="Extra 1">-->
-            <!--                    <h5>Extra 1</h5>-->
+            <!--                    <h4>Extra 1</h4>-->
             <!--                </div>-->
             <!--                <div class="product">-->
             <!--                    <img src="https://www.botnia.in/cdn/shop/files/5_41b6d8fa-fa23-4550-97f2-5161b85abcbd.png?v=1695274048"-->
             <!--                        alt="Extra 2">-->
-            <!--                    <h5>Extra 2</h5>-->
+            <!--                    <h4>Extra 2</h4>-->
             <!--                </div>-->
             <!--                <div class="product">-->
             <!--                    <img src="https://www.botnia.in/cdn/shop/files/5_41b6d8fa-fa23-4550-97f2-5161b85abcbd.png?v=1695274048"-->
             <!--                        alt="Extra 3">-->
-            <!--                    <h5>Extra 3</h5>-->
+            <!--                    <h4>Extra 3</h4>-->
             <!--                </div>-->
             <!--            </div>-->
             <!--        </div>-->
@@ -1532,23 +1533,23 @@
             <!--            <div class="product">-->
             <!--                <img src="https://images.bestsellerclothing.in/data/only/21-oct-2024/130543501_g0.jpg"-->
             <!--                    alt="Bottomwear">-->
-            <!--                <h5>Bottomwear</h5>-->
+            <!--                <h4>Bottomwear</h4>-->
             <!--            </div>-->
             <!--            <div class="extra-products">-->
             <!--                <div class="product">-->
             <!--                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSo6BwptVmQ776VMueRkmI7GhTUDgRq5adaJA&s"-->
             <!--                        alt="Extra 1">-->
-            <!--                    <h5>Extra 1</h5>-->
+            <!--                    <h4>Extra 1</h4>-->
             <!--                </div>-->
             <!--                <div class="product">-->
             <!--                    <img src="https://levi.in/cdn/shop/files/817910059_01_Front_3bd1cd3d-2059-45da-9a67-bcd06c22030f.jpg?v=1698322814"-->
             <!--                        alt="Extra 2">-->
-            <!--                    <h5>Extra 2</h5>-->
+            <!--                    <h4>Extra 2</h4>-->
             <!--                </div>-->
             <!--                <div class="product">-->
             <!--                    <img src="https://vilanapparels.com/cdn/shop/products/0W2A8704.jpg?v=1692488152&width=1946"-->
             <!--                        alt="Extra 3">-->
-            <!--                    <h5>Extra 3</h5>-->
+            <!--                    <h4>Extra 3</h4>-->
             <!--                </div>-->
             <!--            </div>-->
             <!--        </div>-->
@@ -1558,23 +1559,23 @@
             <!--            <div class="product">-->
             <!--                <img src="https://images.bestsellerclothing.in/data/only/21-oct-2024/130543501_g0.jpg"-->
             <!--                    alt="Kidswear">-->
-            <!--                <h5>Kidswear</h5>-->
+            <!--                <h4>Kidswear</h4>-->
             <!--            </div>-->
             <!--            <div class="extra-products">-->
             <!--                <div class="product">-->
             <!--                    <img src="https://ramrajcotton.in/cdn/shop/products/1_fc2187ad-922f-4247-9e37-89737632e64c.jpg?v=1677146079"-->
             <!--                        alt="Extra 1">-->
-            <!--                    <h5>Extra 1</h5>-->
+            <!--                    <h4>Extra 1</h4>-->
             <!--                </div>-->
             <!--                <div class="product">-->
             <!--                    <img src="https://ramrajcotton.in/cdn/shop/products/1_fc2187ad-922f-4247-9e37-89737632e64c.jpg?v=1677146079"-->
             <!--                        alt="Extra 2">-->
-            <!--                    <h5>Extra 2</h5>-->
+            <!--                    <h4>Extra 2</h4>-->
             <!--                </div>-->
             <!--                <div class="product">-->
             <!--                    <img src="https://ramrajcotton.in/cdn/shop/products/1_fc2187ad-922f-4247-9e37-89737632e64c.jpg?v=1677146079"-->
             <!--                        alt="Extra 3">-->
-            <!--                    <h5>Extra 3</h5>-->
+            <!--                    <h4>Extra 3</h4>-->
             <!--                </div>-->
             <!--            </div>-->
             <!--        </div>-->
@@ -1584,23 +1585,23 @@
             <!--            <div class="product">-->
             <!--                <img src="https://images.bestsellerclothing.in/data/only/21-oct-2024/130543501_g0.jpg"-->
             <!--                    alt="Menswear">-->
-            <!--                <h5>Menswear</h5>-->
+            <!--                <h4>Menswear</h4>-->
             <!--            </div>-->
             <!--            <div class="extra-products">-->
             <!--                <div class="product">-->
             <!--                    <img src="https://m.media-amazon.com/images/I/718phluzAFL._AC_UY1100_.jpg"-->
             <!--                        alt="Extra 1">-->
-            <!--                    <h5>Extra 1</h5>-->
+            <!--                    <h4>Extra 1</h4>-->
             <!--                </div>-->
             <!--                <div class="product">-->
             <!--                    <img src="https://m.media-amazon.com/images/I/718phluzAFL._AC_UY1100_.jpg"-->
             <!--                        alt="Extra 2">-->
-            <!--                    <h5>Extra 2</h5>-->
+            <!--                    <h4>Extra 2</h4>-->
             <!--                </div>-->
             <!--                <div class="product">-->
             <!--                    <img src="https://m.media-amazon.com/images/I/718phluzAFL._AC_UY1100_.jpg"-->
             <!--                        alt="Extra 3">-->
-            <!--                    <h5>Extra 3</h5>-->
+            <!--                    <h4>Extra 3</h4>-->
             <!--                </div>-->
             <!--            </div>-->
             <!--        </div>-->

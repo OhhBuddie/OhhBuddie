@@ -143,7 +143,9 @@
         
       <div class="pt-5 dektop-view">
         <div class="col-md-3 text-center ">
-            <img src="{{ $images[0] }}" alt="Image" style="width: 126px;">        
+            @if($images)
+             <img src="{{ $images[0] }}" alt="Image" style="width: 126px;">   
+            @endif
         </div>
         
         <div class="d-flex flex-column align-items-center col-md-9 mt-3 ">
@@ -255,16 +257,12 @@
         <span class="">Paid by {{ $orders_data->payment_type }}</span>
       </div>
       
-      <a href="{{ $inv_data->invoice_link }}" download class="get-invoice-btn" style="border: 1px solid #ddd; background-color: black; width: 100%; display: block; text-align: center; padding: 10px; color: white; text-decoration: none;" target="blank()">
-    Get Invoice
-</a>
-     
-      <!--<button class="get-invoice-btn" style="border: 1px solid #ddd; background-color: black; width: 100%;"><a href="/invoice-pdf/{{$orderdetails->id}}" style="color:white;text-decoration:none">Get Invoice{{$inv_data->invoice_link}} </a> </button>-->
-<!--   <form action="{{ route('download.invoice', ['id' => $orderdetails->id]) }}" method="GET" style="width: 100%;">-->
-<!--    <button type="submit" class="get-invoice-btn" style="border: 1px solid #ddd; background-color: black; width: 100%; color: white;">-->
-<!--        Get Invoice-->
-<!--    </button>-->
-<!--</form>-->
+
+   <form action="{{ route('download.invoice', ['id' => $orderdetails->id]) }}" method="GET" style="width: 100%;">
+    <button type="submit" class="get-invoice-btn" style="border: 1px solid #ddd; background-color: black; width: 100%; color: white;">
+        Get Invoice
+    </button>
+</form>
           
 
     

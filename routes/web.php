@@ -24,6 +24,7 @@ use App\Http\Controllers\WhatsAppController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\InvoiceController;
 
+use App\Http\Controllers\QRCodeController;
 
 
 
@@ -45,6 +46,8 @@ Route::get('/get-sizes/{categoryId}', [HomeController::class, 'getSizes']);
 Route::get('/launch', [NewLoginController::class, 'showLoginPage'])->name('login.page');
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
+
+Route::get('/qrhome', [App\Http\Controllers\HomeController::class, 'index1']);
 
 Route::get('/welcome', [App\Http\Controllers\HomeController::class, 'index']);
 
@@ -295,6 +298,10 @@ Route::post('/payment/failure', [CheckoutController::class, 'paymentFailure'])
     ->name('payment.failure')
     ->withoutMiddleware(['web']);
 
+Route::post('/payu/refund-webhook', [CheckoutController::class, 'handleRefund']);
+
+
+
 Route::get('/get-cities', [AddressController::class, 'getCities'])->name('getCities');
 
 Route::view('/whatsapp', 'whatsapp-form');
@@ -306,7 +313,29 @@ Route::get('/debug-sentry', function () {
 Route::post('/apply-coupon', [CartController::class, 'applyCoupon'])->name('apply.coupon');
 Route::post('/remove-coupon', [CartController::class, 'removeCoupon'])->name('remove.coupon');
 
-Route::get('/generate-random-invoice', [OrderController::class, 'sendInvoiceToZoho'])->name('download.invoice');
+Route::get('/generate-random-invoice/{id}', [OrderController::class, 'sendInvoiceToZoho'])->name('download.invoice');
 
-Route::get('/invoice-pdf/{id}', [InvoiceController::class, 'index']);
+Route::get('/fetchAllInvoicesFromZoho', [OrderController::class, 'fetchAllInvoicesFromZoho']);
 
+Route::get('/zoho/invoices/{invoiceId}/download', [OrderController::class, 'downloadInvoicePdf'])->name('zoho.invoice.download');
+
+Route::get('/showZohoInvoices1', [OrderController::class, 'showZohoInvoices']);
+
+Route::get('/showZohoInvoices', [CheckoutController::class, 'showZohoInvoices']);
+
+
+
+// For Whatsapp Test 
+
+Route::get('/testwpmsg', [App\Http\Controllers\TestController::class, 'send']);
+Route::get('/update-counter', [App\Http\Controllers\TestController::class, 'updateCounter']);
+Route::get('/counter', [App\Http\Controllers\TestController::class, 'showAndUpdate']);
+
+Route::get('/send-auto-whatsapp/{$id}', [App\Http\Controllers\TestController::class, 'sendAutoMessage']);
+
+Route::get('/auto-view', function () {
+    return view('auto-message');
+});
+
+
+Route::get('qr-code', [QRCodeController::class, 'index']);
